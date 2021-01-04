@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2db9c215_83cc4ae8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2021-01-04T22:07:16Z",
+      "side": 1,
+      "message": "nit: should be merge together with: 292409",
+      "revId": "01d9a022694e79898a14287bce7ed4fdda220ef9",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
