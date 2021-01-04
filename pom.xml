@@ -4,7 +4,7 @@
 
     <groupId>com.gerritforge</groupId>
     <artifactId>events-broker</artifactId>
-    <version>3.2.6</version>
+    <version>3.3.1</version>
     <packaging>jar</packaging>
 
     <name>events-broker</name>
@@ -38,8 +38,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <gerrit.version>3.2.6</gerrit.version>
         <auto-value.version>1.7.4</auto-value.version>
+        <gerrit.version>3.3.1</gerrit.version>
     </properties>
 
     <dependencies>
@@ -104,6 +104,10 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>3.1.1</version>
+                <configuration>
+                    <!-- Workaround to https://bugs.openjdk.java.net/browse/JDK-8212233 -->
+                    <source>8</source>
+                </configuration>
                 <executions>
                     <execution>
                         <id>attach-javadocs</id>
