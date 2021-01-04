@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3fce22e_3fd013c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-01-04T22:00:31Z",
+      "side": 1,
+      "message": "This is intended to be merged with its successor. The Verified -1 is therefore expected.",
+      "revId": "66f7172a30efc316ebb46e7abe792e2782c2d829",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
