@@ -46,6 +46,30 @@
       },
       "revId": "302a1c727a1283eb0b1fcfb6e38fae633b8e3ee0",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c3087e1_df4c3f4a",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventGsonProvider.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-01-04T21:52:19Z",
+      "side": 1,
+      "message": "It was part of the merge with Gerrit stable-3.1: those classes have become auto-values and therefore need specific type adapters.",
+      "parentUuid": "82acbdee_57875b5e",
+      "range": {
+        "startLine": 81,
+        "startChar": 29,
+        "endLine": 81,
+        "endChar": 45
+      },
+      "revId": "302a1c727a1283eb0b1fcfb6e38fae633b8e3ee0",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
