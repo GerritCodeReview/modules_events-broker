@@ -15,9 +15,8 @@
 package com.gerritforge.gerrit.eventbroker;
 
 import com.google.common.base.Supplier;
-import com.google.gerrit.entities.Change;
+import com.google.gerrit.entities.EntitiesAdapterFactory;
 import com.google.gerrit.entities.Project;
-import com.google.gerrit.server.change.ChangeKeyAdapter;
 import com.google.gerrit.server.events.Event;
 import com.google.gerrit.server.events.EventDeserializer;
 import com.google.gerrit.server.events.EventTypes;
@@ -78,8 +77,8 @@ public class EventGsonProvider implements Provider<Gson> {
         .registerTypeAdapter(Event.class, new EventSerializer())
         .registerTypeAdapter(Supplier.class, new SupplierSerializer())
         .registerTypeAdapter(Supplier.class, new SupplierDeserializer())
-        .registerTypeAdapter(Change.Key.class, new ChangeKeyAdapter())
         .registerTypeAdapter(Project.NameKey.class, new ProjectNameKeyAdapter())
+        .registerTypeAdapterFactory(EntitiesAdapterFactory.create())
         .create();
   }
 }
