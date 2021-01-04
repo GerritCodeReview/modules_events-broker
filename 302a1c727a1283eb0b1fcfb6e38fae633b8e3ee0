@@ -70,6 +70,30 @@
       },
       "revId": "302a1c727a1283eb0b1fcfb6e38fae633b8e3ee0",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a23efe45_df50bfeb",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventGsonProvider.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-01-04T21:53:20Z",
+      "side": 1,
+      "message": "I\u0027ve specified the reason more clearly in the commit message.",
+      "parentUuid": "2c3087e1_df4c3f4a",
+      "range": {
+        "startLine": 81,
+        "startChar": 29,
+        "endLine": 81,
+        "endChar": 45
+      },
+      "revId": "302a1c727a1283eb0b1fcfb6e38fae633b8e3ee0",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
