@@ -230,6 +230,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ca7fc74_9743c1fb",
+        "filename": "pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-01-04T20:51:51Z",
+      "side": 1,
+      "message": "Yes, but this is to align what is verified by the CI and what is build/published.\nIf we don\u0027t do that, we verify with v3.0.15 but we build with v3.0.2, which isn\u0027t good at all.",
+      "parentUuid": "6b9585f6_ea15ad3b",
+      "range": {
+        "startLine": 41,
+        "startChar": 24,
+        "endLine": 41,
+        "endChar": 29
+      },
+      "revId": "e4c5f266220c17950a6b7a8d8c0b9e4552c1afef",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49c02163_eae91588",
