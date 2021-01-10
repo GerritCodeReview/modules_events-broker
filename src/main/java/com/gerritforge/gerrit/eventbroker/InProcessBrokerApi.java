@@ -89,7 +89,7 @@ public class InProcessBrokerApi implements BrokerApi {
     }
   }
 
-  private class EventBusMessageRecorder {
+  private static class EventBusMessageRecorder {
     private EvictingQueue messagesQueue;
 
     public EventBusMessageRecorder(EvictingQueue messagesQueue) {

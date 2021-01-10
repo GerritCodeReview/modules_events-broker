@@ -52,7 +52,7 @@ public class EventGsonProvider implements Provider<Gson> {
     }
   }
 
-  public class ProjectNameKeyDeserializer implements JsonDeserializer<Project.NameKey> {
+  public static class ProjectNameKeyDeserializer implements JsonDeserializer<Project.NameKey> {
 
     @Override
     public Project.NameKey deserialize(
