@@ -16,6 +16,24 @@
       "message": "Good catch @Davido. Do we have tests that demonstrate that the payload doesn\u0027t change?",
       "revId": "889ad8f386f709304ae054118fa1660d567a1696",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "828caba7_2eb3d7cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2021-01-28T18:47:12Z",
+      "side": 1,
+      "message": "I just confirmed that without this change kafka-events is broken:\n\n  6) kafkaEventDeserializerShouldParseAKafkaEvent(com.googlesource.gerrit.plugins.kafka.subscribe.KafkaEventDeserializerTest)\njava.lang.NoClassDefFoundError: com/google/gerrit/server/change/ChangeKeyAdapter\n\tat com.gerritforge.gerrit.eventbroker.EventGsonProvider.get(EventGsonProvider.java:80)\n\nbecause java/com/google/gerrit/server/change/ChangeKeyAdapter.java was removed in change 281776.",
+      "parentUuid": "aaad2d02_1c6b33bc",
+      "revId": "889ad8f386f709304ae054118fa1660d567a1696",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
