@@ -22,6 +22,30 @@
       },
       "revId": "87448890ec33cc28998946aaac34f66c0cc402d7",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "035fca1d_7993c752",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventGsonProvider.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-02-02T21:57:49Z",
+      "side": 1,
+      "message": "Yes, we could, but not on stable-3.1. Shall we do that on master?",
+      "parentUuid": "3a27e49f_38e4fdc3",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 3
+      },
+      "revId": "87448890ec33cc28998946aaac34f66c0cc402d7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
