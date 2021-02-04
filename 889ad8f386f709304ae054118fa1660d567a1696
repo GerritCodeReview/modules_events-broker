@@ -70,6 +70,24 @@
       "parentUuid": "b0f74814_094fe163",
       "revId": "889ad8f386f709304ae054118fa1660d567a1696",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "310cc4ac_9a73985f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-02-04T16:42:50Z",
+      "side": 1,
+      "message": "Actually, as this change is on stable-3.1, we need to make sure that is compatible with:\n- v3.1 (before this fix)\n- v3.2\n- v3.3\n- future v3.4 (master currently)",
+      "parentUuid": "b9faec79_2a39dbb0",
+      "revId": "889ad8f386f709304ae054118fa1660d567a1696",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
