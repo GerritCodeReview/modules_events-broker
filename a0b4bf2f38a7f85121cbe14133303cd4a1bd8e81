@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97406669_397175ea",
+        "filename": "pom.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2021-02-05T08:59:25Z",
+      "side": 1,
+      "message": "May be 3.4.0-alpha-1...3.4.0-alpha_N, then we have scheme: 3.4.0-beta-1...3.4.0-beta-N?\n\nLike Google Guice",
+      "range": {
+        "startLine": 7,
+        "startChar": 13,
+        "endLine": 7,
+        "endChar": 37
+      },
+      "revId": "a0b4bf2f38a7f85121cbe14133303cd4a1bd8e81",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
