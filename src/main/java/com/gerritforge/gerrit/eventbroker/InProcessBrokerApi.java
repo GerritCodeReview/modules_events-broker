@@ -16,15 +16,21 @@ package com.gerritforge.gerrit.eventbroker;
 
 import static com.gerritforge.gerrit.eventbroker.TopicSubscriber.topicSubscriber;
 
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.EvictingQueue;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.MapMaker;
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
 import com.google.common.flogger.FluentLogger;
+import com.google.common.util.concurrent.ListenableFuture;
+import com.google.common.util.concurrent.ListeningExecutorService;
+import com.google.common.util.concurrent.MoreExecutors;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.Callable;
+import java.util.concurrent.Executors;
 import java.util.function.Consumer;
 
 public class InProcessBrokerApi implements BrokerApi {
@@ -35,6 +41,8 @@ public class InProcessBrokerApi implements BrokerApi {
   private final Map<String, EvictingQueue<EventMessage>> messagesQueueMap;
   private final Map<String, EventBus> eventBusMap;
   private final Set<TopicSubscriber> topicSubscribers;
+  private final ListeningExecutorService service =
+      MoreExecutors.listeningDecorator(Executors.newFixedThreadPool(10));
 
   public InProcessBrokerApi() {
     this.eventBusMap = new MapMaker().concurrencyLevel(1).makeMap();
@@ -42,8 +50,7 @@ public class InProcessBrokerApi implements BrokerApi {
     this.topicSubscribers = new HashSet<>();
   }
 
-  @Override
-  public boolean send(String topic, EventMessage message) {
+  private boolean postMessage(String topic, EventMessage message) {
     EventBus topicEventConsumers = eventBusMap.get(topic);
     try {
       if (topicEventConsumers != null) {
@@ -54,6 +61,17 @@ public class InProcessBrokerApi implements BrokerApi {
       return false;
     }
     return true;
+  }
+
+  @Override
+  public ListenableFuture<Boolean> send(String topic, EventMessage message) {
+    return service.submit(
+        new Callable<Boolean>() {
+          @Override
+          public Boolean call() {
+            return postMessage(topic, message);
+          }
+        });
   }
 
   @Override
