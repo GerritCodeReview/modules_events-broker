@@ -23,12 +23,18 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 import com.google.common.eventbus.Subscribe;
+import com.google.common.util.concurrent.ListenableFuture;
+import com.google.common.util.concurrent.MoreExecutors;
 import com.google.gerrit.server.events.Event;
 import com.google.gerrit.server.events.ProjectCreatedEvent;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import java.util.Set;
 import java.util.UUID;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 import org.junit.Before;
 import org.junit.Test;
@@ -47,6 +53,8 @@ public class BrokerApiTest {
   BrokerApi brokerApiUnderTest;
   UUID instanceId = UUID.randomUUID();
   private Gson gson = new Gson();
+  ExecutorService executorService =
+      MoreExecutors.listeningDecorator(Executors.newFixedThreadPool(10));
 
   @Before
   public void setup() {
@@ -55,12 +63,33 @@ public class BrokerApiTest {
   }
 
   @Test
-  public void shouldSendEvent() {
+  public void shouldSendSyncEvent() {
     ProjectCreatedEvent event = new ProjectCreatedEvent();
 
     brokerApiUnderTest.receiveAsync("topic", eventConsumer);
 
     assertThat(brokerApiUnderTest.send("topic", wrap(event))).isTrue();
+    compareWithExpectedEvent(eventConsumer, eventCaptor, event);
+  }
+
+  @Test
+  public void shouldSendAsyncEvent() throws InterruptedException {
+    ProjectCreatedEvent event = new ProjectCreatedEvent();
+
+    brokerApiUnderTest.receiveAsync("topic", eventConsumer);
+
+    ListenableFuture<Boolean> resultF = brokerApiUnderTest.sendAsync("topic", wrap(event));
+
+    CountDownLatch lock = new CountDownLatch(1);
+    resultF.addListener(
+        new Runnable() {
+          public void run() {
+            lock.countDown();
+          }
+        },
+        executorService);
+    lock.await(2000, TimeUnit.MILLISECONDS);
+
     compareWithExpectedEvent(eventConsumer, eventCaptor, event);
   }
 
@@ -108,7 +137,7 @@ public class BrokerApiTest {
   }
 
   @Test
-  public void shouldDeliverEventToAllRegisteredConsumers() {
+  public void shouldDeliverSynchronouslyEventToAllRegisteredConsumers() {
     Consumer<EventMessage> secondConsumer = mockEventConsumer();
     ArgumentCaptor<EventMessage> secondArgCaptor = ArgumentCaptor.forClass(EventMessage.class);
 
@@ -117,6 +146,32 @@ public class BrokerApiTest {
     brokerApiUnderTest.receiveAsync("topic", eventConsumer);
     brokerApiUnderTest.receiveAsync("topic", secondConsumer);
     brokerApiUnderTest.send("topic", wrap(event));
+
+    compareWithExpectedEvent(eventConsumer, eventCaptor, event);
+    compareWithExpectedEvent(secondConsumer, secondArgCaptor, event);
+  }
+
+  @Test
+  public void shouldDeliverAsynchronouslyEventToAllRegisteredConsumers()
+      throws InterruptedException {
+    Consumer<EventMessage> secondConsumer = mockEventConsumer();
+    ArgumentCaptor<EventMessage> secondArgCaptor = ArgumentCaptor.forClass(EventMessage.class);
+
+    ProjectCreatedEvent event = testProjectCreatedEvent("Project name");
+
+    brokerApiUnderTest.receiveAsync("topic", eventConsumer);
+    brokerApiUnderTest.receiveAsync("topic", secondConsumer);
+    ListenableFuture<Boolean> resultF = brokerApiUnderTest.sendAsync("topic", wrap(event));
+
+    CountDownLatch lock = new CountDownLatch(1);
+    resultF.addListener(
+        new Runnable() {
+          public void run() {
+            lock.countDown();
+          }
+        },
+        executorService);
+    lock.await(2000, TimeUnit.MILLISECONDS);
 
     compareWithExpectedEvent(eventConsumer, eventCaptor, event);
     compareWithExpectedEvent(secondConsumer, secondArgCaptor, event);
