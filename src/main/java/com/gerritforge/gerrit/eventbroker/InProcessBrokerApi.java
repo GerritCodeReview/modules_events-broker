@@ -22,6 +22,8 @@ import com.google.common.collect.MapMaker;
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
 import com.google.common.flogger.FluentLogger;
+import com.google.common.util.concurrent.ListenableFuture;
+import com.google.common.util.concurrent.SettableFuture;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -43,17 +45,18 @@ public class InProcessBrokerApi implements BrokerApi {
   }
 
   @Override
-  public boolean send(String topic, EventMessage message) {
+  public ListenableFuture<Boolean> send(String topic, EventMessage message) {
     EventBus topicEventConsumers = eventBusMap.get(topic);
-    try {
-      if (topicEventConsumers != null) {
-        topicEventConsumers.post(message);
-      }
-    } catch (RuntimeException e) {
-      log.atSevere().withCause(e).log();
-      return false;
+    SettableFuture<Boolean> future = SettableFuture.create();
+
+    if (topicEventConsumers != null) {
+      topicEventConsumers.post(message);
+      future.set(true);
+    } else {
+      future.set(false);
     }
-    return true;
+
+    return future;
   }
 
   @Override
