@@ -15,6 +15,7 @@
 package com.gerritforge.gerrit.eventbroker;
 
 import com.gerritforge.gerrit.eventbroker.EventMessage.Header;
+import com.google.common.util.concurrent.ListenableFuture;
 import com.google.gerrit.server.events.Event;
 import java.util.Set;
 import java.util.UUID;
@@ -36,13 +37,13 @@ public interface BrokerApi {
   }
 
   /**
-   * Send an message to a topic.
+   * Send a message to a topic.
    *
    * @param topic topic name
    * @param message to be send to the topic
-   * @return true if the message was successfully sent. False otherwise.
+   * @return a future that returns when the message has been sent.
    */
-  boolean send(String topic, EventMessage message);
+  ListenableFuture<Boolean> send(String topic, EventMessage message);
 
   /**
    * Receive asynchronously a message from a topic.
