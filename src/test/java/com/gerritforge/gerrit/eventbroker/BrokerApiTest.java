@@ -16,6 +16,7 @@ package com.gerritforge.gerrit.eventbroker;
 
 import static com.gerritforge.gerrit.eventbroker.TopicSubscriber.topicSubscriber;
 import static com.google.common.truth.Truth.assertThat;
+import static org.junit.Assert.fail;
 import static org.mockito.Mockito.clearInvocations;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.reset;
@@ -23,12 +24,18 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 import com.google.common.eventbus.Subscribe;
+import com.google.common.util.concurrent.ListenableFuture;
+import com.google.common.util.concurrent.MoreExecutors;
 import com.google.gerrit.server.events.Event;
 import com.google.gerrit.server.events.ProjectCreatedEvent;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import java.util.Set;
 import java.util.UUID;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 import org.junit.Before;
 import org.junit.Test;
@@ -47,6 +54,8 @@ public class BrokerApiTest {
   BrokerApi brokerApiUnderTest;
   UUID instanceId = UUID.randomUUID();
   private Gson gson = new Gson();
+  ExecutorService executorService =
+      MoreExecutors.listeningDecorator(Executors.newFixedThreadPool(10));
 
   @Before
   public void setup() {
@@ -55,12 +64,14 @@ public class BrokerApiTest {
   }
 
   @Test
-  public void shouldSendEvent() {
+  public void shouldSendEvent() throws InterruptedException {
     ProjectCreatedEvent event = new ProjectCreatedEvent();
 
     brokerApiUnderTest.receiveAsync("topic", eventConsumer);
 
-    assertThat(brokerApiUnderTest.send("topic", wrap(event))).isTrue();
+    ListenableFuture<Boolean> resultF = brokerApiUnderTest.send("topic", wrap(event));
+    waitForMessageToBeSent(resultF);
+
     compareWithExpectedEvent(eventConsumer, eventCaptor, event);
   }
 
@@ -78,8 +89,10 @@ public class BrokerApiTest {
 
     brokerApiUnderTest.receiveAsync("topic", eventConsumer);
     brokerApiUnderTest.receiveAsync("topic2", secondConsumer);
-    brokerApiUnderTest.send("topic", wrap(eventForTopic));
-    brokerApiUnderTest.send("topic2", wrap(eventForTopic2));
+    ListenableFuture<Boolean> resultF1 = brokerApiUnderTest.send("topic", wrap(eventForTopic));
+    ListenableFuture<Boolean> resultF2 = brokerApiUnderTest.send("topic2", wrap(eventForTopic2));
+    waitForMessageToBeSent(resultF1);
+    waitForMessageToBeSent(resultF2);
 
     compareWithExpectedEvent(eventConsumer, eventCaptor, eventForTopic);
     compareWithExpectedEvent(secondConsumer, secondArgCaptor, eventForTopic2);
@@ -108,7 +121,8 @@ public class BrokerApiTest {
   }
 
   @Test
-  public void shouldDeliverEventToAllRegisteredConsumers() {
+  public void shouldDeliverAsynchronouslyEventToAllRegisteredConsumers()
+      throws InterruptedException {
     Consumer<EventMessage> secondConsumer = mockEventConsumer();
     ArgumentCaptor<EventMessage> secondArgCaptor = ArgumentCaptor.forClass(EventMessage.class);
 
@@ -116,7 +130,8 @@ public class BrokerApiTest {
 
     brokerApiUnderTest.receiveAsync("topic", eventConsumer);
     brokerApiUnderTest.receiveAsync("topic", secondConsumer);
-    brokerApiUnderTest.send("topic", wrap(event));
+    ListenableFuture<Boolean> resultF = brokerApiUnderTest.send("topic", wrap(event));
+    waitForMessageToBeSent(resultF);
 
     compareWithExpectedEvent(eventConsumer, eventCaptor, event);
     compareWithExpectedEvent(secondConsumer, secondArgCaptor, event);
@@ -130,8 +145,10 @@ public class BrokerApiTest {
     ProjectCreatedEvent eventForTopic2 = testProjectCreatedEvent("Project name 2");
 
     brokerApiUnderTest.receiveAsync("topic", eventConsumer);
-    brokerApiUnderTest.send("topic", wrap(eventForTopic));
-    brokerApiUnderTest.send("topic2", wrap(eventForTopic2));
+    ListenableFuture<Boolean> resultF1 = brokerApiUnderTest.send("topic", wrap(eventForTopic));
+    ListenableFuture<Boolean> resultF2 = brokerApiUnderTest.send("topic2", wrap(eventForTopic2));
+    waitForMessageToBeSent(resultF1);
+    waitForMessageToBeSent(resultF2);
 
     compareWithExpectedEvent(eventConsumer, eventCaptor, eventForTopic);
   }
@@ -142,7 +159,8 @@ public class BrokerApiTest {
 
     brokerApiUnderTest.receiveAsync("topic", eventConsumer);
     brokerApiUnderTest.receiveAsync("topic", eventConsumer);
-    brokerApiUnderTest.send("topic", wrap(event));
+    ListenableFuture<Boolean> resultF = brokerApiUnderTest.send("topic", wrap(event));
+    waitForMessageToBeSent(resultF);
 
     compareWithExpectedEvent(eventConsumer, eventCaptor, event);
   }
@@ -154,7 +172,7 @@ public class BrokerApiTest {
     ProjectCreatedEvent eventForTopic = testProjectCreatedEvent("Project name");
 
     brokerApiUnderTest.receiveAsync("topic", eventConsumer);
-    brokerApiUnderTest.send("topic", wrap(eventForTopic));
+    waitForMessageToBeSent(brokerApiUnderTest.send("topic", wrap(eventForTopic)));
 
     compareWithExpectedEvent(eventConsumer, eventCaptor, eventForTopic);
 
@@ -164,7 +182,7 @@ public class BrokerApiTest {
 
     brokerApiUnderTest.disconnect();
     brokerApiUnderTest.receiveAsync("topic", newConsumer);
-    brokerApiUnderTest.send("topic", wrap(eventForTopic));
+    waitForMessageToBeSent(brokerApiUnderTest.send("topic", wrap(eventForTopic)));
 
     compareWithExpectedEvent(newConsumer, newConsumerArgCaptor, eventForTopic);
     verify(eventConsumer, never()).accept(eventCaptor.capture());
@@ -177,7 +195,7 @@ public class BrokerApiTest {
     brokerApiUnderTest.receiveAsync("topic", eventConsumer);
     brokerApiUnderTest.disconnect();
 
-    brokerApiUnderTest.send("topic", wrap(eventForTopic));
+    waitForMessageToBeSent(brokerApiUnderTest.send("topic", wrap(eventForTopic)));
 
     verify(eventConsumer, never()).accept(eventCaptor.capture());
   }
@@ -194,11 +212,11 @@ public class BrokerApiTest {
 
     clearInvocations(eventConsumer);
 
-    brokerApiUnderTest.send("topic", wrap(eventForTopic));
+    waitForMessageToBeSent(brokerApiUnderTest.send("topic", wrap(eventForTopic)));
     verify(eventConsumer, never()).accept(eventCaptor.capture());
 
     clearInvocations(eventConsumer);
-    secondaryBroker.send("topic", wrap(eventForTopic));
+    waitForMessageToBeSent(secondaryBroker.send("topic", wrap(eventForTopic)));
 
     compareWithExpectedEvent(eventConsumer, newConsumerArgCaptor, eventForTopic);
   }
@@ -209,13 +227,14 @@ public class BrokerApiTest {
 
     brokerApiUnderTest.receiveAsync("topic", eventConsumer);
 
-    assertThat(brokerApiUnderTest.send("topic", wrap(event))).isTrue();
+    waitForMessageToBeSent(brokerApiUnderTest.send("topic", wrap(event)));
 
     verify(eventConsumer, times(1)).accept(eventCaptor.capture());
     compareWithExpectedEvent(eventConsumer, eventCaptor, event);
     reset(eventConsumer);
 
     brokerApiUnderTest.replayAllEvents("topic");
+
     verify(eventConsumer, times(1)).accept(eventCaptor.capture());
     compareWithExpectedEvent(eventConsumer, eventCaptor, event);
   }
@@ -224,6 +243,22 @@ public class BrokerApiTest {
   public void shouldSkipReplayAllEventsWhenTopicDoesNotExists() {
     brokerApiUnderTest.replayAllEvents("unexistentTopic");
     verify(eventConsumer, times(0)).accept(eventCaptor.capture());
+  }
+
+  private void waitForMessageToBeSent(ListenableFuture<Boolean> resultF) {
+    try {
+      CountDownLatch lock = new CountDownLatch(1);
+      resultF.addListener(
+          new Runnable() {
+            public void run() {
+              lock.countDown();
+            }
+          },
+          executorService);
+      lock.await(2000, TimeUnit.MILLISECONDS);
+    } catch (InterruptedException ie) {
+      fail("Caught exception while waiting for message to be sent " + ie);
+    }
   }
 
   private ProjectCreatedEvent testProjectCreatedEvent(String s) {
