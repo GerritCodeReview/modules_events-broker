@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a28e716_d3fed282",
+        "filename": ".project",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1054778
+      },
+      "writtenOn": "2021-04-20T11:12:28Z",
+      "side": 1,
+      "message": "remove this",
+      "revId": "429294b576642e164204e3b150447a24e34cf3d2",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
