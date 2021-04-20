@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2866b902_04b0c487",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/InProcessBrokerApi.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1054778
+      },
+      "writtenOn": "2021-04-20T20:19:22Z",
+      "side": 1,
+      "message": "\u003e couple things to consider:\n\u003e * thread pool configuration - fixed means that 10 threads will be always up and running\n\nThis implementation is only used for testing purposes, so I don\u0027t think it is big deal. I can lower it.\n\n\u003e * using thread factory so that threads could be easily identified by name (for instance in the javamelody)\n\nAh cool, I didn\u0027t know about that. Have a look in the latest PS if it is what you meant.\n\n\u003e * making it visible in the gerrit\u0027s `show-queue` command (by getting queue with Gerrit)\n\u003e \n\u003e Having said that I believe it can be all solved in the follow up.",
+      "parentUuid": "583430c0_38888c19",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 0
+      },
+      "revId": "0f8989b67e58238b55ee5abad07eaf68e10a93a7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d6366f50_2492328e",
         "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/BrokerApiTest.java",
         "patchSetId": 10
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5669fae1_005f68fb",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/BrokerApiTest.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1054778
+      },
+      "writtenOn": "2021-04-20T20:19:22Z",
+      "side": 1,
+      "message": "I wanted to leave more than a single thread to catch possible concurrency problems. I can set it to 2.",
+      "parentUuid": "d6366f50_2492328e",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 73
+      },
+      "revId": "0f8989b67e58238b55ee5abad07eaf68e10a93a7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "94ddddc3_c7fe218c",
         "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/BrokerApiTest.java",
         "patchSetId": 10
@@ -60,6 +108,30 @@
       "writtenOn": "2021-04-20T18:07:20Z",
       "side": 1,
       "message": "I wonder if it has to be 2s? wouldn\u0027t just \u0027await()\u0027 be sufficient?",
+      "range": {
+        "startLine": 258,
+        "startChar": 6,
+        "endLine": 258,
+        "endChar": 46
+      },
+      "revId": "0f8989b67e58238b55ee5abad07eaf68e10a93a7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbd647c9_827b5866",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/BrokerApiTest.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1054778
+      },
+      "writtenOn": "2021-04-20T20:19:22Z",
+      "side": 1,
+      "message": "yep you are right, amended.",
+      "parentUuid": "94ddddc3_c7fe218c",
       "range": {
         "startLine": 258,
         "startChar": 6,
