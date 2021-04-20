@@ -6,9 +6,11 @@
       "updated": "2021-04-20T11:14:30Z"
     },
     "gerritforge:events-broker-format": {
-      "state": "SCHEDULED",
+      "state": "RUNNING",
+      "url": "https://gerrit-ci.gerritforge.com/job/module-events-broker-verifier/job/53%252F303753%252F7/1/console",
+      "started": "2021-04-20T11:15:48Z",
       "created": "2021-04-20T11:14:29Z",
-      "updated": "2021-04-20T11:14:29Z"
+      "updated": "2021-04-20T11:15:14Z"
     }
   }
 }
