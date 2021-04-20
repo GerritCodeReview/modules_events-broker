@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "583430c0_38888c19",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/InProcessBrokerApi.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2021-04-20T18:07:20Z",
+      "side": 1,
+      "message": "couple things to consider:\n* thread pool configuration - fixed means that 10 threads will be always up and running\n* using thread factory so that threads could be easily identified by name (for instance in the javamelody)\n* making it visible in the gerrit\u0027s `show-queue` command (by getting queue with Gerrit)\n\nHaving said that I believe it can be all solved in the follow up.",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 0
+      },
+      "revId": "0f8989b67e58238b55ee5abad07eaf68e10a93a7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6366f50_2492328e",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/BrokerApiTest.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2021-04-20T18:07:20Z",
+      "side": 1,
+      "message": "10 threads? How about single thread executor? ;)",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 73
+      },
+      "revId": "0f8989b67e58238b55ee5abad07eaf68e10a93a7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94ddddc3_c7fe218c",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/BrokerApiTest.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2021-04-20T18:07:20Z",
+      "side": 1,
+      "message": "I wonder if it has to be 2s? wouldn\u0027t just \u0027await()\u0027 be sufficient?",
+      "range": {
+        "startLine": 258,
+        "startChar": 6,
+        "endLine": 258,
+        "endChar": 46
+      },
+      "revId": "0f8989b67e58238b55ee5abad07eaf68e10a93a7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
