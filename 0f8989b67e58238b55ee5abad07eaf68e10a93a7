@@ -188,6 +188,30 @@
       },
       "revId": "0f8989b67e58238b55ee5abad07eaf68e10a93a7",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "987b85e0_21350175",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/BrokerApiTest.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2021-04-21T07:05:37Z",
+      "side": 1,
+      "message": "can it really hang though?",
+      "parentUuid": "a5bc9732_083d5361",
+      "range": {
+        "startLine": 258,
+        "startChar": 6,
+        "endLine": 258,
+        "endChar": 46
+      },
+      "revId": "0f8989b67e58238b55ee5abad07eaf68e10a93a7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
