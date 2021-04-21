@@ -53,6 +53,24 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af1be70c_11dfe080",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1054778
+      },
+      "writtenOn": "2021-04-21T12:48:28Z",
+      "side": 1,
+      "message": "Moved to 3.4",
+      "parentUuid": "0a986beb_47d238b0",
+      "revId": "7ec881e155b48d5d6adee14e85d4288c6c3abe94",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26baa653_0d89af51",
@@ -66,6 +84,30 @@
       "writtenOn": "2021-04-21T09:16:28Z",
       "side": 1,
       "message": "This isn\u0027t needed for the InProcessBrokerApi, see my suggestion at L81",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 29
+      },
+      "revId": "7ec881e155b48d5d6adee14e85d4288c6c3abe94",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb842dde_4b215df1",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/InProcessBrokerApi.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1054778
+      },
+      "writtenOn": "2021-04-21T12:48:28Z",
+      "side": 1,
+      "message": "Using a SettableFuture makes this not needed anymore.",
+      "parentUuid": "26baa653_0d89af51",
       "range": {
         "startLine": 44,
         "startChar": 0,
@@ -99,6 +141,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5963b1a1_d3a413b2",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/InProcessBrokerApi.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1054778
+      },
+      "writtenOn": "2021-04-21T12:48:28Z",
+      "side": 1,
+      "message": "Good point...with a SettableFuture the whole change is way smaller and cleaner.",
+      "parentUuid": "30ab7a90_2cdc9016",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 3
+      },
+      "revId": "7ec881e155b48d5d6adee14e85d4288c6c3abe94",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "694972be_03ea52ea",
@@ -112,6 +178,30 @@
       "writtenOn": "2021-04-21T09:16:28Z",
       "side": 1,
       "message": "I may be missing something, but why do we need this? a resultF.get(timeout) would be enough isn\u0027t it?",
+      "range": {
+        "startLine": 248,
+        "startChar": 15,
+        "endLine": 248,
+        "endChar": 37
+      },
+      "revId": "7ec881e155b48d5d6adee14e85d4288c6c3abe94",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9dcd616_6b98f6e3",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/BrokerApiTest.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1054778
+      },
+      "writtenOn": "2021-04-21T12:48:28Z",
+      "side": 1,
+      "message": "Yep, removed. With SettableFuture is not needed anymore.",
+      "parentUuid": "694972be_03ea52ea",
       "range": {
         "startLine": 248,
         "startChar": 15,
