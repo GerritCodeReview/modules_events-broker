@@ -24,6 +24,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fa52f8e_3b03523f",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApi.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1054778
+      },
+      "writtenOn": "2021-04-21T20:26:07Z",
+      "side": 1,
+      "message": "yep, good point",
+      "parentUuid": "1812440e_fd693807",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 16
+      },
+      "revId": "32725ce9d8c31f4e821c57be305f3d8d0a7c95f1",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f58ab7f7_31241217",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-21T14:07:36Z",
       "side": 1,
       "message": "Throwable?",
+      "range": {
+        "startLine": 54,
+        "startChar": 13,
+        "endLine": 54,
+        "endChar": 29
+      },
+      "revId": "32725ce9d8c31f4e821c57be305f3d8d0a7c95f1",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9fdd585_31295293",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/InProcessBrokerApi.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1054778
+      },
+      "writtenOn": "2021-04-21T20:26:07Z",
+      "side": 1,
+      "message": "I think the current logic in place is not correct. \"post\" doesn\u0027t throw any exception, so there is no reason to catch exceptions 😕\nI amended the logic.",
+      "parentUuid": "f58ab7f7_31241217",
       "range": {
         "startLine": 54,
         "startChar": 13,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "66569a73_01323f28",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/InProcessBrokerApi.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1054778
+      },
+      "writtenOn": "2021-04-21T20:26:07Z",
+      "side": 1,
+      "message": "same as in previous comment.",
+      "parentUuid": "3107f132_cd9a3fc1",
+      "range": {
+        "startLine": 56,
+        "startChar": 6,
+        "endLine": 56,
+        "endChar": 24
+      },
+      "revId": "32725ce9d8c31f4e821c57be305f3d8d0a7c95f1",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0c865c35_b502e28a",
         "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/BrokerApiTest.java",
         "patchSetId": 14
@@ -83,6 +155,30 @@
       "writtenOn": "2021-04-21T14:07:36Z",
       "side": 1,
       "message": "This is the test timeout: I would suggest to define a constant rather than using a magic value everywhere.",
+      "range": {
+        "startLine": 125,
+        "startChar": 54,
+        "endLine": 125,
+        "endChar": 55
+      },
+      "revId": "32725ce9d8c31f4e821c57be305f3d8d0a7c95f1",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "229ca9b4_6a66efec",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/BrokerApiTest.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1054778
+      },
+      "writtenOn": "2021-04-21T20:26:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c865c35_b502e28a",
       "range": {
         "startLine": 125,
         "startChar": 54,
