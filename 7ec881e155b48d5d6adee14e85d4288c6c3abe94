@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc1e5d5c_714cc2af",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/BrokerApiTest.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2021-04-21T07:27:43Z",
+      "side": 1,
+      "message": "wouldn\u0027t ReentrantLock be sufficient?",
+      "range": {
+        "startLine": 250,
+        "startChar": 6,
+        "endLine": 250,
+        "endChar": 50
+      },
+      "revId": "7ec881e155b48d5d6adee14e85d4288c6c3abe94",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
