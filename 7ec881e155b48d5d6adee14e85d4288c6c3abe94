@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "69c1539c_2d3a2659",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1054778
+      },
+      "writtenOn": "2021-04-21T08:45:38Z",
+      "side": 1,
+      "message": "Looks like it is not sticky 😮\n\nI thought about that. It means we will be able, for example, to have correct metrics *only* from 3.4. Might not be a big issue.\n\n@Luca: WDYT?",
+      "parentUuid": "cd5735b7_b21a5506",
+      "revId": "7ec881e155b48d5d6adee14e85d4288c6c3abe94",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cc1e5d5c_714cc2af",
         "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/BrokerApiTest.java",
         "patchSetId": 12
@@ -31,6 +49,30 @@
       "writtenOn": "2021-04-21T07:27:43Z",
       "side": 1,
       "message": "wouldn\u0027t ReentrantLock be sufficient?",
+      "range": {
+        "startLine": 250,
+        "startChar": 6,
+        "endLine": 250,
+        "endChar": 50
+      },
+      "revId": "7ec881e155b48d5d6adee14e85d4288c6c3abe94",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58bfcbd3_54c8b5e1",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/BrokerApiTest.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1054778
+      },
+      "writtenOn": "2021-04-21T08:45:38Z",
+      "side": 1,
+      "message": "Could be enough, but I think the code would look more convoluted. Waiting for the lock CountDownLatch seems to be more straight forward, rather than adding some logic myself. Unless you had anything else in mind? WDYT?",
+      "parentUuid": "cc1e5d5c_714cc2af",
       "range": {
         "startLine": 250,
         "startChar": 6,
