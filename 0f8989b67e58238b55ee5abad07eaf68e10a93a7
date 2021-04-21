@@ -72,6 +72,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db68d800_b0f7ef5b",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/InProcessBrokerApi.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1054778
+      },
+      "writtenOn": "2021-04-21T07:17:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddef1307_45e9abb8",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 0
+      },
+      "revId": "0f8989b67e58238b55ee5abad07eaf68e10a93a7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6366f50_2492328e",
@@ -109,6 +133,30 @@
       "side": 1,
       "message": "I wanted to leave more than a single thread to catch possible concurrency problems. I can set it to 2.",
       "parentUuid": "d6366f50_2492328e",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 73
+      },
+      "revId": "0f8989b67e58238b55ee5abad07eaf68e10a93a7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6939caed_ed17eaa1",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/BrokerApiTest.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1054778
+      },
+      "writtenOn": "2021-04-21T07:17:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5669fae1_005f68fb",
       "range": {
         "startLine": 58,
         "startChar": 2,
@@ -228,6 +276,30 @@
       "side": 1,
       "message": "can it really hang though?",
       "parentUuid": "a5bc9732_083d5361",
+      "range": {
+        "startLine": 258,
+        "startChar": 6,
+        "endLine": 258,
+        "endChar": 46
+      },
+      "revId": "0f8989b67e58238b55ee5abad07eaf68e10a93a7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05217484_c9846f95",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/BrokerApiTest.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1054778
+      },
+      "writtenOn": "2021-04-21T07:17:10Z",
+      "side": 1,
+      "message": "Maybe not hang in this case, but *take forever*. In this case the implementation is really trivial, so I believe it won\u0027t make much difference. Anyway I believe a timeout doesn\u0027t hurt 😊",
+      "parentUuid": "987b85e0_21350175",
       "range": {
         "startLine": 258,
         "startChar": 6,
