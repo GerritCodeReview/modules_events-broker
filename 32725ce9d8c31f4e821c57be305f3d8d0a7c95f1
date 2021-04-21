@@ -95,6 +95,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ed346ce_50c1cfe7",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/InProcessBrokerApi.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-04-21T21:17:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9fdd585_31295293",
+      "range": {
+        "startLine": 54,
+        "startChar": 13,
+        "endLine": 54,
+        "endChar": 29
+      },
+      "revId": "32725ce9d8c31f4e821c57be305f3d8d0a7c95f1",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3107f132_cd9a3fc1",
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "same as in previous comment.",
       "parentUuid": "3107f132_cd9a3fc1",
+      "range": {
+        "startLine": 56,
+        "startChar": 6,
+        "endLine": 56,
+        "endChar": 24
+      },
+      "revId": "32725ce9d8c31f4e821c57be305f3d8d0a7c95f1",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "972658d8_10c7228e",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/InProcessBrokerApi.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-04-21T21:17:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66569a73_01323f28",
       "range": {
         "startLine": 56,
         "startChar": 6,
