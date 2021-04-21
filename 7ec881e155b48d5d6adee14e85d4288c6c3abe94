@@ -36,6 +36,92 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a986beb_47d238b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-04-21T09:16:28Z",
+      "side": 1,
+      "message": "1. We are changing the interface, so we should target stable-3.4 or master.\n2. I believe we are making a bit too complicated: see my suggestions in the review",
+      "revId": "7ec881e155b48d5d6adee14e85d4288c6c3abe94",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26baa653_0d89af51",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/InProcessBrokerApi.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-04-21T09:16:28Z",
+      "side": 1,
+      "message": "This isn\u0027t needed for the InProcessBrokerApi, see my suggestion at L81",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 29
+      },
+      "revId": "7ec881e155b48d5d6adee14e85d4288c6c3abe94",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30ab7a90_2cdc9016",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/InProcessBrokerApi.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-04-21T09:16:28Z",
+      "side": 1,
+      "message": "Why not just returning a SettableFuture?",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 3
+      },
+      "revId": "7ec881e155b48d5d6adee14e85d4288c6c3abe94",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "694972be_03ea52ea",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/BrokerApiTest.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-04-21T09:16:28Z",
+      "side": 1,
+      "message": "I may be missing something, but why do we need this? a resultF.get(timeout) would be enough isn\u0027t it?",
+      "range": {
+        "startLine": 248,
+        "startChar": 15,
+        "endLine": 248,
+        "endChar": 37
+      },
+      "revId": "7ec881e155b48d5d6adee14e85d4288c6c3abe94",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc1e5d5c_714cc2af",
