@@ -120,6 +120,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5aad613_4f8196a7",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/InProcessBrokerApi.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1054778
+      },
+      "writtenOn": "2021-04-21T08:45:38Z",
+      "side": 1,
+      "message": "I think it makes more sense to have it here since it is the \"implementation\", is not part of the testing code.",
+      "parentUuid": "6be5c4a4_3f526ed2",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 0
+      },
+      "revId": "0f8989b67e58238b55ee5abad07eaf68e10a93a7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6366f50_2492328e",
