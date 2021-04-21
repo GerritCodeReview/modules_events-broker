@@ -96,6 +96,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6be5c4a4_3f526ed2",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/InProcessBrokerApi.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2021-04-21T07:27:43Z",
+      "side": 1,
+      "message": "maybe it makes sense to move it to test package?",
+      "parentUuid": "db68d800_b0f7ef5b",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 0
+      },
+      "revId": "0f8989b67e58238b55ee5abad07eaf68e10a93a7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6366f50_2492328e",
@@ -300,6 +324,30 @@
       "side": 1,
       "message": "Maybe not hang in this case, but *take forever*. In this case the implementation is really trivial, so I believe it won\u0027t make much difference. Anyway I believe a timeout doesn\u0027t hurt 😊",
       "parentUuid": "987b85e0_21350175",
+      "range": {
+        "startLine": 258,
+        "startChar": 6,
+        "endLine": 258,
+        "endChar": 46
+      },
+      "revId": "0f8989b67e58238b55ee5abad07eaf68e10a93a7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06aff9c1_7ec1bcdd",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/BrokerApiTest.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2021-04-21T07:27:43Z",
+      "side": 1,
+      "message": "either way it will result in failure so it can be like that - I\u0027m just curious when I see timeout especially in tests :D",
+      "parentUuid": "05217484_c9846f95",
       "range": {
         "startLine": 258,
         "startChar": 6,
