@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "292793ab_92436b69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-04-21T21:16:35Z",
+      "side": 1,
+      "message": "LGTM, just a small nit.",
+      "revId": "4ab428c29ab9bcff4f91aa3d351d904ad64b657b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0f1d2e1_920755ae",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApi.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-04-21T21:16:35Z",
+      "side": 1,
+      "message": "nit: the decision of sending sync/async is left to the implementation though. The interface just says that it should return a Future, which could be already completed or not, doesn\u0027t really matter at this point.",
+      "range": {
+        "startLine": 40,
+        "startChar": 10,
+        "endLine": 40,
+        "endChar": 24
+      },
+      "revId": "4ab428c29ab9bcff4f91aa3d351d904ad64b657b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
