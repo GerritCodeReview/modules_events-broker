@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd5735b7_b21a5506",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2021-04-21T07:50:04Z",
+      "side": 1,
+      "message": "Voting is not sticky? Should this be a stable-3.1? This a compatibility breaking change",
+      "revId": "7ec881e155b48d5d6adee14e85d4288c6c3abe94",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc1e5d5c_714cc2af",
