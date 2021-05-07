@@ -16,23 +16,21 @@ package com.gerritforge.gerrit.eventbroker;
 
 import com.gerritforge.gerrit.eventbroker.EventMessage.Header;
 import com.google.gerrit.server.events.Event;
+import com.google.gerrit.server.events.EventListener;
 import java.util.Set;
 import java.util.UUID;
 import java.util.function.Consumer;
 
 /** API for sending/receiving events through a message Broker. */
-public interface BrokerApi {
-
+public interface BrokerApi extends EventListener {
   /**
    * Creates a {@link EventMessage} for an event
    *
-   * @param instanceId {@link UUID} of the Gerrit instance originating the event
    * @param event Gerrit event
    * @return {@link EventMessage} object
    */
-  default EventMessage newMessage(UUID instanceId, Event event) {
-
-    return new EventMessage(new Header(UUID.randomUUID(), instanceId), event);
+  default EventMessage newMessage(Event event) {
+    return new EventMessage(new Header(UUID.randomUUID(), instanceId()), event);
   }
 
   /**
@@ -68,4 +66,13 @@ public interface BrokerApi {
    * @param topic topic name
    */
   void replayAllEvents(String topic);
+
+  String streamEventTopic();
+
+  UUID instanceId();
+
+  @Override
+  default void onEvent(Event event) {
+    send(streamEventTopic(), newMessage(event));
+  }
 }

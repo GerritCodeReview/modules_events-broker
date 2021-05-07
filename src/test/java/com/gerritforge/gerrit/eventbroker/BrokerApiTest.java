@@ -45,12 +45,12 @@ public class BrokerApiTest {
   Consumer<EventMessage> eventConsumer;
 
   BrokerApi brokerApiUnderTest;
-  UUID instanceId = UUID.randomUUID();
+  String instanceId = UUID.randomUUID().toString();
   private Gson gson = new Gson();
 
   @Before
   public void setup() {
-    brokerApiUnderTest = new InProcessBrokerApi();
+    brokerApiUnderTest = new InProcessBrokerApi(instanceId);
     eventConsumer = mockEventConsumer();
   }
 
@@ -65,7 +65,7 @@ public class BrokerApiTest {
   }
 
   private EventMessage wrap(ProjectCreatedEvent event) {
-    return brokerApiUnderTest.newMessage(instanceId, event);
+    return brokerApiUnderTest.newMessage(event);
   }
 
   @Test
@@ -188,7 +188,7 @@ public class BrokerApiTest {
 
     ProjectCreatedEvent eventForTopic = testProjectCreatedEvent("Project name");
 
-    BrokerApi secondaryBroker = new InProcessBrokerApi();
+    BrokerApi secondaryBroker = new InProcessBrokerApi(instanceId);
     brokerApiUnderTest.disconnect();
     secondaryBroker.receiveAsync("topic", eventConsumer);
 

@@ -22,24 +22,34 @@ import com.google.common.collect.MapMaker;
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
 import com.google.common.flogger.FluentLogger;
+import com.google.gerrit.common.Nullable;
+import com.google.gerrit.server.config.GerritInstanceId;
+import com.google.inject.Inject;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
+import java.util.UUID;
 import java.util.function.Consumer;
 
 public class InProcessBrokerApi implements BrokerApi {
   private static final FluentLogger log = FluentLogger.forEnclosingClass();
 
   private static final Integer DEFAULT_MESSAGE_QUEUE_SIZE = 100;
+  private static final String DEFAULT_STREAM_EVENT_TOPIC = "gerrit";
 
   private final Map<String, EvictingQueue<EventMessage>> messagesQueueMap;
   private final Map<String, EventBus> eventBusMap;
   private final Set<TopicSubscriber> topicSubscribers;
+  private final UUID instanceId;
 
-  public InProcessBrokerApi() {
+  @Inject
+  public InProcessBrokerApi(@Nullable @GerritInstanceId String instanceId) {
     this.eventBusMap = new MapMaker().concurrencyLevel(1).makeMap();
     this.messagesQueueMap = new MapMaker().concurrencyLevel(1).makeMap();
     this.topicSubscribers = new HashSet<>();
+    this.instanceId =
+        Optional.ofNullable(instanceId).map(UUID::fromString).orElse(UUID.randomUUID());
   }
 
   @Override
@@ -87,6 +97,16 @@ public class InProcessBrokerApi implements BrokerApi {
     if (messagesQueueMap.containsKey(topic)) {
       messagesQueueMap.get(topic).stream().forEach(eventMessage -> send(topic, eventMessage));
     }
+  }
+
+  @Override
+  public String streamEventTopic() {
+    return DEFAULT_STREAM_EVENT_TOPIC;
+  }
+
+  @Override
+  public UUID instanceId() {
+    return instanceId;
   }
 
   private class EventBusMessageRecorder {
