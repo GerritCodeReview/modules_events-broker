@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d49a2987_1dbe15c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-05-24T10:32:07Z",
+      "side": 1,
+      "message": "Let\u0027s wait for the CI verification as well",
+      "revId": "202bd1cfd1c9edd293f53f0a45d3ad6d1f13ab7e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
