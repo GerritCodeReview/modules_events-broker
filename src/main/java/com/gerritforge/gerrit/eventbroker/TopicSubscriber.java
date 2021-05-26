@@ -15,15 +15,16 @@
 package com.gerritforge.gerrit.eventbroker;
 
 import com.google.auto.value.AutoValue;
+import com.google.gerrit.server.events.Event;
 import java.util.function.Consumer;
 
 @AutoValue
 public abstract class TopicSubscriber {
-  public static TopicSubscriber topicSubscriber(String topic, Consumer<EventMessage> consumer) {
+  public static TopicSubscriber topicSubscriber(String topic, Consumer<Event> consumer) {
     return new AutoValue_TopicSubscriber(topic, consumer);
   }
 
   public abstract String topic();
 
-  public abstract Consumer<EventMessage> consumer();
+  public abstract Consumer<Event> consumer();
 }

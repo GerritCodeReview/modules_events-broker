@@ -16,12 +16,11 @@ package com.gerritforge.gerrit.eventbroker;
 
 import static java.util.Objects.requireNonNull;
 
-import com.gerritforge.gerrit.eventbroker.EventMessage.Header;
+import com.google.common.base.Strings;
 import com.google.gerrit.server.events.Event;
 import com.google.gerrit.server.events.EventGson;
 import com.google.gson.Gson;
 import com.google.inject.Inject;
-import java.util.UUID;
 
 public class EventDeserializer {
 
@@ -32,20 +31,24 @@ public class EventDeserializer {
     this.gson = gson;
   }
 
-  public EventMessage deserialize(String json) {
-    EventMessage result = gson.fromJson(json, EventMessage.class);
-    if (result.getEvent() == null && result.getHeader() == null) {
-      Event event = deserialiseEvent(json);
-      result = new EventMessage(new Header(UUID.randomUUID(), event.instanceId), event);
+  public Event deserialize(String json) {
+    Event resultEvent;
+    EventMessage eventMessage = gson.fromJson(json, EventMessage.class);
+    if (eventMessage.getEvent() == null && eventMessage.getHeader() == null) {
+      resultEvent = gson.fromJson(json, Event.class);
+    } else {
+      eventMessage.validate();
+      resultEvent = eventMessage.getEvent();
+      if (Strings.isNullOrEmpty(resultEvent.instanceId)) {
+        resultEvent.instanceId = eventMessage.getHeader().sourceInstanceId;
+      }
     }
-    result.validate();
-    return result;
+    validate(resultEvent);
+    return resultEvent;
   }
 
-  private Event deserialiseEvent(String json) {
-    Event event = gson.fromJson(json, Event.class);
+  private void validate(Event event) {
     requireNonNull(event.type, "Event type cannot be null");
     requireNonNull(event.instanceId, "Event instance id cannot be null");
-    return event;
   }
 }
