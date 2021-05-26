@@ -16,12 +16,11 @@ package com.gerritforge.gerrit.eventbroker;
 
 import static java.util.Objects.requireNonNull;
 
-import com.gerritforge.gerrit.eventbroker.EventMessage.Header;
+import com.google.common.base.Strings;
 import com.google.gerrit.server.events.Event;
 import com.google.gerrit.server.events.EventGson;
 import com.google.gson.Gson;
 import com.google.inject.Inject;
-import java.util.UUID;
 
 public class EventDeserializer {
 
@@ -32,14 +31,17 @@ public class EventDeserializer {
     this.gson = gson;
   }
 
-  public EventMessage deserialize(String json) {
+  public Event deserialize(String json) {
     EventMessage result = gson.fromJson(json, EventMessage.class);
     if (result.getEvent() == null && result.getHeader() == null) {
-      Event event = deserialiseEvent(json);
-      result = new EventMessage(new Header(UUID.randomUUID(), event.instanceId), event);
+      return deserialiseEvent(json);
     }
     result.validate();
-    return result;
+    Event event = result.getEvent();
+    if (Strings.isNullOrEmpty(event.instanceId)) {
+      event.instanceId = result.getHeader().sourceInstanceId;
+    }
+    return event;
   }
 
   private Event deserialiseEvent(String json) {
