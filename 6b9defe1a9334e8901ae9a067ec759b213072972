@@ -1,0 +1,9 @@
+{
+  "checks": {
+    "gerritforge:events-broker-format": {
+      "state": "SCHEDULED",
+      "created": "2021-05-26T10:02:14Z",
+      "updated": "2021-05-26T10:02:14Z"
+    }
+  }
+}
