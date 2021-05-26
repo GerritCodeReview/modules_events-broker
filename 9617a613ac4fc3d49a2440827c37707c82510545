@@ -1,9 +1,11 @@
 {
   "checks": {
     "gerritforge:events-broker-build": {
-      "state": "SCHEDULED",
+      "state": "FAILED",
+      "url": "https://gerrit-ci.gerritforge.com/job/module-events-broker-verifier/job/28%252F307628%252F1/1/console",
+      "finished": "2021-05-26T06:07:21Z",
       "created": "2021-05-26T06:01:54Z",
-      "updated": "2021-05-26T06:01:54Z"
+      "updated": "2021-05-26T06:06:10Z"
     },
     "gerritforge:events-broker-format": {
       "state": "SCHEDULED",
