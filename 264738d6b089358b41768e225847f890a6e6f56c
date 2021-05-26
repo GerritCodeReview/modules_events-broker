@@ -16,6 +16,24 @@
       "message": "There is another change in the chain: does it make sense to wait for the next change to release?",
       "revId": "264738d6b089358b41768e225847f890a6e6f56c",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47498a9b_7629867a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2021-05-26T15:27:42Z",
+      "side": 1,
+      "message": "I though the same but then for each plugin chain for correct gson and sending Events instead of EventMessage bust be squashed together e.g:\nhttps://gerrit-review.googlesource.com/c/plugins/events-kafka/+/307629/4",
+      "parentUuid": "7f2a531d_c90e4780",
+      "revId": "264738d6b089358b41768e225847f890a6e6f56c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
