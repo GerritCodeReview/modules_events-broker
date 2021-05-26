@@ -18,6 +18,7 @@ import static java.util.Objects.requireNonNull;
 
 import com.gerritforge.gerrit.eventbroker.EventMessage.Header;
 import com.google.gerrit.server.events.Event;
+import com.google.gerrit.server.events.EventGson;
 import com.google.gson.Gson;
 import com.google.inject.Inject;
 import java.util.UUID;
@@ -27,7 +28,7 @@ public class EventDeserializer {
   private Gson gson;
 
   @Inject
-  public EventDeserializer(Gson gson) {
+  public EventDeserializer(@EventGson Gson gson) {
     this.gson = gson;
   }
 
