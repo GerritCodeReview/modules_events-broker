@@ -14,27 +14,13 @@
 
 package com.gerritforge.gerrit.eventbroker;
 
-import com.gerritforge.gerrit.eventbroker.EventMessage.Header;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.gerrit.server.events.Event;
 import java.util.Set;
-import java.util.UUID;
 import java.util.function.Consumer;
 
 /** API for sending/receiving events through a message Broker. */
 public interface BrokerApi {
-
-  /**
-   * Creates a {@link EventMessage} for an event
-   *
-   * @param instanceId {@link UUID} of the Gerrit instance originating the event
-   * @param event Gerrit event
-   * @return {@link EventMessage} object
-   */
-  default EventMessage newMessage(UUID instanceId, Event event) {
-
-    return new EventMessage(new Header(UUID.randomUUID(), instanceId), event);
-  }
 
   /**
    * Send a message to a topic.
@@ -43,7 +29,7 @@ public interface BrokerApi {
    * @param message to be send to the topic
    * @return a future that returns when the message has been sent.
    */
-  ListenableFuture<Boolean> send(String topic, EventMessage message);
+  ListenableFuture<Boolean> send(String topic, Event message);
 
   /**
    * Receive asynchronously a message from a topic.
@@ -51,7 +37,7 @@ public interface BrokerApi {
    * @param topic topic name
    * @param consumer an operation that accepts and process a single message
    */
-  void receiveAsync(String topic, Consumer<EventMessage> consumer);
+  void receiveAsync(String topic, Consumer<Event> consumer);
 
   /**
    * Get the active subscribers
