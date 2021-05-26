@@ -16,6 +16,7 @@ package com.gerritforge.gerrit.eventbroker;
 
 import static com.google.common.truth.Truth.assertThat;
 
+import com.google.gerrit.server.events.Event;
 import com.google.gerrit.server.events.EventGsonProvider;
 import com.google.gson.Gson;
 import java.util.UUID;
@@ -44,27 +45,26 @@ public class EventDeserializerTest {
                 + "\"body\": { \"type\": \"project-created\" }"
                 + "}",
             eventId, eventType, sourceInstanceId, eventCreatedOn);
-    final EventMessage event = deserializer.deserialize(eventJson);
+    final Event event = deserializer.deserialize(eventJson);
 
-    assertThat(event.getHeader().eventId).isEqualTo(eventId);
-    assertThat(event.getHeader().sourceInstanceId).isEqualTo(sourceInstanceId);
+    assertThat(event.instanceId).isEqualTo(sourceInstanceId);
   }
 
   @Test
   public void eventDeserializerShouldParseEvent() {
     final String eventJson = "{ \"type\": \"project-created\", \"instanceId\":\"instance-id\" }";
-    final EventMessage event = deserializer.deserialize(eventJson);
+    final Event event = deserializer.deserialize(eventJson);
 
-    assertThat(event.getHeader().sourceInstanceId).isEqualTo("instance-id");
+    assertThat(event.instanceId).isEqualTo("instance-id");
   }
 
   @Test
   public void eventDeserializerShouldParseEventWithHeaderAndBodyProjectName() {
     final String eventJson =
         "{\"projectName\":\"header_body_parser_project\",\"type\":\"project-created\", \"instanceId\":\"instance-id\"}";
-    final EventMessage event = deserializer.deserialize(eventJson);
+    final Event event = deserializer.deserialize(eventJson);
 
-    assertThat(event.getHeader().sourceInstanceId).isEqualTo("instance-id");
+    assertThat(event.instanceId).isEqualTo("instance-id");
   }
 
   @Test(expected = RuntimeException.class)
