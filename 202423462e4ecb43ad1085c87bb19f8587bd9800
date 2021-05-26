@@ -1,9 +1,9 @@
 {
   "checks": {
     "gerritforge:events-broker-build": {
-      "state": "NOT_STARTED",
+      "state": "SCHEDULED",
       "created": "2021-05-26T07:25:54Z",
-      "updated": "2021-05-26T07:44:37Z"
+      "updated": "2021-05-26T07:49:53Z"
     },
     "gerritforge:events-broker-format": {
       "state": "SCHEDULED",
