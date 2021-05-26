@@ -24,6 +24,7 @@ import com.google.common.eventbus.Subscribe;
 import com.google.common.flogger.FluentLogger;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.SettableFuture;
+import com.google.gerrit.server.events.Event;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -34,7 +35,7 @@ public class InProcessBrokerApi implements BrokerApi {
 
   private static final Integer DEFAULT_MESSAGE_QUEUE_SIZE = 100;
 
-  private final Map<String, EvictingQueue<EventMessage>> messagesQueueMap;
+  private final Map<String, EvictingQueue<Event>> messagesQueueMap;
   private final Map<String, EventBus> eventBusMap;
   private final Set<TopicSubscriber> topicSubscribers;
 
@@ -45,7 +46,7 @@ public class InProcessBrokerApi implements BrokerApi {
   }
 
   @Override
-  public ListenableFuture<Boolean> send(String topic, EventMessage message) {
+  public ListenableFuture<Boolean> send(String topic, Event message) {
     EventBus topicEventConsumers = eventBusMap.get(topic);
     SettableFuture<Boolean> future = SettableFuture.create();
 
@@ -60,7 +61,7 @@ public class InProcessBrokerApi implements BrokerApi {
   }
 
   @Override
-  public void receiveAsync(String topic, Consumer<EventMessage> eventConsumer) {
+  public void receiveAsync(String topic, Consumer<Event> eventConsumer) {
     EventBus topicEventConsumers = eventBusMap.get(topic);
     if (topicEventConsumers == null) {
       topicEventConsumers = new EventBus(topic);
@@ -70,7 +71,7 @@ public class InProcessBrokerApi implements BrokerApi {
     topicEventConsumers.register(eventConsumer);
     topicSubscribers.add(topicSubscriber(topic, eventConsumer));
 
-    EvictingQueue<EventMessage> messageQueue = EvictingQueue.create(DEFAULT_MESSAGE_QUEUE_SIZE);
+    EvictingQueue<Event> messageQueue = EvictingQueue.create(DEFAULT_MESSAGE_QUEUE_SIZE);
     messagesQueueMap.put(topic, messageQueue);
     topicEventConsumers.register(new EventBusMessageRecorder(messageQueue));
   }
@@ -100,7 +101,7 @@ public class InProcessBrokerApi implements BrokerApi {
     }
 
     @Subscribe
-    public void recordCustomerChange(EventMessage e) {
+    public void recordCustomerChange(Event e) {
       if (!messagesQueue.contains(e)) {
         messagesQueue.add(e);
       }
