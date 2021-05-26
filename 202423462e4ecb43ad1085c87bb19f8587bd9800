@@ -16,6 +16,24 @@
       "message": "Have you checked that the implementation is exactly the same *and* the payload generated and parsed are identical?",
       "revId": "202423462e4ecb43ad1085c87bb19f8587bd9800",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dbe3018_a6a8b8d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-05-26T10:37:07Z",
+      "side": 1,
+      "message": "OK, I checked and it is the same.",
+      "parentUuid": "897eae2d_6ea925f5",
+      "revId": "202423462e4ecb43ad1085c87bb19f8587bd9800",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
