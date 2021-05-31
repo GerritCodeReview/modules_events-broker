@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cf90a1e0_65e925aa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2021-05-31T10:34:46Z",
+      "side": 1,
+      "message": "but not for events-broker itself right?\nI know that at the moment events-broker is *only* used for multi-site, but I think it would be useful to explain the thinking behind this change (as you can see it still confuses me 😊).\n\nCould we explain that eventId might be null, that this code needs to still deal with both Event and EventMessage and why? perhaps a compatibility table in documentation would be good what do you think?",
+      "parentUuid": "55f8a33a_d479d14f",
+      "range": {
+        "startLine": 9,
+        "startChar": 22,
+        "endLine": 9,
+        "endChar": 59
+      },
+      "revId": "b2130a37f19e1019ad2997722187c2b27058086c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea57aa2a_7ff9f6e1",
         "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventDeserializer.java",
         "patchSetId": 4
@@ -97,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "86969f43_46c23e3f",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventDeserializer.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2021-05-31T10:34:46Z",
+      "side": 1,
+      "message": "\u003e On stable-3.4 we still need it for rolling upgrades. On stable-3.5 we will completely remove EventMessage but for now we have to keep backward compatibility.\n\nI thought that we dealt with this duality on stable-3.3.\nBy reading the commit message:\n\n\"Workaround with EventMessage is not needed anymore.\"\n\nIs it actually the case this is still needed to deal with stable-3.3 messages?",
+      "parentUuid": "55f4d4ea_a5ad1fcd",
+      "range": {
+        "startLine": 35,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 66
+      },
+      "revId": "b2130a37f19e1019ad2997722187c2b27058086c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "64a036b0_6ca57af3",
         "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventDeserializer.java",
         "patchSetId": 4
@@ -132,6 +180,30 @@
       "side": 1,
       "message": "Not entirely. We have to keep it backward compatible. So on stable-3.3 we can have old EventMessages without Event.instanceId populated but there is always EventMessage.header.sourceInstanceId.",
       "parentUuid": "64a036b0_6ca57af3",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 17
+      },
+      "revId": "b2130a37f19e1019ad2997722187c2b27058086c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "099fa186_0ddd768f",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventDeserializer.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2021-05-31T10:34:46Z",
+      "side": 1,
+      "message": "\u003e Not entirely. We have to keep it backward compatible. So on stable-3.3 we can have old EventMessages without Event.instanceId populated\n\nBut this is always the case right? it\u0027s not to do specifically with stable-3.3 messages. unless gerrit.instanceId is populated, the event.instanceId will always be null.\n\n but there is always EventMessage.header.sourceInstanceId.\n\nYep it is always defined, but I was trying to get my head around the fact that we should use it to \"backfill\" event.instanceId.",
+      "parentUuid": "20158347_1033c4e6",
       "range": {
         "startLine": 40,
         "startChar": 0,
