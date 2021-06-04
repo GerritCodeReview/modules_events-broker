@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d853b2d2_ba579ef1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-06-04T01:44:50Z",
+      "side": 1,
+      "message": "\u003e but not for events-broker itself right?\n\u003e I know that at the moment events-broker is *only* used for multi-site, but I think it would be useful to explain the thinking behind this change (as you can see it still confuses me 😊).\n\u003e \n\u003e Could we explain that eventId might be null, that this code needs to still deal with both Event and EventMessage and why?\n\nWhy do we still to manage EventMessage in v3.4? We already did that in v3.3 to allow a smooth migration to v3.4.\n\n\u003e perhaps a compatibility table in documentation would be good what do you think?\n\nThat should be done in v3.3, but in v3.4 we can assume that instance-id is *mandatory*.\n\nEvents-broker should said *LOUD AND CLEAR* at startup that instance-id is mandatory and, if not injected, should fail the Gerrit startup.\n\nHow can event-broker say from which instance the event is coming from?",
+      "parentUuid": "cf90a1e0_65e925aa",
+      "range": {
+        "startLine": 9,
+        "startChar": 22,
+        "endLine": 9,
+        "endChar": 59
+      },
+      "revId": "b2130a37f19e1019ad2997722187c2b27058086c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea57aa2a_7ff9f6e1",
         "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventDeserializer.java",
         "patchSetId": 4
@@ -133,6 +157,30 @@
       "side": 1,
       "message": "\u003e On stable-3.4 we still need it for rolling upgrades. On stable-3.5 we will completely remove EventMessage but for now we have to keep backward compatibility.\n\nI thought that we dealt with this duality on stable-3.3.\nBy reading the commit message:\n\n\"Workaround with EventMessage is not needed anymore.\"\n\nIs it actually the case this is still needed to deal with stable-3.3 messages?",
       "parentUuid": "55f4d4ea_a5ad1fcd",
+      "range": {
+        "startLine": 35,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 66
+      },
+      "revId": "b2130a37f19e1019ad2997722187c2b27058086c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07f60900_d688ee08",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventDeserializer.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-06-04T01:44:50Z",
+      "side": 1,
+      "message": "+1 to @Tony\u0027s comment. We should get rid of it in v3.4",
+      "parentUuid": "86969f43_46c23e3f",
       "range": {
         "startLine": 35,
         "startChar": 4,
