@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "db14194f_3635613c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2021-06-04T05:12:12Z",
+      "side": 1,
+      "message": "But for rolling upgrade part of the nodes will be on stable-3.3 and they will send EventMessage events to stable-3.4 so both v3.3. and v3.4 must be able to handle both Event and EventMessage. We can get rid of EventMessage on master(v3.5)",
+      "parentUuid": "d853b2d2_ba579ef1",
+      "range": {
+        "startLine": 9,
+        "startChar": 22,
+        "endLine": 9,
+        "endChar": 59
+      },
+      "revId": "b2130a37f19e1019ad2997722187c2b27058086c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea57aa2a_7ff9f6e1",
         "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventDeserializer.java",
         "patchSetId": 4
