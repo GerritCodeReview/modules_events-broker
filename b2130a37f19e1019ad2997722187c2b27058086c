@@ -122,6 +122,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "de2879b4_83ec0edd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-06-05T00:55:57Z",
+      "side": 1,
+      "message": "How should the cutover work?\n\nv3.3 \u003c\u003d (EventMessage) \u003d\u003e v3.3\nv3.3 \u003c\u003d (EventMessage) \u003d\u003e v3.4\nv3.4 \u003c\u003d (EventMessage) \u003d\u003e v3.4\n... but then how do we move from there?\n\nIf v3.5 won\u0027t support EventMessage anymore, how would it talk to v3.4?\nI believe we should need a compatibility mode in v3.4 that, once the rollout is done, should be switched off.",
+      "parentUuid": "db14194f_3635613c",
+      "range": {
+        "startLine": 9,
+        "startChar": 22,
+        "endLine": 9,
+        "endChar": 59
+      },
+      "revId": "b2130a37f19e1019ad2997722187c2b27058086c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea57aa2a_7ff9f6e1",
         "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventDeserializer.java",
         "patchSetId": 4
@@ -215,6 +239,47 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a839511b_c47ea8b0",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventDeserializer.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-06-05T00:55:57Z",
+      "side": 1,
+      "message": "As we need to keep decoding messages from v3.3, we need to keep this for now.",
+      "parentUuid": "07f60900_d688ee08",
+      "range": {
+        "startLine": 35,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 66
+      },
+      "revId": "b2130a37f19e1019ad2997722187c2b27058086c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37161064_f6fee58f",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventDeserializer.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-06-05T00:55:57Z",
+      "side": 1,
+      "message": "Who is doing the validation in this case? What if the instanceId return is null?",
+      "revId": "b2130a37f19e1019ad2997722187c2b27058086c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64a036b0_6ca57af3",
@@ -276,6 +341,30 @@
       "side": 1,
       "message": "\u003e Not entirely. We have to keep it backward compatible. So on stable-3.3 we can have old EventMessages without Event.instanceId populated\n\nBut this is always the case right? it\u0027s not to do specifically with stable-3.3 messages. unless gerrit.instanceId is populated, the event.instanceId will always be null.\n\n but there is always EventMessage.header.sourceInstanceId.\n\nYep it is always defined, but I was trying to get my head around the fact that we should use it to \"backfill\" event.instanceId.",
       "parentUuid": "20158347_1033c4e6",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 17
+      },
+      "revId": "b2130a37f19e1019ad2997722187c2b27058086c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02f40e42_b1b6d890",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventDeserializer.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-06-05T00:55:57Z",
+      "side": 1,
+      "message": "I believe this is the case where the message is coming from a v3.3, correct?\nIf yes, the instanceId *should* come from the header and not from the event, isn\u0027t it?",
+      "parentUuid": "099fa186_0ddd768f",
       "range": {
         "startLine": 40,
         "startChar": 0,
