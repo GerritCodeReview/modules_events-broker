@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "462b766a_b63a021c",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApi.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-06-05T00:55:57Z",
+      "side": 0,
+      "message": "If v3.4 needs to generate EventMessage() compatible with v3.3, how can we remove this method?",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 3
+      },
+      "revId": "264738d6b089358b41768e225847f890a6e6f56c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
