@@ -46,6 +46,30 @@
       },
       "revId": "264738d6b089358b41768e225847f890a6e6f56c",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28deebf0_46036caa",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApi.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-06-07T23:32:20Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "d0771026_33ba2495",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 3
+      },
+      "revId": "264738d6b089358b41768e225847f890a6e6f56c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }

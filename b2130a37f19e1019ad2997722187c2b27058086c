@@ -146,6 +146,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a42b4a2d_9cdd86ad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-06-07T23:32:20Z",
+      "side": 1,
+      "message": "@Marcin it would be worth mentioning the migration path on the commit message:\nv3.3 \u003c\u003d (EventMessage) \u003d\u003e v3.3\nv3.3 \u003c\u003d (Event / EventMessage) \u003d\u003e v3.4\nv3.4 \u003c\u003d (Event) \u003d\u003e v3.4",
+      "parentUuid": "de2879b4_83ec0edd",
+      "range": {
+        "startLine": 9,
+        "startChar": 22,
+        "endLine": 9,
+        "endChar": 59
+      },
+      "revId": "b2130a37f19e1019ad2997722187c2b27058086c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea57aa2a_7ff9f6e1",
         "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventDeserializer.java",
         "patchSetId": 4
@@ -300,6 +324,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cd255307_1943f720",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventDeserializer.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-06-07T23:32:20Z",
+      "side": 1,
+      "message": "Where? I don\u0027t see the call to result.validate() in the method at L47",
+      "parentUuid": "abe5d201_e8390c20",
+      "revId": "b2130a37f19e1019ad2997722187c2b27058086c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "64a036b0_6ca57af3",
         "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventDeserializer.java",
         "patchSetId": 4
@@ -407,6 +449,30 @@
       "side": 1,
       "message": "@Luca correct. In v3.3 we populate sourceInstanceId event if Event object already contains instanceId field.",
       "parentUuid": "02f40e42_b1b6d890",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 17
+      },
+      "revId": "b2130a37f19e1019ad2997722187c2b27058086c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4383430_7b65300a",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventDeserializer.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-06-07T23:32:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "858d9e4b_2b00da7c",
       "range": {
         "startLine": 40,
         "startChar": 0,
