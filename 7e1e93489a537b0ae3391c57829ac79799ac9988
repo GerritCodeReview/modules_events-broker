@@ -22,6 +22,30 @@
       },
       "revId": "7e1e93489a537b0ae3391c57829ac79799ac9988",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c5c74cb_315bd2bc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2021-06-09T14:07:01Z",
+      "side": 1,
+      "message": "Yes we have to change events-broker and all plugins to switch from EventMassage to Event",
+      "parentUuid": "73b6f622_9be4de6f",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 16
+      },
+      "revId": "7e1e93489a537b0ae3391c57829ac79799ac9988",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
