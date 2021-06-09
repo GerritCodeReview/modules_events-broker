@@ -342,6 +342,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "66c158b9_3934a1b2",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventDeserializer.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2021-06-09T07:41:10Z",
+      "side": 1,
+      "message": "The logic is this: we parse json to EventMessage, if object.event is null and object.header is null this means that json is not for EventMessage so we parse it to Event, during that parsing we check if type and instanceId(L49,50) are not null. Else if object has event and header we do validate it(L39) and return object.event. We have extra check to make sure that if in object.event.instanceId is null we use sourceInstanceId. We do that last check because we are not sure if message coming from v3.3 uses gerrit.instanceId",
+      "parentUuid": "cd255307_1943f720",
+      "revId": "b2130a37f19e1019ad2997722187c2b27058086c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "64a036b0_6ca57af3",
         "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventDeserializer.java",
         "patchSetId": 4
