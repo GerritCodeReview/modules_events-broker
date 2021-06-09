@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c99d794d_932e856b",
+        "filename": "pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-06-09T07:50:02Z",
+      "side": 1,
+      "message": "Gerrit v3.4.1 isn\u0027t out yet. Shall we do v3.4.0.3 instead?",
+      "range": {
+        "startLine": 7,
+        "startChar": 13,
+        "endLine": 7,
+        "endChar": 18
+      },
+      "revId": "d8489944bcd984556251fafb37a0d947dd38eb5f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
