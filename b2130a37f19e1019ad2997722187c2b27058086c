@@ -384,6 +384,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8067593e_a20a1900",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventDeserializer.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-06-11T00:05:50Z",
+      "side": 1,
+      "message": "I see, I believe it would be clearer if we have a method called validate(Event event) and we use it explicitly, so that it is clearer that we are validating also in case of a Event object.",
+      "parentUuid": "66c158b9_3934a1b2",
+      "revId": "b2130a37f19e1019ad2997722187c2b27058086c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "64a036b0_6ca57af3",
         "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventDeserializer.java",
         "patchSetId": 4
