@@ -46,6 +46,30 @@
       },
       "revId": "7e1e93489a537b0ae3391c57829ac79799ac9988",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02e22752_995cce32",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-06-12T00:14:25Z",
+      "side": 1,
+      "message": "Actually, a release does not contain any change and therefore shouldn\u0027t contain the issue in it.\n\nIt\u0027s a nit though, I am happy to merge it as-is.",
+      "parentUuid": "4c5c74cb_315bd2bc",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 16
+      },
+      "revId": "7e1e93489a537b0ae3391c57829ac79799ac9988",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
