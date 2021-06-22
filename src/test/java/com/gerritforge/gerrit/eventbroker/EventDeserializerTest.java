@@ -59,6 +59,22 @@ public class EventDeserializerTest {
   }
 
   @Test
+  public void eventDeserializerShouldParseEventWithoutInstanceId() {
+    final String eventJson = "{ \"type\": \"project-created\" }";
+    final Event event = deserializer.deserialize(eventJson);
+
+    assertThat(event.instanceId).isNull();
+  }
+
+  @Test
+  public void eventDeserializerShouldParseEventWhenInstanceIdIsEmpty() {
+    final String eventJson = "{ \"type\": \"project-created\", \"instanceId\":\"\" }";
+    final Event event = deserializer.deserialize(eventJson);
+
+    assertThat(event.instanceId).isEmpty();
+  }
+
+  @Test
   public void eventDeserializerShouldParseEventWithHeaderAndBodyProjectName() {
     final String eventJson =
         "{\"projectName\":\"header_body_parser_project\",\"type\":\"project-created\", \"instanceId\":\"instance-id\"}";

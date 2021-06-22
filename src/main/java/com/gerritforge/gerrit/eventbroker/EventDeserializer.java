@@ -49,6 +49,5 @@ public class EventDeserializer {
 
   private void validate(Event event) {
     requireNonNull(event.type, "Event type cannot be null");
-    requireNonNull(event.instanceId, "Event instance id cannot be null");
   }
 }
