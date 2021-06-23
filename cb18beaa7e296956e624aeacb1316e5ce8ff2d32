@@ -24,6 +24,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ebc3842_a838857d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2021-06-23T06:17:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85de7528_167f3721",
+      "range": {
+        "startLine": 10,
+        "startChar": 44,
+        "endLine": 10,
+        "endChar": 65
+      },
+      "revId": "cb18beaa7e296956e624aeacb1316e5ce8ff2d32",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b784fc4_4deb7dcc",
@@ -47,6 +71,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "962f5590_b5edd9f3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2021-06-23T06:17:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b784fc4_4deb7dcc",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 7
+      },
+      "revId": "cb18beaa7e296956e624aeacb1316e5ce8ff2d32",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07981233_335a47ba",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-06-22T23:00:17Z",
       "side": 1,
       "message": "Is this issue still relevant? Or do we need to create another one that says:\n\"events-broker should be able to send events without instance-id\"",
+      "range": {
+        "startLine": 14,
+        "startChar": 11,
+        "endLine": 14,
+        "endChar": 16
+      },
+      "revId": "cb18beaa7e296956e624aeacb1316e5ce8ff2d32",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c1550f2_680ba7b8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2021-06-23T06:17:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07981233_335a47ba",
       "range": {
         "startLine": 14,
         "startChar": 11,
