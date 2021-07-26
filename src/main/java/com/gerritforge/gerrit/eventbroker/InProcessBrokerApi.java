@@ -34,6 +34,7 @@ public class InProcessBrokerApi implements BrokerApi {
   private static final FluentLogger log = FluentLogger.forEnclosingClass();
 
   private static final Integer DEFAULT_MESSAGE_QUEUE_SIZE = 100;
+  private static final String STREAM_EVENTS_TOPIC = "gerrit";
 
   private final Map<String, EvictingQueue<Event>> messagesQueueMap;
   private final Map<String, EventBus> eventBusMap;
@@ -91,6 +92,11 @@ public class InProcessBrokerApi implements BrokerApi {
     if (messagesQueueMap.containsKey(topic)) {
       messagesQueueMap.get(topic).stream().forEach(eventMessage -> send(topic, eventMessage));
     }
+  }
+
+  @Override
+  public String getStreamEventsTopic() {
+    return STREAM_EVENTS_TOPIC;
   }
 
   private static class EventBusMessageRecorder {
