@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e212a62_ec1afd6c",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApi.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2021-07-26T17:14:21Z",
+      "side": 1,
+      "message": "BrokerApi doesn\u0027t contain any logic about topics it\u0027s just interface to send/receive message. I think this is breaking the class responsibility because it is introducing that logic. We should move it to the StreamEventPublisher class and use something similar to com.googlesource.gerrit.plugins.multisite.forwarder.events.EventTopic where we already have STREAM_EVENT_TOPIC(\"GERRIT.EVENT.STREAM\", \"streamEvent\"); topic configuration whit is resolved from the config:\n public String topic(Configuration config) {\n    return config.broker().getTopic(topicAliasKey(), topic);\n  }",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 31
+      },
+      "revId": "b8c6c3b6306602fde63c20e7cc729881de3998e8",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
