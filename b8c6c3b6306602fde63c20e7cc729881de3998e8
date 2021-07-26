@@ -22,6 +22,30 @@
       },
       "revId": "b8c6c3b6306602fde63c20e7cc729881de3998e8",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3632d2d4_7cf701cf",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApi.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2021-07-26T19:11:40Z",
+      "side": 1,
+      "message": "mmm, good point @marcin, thanks for pointing it out.\n\nI am not that familiar with that part of the multi-site logic, and I am trying to understand how the approach fits here.\n\nIn the example you provided we read from the multi-site configuration, so that\u0027s fine. If I understand your suggestion however, the events-broker (which does not have any configuration) will need to read the name of the topic from different configuration files or sections. (i.e. events-aws-kinesis, events-kafka), provided by the consumer.\n\nDid I get your suggestion right?",
+      "parentUuid": "7e212a62_ec1afd6c",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 31
+      },
+      "revId": "b8c6c3b6306602fde63c20e7cc729881de3998e8",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
