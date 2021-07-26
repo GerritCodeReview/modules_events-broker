@@ -46,6 +46,30 @@
       },
       "revId": "b8c6c3b6306602fde63c20e7cc729881de3998e8",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc65ed36_c34c427f",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApi.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-07-26T23:35:32Z",
+      "side": 1,
+      "message": "Agreed, the API defines the logic of sending/receiving messages on a PubSub system. The stream events topic name should be in the configuration and not in the API.",
+      "parentUuid": "3632d2d4_7cf701cf",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 31
+      },
+      "revId": "b8c6c3b6306602fde63c20e7cc729881de3998e8",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
