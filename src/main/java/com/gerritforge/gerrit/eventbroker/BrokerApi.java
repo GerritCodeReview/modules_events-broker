@@ -55,4 +55,11 @@ public interface BrokerApi {
    * @param topic topic name
    */
   void replayAllEvents(String topic);
+
+  /**
+   * Get the name of the topic dedicated to stream Gerrit events
+   *
+   * @return The name of the topic
+   */
+  String getStreamEventsTopic();
 }

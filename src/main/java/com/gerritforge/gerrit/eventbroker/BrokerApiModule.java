@@ -15,6 +15,8 @@
 package com.gerritforge.gerrit.eventbroker;
 
 import com.google.gerrit.extensions.registration.DynamicItem;
+import com.google.gerrit.extensions.registration.DynamicSet;
+import com.google.gerrit.server.events.EventListener;
 import com.google.inject.AbstractModule;
 import com.google.inject.Inject;
 import com.google.inject.Scopes;
@@ -33,6 +35,7 @@ public class BrokerApiModule extends AbstractModule {
       DynamicItem.itemOf(binder(), BrokerApi.class);
       DynamicItem.bind(binder(), BrokerApi.class).to(InProcessBrokerApi.class).in(Scopes.SINGLETON);
     }
+    DynamicSet.bind(binder(), EventListener.class).to(StreamEventPublisher.class);
     bind(EventDeserializer.class).in(Scopes.SINGLETON);
   }
 }
