@@ -19,7 +19,6 @@ import static com.google.common.truth.Truth.assertThat;
 import com.google.gerrit.server.events.Event;
 import com.google.gerrit.server.events.EventGsonProvider;
 import com.google.gson.Gson;
-import java.util.UUID;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -30,24 +29,6 @@ public class EventDeserializerTest {
   public void setUp() {
     final Gson gson = new EventGsonProvider().get();
     deserializer = new EventDeserializer(gson);
-  }
-
-  @Test
-  public void eventDeserializerShouldParseEventMessage() {
-    final UUID eventId = UUID.randomUUID();
-    final String eventType = "event-type";
-    final String sourceInstanceId = UUID.randomUUID().toString();
-    final long eventCreatedOn = 10L;
-    final String eventJson =
-        String.format(
-            "{ "
-                + "\"header\": { \"eventId\": \"%s\", \"eventType\": \"%s\", \"sourceInstanceId\": \"%s\", \"eventCreatedOn\": %d },"
-                + "\"body\": { \"type\": \"project-created\" }"
-                + "}",
-            eventId, eventType, sourceInstanceId, eventCreatedOn);
-    final Event event = deserializer.deserialize(eventJson);
-
-    assertThat(event.instanceId).isEqualTo(sourceInstanceId);
   }
 
   @Test

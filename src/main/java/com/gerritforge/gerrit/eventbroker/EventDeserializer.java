@@ -16,7 +16,6 @@ package com.gerritforge.gerrit.eventbroker;
 
 import static java.util.Objects.requireNonNull;
 
-import com.google.common.base.Strings;
 import com.google.gerrit.server.events.Event;
 import com.google.gerrit.server.events.EventGson;
 import com.google.gson.Gson;
@@ -32,17 +31,8 @@ public class EventDeserializer {
   }
 
   public Event deserialize(String json) {
-    Event resultEvent;
-    EventMessage eventMessage = gson.fromJson(json, EventMessage.class);
-    if (eventMessage.getEvent() == null && eventMessage.getHeader() == null) {
-      resultEvent = gson.fromJson(json, Event.class);
-    } else {
-      eventMessage.validate();
-      resultEvent = eventMessage.getEvent();
-      if (Strings.isNullOrEmpty(resultEvent.instanceId)) {
-        resultEvent.instanceId = eventMessage.getHeader().sourceInstanceId;
-      }
-    }
+    Event resultEvent = gson.fromJson(json, Event.class);
+
     validate(resultEvent);
     return resultEvent;
   }
