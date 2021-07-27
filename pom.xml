@@ -39,7 +39,11 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <auto-value.version>1.7.4</auto-value.version>
+<<<<<<< HEAD
         <gerrit.version>3.5.0-SNAPSHOT</gerrit.version>
+=======
+        <gerrit.version>3.4.0</gerrit.version>
+>>>>>>> stable-3.4
     </properties>
 
     <dependencies>

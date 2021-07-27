@@ -33,5 +33,6 @@ public class BrokerApiModule extends AbstractModule {
       DynamicItem.itemOf(binder(), BrokerApi.class);
       DynamicItem.bind(binder(), BrokerApi.class).to(InProcessBrokerApi.class).in(Scopes.SINGLETON);
     }
+    bind(EventDeserializer.class).in(Scopes.SINGLETON);
   }
 }
