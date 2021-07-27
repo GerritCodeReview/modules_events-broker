@@ -29,6 +29,9 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import java.util.Set;
 import java.util.UUID;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 import java.util.function.Consumer;
 import org.junit.Before;
 import org.junit.Test;
@@ -41,8 +44,9 @@ import org.mockito.junit.MockitoJUnitRunner;
 @RunWith(MockitoJUnitRunner.class)
 public class BrokerApiTest {
 
-  @Captor ArgumentCaptor<EventMessage> eventCaptor;
-  Consumer<EventMessage> eventConsumer;
+  public static final int SEND_FUTURE_TIMEOUT = 1;
+  @Captor ArgumentCaptor<Event> eventCaptor;
+  Consumer<Event> eventConsumer;
 
   BrokerApi brokerApiUnderTest;
   UUID instanceId = UUID.randomUUID();
@@ -55,31 +59,37 @@ public class BrokerApiTest {
   }
 
   @Test
-  public void shouldSendEvent() {
+  public void shouldSendEvent() throws InterruptedException, TimeoutException, ExecutionException {
     ProjectCreatedEvent event = new ProjectCreatedEvent();
 
     brokerApiUnderTest.receiveAsync("topic", eventConsumer);
 
-    assertThat(brokerApiUnderTest.send("topic", wrap(event))).isTrue();
+    assertThat(brokerApiUnderTest.send("topic", wrap(event)).get(1, TimeUnit.SECONDS)).isTrue();
+
     compareWithExpectedEvent(eventConsumer, eventCaptor, event);
   }
 
-  private EventMessage wrap(ProjectCreatedEvent event) {
-    return brokerApiUnderTest.newMessage(instanceId, event);
+  private Event wrap(ProjectCreatedEvent event) {
+    return event;
   }
 
   @Test
-  public void shouldRegisterConsumerPerTopic() {
-    Consumer<EventMessage> secondConsumer = mockEventConsumer();
-    ArgumentCaptor<EventMessage> secondArgCaptor = ArgumentCaptor.forClass(EventMessage.class);
+  public void shouldRegisterConsumerPerTopic()
+      throws InterruptedException, TimeoutException, ExecutionException {
+    Consumer<Event> secondConsumer = mockEventConsumer();
+    ArgumentCaptor<Event> secondArgCaptor = ArgumentCaptor.forClass(Event.class);
 
     ProjectCreatedEvent eventForTopic = testProjectCreatedEvent("Project name");
     ProjectCreatedEvent eventForTopic2 = testProjectCreatedEvent("Project name 2");
 
     brokerApiUnderTest.receiveAsync("topic", eventConsumer);
     brokerApiUnderTest.receiveAsync("topic2", secondConsumer);
-    brokerApiUnderTest.send("topic", wrap(eventForTopic));
-    brokerApiUnderTest.send("topic2", wrap(eventForTopic2));
+    brokerApiUnderTest
+        .send("topic", wrap(eventForTopic))
+        .get(SEND_FUTURE_TIMEOUT, TimeUnit.SECONDS);
+    brokerApiUnderTest
+        .send("topic2", wrap(eventForTopic2))
+        .get(SEND_FUTURE_TIMEOUT, TimeUnit.SECONDS);
 
     compareWithExpectedEvent(eventConsumer, eventCaptor, eventForTopic);
     compareWithExpectedEvent(secondConsumer, secondArgCaptor, eventForTopic2);
@@ -87,10 +97,10 @@ public class BrokerApiTest {
 
   @Test
   public void shouldReturnMapOfConsumersPerTopic() {
-    Consumer<EventMessage> firstConsumerTopicA = mockEventConsumer();
+    Consumer<Event> firstConsumerTopicA = mockEventConsumer();
 
-    Consumer<EventMessage> secondConsumerTopicA = mockEventConsumer();
-    Consumer<EventMessage> thirdConsumerTopicB = mockEventConsumer();
+    Consumer<Event> secondConsumerTopicA = mockEventConsumer();
+    Consumer<Event> thirdConsumerTopicB = mockEventConsumer();
 
     brokerApiUnderTest.receiveAsync("TopicA", firstConsumerTopicA);
     brokerApiUnderTest.receiveAsync("TopicA", secondConsumerTopicA);
@@ -108,83 +118,99 @@ public class BrokerApiTest {
   }
 
   @Test
-  public void shouldDeliverEventToAllRegisteredConsumers() {
-    Consumer<EventMessage> secondConsumer = mockEventConsumer();
-    ArgumentCaptor<EventMessage> secondArgCaptor = ArgumentCaptor.forClass(EventMessage.class);
+  public void shouldDeliverAsynchronouslyEventToAllRegisteredConsumers()
+      throws InterruptedException, TimeoutException, ExecutionException {
+    Consumer<Event> secondConsumer = mockEventConsumer();
+    ArgumentCaptor<Event> secondArgCaptor = ArgumentCaptor.forClass(Event.class);
 
     ProjectCreatedEvent event = testProjectCreatedEvent("Project name");
 
     brokerApiUnderTest.receiveAsync("topic", eventConsumer);
     brokerApiUnderTest.receiveAsync("topic", secondConsumer);
-    brokerApiUnderTest.send("topic", wrap(event));
+    brokerApiUnderTest.send("topic", wrap(event)).get(SEND_FUTURE_TIMEOUT, TimeUnit.SECONDS);
 
     compareWithExpectedEvent(eventConsumer, eventCaptor, event);
     compareWithExpectedEvent(secondConsumer, secondArgCaptor, event);
   }
 
   @Test
-  public void shouldReceiveEventsOnlyFromRegisteredTopic() {
+  public void shouldReceiveEventsOnlyFromRegisteredTopic()
+      throws InterruptedException, TimeoutException, ExecutionException {
 
     ProjectCreatedEvent eventForTopic = testProjectCreatedEvent("Project name");
 
     ProjectCreatedEvent eventForTopic2 = testProjectCreatedEvent("Project name 2");
 
     brokerApiUnderTest.receiveAsync("topic", eventConsumer);
-    brokerApiUnderTest.send("topic", wrap(eventForTopic));
-    brokerApiUnderTest.send("topic2", wrap(eventForTopic2));
+    brokerApiUnderTest
+        .send("topic", wrap(eventForTopic))
+        .get(SEND_FUTURE_TIMEOUT, TimeUnit.SECONDS);
+    brokerApiUnderTest
+        .send("topic2", wrap(eventForTopic2))
+        .get(SEND_FUTURE_TIMEOUT, TimeUnit.SECONDS);
 
     compareWithExpectedEvent(eventConsumer, eventCaptor, eventForTopic);
   }
 
   @Test
-  public void shouldNotRegisterTheSameConsumerTwicePerTopic() {
+  public void shouldNotRegisterTheSameConsumerTwicePerTopic()
+      throws InterruptedException, TimeoutException, ExecutionException {
     ProjectCreatedEvent event = new ProjectCreatedEvent();
 
     brokerApiUnderTest.receiveAsync("topic", eventConsumer);
     brokerApiUnderTest.receiveAsync("topic", eventConsumer);
-    brokerApiUnderTest.send("topic", wrap(event));
+    brokerApiUnderTest.send("topic", wrap(event)).get(SEND_FUTURE_TIMEOUT, TimeUnit.SECONDS);
 
     compareWithExpectedEvent(eventConsumer, eventCaptor, event);
   }
 
   @Test
-  public void shouldReconnectSubscribers() {
-    ArgumentCaptor<EventMessage> newConsumerArgCaptor = ArgumentCaptor.forClass(EventMessage.class);
+  public void shouldReconnectSubscribers()
+      throws InterruptedException, TimeoutException, ExecutionException {
+    ArgumentCaptor<Event> newConsumerArgCaptor = ArgumentCaptor.forClass(Event.class);
 
     ProjectCreatedEvent eventForTopic = testProjectCreatedEvent("Project name");
 
     brokerApiUnderTest.receiveAsync("topic", eventConsumer);
-    brokerApiUnderTest.send("topic", wrap(eventForTopic));
+    brokerApiUnderTest
+        .send("topic", wrap(eventForTopic))
+        .get(SEND_FUTURE_TIMEOUT, TimeUnit.SECONDS);
 
     compareWithExpectedEvent(eventConsumer, eventCaptor, eventForTopic);
 
-    Consumer<EventMessage> newConsumer = mockEventConsumer();
+    Consumer<Event> newConsumer = mockEventConsumer();
 
     clearInvocations(eventConsumer);
 
     brokerApiUnderTest.disconnect();
     brokerApiUnderTest.receiveAsync("topic", newConsumer);
-    brokerApiUnderTest.send("topic", wrap(eventForTopic));
+    brokerApiUnderTest
+        .send("topic", wrap(eventForTopic))
+        .get(SEND_FUTURE_TIMEOUT, TimeUnit.SECONDS);
 
     compareWithExpectedEvent(newConsumer, newConsumerArgCaptor, eventForTopic);
     verify(eventConsumer, never()).accept(eventCaptor.capture());
   }
 
   @Test
-  public void shouldDisconnectSubscribers() {
+  public void shouldDisconnectSubscribers()
+      throws InterruptedException, TimeoutException, ExecutionException {
     ProjectCreatedEvent eventForTopic = testProjectCreatedEvent("Project name");
 
     brokerApiUnderTest.receiveAsync("topic", eventConsumer);
     brokerApiUnderTest.disconnect();
 
-    brokerApiUnderTest.send("topic", wrap(eventForTopic));
+    brokerApiUnderTest
+        .send("topic", wrap(eventForTopic))
+        .get(SEND_FUTURE_TIMEOUT, TimeUnit.SECONDS);
 
     verify(eventConsumer, never()).accept(eventCaptor.capture());
   }
 
   @Test
-  public void shouldBeAbleToSwitchBrokerAndReconnectSubscribers() {
-    ArgumentCaptor<EventMessage> newConsumerArgCaptor = ArgumentCaptor.forClass(EventMessage.class);
+  public void shouldBeAbleToSwitchBrokerAndReconnectSubscribers()
+      throws InterruptedException, TimeoutException, ExecutionException {
+    ArgumentCaptor<Event> newConsumerArgCaptor = ArgumentCaptor.forClass(Event.class);
 
     ProjectCreatedEvent eventForTopic = testProjectCreatedEvent("Project name");
 
@@ -194,22 +220,29 @@ public class BrokerApiTest {
 
     clearInvocations(eventConsumer);
 
-    brokerApiUnderTest.send("topic", wrap(eventForTopic));
+    brokerApiUnderTest
+        .send("topic", wrap(eventForTopic))
+        .get(SEND_FUTURE_TIMEOUT, TimeUnit.SECONDS);
     verify(eventConsumer, never()).accept(eventCaptor.capture());
 
     clearInvocations(eventConsumer);
-    secondaryBroker.send("topic", wrap(eventForTopic));
+    secondaryBroker.send("topic", wrap(eventForTopic)).get(SEND_FUTURE_TIMEOUT, TimeUnit.SECONDS);
 
     compareWithExpectedEvent(eventConsumer, newConsumerArgCaptor, eventForTopic);
   }
 
   @Test
-  public void shouldReplayAllEvents() {
+  public void shouldReplayAllEvents()
+      throws InterruptedException, TimeoutException, ExecutionException {
     ProjectCreatedEvent event = new ProjectCreatedEvent();
 
     brokerApiUnderTest.receiveAsync("topic", eventConsumer);
 
-    assertThat(brokerApiUnderTest.send("topic", wrap(event))).isTrue();
+    assertThat(
+            brokerApiUnderTest
+                .send("topic", wrap(event))
+                .get(SEND_FUTURE_TIMEOUT, TimeUnit.SECONDS))
+        .isTrue();
 
     verify(eventConsumer, times(1)).accept(eventCaptor.capture());
     compareWithExpectedEvent(eventConsumer, eventCaptor, event);
@@ -232,11 +265,11 @@ public class BrokerApiTest {
     return eventForTopic;
   }
 
-  private interface Subscriber extends Consumer<EventMessage> {
+  private interface Subscriber extends Consumer<Event> {
 
     @Override
     @Subscribe
-    void accept(EventMessage eventMessage);
+    void accept(Event eventMessage);
   }
 
   @SuppressWarnings("unchecked")
@@ -245,11 +278,9 @@ public class BrokerApiTest {
   }
 
   private void compareWithExpectedEvent(
-      Consumer<EventMessage> eventConsumer,
-      ArgumentCaptor<EventMessage> eventCaptor,
-      Event expectedEvent) {
+      Consumer<Event> eventConsumer, ArgumentCaptor<Event> eventCaptor, Event expectedEvent) {
     verify(eventConsumer, times(1)).accept(eventCaptor.capture());
-    assertThat(eventCaptor.getValue().getEvent()).isEqualTo(expectedEvent);
+    assertThat(eventCaptor.getValue()).isEqualTo(expectedEvent);
   }
 
   private JsonObject eventToJson(Event event) {

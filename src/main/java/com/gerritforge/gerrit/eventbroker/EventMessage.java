@@ -48,12 +48,16 @@ public class EventMessage {
     public final UUID eventId;
 
     /** Gerrit server instance id from which event was sent. */
-    public final UUID sourceInstanceId;
+    public final String sourceInstanceId;
 
     /** @deprecated required for interoperability with older JSON wire protocols */
     public final String eventType;
 
     public Header(UUID eventId, UUID sourceInstanceId) {
+      this(eventId, sourceInstanceId.toString());
+    }
+
+    public Header(UUID eventId, String sourceInstanceId) {
       this.eventId = eventId;
       this.sourceInstanceId = sourceInstanceId;
       this.eventType = "";
