@@ -24,6 +24,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a92c9e88_ea346093",
+        "filename": "README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2021-07-28T09:42:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d5ae4b2_7dc96aaa",
+      "range": {
+        "startLine": 14,
+        "startChar": 40,
+        "endLine": 14,
+        "endChar": 50
+      },
+      "revId": "2fc934ba60a539ad0a1ffdb15fe0c595821c0749",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0be85969_33e94f97",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-07-28T07:55:39Z",
       "side": 1,
       "message": "add also the import needed to find the StreamEventPublisher class",
+      "revId": "2fc934ba60a539ad0a1ffdb15fe0c595821c0749",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e598ab0_e944abc5",
+        "filename": "README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2021-07-28T09:42:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0be85969_33e94f97",
       "revId": "2fc934ba60a539ad0a1ffdb15fe0c595821c0749",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
