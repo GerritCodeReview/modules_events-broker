@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81be6c72_59dd5059",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-07-29T07:55:39Z",
+      "side": 1,
+      "message": "This doesn\u0027t need to be in a topic as we download the artifacts from Maven anyway.",
+      "revId": "0c4a2406bf708de342d2e0630577f7111a0e0154",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
