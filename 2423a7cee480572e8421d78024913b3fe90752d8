@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0a3c1e4_843cf4a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-07-29T00:39:52Z",
+      "side": 1,
+      "message": "Gerrit v3.5.0 hasn\u0027t been released yet. The maximum we can do is to release an alpha version.",
+      "revId": "2423a7cee480572e8421d78024913b3fe90752d8",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
