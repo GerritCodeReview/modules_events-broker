@@ -15,30 +15,41 @@
 package com.gerritforge.gerrit.eventbroker;
 
 import com.google.gerrit.extensions.registration.DynamicItem;
+import com.google.gerrit.server.config.GerritInstanceId;
 import com.google.gerrit.server.events.Event;
 import com.google.gerrit.server.events.EventListener;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.google.inject.name.Named;
+import javax.annotation.Nullable;
 
 @Singleton
 public class StreamEventPublisher implements EventListener {
   public static final String STREAM_EVENTS_TOPIC = "stream_events_topic";
   private final DynamicItem<BrokerApi> brokerApiDynamicItem;
   private final String streamEventsTopic;
+  private final String instanceId;
 
   @Inject
   public StreamEventPublisher(
-      DynamicItem<BrokerApi> brokerApi, @Named(STREAM_EVENTS_TOPIC) String streamEventsTopic) {
+      DynamicItem<BrokerApi> brokerApi,
+      @Named(STREAM_EVENTS_TOPIC) String streamEventsTopic,
+      @Nullable @GerritInstanceId String instanceId) {
     this.brokerApiDynamicItem = brokerApi;
     this.streamEventsTopic = streamEventsTopic;
+    this.instanceId = instanceId;
   }
 
   @Override
   public void onEvent(Event event) {
     BrokerApi brokerApi = brokerApiDynamicItem.get();
-    if (brokerApi != null) {
+    if (brokerApi != null && shouldSend(event)) {
       brokerApi.send(streamEventsTopic, event);
     }
+  }
+
+  private boolean shouldSend(Event event) {
+    return (instanceId == null && event.instanceId == null)
+        || (instanceId != null && instanceId.equals(event.instanceId));
   }
 }
