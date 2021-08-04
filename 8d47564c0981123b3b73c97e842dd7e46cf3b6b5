@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ad2d553c_fd9e6fad",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2021-08-04T14:02:52Z",
+      "side": 1,
+      "message": "This logic seems very multi-site specific.\n\nThere might be consumers of this library that do not care at all about instance-id because they are not part of a cluster.\n\nI am not sure we should force them to set one.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 56
+      },
+      "revId": "8d47564c0981123b3b73c97e842dd7e46cf3b6b5",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7f9c1598_12df4bbe",
         "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/StreamEventPublisher.java",
         "patchSetId": 1
@@ -14,6 +37,30 @@
       "writtenOn": "2021-08-04T13:06:54Z",
       "side": 1,
       "message": "We have similar logic in BrokerApiWrapper but we cannot simply reuse that code instead of BrokerApi, also moving BrokerApiWrapper to events-broker requires refactoring which I believe is out of scope of this change",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 65
+      },
+      "revId": "8d47564c0981123b3b73c97e842dd7e46cf3b6b5",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f7269a8_68c33871",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/StreamEventPublisher.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2021-08-04T14:02:52Z",
+      "side": 1,
+      "message": "Could we not have the consumer of this library to bind the most appropriate BrokerApi?\n\nSomething like:\n\n```\n  public StreamEventPublisher(\n      @Named(STREAM_EVENTS_BROKER_API) BrokerApi brokerApi,\n      @Named(STREAM_EVENTS_TOPIC) String streamEventsTopic)\n```\n\nmulti-site can bind the BrokerApiWrapper, whilst other consumers might decide to bind something else.\n\nThis way we wouldn\u0027t have to replicate any logic and we wouldn\u0027t make any assumption on how clients are going to use this library.\n\nWDYT?",
+      "parentUuid": "7f9c1598_12df4bbe",
       "range": {
         "startLine": 45,
         "startChar": 4,
