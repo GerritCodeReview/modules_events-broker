@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f9c1598_12df4bbe",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/StreamEventPublisher.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2021-08-04T13:06:54Z",
+      "side": 1,
+      "message": "We have similar logic in BrokerApiWrapper but we cannot simply reuse that code instead of BrokerApi, also moving BrokerApiWrapper to events-broker requires refactoring which I believe is out of scope of this change",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 65
+      },
+      "revId": "8d47564c0981123b3b73c97e842dd7e46cf3b6b5",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
