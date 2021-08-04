@@ -37,3 +37,6 @@ public class SomeModule extends AbstractModule {
     }
 }
 ```
+
+Note: To avoid message duplication Stream Events Publisher uses [gerrit.instanceId](https://gerrit-review.googlesource.com/Documentation/config-gerrit.html)
+and Event.instanceId to filter out forwarded events.
