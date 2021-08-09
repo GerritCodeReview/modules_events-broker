@@ -95,6 +95,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce5e77b9_60e93a07",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/StreamEventPublisher.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2021-08-09T10:24:32Z",
+      "side": 1,
+      "message": "This is the final truth table.\n\n---------------------------------\nnode     | event   | should_send\n---------------------------------\ndefined  | defined | only_when_equals\ndefined  | null    | never sent (because we know it was generated somewhere else)\nnull     | defined | never sent (because we know it was generated somewhere else)\nnull     | null    | always (choose safe option an publish it, might be redundant)",
+      "parentUuid": "b36c9a32_b926c734",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 3
+      },
+      "revId": "e717f22c4c6b92d0f47ab18d365bff747bd4d5ee",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58860f4d_c5bc5a38",
