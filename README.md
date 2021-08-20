@@ -42,5 +42,26 @@ public class SomeModule extends AbstractModule {
 }
 ```
 
+Alternative way to setup Stream Event Publisher is to use default Guice module:
+
+```java
+
+import com.gerritforge.gerrit.eventbroker.publisher.StreamEventPublisherModule;
+import com.google.inject.AbstractModule;
+import com.google.inject.TypeLiteral;
+import com.google.inject.name.Names;
+
+public class SomeModule extends AbstractModule {
+    @Override
+    protected void configure() {
+        bind(StreamEventPublisherConfig.class)
+                .toInstance(new StreamEventPublisherConfig(
+                    "name_of_the_stream_events_topic",
+                    messagePublishingTimeout));
+        install(new StreamEventPublisherModule());
+    }
+}
+```
+
 Note: To avoid message duplication Stream Events Publisher uses [gerrit.instanceId](https://gerrit-review.googlesource.com/Documentation/config-gerrit.html)
 and Event.instanceId to filter out forwarded events.
