@@ -19,9 +19,11 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import com.google.common.util.concurrent.MoreExecutors;
 import com.google.gerrit.extensions.registration.DynamicItem;
 import com.google.gerrit.server.events.Event;
 import com.google.gerrit.server.events.ProjectCreatedEvent;
+import java.util.concurrent.Executor;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -34,6 +36,7 @@ public class StreamEventPublisherTest {
   @Mock private BrokerApi brokerApi;
   private static final String STREAM_EVENTS_TOPIC = "stream-test-topic";
   private static final String INSTANCE_ID = "instance-id";
+  private static final Executor EXECUTOR = MoreExecutors.directExecutor();
 
   private StreamEventPublisher objectUnderTest;
 
@@ -41,7 +44,7 @@ public class StreamEventPublisherTest {
   public void setup() {
     when(brokerApiDynamicItem.get()).thenReturn(brokerApi);
     objectUnderTest =
-        new StreamEventPublisher(brokerApiDynamicItem, STREAM_EVENTS_TOPIC, INSTANCE_ID);
+        new StreamEventPublisher(brokerApiDynamicItem, STREAM_EVENTS_TOPIC, EXECUTOR, INSTANCE_ID);
   }
 
   @Test
@@ -58,7 +61,8 @@ public class StreamEventPublisherTest {
     Event event = new ProjectCreatedEvent();
     event.instanceId = null;
 
-    objectUnderTest = new StreamEventPublisher(brokerApiDynamicItem, STREAM_EVENTS_TOPIC, null);
+    objectUnderTest =
+        new StreamEventPublisher(brokerApiDynamicItem, STREAM_EVENTS_TOPIC, EXECUTOR, null);
     objectUnderTest.onEvent(event);
     verify(brokerApi, times(1)).send(STREAM_EVENTS_TOPIC, event);
   }
@@ -68,7 +72,8 @@ public class StreamEventPublisherTest {
     Event event = new ProjectCreatedEvent();
     event.instanceId = INSTANCE_ID;
 
-    objectUnderTest = new StreamEventPublisher(brokerApiDynamicItem, STREAM_EVENTS_TOPIC, null);
+    objectUnderTest =
+        new StreamEventPublisher(brokerApiDynamicItem, STREAM_EVENTS_TOPIC, EXECUTOR, null);
     objectUnderTest.onEvent(event);
     verify(brokerApi, never()).send(STREAM_EVENTS_TOPIC, event);
   }
