@@ -14,6 +14,8 @@
 
 package com.gerritforge.gerrit.eventbroker;
 
+import com.gerritforge.gerrit.eventbroker.executor.StreamEventPublisherExecutor;
+import com.google.common.flogger.FluentLogger;
 import com.google.gerrit.extensions.registration.DynamicItem;
 import com.google.gerrit.server.config.GerritInstanceId;
 import com.google.gerrit.server.events.Event;
@@ -21,35 +23,71 @@ import com.google.gerrit.server.events.EventListener;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.google.inject.name.Named;
+import java.util.concurrent.Executor;
 import javax.annotation.Nullable;
 
 @Singleton
 public class StreamEventPublisher implements EventListener {
+  private static final FluentLogger log = FluentLogger.forEnclosingClass();
+
   public static final String STREAM_EVENTS_TOPIC = "stream_events_topic";
   private final DynamicItem<BrokerApi> brokerApiDynamicItem;
   private final String streamEventsTopic;
+  private final Executor executor;
   private final String instanceId;
 
   @Inject
   public StreamEventPublisher(
       DynamicItem<BrokerApi> brokerApi,
       @Named(STREAM_EVENTS_TOPIC) String streamEventsTopic,
+      @StreamEventPublisherExecutor Executor executor,
       @Nullable @GerritInstanceId String instanceId) {
     this.brokerApiDynamicItem = brokerApi;
     this.streamEventsTopic = streamEventsTopic;
+    this.executor = executor;
     this.instanceId = instanceId;
   }
 
   @Override
   public void onEvent(Event event) {
-    BrokerApi brokerApi = brokerApiDynamicItem.get();
-    if (brokerApi != null && shouldSend(event)) {
-      brokerApi.send(streamEventsTopic, event);
-    }
+    executor.execute(new EventTask(event, brokerApiDynamicItem.get(), instanceId));
   }
 
-  private boolean shouldSend(Event event) {
-    return (instanceId == null && event.instanceId == null)
-        || (instanceId != null && instanceId.equals(event.instanceId));
+  class EventTask implements Runnable {
+    private final Event event;
+    private final BrokerApi brokerApi;
+    private final String instanceId;
+
+    EventTask(Event event, BrokerApi brokerApi, String instanceId) {
+      this.event = event;
+      this.brokerApi = brokerApi;
+      this.instanceId = instanceId;
+    }
+
+    @Override
+    public void run() {
+      if (brokerApi != null && shouldSend(event)) {
+        try {
+          brokerApi.send(streamEventsTopic, event).get();
+        } catch (Throwable e) {
+          log.atSevere().withCause(e).log(
+              "Failed to publish event '{}' to topic '{}' - error: {} - stack trace: {}",
+              event,
+              streamEventsTopic,
+              e.getMessage(),
+              e.getStackTrace());
+        }
+      }
+    }
+
+    private boolean shouldSend(Event event) {
+      return (instanceId == null && event.instanceId == null)
+          || (instanceId != null && instanceId.equals(event.instanceId));
+    }
+
+    @Override
+    public String toString() {
+      return String.format("Send event '%s' to target instance", event.type);
+    }
   }
 }
