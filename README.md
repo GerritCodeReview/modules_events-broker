@@ -13,9 +13,11 @@ events and to stream them on a specific topic.
 Since the implementation of such logic is always the same, this library provides
 a generic stream events publisher which will perform the relevant operations.
 
-In order to listen and stream gerrit events, consumers of this API just need to
-provide a named annotation with the name of the stream events topic and then
-explicitly bind the Stream Events Publisher, as such:
+In order to listen and stream gerrit events, consumers of this API need to
+provide a named annotation with the name of the stream events topic and
+`java.util.concurrent.Executor` binding annotated with `StreamEventPublisherExecutor`
+annotation, default single threaded implementation is provided by the library.
+The last step is to explicitly bind the Stream Events Publisher, as such:
 
 ```java
 import com.gerritforge.gerrit.eventbroker.StreamEventPublisher;
@@ -32,7 +34,8 @@ public class SomeModule extends AbstractModule {
         })
                 .annotatedWith(Names.named(StreamEventPublisher.STREAM_EVENTS_TOPIC))
                 .toInstance("name_of_the_stream_events_topic");
-
+        
+        bind(Executor.class).annotatedWith(StreamEventPublisherExecutor.class).toProvider(StreamEventPublisherExecutorProvider.class);
         DynamicSet.bind(binder(), EventListener.class).to(StreamEventPublisher.class);
     }
 }
