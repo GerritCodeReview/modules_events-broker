@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0de8d65_0874216b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-08-21T01:02:29Z",
+      "side": 1,
+      "message": "Same as the predecessor of this change: let\u0027s discuss first and reconvene.",
+      "revId": "1e5004418c5b0d87de53ab76434c1c732e196980",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
