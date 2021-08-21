@@ -16,6 +16,23 @@
       "message": "We need to verify this is _actually_ needed.\nIt might not be true that \"Currently the StreamEventPublisher.onEvent is a blocking operation\".\n\nThe BrokerApi.send() method[1] signature is:\n\n```\nListenableFuture\u003cBoolean\u003e send(String topic, Event message);\n```\n\nand _it can_ be asynchronous, depending on the broker implementation and configuration. Take for example the events-kafka publisher [2].\n\nI think we need a discussion on why the BrokerApiWrapper in multi-site is defining a sendSync() method and whether there is an actual need to ever send events synchronously.\n\nIf there isn\u0027t then the multi-site code needs to be cleaned up so that whether messages are sent synchronously or asynchronously is decided by the broker, not by multi-site itself.\n\nAlso, if we agree, the sync vs async should be decided by the broker itself, this change becomes obsolete as events-broker should just call send() and delegate that decision to the broker implementation.\n\n\n[1] https://gerrit.googlesource.com/modules/events-broker/+/refs/heads/master/src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApi.java#32\n\n[2] https://gerrit.googlesource.com/plugins/events-kafka/+/refs/heads/master/src/main/java/com/googlesource/gerrit/plugins/kafka/session/KafkaSession.java#90\n\n[3] https://gerrit.googlesource.com/plugins/multi-site/+/refs/heads/master/src/main/java/com/googlesource/gerrit/plugins/multisite/broker/BrokerApiWrapper.java#58",
       "revId": "d4c4910468e6420c6615de495b288b28f37ffa34",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02dc1c95_b8977872",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-08-21T01:01:22Z",
+      "side": 1,
+      "message": "Blocking this change until we have an internal discussion on this. Agree with Tony and let\u0027s talk about that next week.",
+      "revId": "d4c4910468e6420c6615de495b288b28f37ffa34",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
