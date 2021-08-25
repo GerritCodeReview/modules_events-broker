@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38d15aff_8cf56148",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-08-25T00:55:36Z",
+      "side": 1,
+      "message": "We should add as a disclaimer that the broker may still NOT guarantee message delivery ordering, but that is beyond the scope of this change.",
+      "revId": "d5eba0d114b6cbab685bd3428316510699fb7b82",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4058c6a4_55b48d36",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-08-25T00:55:36Z",
+      "side": 1,
+      "message": "We should say that waiting for ACK may introduce latency, because of the broker availability. The decoupling from the main thread allows to unblock the GUI.",
+      "revId": "d5eba0d114b6cbab685bd3428316510699fb7b82",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71a6891d_6a6aa252",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/StreamEventPublisher.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-08-25T00:55:36Z",
+      "side": 1,
+      "message": "infinite? with timeout?",
+      "range": {
+        "startLine": 71,
+        "startChar": 51,
+        "endLine": 71,
+        "endChar": 56
+      },
+      "revId": "d5eba0d114b6cbab685bd3428316510699fb7b82",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8250d528_5ff79364",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/StreamEventPublisher.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-08-25T00:55:36Z",
+      "side": 1,
+      "message": "Do we have a metric to update?",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 33
+      },
+      "revId": "d5eba0d114b6cbab685bd3428316510699fb7b82",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
