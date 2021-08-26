@@ -12,13 +12,22 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.gerritforge.gerrit.eventbroker.executor;
+package com.gerritforge.gerrit.eventbroker.publisher;
 
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
+public class StreamEventPublisherConfig {
+  private final String streamEventsTopic;
+  private final long publishingTimeoutInMillis;
 
-import com.google.inject.BindingAnnotation;
-import java.lang.annotation.Retention;
+  public StreamEventPublisherConfig(String streamEventsTopic, long publishingTimeoutInMillis) {
+    this.streamEventsTopic = streamEventsTopic;
+    this.publishingTimeoutInMillis = publishingTimeoutInMillis;
+  }
 
-@Retention(RUNTIME)
-@BindingAnnotation
-public @interface StreamEventPublisherExecutor {}
+  public String getStreamEventsTopic() {
+    return streamEventsTopic;
+  }
+
+  public long getPublishingTimeoutInMillis() {
+    return publishingTimeoutInMillis;
+  }
+}

@@ -20,20 +20,20 @@ annotation, default single threaded implementation is provided by the library.
 The last step is to explicitly bind the Stream Events Publisher, as such:
 
 ```java
-import com.gerritforge.gerrit.eventbroker.StreamEventPublisher;
+import com.gerritforge.gerrit.eventbroker.publisher.StreamEventPublisher;
 import com.google.gerrit.extensions.registration.DynamicSet;
 import com.google.gerrit.server.events.EventListener;
 import com.google.inject.AbstractModule;
-import com.google.inject.TypeLiteral;
-import com.google.inject.name.Names;
 
 public class SomeModule extends AbstractModule {
     @Override
     protected void configure() {
-        bind(new TypeLiteral<String>() {
-        })
-                .annotatedWith(Names.named(StreamEventPublisher.STREAM_EVENTS_TOPIC))
-                .toInstance("name_of_the_stream_events_topic");
+        long messagePublishingTimeout = 1000L;
+
+        bind(StreamEventPublisherConfig.class)
+                .toInstance(new StreamEventPublisherConfig(
+                    "name_of_the_stream_events_topic",
+                    messagePublishingTimeout));
         
         bind(Executor.class).annotatedWith(StreamEventPublisherExecutor.class).toProvider(StreamEventPublisherExecutorProvider.class);
         DynamicSet.bind(binder(), EventListener.class).to(StreamEventPublisher.class);
