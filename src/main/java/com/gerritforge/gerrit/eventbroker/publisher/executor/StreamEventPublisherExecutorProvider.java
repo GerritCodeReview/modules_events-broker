@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.gerritforge.gerrit.eventbroker.executor;
+package com.gerritforge.gerrit.eventbroker.publisher.executor;
 
 import com.google.gerrit.server.git.WorkQueue;
 import com.google.inject.Inject;

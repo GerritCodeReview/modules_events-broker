@@ -20,6 +20,8 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import com.gerritforge.gerrit.eventbroker.publisher.StreamEventPublisher;
+import com.gerritforge.gerrit.eventbroker.publisher.StreamEventPublisherConfig;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.MoreExecutors;
 import com.google.gerrit.extensions.registration.DynamicItem;
@@ -37,6 +39,9 @@ public class StreamEventPublisherTest {
   @Mock private DynamicItem<BrokerApi> brokerApiDynamicItem;
   @Mock private BrokerApi brokerApi;
   private static final String STREAM_EVENTS_TOPIC = "stream-test-topic";
+  private static final long PUBLISHING_TIMEOUT = 1000L;
+  private static final StreamEventPublisherConfig config =
+      new StreamEventPublisherConfig(STREAM_EVENTS_TOPIC, PUBLISHING_TIMEOUT);
   private static final String INSTANCE_ID = "instance-id";
   private static final Executor EXECUTOR = MoreExecutors.directExecutor();
 
@@ -46,8 +51,7 @@ public class StreamEventPublisherTest {
   public void setup() {
     when(brokerApiDynamicItem.get()).thenReturn(brokerApi);
     when(brokerApi.send(any(), any())).thenReturn(Futures.immediateFuture(true));
-    objectUnderTest =
-        new StreamEventPublisher(brokerApiDynamicItem, STREAM_EVENTS_TOPIC, EXECUTOR, INSTANCE_ID);
+    objectUnderTest = new StreamEventPublisher(brokerApiDynamicItem, config, EXECUTOR, INSTANCE_ID);
   }
 
   @Test
@@ -64,8 +68,7 @@ public class StreamEventPublisherTest {
     Event event = new ProjectCreatedEvent();
     event.instanceId = null;
 
-    objectUnderTest =
-        new StreamEventPublisher(brokerApiDynamicItem, STREAM_EVENTS_TOPIC, EXECUTOR, null);
+    objectUnderTest = new StreamEventPublisher(brokerApiDynamicItem, config, EXECUTOR, null);
     objectUnderTest.onEvent(event);
     verify(brokerApi, times(1)).send(STREAM_EVENTS_TOPIC, event);
   }
@@ -75,8 +78,7 @@ public class StreamEventPublisherTest {
     Event event = new ProjectCreatedEvent();
     event.instanceId = INSTANCE_ID;
 
-    objectUnderTest =
-        new StreamEventPublisher(brokerApiDynamicItem, STREAM_EVENTS_TOPIC, EXECUTOR, null);
+    objectUnderTest = new StreamEventPublisher(brokerApiDynamicItem, config, EXECUTOR, null);
     objectUnderTest.onEvent(event);
     verify(brokerApi, never()).send(STREAM_EVENTS_TOPIC, event);
   }
