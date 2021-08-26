@@ -18,6 +18,24 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11ff9a31_70f752fc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2021-08-26T08:20:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38d15aff_8cf56148",
+      "revId": "d5eba0d114b6cbab685bd3428316510699fb7b82",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4058c6a4_55b48d36",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-08-25T00:55:36Z",
       "side": 1,
       "message": "We should say that waiting for ACK may introduce latency, because of the broker availability. The decoupling from the main thread allows to unblock the GUI.",
+      "revId": "d5eba0d114b6cbab685bd3428316510699fb7b82",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c7ef4c7_6c0eeea9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2021-08-26T08:20:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4058c6a4_55b48d36",
       "revId": "d5eba0d114b6cbab685bd3428316510699fb7b82",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
@@ -60,6 +96,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "37ec1ecc_1798bbb5",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/StreamEventPublisher.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2021-08-26T08:20:56Z",
+      "side": 1,
+      "message": "I will address this comment in a follow up change",
+      "parentUuid": "71a6891d_6a6aa252",
+      "range": {
+        "startLine": 71,
+        "startChar": 51,
+        "endLine": 71,
+        "endChar": 56
+      },
+      "revId": "d5eba0d114b6cbab685bd3428316510699fb7b82",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8250d528_5ff79364",
         "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/StreamEventPublisher.java",
         "patchSetId": 3
@@ -71,6 +131,30 @@
       "writtenOn": "2021-08-25T00:55:36Z",
       "side": 1,
       "message": "Do we have a metric to update?",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 33
+      },
+      "revId": "d5eba0d114b6cbab685bd3428316510699fb7b82",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44f8fac0_d428fce1",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/StreamEventPublisher.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2021-08-26T08:20:56Z",
+      "side": 1,
+      "message": "Could we do metrics as a follow up change? I\u0027ve already created a ticket for it:\nIssue 14928",
+      "parentUuid": "8250d528_5ff79364",
       "range": {
         "startLine": 73,
         "startChar": 0,
