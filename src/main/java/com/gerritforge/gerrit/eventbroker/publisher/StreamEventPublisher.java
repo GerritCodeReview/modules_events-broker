@@ -12,9 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.gerritforge.gerrit.eventbroker;
+package com.gerritforge.gerrit.eventbroker.publisher;
 
-import com.gerritforge.gerrit.eventbroker.executor.StreamEventPublisherExecutor;
+import com.gerritforge.gerrit.eventbroker.BrokerApi;
+import com.gerritforge.gerrit.eventbroker.publisher.executor.StreamEventPublisherExecutor;
 import com.google.common.flogger.FluentLogger;
 import com.google.gerrit.extensions.registration.DynamicItem;
 import com.google.gerrit.server.config.GerritInstanceId;
@@ -22,28 +23,28 @@ import com.google.gerrit.server.events.Event;
 import com.google.gerrit.server.events.EventListener;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import com.google.inject.name.Named;
 import java.util.concurrent.Executor;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 import javax.annotation.Nullable;
 
 @Singleton
 public class StreamEventPublisher implements EventListener {
   private static final FluentLogger log = FluentLogger.forEnclosingClass();
 
-  public static final String STREAM_EVENTS_TOPIC = "stream_events_topic";
   private final DynamicItem<BrokerApi> brokerApiDynamicItem;
-  private final String streamEventsTopic;
+  private final StreamEventPublisherConfig config;
   private final Executor executor;
   private final String instanceId;
 
   @Inject
   public StreamEventPublisher(
       DynamicItem<BrokerApi> brokerApi,
-      @Named(STREAM_EVENTS_TOPIC) String streamEventsTopic,
+      StreamEventPublisherConfig config,
       @StreamEventPublisherExecutor Executor executor,
       @Nullable @GerritInstanceId String instanceId) {
     this.brokerApiDynamicItem = brokerApi;
-    this.streamEventsTopic = streamEventsTopic;
+    this.config = config;
     this.executor = executor;
     this.instanceId = instanceId;
   }
@@ -67,13 +68,20 @@ public class StreamEventPublisher implements EventListener {
     @Override
     public void run() {
       if (brokerApi != null && shouldSend(event)) {
+        String streamEventTopic = config.getStreamEventsTopic();
         try {
-          brokerApi.send(streamEventsTopic, event).get();
+          brokerApi
+              .send(streamEventTopic, event)
+              .get(config.getPublishingTimeoutInMillis(), TimeUnit.MILLISECONDS);
+        } catch (TimeoutException e) {
+          log.atSevere().withCause(e).log(
+              "Timeout when publishing event '{}' to topic '{}", event, streamEventTopic);
+
         } catch (Throwable e) {
           log.atSevere().withCause(e).log(
               "Failed to publish event '{}' to topic '{}' - error: {} - stack trace: {}",
               event,
-              streamEventsTopic,
+              streamEventTopic,
               e.getMessage(),
               e.getStackTrace());
         }
