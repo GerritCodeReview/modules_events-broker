@@ -71,6 +71,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ed27406_9c23f5c5",
+        "filename": "README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2021-08-27T16:44:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a4a14fb_cc69c01c",
+      "range": {
+        "startLine": 19,
+        "startChar": 10,
+        "endLine": 19,
+        "endChar": 78
+      },
+      "revId": "d5eba0d114b6cbab685bd3428316510699fb7b82",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71a6891d_6a6aa252",
@@ -108,6 +132,30 @@
       "side": 1,
       "message": "I will address this comment in a follow up change",
       "parentUuid": "71a6891d_6a6aa252",
+      "range": {
+        "startLine": 71,
+        "startChar": 51,
+        "endLine": 71,
+        "endChar": 56
+      },
+      "revId": "d5eba0d114b6cbab685bd3428316510699fb7b82",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3b3617b_2c12f8bd",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/StreamEventPublisher.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2021-08-27T16:44:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37ec1ecc_1798bbb5",
       "range": {
         "startLine": 71,
         "startChar": 51,
