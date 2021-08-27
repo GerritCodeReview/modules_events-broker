@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffff3760_c06db114",
+        "filename": "README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2021-08-27T16:26:12Z",
+      "side": 1,
+      "message": "This looks obsolete now.\nWe don\u0027t bind the string with the name of the envents topic anymore, but a whole new StreamEventPublisherConfig.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 67
+      },
+      "revId": "99fb5031a5b7f11b345ed3e9f7e6e358ee0d6740",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
