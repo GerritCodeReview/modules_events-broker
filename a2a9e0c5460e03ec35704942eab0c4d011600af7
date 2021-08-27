@@ -24,6 +24,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8ba28c7_8335d689",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/publisher/StreamEventPublisher.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2021-08-27T08:08:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "beb02406_6703b5bf",
+      "range": {
+        "startLine": 74,
+        "startChar": 20,
+        "endLine": 74,
+        "endChar": 49
+      },
+      "revId": "a2a9e0c5460e03ec35704942eab0c4d011600af7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec9a9ddc_c5c3cd7c",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-26T15:09:22Z",
       "side": 1,
       "message": "final ?",
+      "range": {
+        "startLine": 18,
+        "startChar": 2,
+        "endLine": 18,
+        "endChar": 9
+      },
+      "revId": "a2a9e0c5460e03ec35704942eab0c4d011600af7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e74989d2_8ea21656",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/publisher/StreamEventPublisherConfig.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2021-08-27T08:08:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec9a9ddc_c5c3cd7c",
       "range": {
         "startLine": 18,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "332da0f3_5be03556",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/publisher/StreamEventPublisherConfig.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2021-08-27T08:08:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78787e8c_e5eaeeac",
+      "range": {
+        "startLine": 19,
+        "startChar": 2,
+        "endLine": 19,
+        "endChar": 9
+      },
+      "revId": "a2a9e0c5460e03ec35704942eab0c4d011600af7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1769ca45_14f2344c",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-08-26T15:09:22Z",
       "side": 1,
       "message": "is the new namespace part of this change? If so can we mention it in the commit message",
+      "range": {
+        "startLine": 15,
+        "startChar": 43,
+        "endLine": 15,
+        "endChar": 52
+      },
+      "revId": "a2a9e0c5460e03ec35704942eab0c4d011600af7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d47a844_dcedb033",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/publisher/executor/StreamEventPublisherExecutor.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2021-08-27T08:08:25Z",
+      "side": 1,
+      "message": "it is mentioned:\nAlso move stream events publishing classes to a separate package.",
+      "parentUuid": "1769ca45_14f2344c",
       "range": {
         "startLine": 15,
         "startChar": 43,
