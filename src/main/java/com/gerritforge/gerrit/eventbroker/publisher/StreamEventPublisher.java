@@ -15,8 +15,10 @@
 package com.gerritforge.gerrit.eventbroker.publisher;
 
 import com.gerritforge.gerrit.eventbroker.BrokerApi;
+import com.gerritforge.gerrit.eventbroker.metrics.BrokerMetrics;
 import com.gerritforge.gerrit.eventbroker.publisher.executor.StreamEventPublisherExecutor;
 import com.google.common.flogger.FluentLogger;
+import com.google.gerrit.common.Nullable;
 import com.google.gerrit.extensions.registration.DynamicItem;
 import com.google.gerrit.server.config.GerritInstanceId;
 import com.google.gerrit.server.events.Event;
@@ -26,7 +28,6 @@ import com.google.inject.Singleton;
 import java.util.concurrent.Executor;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
-import javax.annotation.Nullable;
 
 @Singleton
 public class StreamEventPublisher implements EventListener {
@@ -36,17 +37,20 @@ public class StreamEventPublisher implements EventListener {
   private final StreamEventPublisherConfig config;
   private final Executor executor;
   private final String instanceId;
+  private final DynamicItem<BrokerMetrics> brokerMetrics;
 
   @Inject
   public StreamEventPublisher(
       DynamicItem<BrokerApi> brokerApi,
       StreamEventPublisherConfig config,
       @StreamEventPublisherExecutor Executor executor,
-      @Nullable @GerritInstanceId String instanceId) {
+      @Nullable @GerritInstanceId String instanceId,
+      DynamicItem<BrokerMetrics> brokerMetrics) {
     this.brokerApiDynamicItem = brokerApi;
     this.config = config;
     this.executor = executor;
     this.instanceId = instanceId;
+    this.brokerMetrics = brokerMetrics;
   }
 
   @Override
@@ -73,10 +77,11 @@ public class StreamEventPublisher implements EventListener {
           brokerApi
               .send(streamEventTopic, event)
               .get(config.getPublishingTimeoutInMillis(), TimeUnit.MILLISECONDS);
+          brokerMetrics.get().incrementBrokerPublishedMessage();
         } catch (TimeoutException e) {
           log.atSevere().withCause(e).log(
               "Timeout when publishing event '{}' to topic '{}", event, streamEventTopic);
-
+          brokerMetrics.get().incrementBrokerFailedToPublishMessage();
         } catch (Throwable e) {
           log.atSevere().withCause(e).log(
               "Failed to publish event '{}' to topic '{}' - error: {} - stack trace: {}",
@@ -84,6 +89,7 @@ public class StreamEventPublisher implements EventListener {
               streamEventTopic,
               e.getMessage(),
               e.getStackTrace());
+          brokerMetrics.get().incrementBrokerFailedToPublishMessage();
         }
       }
     }
