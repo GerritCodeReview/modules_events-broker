@@ -14,6 +14,8 @@
 
 package com.gerritforge.gerrit.eventbroker;
 
+import com.gerritforge.gerrit.eventbroker.metrics.BrokerMetrics;
+import com.gerritforge.gerrit.eventbroker.metrics.BrokerMetricsNoOp;
 import com.google.gerrit.extensions.registration.DynamicItem;
 import com.google.inject.AbstractModule;
 import com.google.inject.Inject;
@@ -33,6 +35,12 @@ public class BrokerApiModule extends AbstractModule {
       DynamicItem.itemOf(binder(), BrokerApi.class);
       DynamicItem.bind(binder(), BrokerApi.class).to(InProcessBrokerApi.class).in(Scopes.SINGLETON);
     }
+
+    DynamicItem.itemOf(binder(), BrokerMetrics.class);
+    DynamicItem.bind(binder(), BrokerMetrics.class)
+        .to(BrokerMetricsNoOp.class)
+        .in(Scopes.SINGLETON);
+
     bind(EventDeserializer.class).in(Scopes.SINGLETON);
   }
 }

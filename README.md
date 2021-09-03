@@ -66,3 +66,26 @@ public class SomeModule extends AbstractModule {
 
 Note: To avoid message duplication Stream Events Publisher uses [gerrit.instanceId](https://gerrit-review.googlesource.com/Documentation/config-gerrit.html)
 and Event.instanceId to filter out forwarded events.
+
+### Broker Metrics
+
+When `StreamEventPublisher` is used user can optionally bind an implementation of
+the BrokerMetrics` interface. This will allow to collect metrics about
+successful/failure stream events publishing. If no binding is provided default
+implementation will skip collecting metrics:
+
+```java
+import com.google.gerrit.extensions.registration.DynamicItem;
+import com.google.inject.AbstractModule;
+
+public class SomeModule extends AbstractModule {
+    @Override
+    protected void configure() {
+        DynamicItem.bind(binder(), BrokerMetrics.class)
+            .to(BrokerMetricsImpl.class)
+            .in(Scopes.SINGLETON);
+    }
+}
+```
+
+Note: `BrokerMetrics` implementation must be bound in a plugin module.
