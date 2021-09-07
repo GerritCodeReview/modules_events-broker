@@ -45,6 +45,30 @@
       },
       "revId": "6a5189b4b8f60922306543a63d17bcbb10aac33f",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ed02903_4b8ed7c3",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiModule.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2021-09-07T22:29:36Z",
+      "side": 1,
+      "message": "Yes, I was considering that but I believe L34 is a leftover when kafka code was a part of the multi-site. The only situation when this can happen is if someone will create binding for the BrokerMetrics in another lib module. If the binding is added as a plugin module, lib module will be loaded first so everything will work fine",
+      "parentUuid": "fd36a8d7_8706f672",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 0
+      },
+      "revId": "6a5189b4b8f60922306543a63d17bcbb10aac33f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
