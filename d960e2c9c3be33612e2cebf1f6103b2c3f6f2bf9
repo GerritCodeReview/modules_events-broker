@@ -34,6 +34,52 @@
       "parentUuid": "7601c3ba_32fbe2c4",
       "revId": "d960e2c9c3be33612e2cebf1f6103b2c3f6f2bf9",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc36641f_62b31432",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/publisher/StreamEventPublisher.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2022-04-13T11:33:33Z",
+      "side": 1,
+      "message": "This isn\u0027t needed, because the `withCause(e)` would do the job already",
+      "range": {
+        "startLine": 87,
+        "startChar": 72,
+        "endLine": 87,
+        "endChar": 87
+      },
+      "revId": "d960e2c9c3be33612e2cebf1f6103b2c3f6f2bf9",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b97e953c_ad082d59",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/publisher/StreamEventPublisher.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2022-04-13T11:33:33Z",
+      "side": 1,
+      "message": "Unneeded",
+      "range": {
+        "startLine": 88,
+        "startChar": 39,
+        "endLine": 88,
+        "endChar": 72
+      },
+      "revId": "d960e2c9c3be33612e2cebf1f6103b2c3f6f2bf9",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
