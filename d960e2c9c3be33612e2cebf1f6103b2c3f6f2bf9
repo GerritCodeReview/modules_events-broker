@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7601c3ba_32fbe2c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2022-04-13T11:27:32Z",
+      "side": 1,
+      "message": "Good catch, does this also apply to some stable branches?",
+      "revId": "d960e2c9c3be33612e2cebf1f6103b2c3f6f2bf9",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
