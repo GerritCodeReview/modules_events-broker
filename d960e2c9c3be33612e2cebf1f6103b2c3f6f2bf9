@@ -107,6 +107,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99238b89_063cf2cd",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/publisher/StreamEventPublisher.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2022-04-13T14:55:11Z",
+      "side": 1,
+      "message": "Done in [1]\n\n\n[1]https://gerrit-review.googlesource.com/c/modules/events-broker/+/334872",
+      "parentUuid": "4de8b39f_d221f86d",
+      "range": {
+        "startLine": 87,
+        "startChar": 72,
+        "endLine": 87,
+        "endChar": 87
+      },
+      "revId": "d960e2c9c3be33612e2cebf1f6103b2c3f6f2bf9",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b97e953c_ad082d59",
