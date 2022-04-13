@@ -80,15 +80,12 @@ public class StreamEventPublisher implements EventListener {
           brokerMetrics.get().incrementBrokerPublishedMessage();
         } catch (TimeoutException e) {
           log.atSevere().withCause(e).log(
-              "Timeout when publishing event '{}' to topic '{}", event, streamEventTopic);
+              "Timeout when publishing event '%s' to topic '%s'", event, streamEventTopic);
           brokerMetrics.get().incrementBrokerFailedToPublishMessage();
         } catch (Throwable e) {
           log.atSevere().withCause(e).log(
-              "Failed to publish event '{}' to topic '{}' - error: {} - stack trace: {}",
-              event,
-              streamEventTopic,
-              e.getMessage(),
-              e.getStackTrace());
+              "Failed to publish event '%s' to topic '%s' - error: %s - stack trace: %s",
+              event, streamEventTopic, e.getMessage(), e.getStackTrace());
           brokerMetrics.get().incrementBrokerFailedToPublishMessage();
         }
       }
