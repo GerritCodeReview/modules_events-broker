@@ -84,8 +84,7 @@ public class StreamEventPublisher implements EventListener {
           brokerMetrics.get().incrementBrokerFailedToPublishMessage();
         } catch (Throwable e) {
           log.atSevere().withCause(e).log(
-              "Failed to publish event '%s' to topic '%s' - error: %s - stack trace: %s",
-              event, streamEventTopic, e.getMessage(), e.getStackTrace());
+              "Failed to publish event '%s' to topic '%s'", event, streamEventTopic);
           brokerMetrics.get().incrementBrokerFailedToPublishMessage();
         }
       }
