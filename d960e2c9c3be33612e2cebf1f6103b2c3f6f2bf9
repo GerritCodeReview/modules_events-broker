@@ -16,6 +16,24 @@
       "message": "Good catch, does this also apply to some stable branches?",
       "revId": "d960e2c9c3be33612e2cebf1f6103b2c3f6f2bf9",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ed83037_e9c27714",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2022-04-13T11:28:05Z",
+      "side": 1,
+      "message": "I checked against stable-3.5 and it works there.",
+      "parentUuid": "7601c3ba_32fbe2c4",
+      "revId": "d960e2c9c3be33612e2cebf1f6103b2c3f6f2bf9",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
