@@ -4,7 +4,7 @@
 
     <groupId>com.gerritforge</groupId>
     <artifactId>events-broker</artifactId>
-    <version>3.6.0-rc2</version>
+    <version>3.6.0-rc3</version>
     <packaging>jar</packaging>
 
     <name>events-broker</name>
@@ -76,8 +76,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.6.1</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>11</source>
+                    <target>11</target>
                     <annotationProcessorPaths>
                         <path>
                             <groupId>com.google.auto.value</groupId>
