@@ -34,6 +34,10 @@ public interface BrokerApi {
   /**
    * Receive asynchronously a message from a topic.
    *
+   * <p>Call the consumer for every message received from a topic. The message is automatically
+   * acknowledged if the consumer completes successfully, otherwise is put back on the topic in case
+   * of any exceptions thrown.
+   *
    * @param topic topic name
    * @param consumer an operation that accepts and process a single message
    */
