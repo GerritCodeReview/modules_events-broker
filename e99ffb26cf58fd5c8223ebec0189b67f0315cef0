@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bdd08b0_830955ba",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApi.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2022-05-12T08:03:11Z",
+      "side": 1,
+      "message": "Technically, the message is not removed from the topic until it get committed by the client, right? So maybe this should say \"kept on the topic for redelivery\"?",
+      "range": {
+        "startLine": 38,
+        "startChar": 58,
+        "endLine": 38,
+        "endChar": 93
+      },
+      "revId": "e99ffb26cf58fd5c8223ebec0189b67f0315cef0",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a1b254d_66e49200",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApi.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2022-05-12T08:03:11Z",
+      "side": 1,
+      "message": "Shall we have a more specific Consumer interface whose (only) method also throws a specific exception when the event gets rejected?",
+      "revId": "e99ffb26cf58fd5c8223ebec0189b67f0315cef0",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
