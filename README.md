@@ -21,7 +21,12 @@ is provided by the library. The last step is to explicitly bind the Stream Event
 Publisher, as such:
 
 ```java
+import java.util.concurrent.Executor;
+
 import com.gerritforge.gerrit.eventbroker.publisher.StreamEventPublisher;
+import com.gerritforge.gerrit.eventbroker.publisher.StreamEventPublisherConfig;
+import com.gerritforge.gerrit.eventbroker.publisher.executor.StreamEventPublisherExecutor;
+import com.gerritforge.gerrit.eventbroker.publisher.executor.StreamEventPublisherExecutorProvider;
 import com.google.gerrit.extensions.registration.DynamicSet;
 import com.google.gerrit.server.events.EventListener;
 import com.google.inject.AbstractModule;
@@ -35,17 +40,18 @@ public class SomeModule extends AbstractModule {
                 .toInstance(new StreamEventPublisherConfig(
                     "name_of_the_stream_events_topic",
                     messagePublishingTimeout));
-        
+
         bind(Executor.class).annotatedWith(StreamEventPublisherExecutor.class).toProvider(StreamEventPublisherExecutorProvider.class);
         DynamicSet.bind(binder(), EventListener.class).to(StreamEventPublisher.class);
     }
 }
 ```
 
-Alternative way to setup Stream Event Publisher is to use default Guice module:
+Alternative way to setup Stream Event Publisher is to use default Guice module
+`StreamEventPublisherModule`:
 
 ```java
-
+import com.gerritforge.gerrit.eventbroker.publisher.StreamEventPublisherConfig;
 import com.gerritforge.gerrit.eventbroker.publisher.StreamEventPublisherModule;
 import com.google.inject.AbstractModule;
 import com.google.inject.TypeLiteral;
