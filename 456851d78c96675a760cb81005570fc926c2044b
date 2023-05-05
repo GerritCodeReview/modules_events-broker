@@ -3,6 +3,46 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "15ff7db0_5c2a553d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2023-05-05T04:23:43Z",
+      "side": 1,
+      "message": "That was actually a hack as well.\n\nWe can keep it as-is, and fix it later and introduce `gerrit_module()`\n\nGerrit plugin is in the end a `java_binary`, with shaded transitive dependencies that includes manifest file content with plugin details, like name and guice module classes to be injected, and providing the api type and api version:\n```\n    Gerrit-ApiType: plugin\n    Gerrit-ApiVersion: 3.5.6\n```\n\nWe could do the something similar, and add a rule: `gerrit_module()` that would do skip `java_binary` and just rename the library from `libname.jar` to `name.jar`:\n\n```\n  java_library(name) \u003d\u003e creates libname.jar\n  genrule(name) \u003d\u003e renames libname.jar to name.jar\n```\n\nAnd avoid creating shaded jar. However, once the first module with additional dependencies would show up, this wouldn\u0027t work any more.\n\nWe don\u0027t have it yet, so that\u0027s fine for now.",
+      "range": {
+        "startLine": 10,
+        "startChar": 21,
+        "endLine": 11,
+        "endChar": 20
+      },
+      "revId": "456851d78c96675a760cb81005570fc926c2044b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94f8fd18_769261ce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2023-05-05T04:23:43Z",
+      "side": 1,
+      "message": "Nit: point at the end of the statement.",
+      "revId": "456851d78c96675a760cb81005570fc926c2044b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "cac0651b_04cafecb",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -14,6 +54,29 @@
       "writtenOn": "2023-05-04T19:39:34Z",
       "side": 1,
       "message": "I think this would work, @David?",
+      "revId": "456851d78c96675a760cb81005570fc926c2044b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd4f43b7_f23f3f2b",
+        "filename": "BUILD",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2023-05-05T04:23:43Z",
+      "side": 1,
+      "message": "This should be: `\":events-broker__plugin\"` now to depend on library (`libevents-broker__plugin.jar`) and not on shaded jar. We don\u0027t want to build shaded jar (`evens-broker__non_stamped_deploy.jar`) and merge the stamping information into the final artifact (`evens-broker.jar`) to just run the tests.",
+      "range": {
+        "startLine": 22,
+        "startChar": 9,
+        "endLine": 22,
+        "endChar": 23
+      },
       "revId": "456851d78c96675a760cb81005570fc926c2044b",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
