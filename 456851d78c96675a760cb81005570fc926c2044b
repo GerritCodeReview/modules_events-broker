@@ -43,6 +43,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c62f9896_5e362731",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2023-05-05T08:41:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94f8fd18_769261ce",
+      "revId": "456851d78c96675a760cb81005570fc926c2044b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "cac0651b_04cafecb",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -71,6 +89,30 @@
       "writtenOn": "2023-05-05T04:23:43Z",
       "side": 1,
       "message": "This should be: `\":events-broker__plugin\"` now to depend on library (`libevents-broker__plugin.jar`) and not on shaded jar. We don\u0027t want to build shaded jar (`evens-broker__non_stamped_deploy.jar`) and merge the stamping information into the final artifact (`evens-broker.jar`) to just run the tests.",
+      "range": {
+        "startLine": 22,
+        "startChar": 9,
+        "endLine": 22,
+        "endChar": 23
+      },
+      "revId": "456851d78c96675a760cb81005570fc926c2044b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bf82df4_6928c836",
+        "filename": "BUILD",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2023-05-05T08:41:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd4f43b7_f23f3f2b",
       "range": {
         "startLine": 22,
         "startChar": 9,
