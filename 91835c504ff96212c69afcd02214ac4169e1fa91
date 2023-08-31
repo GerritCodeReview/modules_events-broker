@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21790d76_7426be3e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149185
+      },
+      "writtenOn": "2023-08-31T14:32:51Z",
+      "side": 1,
+      "message": "if you are happy with the contract i can start developing the concrete implementation in the plugin `kafka-events`",
+      "revId": "91835c504ff96212c69afcd02214ac4169e1fa91",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
