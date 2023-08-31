@@ -152,6 +152,30 @@
       },
       "revId": "a5af8ce9117ce33f8f860c945ba6804ddddb931b",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59d5b147_a9d98fa9",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/ExtendedBrokerApi.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1149185
+      },
+      "writtenOn": "2023-08-31T16:08:47Z",
+      "side": 1,
+      "message": "I think we could have used the same interface with default in the new method. We would not need to break anything.... maybe i am missing something now.",
+      "parentUuid": "9b81724a_4d72ccea",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 88
+      },
+      "revId": "a5af8ce9117ce33f8f860c945ba6804ddddb931b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
