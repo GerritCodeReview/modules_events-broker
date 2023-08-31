@@ -86,6 +86,30 @@
       },
       "revId": "a5af8ce9117ce33f8f860c945ba6804ddddb931b",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e90f332_f7d82ff8",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/ExtendedBrokerApi.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1161425
+      },
+      "writtenOn": "2023-08-31T14:28:39Z",
+      "side": 1,
+      "message": "Just seen the comment below.",
+      "parentUuid": "1fbbca4b_c87c25dc",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 11
+      },
+      "revId": "a5af8ce9117ce33f8f860c945ba6804ddddb931b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
