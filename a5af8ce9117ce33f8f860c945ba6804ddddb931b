@@ -39,6 +39,30 @@
       },
       "revId": "a5af8ce9117ce33f8f860c945ba6804ddddb931b",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f86e33cb_8a426807",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/ExtendedBrokerApi.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2023-08-31T14:26:30Z",
+      "side": 1,
+      "message": "True, and we could then on master throw an `UnsupportedOperationException`. But here, if you don\u0027t support it just do not implement the interface.",
+      "parentUuid": "26dc2ec3_967717fe",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 88
+      },
+      "revId": "a5af8ce9117ce33f8f860c945ba6804ddddb931b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
