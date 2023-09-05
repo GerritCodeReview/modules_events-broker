@@ -15,6 +15,7 @@
 package com.gerritforge.gerrit.eventbroker;
 
 import static com.gerritforge.gerrit.eventbroker.TopicSubscriber.topicSubscriber;
+import static com.gerritforge.gerrit.eventbroker.TopicSubscriberWithGroupId.topicSubscriberWithGroupId;
 
 import com.google.common.collect.ImmutableSet;
 import com.google.common.flogger.FluentLogger;
@@ -24,12 +25,14 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Consumer;
 
-public class InProcessBrokerApi implements BrokerApi {
+public class InProcessBrokerApi implements ExtendedBrokerApi {
   private static final FluentLogger log = FluentLogger.forEnclosingClass();
   private final Set<TopicSubscriber> topicSubscribers;
+  private final Set<TopicSubscriberWithGroupId> topicSubscribersWithGroupId;
 
   public InProcessBrokerApi() {
     this.topicSubscribers = new HashSet<>();
+    this.topicSubscribersWithGroupId = new HashSet<>();
   }
 
   @Override
@@ -39,12 +42,36 @@ public class InProcessBrokerApi implements BrokerApi {
 
   @Override
   public void receiveAsync(String topic, Consumer<Event> eventConsumer) {
+<<<<<<< PATCH SET (3dc168 Provide subscribers with consumer's group id)
+    receiveAsync(
+        topic, eventConsumer, () -> topicSubscribers.add(topicSubscriber(topic, eventConsumer)));
+  }
+
+  /*
+   This implementation is not design to deal with the group ids.
+   All events will be delivered to all subscribers.
+  */
+  @Override
+  public void receiveAsync(String topic, String groupId, Consumer<Event> eventConsumer) {
+    receiveAsync(
+        topic,
+        eventConsumer,
+        () ->
+            topicSubscribersWithGroupId.add(
+                topicSubscriberWithGroupId(groupId, topicSubscriber(topic, eventConsumer))));
+=======
     topicSubscribers.add(topicSubscriber(topic, eventConsumer));
+>>>>>>> BASE      (f7213e Remove actual implementation of InProcessBrokerApi)
   }
 
   @Override
   public Set<TopicSubscriber> topicSubscribers() {
     return ImmutableSet.copyOf(topicSubscribers);
+  }
+
+  @Override
+  public Set<TopicSubscriberWithGroupId> topicSubscribersWithGroupId() {
+    return ImmutableSet.copyOf(topicSubscribersWithGroupId);
   }
 
   @Override
@@ -60,5 +87,21 @@ public class InProcessBrokerApi implements BrokerApi {
   private <T> T unsupported() {
     throw new UnsupportedOperationException(
         "InProcessBrokerApi is not intended to be used as a real broker");
+  }
+
+  private void receiveAsync(
+      String topic, Consumer<Event> eventConsumer, Runnable addTopicSubscriber) {
+    EventBus topicEventConsumers = eventBusMap.get(topic);
+    if (topicEventConsumers == null) {
+      topicEventConsumers = new EventBus(topic);
+      eventBusMap.put(topic, topicEventConsumers);
+    }
+
+    topicEventConsumers.register(eventConsumer);
+    addTopicSubscriber.run();
+
+    EvictingQueue<Event> messageQueue = EvictingQueue.create(DEFAULT_MESSAGE_QUEUE_SIZE);
+    messagesQueueMap.put(topic, messageQueue);
+    topicEventConsumers.register(new EventBusMessageRecorder(messageQueue));
   }
 }
