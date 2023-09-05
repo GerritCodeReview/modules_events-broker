@@ -14,7 +14,9 @@
 
 package com.gerritforge.gerrit.eventbroker;
 
+import com.google.common.collect.ImmutableSet;
 import com.google.gerrit.server.events.Event;
+import java.util.Set;
 import java.util.function.Consumer;
 
 public interface ExtendedBrokerApi extends BrokerApi {
@@ -27,4 +29,15 @@ public interface ExtendedBrokerApi extends BrokerApi {
    * @param consumer an operation that accepts and process a single message
    */
   void receiveAsync(String topic, String groupId, Consumer<Event> consumer);
+
+  /**
+   * Get the active subscribers with their consumer's group id.
+   *
+   * @return {@link Set} of the topics subscribers. By default returns empty set.
+   *     <p>Note: Default methods enable to add new functionality to the interfaces of the libraries
+   *     and ensure binary compatibility with code written for older versions of those interfaces.
+   */
+  default Set<TopicSubscriberWithGroupId> topicSubscribersWithGroupId() {
+    return ImmutableSet.of();
+  }
 }
