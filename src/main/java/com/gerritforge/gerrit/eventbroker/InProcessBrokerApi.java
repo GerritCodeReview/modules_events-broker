@@ -15,6 +15,7 @@
 package com.gerritforge.gerrit.eventbroker;
 
 import static com.gerritforge.gerrit.eventbroker.TopicSubscriber.topicSubscriber;
+import static com.gerritforge.gerrit.eventbroker.TopicSubscriberWithGroupId.topicSubscriberWithGroupId;
 
 import com.google.common.collect.ImmutableSet;
 import com.google.common.flogger.FluentLogger;
@@ -24,12 +25,14 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Consumer;
 
-public class InProcessBrokerApi implements BrokerApi {
+public class InProcessBrokerApi implements ExtendedBrokerApi {
   private static final FluentLogger log = FluentLogger.forEnclosingClass();
   private final Set<TopicSubscriber> topicSubscribers;
+  private final Set<TopicSubscriberWithGroupId> topicSubscribersWithGroupId;
 
   public InProcessBrokerApi() {
     this.topicSubscribers = new HashSet<>();
+    this.topicSubscribersWithGroupId = new HashSet<>();
   }
 
   @Override
@@ -43,13 +46,25 @@ public class InProcessBrokerApi implements BrokerApi {
   }
 
   @Override
+  public void receiveAsync(String topic, String groupId, Consumer<Event> eventConsumer) {
+    topicSubscribersWithGroupId.add(
+        topicSubscriberWithGroupId(groupId, topicSubscriber(topic, eventConsumer)));
+  }
+
+  @Override
   public Set<TopicSubscriber> topicSubscribers() {
     return ImmutableSet.copyOf(topicSubscribers);
   }
 
   @Override
+  public Set<TopicSubscriberWithGroupId> topicSubscribersWithGroupId() {
+    return ImmutableSet.copyOf(topicSubscribersWithGroupId);
+  }
+
+  @Override
   public void disconnect() {
     this.topicSubscribers.clear();
+    this.topicSubscribersWithGroupId.clear();
   }
 
   @Override
