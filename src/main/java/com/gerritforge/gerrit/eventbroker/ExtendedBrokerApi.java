@@ -15,6 +15,7 @@
 package com.gerritforge.gerrit.eventbroker;
 
 import com.google.gerrit.server.events.Event;
+import java.util.Set;
 import java.util.function.Consumer;
 
 public interface ExtendedBrokerApi extends BrokerApi {
@@ -27,4 +28,11 @@ public interface ExtendedBrokerApi extends BrokerApi {
    * @param consumer an operation that accepts and process a single message
    */
   void receiveAsync(String topic, String groupId, Consumer<Event> consumer);
+
+  /**
+   * Get the active subscribers with their consumer's group id.
+   *
+   * @return {@link Set} of the topics subscribers using a consumer's group id..
+   */
+  Set<TopicSubscriberWithGroupId> topicSubscribersWithGroupId();
 }
