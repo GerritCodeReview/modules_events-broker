@@ -16,6 +16,24 @@
       "message": "maybe Runnable is not correct here to make the code more generic.\napparently it executes in a other thread which is something overkilled.",
       "revId": "83e68e4f3204e753e098443bf5cd9287bee01076",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16022f5e_9f2e2549",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/InProcessBrokerApi.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2023-09-06T19:57:34Z",
+      "side": 1,
+      "message": "Runnable is not executed in other thread until you not gonna pass it to some executor so in this case is just normal method call. If you don\u0027t like `Runnable`\nyou can use `BiConsumer`[1] \n\nOr you can create functional interface like this:\n```\n  @FunctionalInterface\n  public interface VoidFunction {\n    void invoke();\n  }\n```\n\n1.https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/BiConsumer.html",
+      "parentUuid": "71a79072_14f042cb",
+      "revId": "83e68e4f3204e753e098443bf5cd9287bee01076",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
