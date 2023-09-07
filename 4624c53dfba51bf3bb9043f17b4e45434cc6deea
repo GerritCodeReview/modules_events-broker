@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe3f26b3_02e8f215",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1157810
+      },
+      "writtenOn": "2023-09-07T11:26:33Z",
+      "side": 1,
+      "message": "Why, what is the use case or the benefit or this change?",
+      "revId": "4624c53dfba51bf3bb9043f17b4e45434cc6deea",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "581b2b22_a0709e10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1157810
+      },
+      "writtenOn": "2023-09-07T11:26:33Z",
+      "side": 1,
+      "message": "Missing tests",
+      "revId": "4624c53dfba51bf3bb9043f17b4e45434cc6deea",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8cad7a6_154376e8",
+        "filename": "pom.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1157810
+      },
+      "writtenOn": "2023-09-07T11:26:33Z",
+      "side": 1,
+      "message": "Its been a while since I saw a maven pom.xml file, why are we simply not incrementing the patch number so we end up with `3.4.9`?",
+      "revId": "4624c53dfba51bf3bb9043f17b4e45434cc6deea",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
