@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "72490081_13bf9f21",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/InProcessBrokerApi.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2023-09-07T07:46:06Z",
+      "side": 1,
+      "message": "should this be a copy, something like: \n\n```suggestion\n    return  ImmutableSet.copyOf(topicSubscribersWithGroupId);\n```",
+      "range": {
+        "startLine": 89,
+        "startChar": 4,
+        "endLine": 89,
+        "endChar": 39
+      },
+      "revId": "83e68e4f3204e753e098443bf5cd9287bee01076",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "71a79072_14f042cb",
         "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/InProcessBrokerApi.java",
         "patchSetId": 3
