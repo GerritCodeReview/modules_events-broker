@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "abf8b581_a1139766",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1157810
+      },
+      "writtenOn": "2023-09-07T12:38:27Z",
+      "side": 1,
+      "message": "Huh? The `BrokerApiTest` is testing the `InProcessBrokerApi`. Therefore tests should be added in this change.",
+      "parentUuid": "50d0444e_647c6c7d",
+      "revId": "4624c53dfba51bf3bb9043f17b4e45434cc6deea",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b8cad7a6_154376e8",
         "filename": "pom.xml",
         "patchSetId": 4
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "Actually if you execute this `git log --format\u003d%s -- pom.xml` in origin/stable-3.4: you have the following output:\n\n```\nSet event-broker and gerrit version to v3.4.8\nAdd interface ExtendedBrokerApi to consume messages with groupId\nSet version to 3.4.0.4\nSet version to 3.4.0.3\nSet version to 3.4.0.2\nSet version to 3.4.0.1\nSet events-broker and Gerrit to 3.4.0\nSet Gerrit and plugin to v3.4.0-rc2\nSet version to v3.4.0-rc0\nSet version to 3.4-alpha-20210205083200\nSet Gerrit to v3.4.0-SNAPSHOT\nSet Gerrit to v3.3.1\nSet to Gerrit v3.2.6\nSet to Gerrit v3.1.11\nInitial events-broker implementation for Gerrit v3.0.x\n```\n\nSo I think that what I said makes sense. I dont know if the bump of the version should be in another change.",
       "parentUuid": "ebcae733_17ae3efc",
+      "revId": "4624c53dfba51bf3bb9043f17b4e45434cc6deea",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75e559c9_b7443f3a",
+        "filename": "pom.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1157810
+      },
+      "writtenOn": "2023-09-07T12:38:27Z",
+      "side": 1,
+      "message": "Would be good to understand if the event-broker and gerrit versions are tied together, and how the version of the library should be incremented.",
+      "parentUuid": "834399cd_00eea3a1",
       "revId": "4624c53dfba51bf3bb9043f17b4e45434cc6deea",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
