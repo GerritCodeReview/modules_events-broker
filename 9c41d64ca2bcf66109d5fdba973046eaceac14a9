@@ -18,6 +18,24 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc649285_9bed1998",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/TopicSubscriberWithGroupId.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149185
+      },
+      "writtenOn": "2023-09-08T07:51:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad73e9d9_9b0fe7b4",
+      "revId": "9c41d64ca2bcf66109d5fdba973046eaceac14a9",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c238439b_ca1494c2",
