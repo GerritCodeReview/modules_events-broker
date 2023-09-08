@@ -158,6 +158,24 @@
       "parentUuid": "057ea9a2_5044f30a",
       "revId": "9c41d64ca2bcf66109d5fdba973046eaceac14a9",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22854b5f_53d6c19f",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/ExtendedBrokerApiTest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2023-09-08T14:43:03Z",
+      "side": 1,
+      "message": "after pairing with @alvaro.vilaplana@gmail.com I realised that tests were fine. We added few more and this should be ready for final review.",
+      "parentUuid": "9db03f2a_a2cb01ef",
+      "revId": "9c41d64ca2bcf66109d5fdba973046eaceac14a9",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
