@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d18ed5e_86dd8e69",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/ExtendedBrokerApiTest.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1157810
+      },
+      "writtenOn": "2023-09-08T17:10:11Z",
+      "side": 1,
+      "message": "why do we need this class, can we not add these tests in the `BrokerApiTest` class?",
+      "revId": "a7903ba61e510c28730fbbf876df29ee9f1123a4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
