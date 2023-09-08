@@ -36,6 +36,24 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e36545f8_40923568",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1157810
+      },
+      "writtenOn": "2023-09-08T17:13:18Z",
+      "side": 1,
+      "message": "Sorry Alvaro I dont see any issue referenced in the commit msg. Please add and resolve the comment.",
+      "parentUuid": "9bf0f355_446e8d4f",
+      "revId": "4624c53dfba51bf3bb9043f17b4e45434cc6deea",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "581b2b22_a0709e10",
