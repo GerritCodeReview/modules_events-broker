@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9bf0f355_446e8d4f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1149185
+      },
+      "writtenOn": "2023-09-08T08:43:02Z",
+      "side": 1,
+      "message": "We have added the issue in the commit message. Please, have a look at it ant let me know if makes sense.",
+      "parentUuid": "fe3f26b3_02e8f215",
+      "revId": "4624c53dfba51bf3bb9043f17b4e45434cc6deea",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "581b2b22_a0709e10",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -85,6 +103,24 @@
       "side": 1,
       "message": "I have added `ExtendedBrokerApiTest`. It is difficult to reason about something when you have methods that are doing 20 things at the same time. Let me know what you think.",
       "parentUuid": "abf8b581_a1139766",
+      "revId": "4624c53dfba51bf3bb9043f17b4e45434cc6deea",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbf83253_2ac0dac5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149185
+      },
+      "writtenOn": "2023-09-08T08:43:02Z",
+      "side": 1,
+      "message": "It is not part of this change.",
+      "parentUuid": "82a8117a_2f6d7972",
       "revId": "4624c53dfba51bf3bb9043f17b4e45434cc6deea",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },

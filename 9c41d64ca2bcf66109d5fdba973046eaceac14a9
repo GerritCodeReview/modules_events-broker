@@ -53,6 +53,24 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f52f925e_7a7caea6",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/ExtendedBrokerApiTest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1149185
+      },
+      "writtenOn": "2023-09-08T08:43:02Z",
+      "side": 1,
+      "message": "It is not part of this change.",
+      "parentUuid": "c238439b_ca1494c2",
+      "revId": "9c41d64ca2bcf66109d5fdba973046eaceac14a9",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59483243_568dec72",
@@ -120,6 +138,24 @@
       "side": 1,
       "message": "well, we have added some functionality to `InProcessBrokerApi` because now is extending `ExtendedBorkerAPi` which contains 2 more API regarding the `groupId`. And it looks that there are some questions in terms of requirements and functionality so, I think that we need to test it otherwise we will have a commit with a incorrect code or at least suspicious.",
       "parentUuid": "7f2a4955_c7255502",
+      "revId": "9c41d64ca2bcf66109d5fdba973046eaceac14a9",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9db03f2a_a2cb01ef",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/ExtendedBrokerApiTest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1149185
+      },
+      "writtenOn": "2023-09-08T08:43:02Z",
+      "side": 1,
+      "message": "It is not part of this change.",
+      "parentUuid": "057ea9a2_5044f30a",
       "revId": "9c41d64ca2bcf66109d5fdba973046eaceac14a9",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
