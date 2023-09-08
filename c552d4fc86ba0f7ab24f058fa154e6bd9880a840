@@ -3,7 +3,7 @@
     "gerritforge:events-broker-build": {
       "state": "NOT_STARTED",
       "created": "2023-09-08T08:47:05Z",
-      "updated": "2023-09-08T12:00:34Z"
+      "updated": "2023-09-08T12:04:22Z"
     },
     "gerritforge:events-broker-format": {
       "state": "SUCCESSFUL",
