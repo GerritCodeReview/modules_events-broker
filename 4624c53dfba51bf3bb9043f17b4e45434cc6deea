@@ -56,6 +56,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "05569388_90cbec48",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1149185
+      },
+      "writtenOn": "2023-09-09T08:33:41Z",
+      "side": 1,
+      "message": "It was set in the previous patchset but we removed it by mistake in the last one.",
+      "parentUuid": "e36545f8_40923568",
+      "revId": "4624c53dfba51bf3bb9043f17b4e45434cc6deea",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "581b2b22_a0709e10",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4

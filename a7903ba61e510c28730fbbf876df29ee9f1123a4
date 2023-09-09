@@ -16,6 +16,24 @@
       "message": "why do we need this class, can we not add these tests in the `BrokerApiTest` class?",
       "revId": "a7903ba61e510c28730fbbf876df29ee9f1123a4",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8739a8c_1b6b4e8b",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/ExtendedBrokerApiTest.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1149185
+      },
+      "writtenOn": "2023-09-09T08:33:41Z",
+      "side": 1,
+      "message": "Before `InProcessBrokerApi` was implementing `BrokerApiTest`. For some reason the developers called the unit test `BrokerApiTest` instead of `InProcessBrokerApiTest`. \n\nNow `InProcessBrokerApi` is extending `ExtendedBrokerApi`. In order to avoid confusion adding tests in `BrokerApiTest` that belongs to the `ExtendedBrokerApi` I decided to created `ExtendedBrokerApiTest`. \n\nIn my opinion we should have only one test called `InProcessBrokerApiTest` because we are testing the functionality of `InProcessBrokerApi`. To avoid adding noise to this change I decided that we should do it in a follow-up change.",
+      "parentUuid": "9d18ed5e_86dd8e69",
+      "revId": "a7903ba61e510c28730fbbf876df29ee9f1123a4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
