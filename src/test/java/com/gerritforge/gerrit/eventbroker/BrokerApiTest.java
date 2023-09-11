@@ -277,11 +277,11 @@ public abstract class BrokerApiTest {
   }
 
   @SuppressWarnings("unchecked")
-  private <T> Consumer<T> mockEventConsumer() {
+  protected <T> Consumer<T> mockEventConsumer() {
     return (Consumer<T>) Mockito.mock(Subscriber.class);
   }
 
-  private void compareWithExpectedEvent(
+  protected void compareWithExpectedEvent(
       Consumer<Event> eventConsumer, ArgumentCaptor<Event> eventCaptor, Event expectedEvent) {
     verify(eventConsumer, times(1)).accept(eventCaptor.capture());
     assertThat(eventCaptor.getValue()).isEqualTo(expectedEvent);
