@@ -42,7 +42,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
-public class BrokerApiTest {
+abstract class BrokerApiTest {
 
   public static final int SEND_FUTURE_TIMEOUT = 1;
   @Captor ArgumentCaptor<Event> eventCaptor;
@@ -52,9 +52,11 @@ public class BrokerApiTest {
   UUID instanceId = UUID.randomUUID();
   private Gson gson = new Gson();
 
+  protected abstract BrokerApi brokerApi();
+
   @Before
   public void setup() {
-    brokerApiUnderTest = new InProcessBrokerApi();
+    brokerApiUnderTest = brokerApi();
     eventConsumer = mockEventConsumer();
   }
 
@@ -214,7 +216,7 @@ public class BrokerApiTest {
 
     ProjectCreatedEvent eventForTopic = testProjectCreatedEvent("Project name");
 
-    BrokerApi secondaryBroker = new InProcessBrokerApi();
+    BrokerApi secondaryBroker = brokerApi();
     brokerApiUnderTest.disconnect();
     secondaryBroker.receiveAsync("topic", eventConsumer);
 
