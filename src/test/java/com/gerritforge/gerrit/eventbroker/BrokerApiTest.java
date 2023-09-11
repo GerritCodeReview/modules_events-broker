@@ -34,6 +34,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 import java.util.function.Consumer;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
@@ -41,8 +42,9 @@ import org.mockito.Captor;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
+@Ignore
 @RunWith(MockitoJUnitRunner.class)
-public class BrokerApiTest {
+public abstract class BrokerApiTest {
 
   public static final int SEND_FUTURE_TIMEOUT = 1;
   @Captor ArgumentCaptor<Event> eventCaptor;
@@ -52,9 +54,11 @@ public class BrokerApiTest {
   UUID instanceId = UUID.randomUUID();
   private Gson gson = new Gson();
 
+  protected abstract BrokerApi brokerApi();
+
   @Before
   public void setup() {
-    brokerApiUnderTest = new InProcessBrokerApi();
+    brokerApiUnderTest = brokerApi();
     eventConsumer = mockEventConsumer();
   }
 
@@ -214,7 +218,7 @@ public class BrokerApiTest {
 
     ProjectCreatedEvent eventForTopic = testProjectCreatedEvent("Project name");
 
-    BrokerApi secondaryBroker = new InProcessBrokerApi();
+    BrokerApi secondaryBroker = brokerApi();
     brokerApiUnderTest.disconnect();
     secondaryBroker.receiveAsync("topic", eventConsumer);
 
