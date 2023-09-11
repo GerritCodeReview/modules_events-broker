@@ -230,6 +230,24 @@
       "parentUuid": "834399cd_00eea3a1",
       "revId": "4624c53dfba51bf3bb9043f17b4e45434cc6deea",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18a0816e_116d344c",
+        "filename": "pom.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2023-09-11T21:00:04Z",
+      "side": 1,
+      "message": "They should be related, because the classes used in the events-broker depend from the Gerrit ones.",
+      "parentUuid": "75e559c9_b7443f3a",
+      "revId": "4624c53dfba51bf3bb9043f17b4e45434cc6deea",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
