@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed50a770_ae3cf66f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2023-09-11T21:56:21Z",
+      "side": 1,
+      "message": "See an example of what I mean in my comments: Change 385896",
+      "revId": "96c158a02e0f0085bfa1398e18162e890e5f3654",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb872052_ca2442b2",
@@ -73,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b0df4613_d0137c7c",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/ExtendedBrokerApiTest.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2023-09-11T21:56:21Z",
+      "side": 1,
+      "message": "If you rebase it on top of Change 385861 you will see how `InProcessBrokerApi` is reduced to a minimum of what is needed.\nIt won\u0027t make sense to have dead code well tested: best to just remove it 😊\n\nWhat *is really useful* is this test harness to be used for any real implementation of `ExtendedBrokerApi`.",
+      "parentUuid": "87499c1f_6357d1d7",
+      "range": {
+        "startLine": 37,
+        "startChar": 9,
+        "endLine": 37,
+        "endChar": 33
+      },
+      "revId": "96c158a02e0f0085bfa1398e18162e890e5f3654",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "601cf9df_eec8481c",
         "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/ExtendedBrokerApiTest.java",
         "patchSetId": 14
@@ -108,6 +149,30 @@
       "side": 1,
       "message": "are you suggesting to extend this test from the concrete implementations i.e in `events-kafka`?\n\nIn that case we should have an `abstract test` that covers `ExtendedBrokerApi + BrokerApi`. do we want to do it in this change?",
       "parentUuid": "601cf9df_eec8481c",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 6
+      },
+      "revId": "96c158a02e0f0085bfa1398e18162e890e5f3654",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47321fca_09040033",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/ExtendedBrokerApiTest.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2023-09-11T21:56:21Z",
+      "side": 1,
+      "message": "\u003e are you suggesting to extend this test from the concrete implementations i.e in `events-kafka`?\n\nYep.\n\n\u003e In that case we should have an `abstract test` that covers `ExtendedBrokerApi + BrokerApi`. do we want to do it in this change?\n\n`ExtendedBrokerApiTest` can just be a subclass of `BrokerApiTest`.",
+      "parentUuid": "f2664af8_e5f8f7bd",
       "range": {
         "startLine": 38,
         "startChar": 0,
