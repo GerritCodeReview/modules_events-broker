@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b4b57e5_e7f40349",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1157810
+      },
+      "writtenOn": "2023-09-12T06:48:05Z",
+      "side": 1,
+      "message": "Does this not leave the library effectively without any tests? I understand that we dont want to provide an actual implementation of a broker, but on the other hand, we need to have quick feedback and some basic level of confidence when we make changes to this project.",
+      "revId": "f7213e8d7ff0e3c98300f8315e0c75ce1397a035",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
