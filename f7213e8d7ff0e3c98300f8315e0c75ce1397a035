@@ -16,6 +16,41 @@
       "message": "Does this not leave the library effectively without any tests? I understand that we dont want to provide an actual implementation of a broker, but on the other hand, we need to have quick feedback and some basic level of confidence when we make changes to this project.",
       "revId": "f7213e8d7ff0e3c98300f8315e0c75ce1397a035",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0b09886_07db7a7f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149185
+      },
+      "writtenOn": "2023-09-12T07:12:10Z",
+      "side": 1,
+      "message": "I think that if the responsibility of the library is provide a contract. The idea of having an abstract test to be implemented by other libraries is not bad idea. is like plug your implementations and lets see if you follow the specifications.\n\nAnother conversation is that the current libraries i.e events-already have their own tests",
+      "parentUuid": "5b4b57e5_e7f40349",
+      "revId": "f7213e8d7ff0e3c98300f8315e0c75ce1397a035",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c5ae514_35744da5",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/BrokerApiTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1149185
+      },
+      "writtenOn": "2023-09-12T07:12:10Z",
+      "side": 1,
+      "message": "If the idea is to create a test that behaves as a template to enforce concrete implementations to respect the contract defined in the the interface then you should remove Mockito and find another ways to assert behaviours",
+      "revId": "f7213e8d7ff0e3c98300f8315e0c75ce1397a035",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
