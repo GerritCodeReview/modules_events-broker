@@ -53,6 +53,24 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dc7d13b_7324a535",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2023-09-12T17:56:24Z",
+      "side": 1,
+      "message": "Ideally it should only test the broker in isolation, but without mocking. It is a \"sort-of\" IT test but without Gerrit, if possible.",
+      "parentUuid": "8e9609ea_7283a1ec",
+      "revId": "f7213e8d7ff0e3c98300f8315e0c75ce1397a035",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c5ae514_35744da5",
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "For example without mocks:\n```\nList\u003cEvent\u003e receivedEvents \u003d new ArrayList\u003c\u003e();\n \nBrokerApi kafkaBrokerApi \u003d kafkaBrokerApi();\nkafkaBrokerApi.send(topic, eventMessage);\nkafkaBrokerApi.receiveAsync(topic, receivedEvents::add);\n\nwaitUntil(() -\u003e receivedEvents.size() \u003d\u003d 1, WAIT_FOR_POLL_TIMEOUT);\nassertThat(receivedEvents.get(0).instanceId).isEqualTo(eventMessage.instanceId);\n```",
       "parentUuid": "0c5ae514_35744da5",
+      "revId": "f7213e8d7ff0e3c98300f8315e0c75ce1397a035",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46318752_fb53bd9a",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/BrokerApiTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2023-09-12T17:56:24Z",
+      "side": 1,
+      "message": "Yep, exactly.",
+      "parentUuid": "44e96770_ef028622",
       "revId": "f7213e8d7ff0e3c98300f8315e0c75ce1397a035",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
