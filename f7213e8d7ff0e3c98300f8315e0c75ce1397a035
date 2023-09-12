@@ -51,6 +51,24 @@
       "message": "If the idea is to create a test that behaves as a template to enforce concrete implementations to respect the contract defined in the the interface then you should remove Mockito and find another ways to assert behaviours",
       "revId": "f7213e8d7ff0e3c98300f8315e0c75ce1397a035",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44e96770_ef028622",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/BrokerApiTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1149185
+      },
+      "writtenOn": "2023-09-12T07:25:58Z",
+      "side": 1,
+      "message": "For example without mocks:\n```\nList\u003cEvent\u003e receivedEvents \u003d new ArrayList\u003c\u003e();\n \nBrokerApi kafkaBrokerApi \u003d kafkaBrokerApi();\nkafkaBrokerApi.send(topic, eventMessage);\nkafkaBrokerApi.receiveAsync(topic, receivedEvents::add);\n\nwaitUntil(() -\u003e receivedEvents.size() \u003d\u003d 1, WAIT_FOR_POLL_TIMEOUT);\nassertThat(receivedEvents.get(0).instanceId).isEqualTo(eventMessage.instanceId);\n```",
+      "parentUuid": "0c5ae514_35744da5",
+      "revId": "f7213e8d7ff0e3c98300f8315e0c75ce1397a035",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
