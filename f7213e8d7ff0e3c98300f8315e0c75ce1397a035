@@ -122,6 +122,24 @@
       "parentUuid": "44e96770_ef028622",
       "revId": "f7213e8d7ff0e3c98300f8315e0c75ce1397a035",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e06fe42_5f97f5f0",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/BrokerApiTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1149185
+      },
+      "writtenOn": "2023-09-12T19:14:29Z",
+      "side": 1,
+      "message": "I believe neither this test nor the ExtendedBrokerApi test should be addressed as a part of this epic.\n\nI agree and actually I think it is a brilliant idea to have them, specially for futures implementations of events-broker.\nJust to mention the current implementations already have a solid machinery for testing.",
+      "parentUuid": "46318752_fb53bd9a",
+      "revId": "f7213e8d7ff0e3c98300f8315e0c75ce1397a035",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
