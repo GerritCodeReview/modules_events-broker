@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7f2f435a_1e4e46e4",
+        "filename": "pom.xml",
+        "patchSetId": 21
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1149185
+      },
+      "writtenOn": "2023-09-13T10:21:43Z",
+      "side": 1,
+      "message": "I think that your proposal makes sense to me but I think that the version evolution of libraries are aligned with the latest Gerrit version released, in this case `3.4.8`. Please @luca.milanesio@gmail.com can help us with this?",
+      "parentUuid": "ac3ae0fd_6c0d0fa5",
+      "range": {
+        "startLine": 7,
+        "startChar": 13,
+        "endLine": 7,
+        "endChar": 20
+      },
+      "revId": "7a06d20474d3271ecd30733709e1b6e0102f9e5b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "980dc18c_f8bf14f3",
         "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/ExtendedBrokerApi.java",
         "patchSetId": 21
