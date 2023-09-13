@@ -171,6 +171,24 @@
       "parentUuid": "620f3a8f_a00467a1",
       "revId": "7a06d20474d3271ecd30733709e1b6e0102f9e5b",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "562a8ad5_32cd9c74",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/ExtendedBrokerApi.java",
+        "patchSetId": 21
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2023-09-13T14:14:35Z",
+      "side": 1,
+      "message": "\u003e Adding a method to the interface is a breaking change. We should either bump the major version or provide a default implementation for it in this interface.\n\n\nWe want to add new method which allows to subscribe to the topic with custom group id(by default it will use instanceId) but on stable branches we have to keep backward compatibility. That\u0027s why we have new interface `ExtendedBrokerApi` which is extending the `BrokerApi` so in stable-3.4 we will check if the plugin is providing implementation for the new methods if not we will fallback to the old approach. This will guarantee backward compatibility.\nOn master branch we are planning to remove the `ExtendedBrokerApi` and move those new methods to the `BrokerApi`. This will force all plugins to provide new functionality.\n\nWe were thinking about using default implementation in the `BrokerApi` but then we cannot distinguish if the plugin provided the implementation or we are using the default one.",
+      "parentUuid": "620f3a8f_a00467a1",
+      "revId": "7a06d20474d3271ecd30733709e1b6e0102f9e5b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
