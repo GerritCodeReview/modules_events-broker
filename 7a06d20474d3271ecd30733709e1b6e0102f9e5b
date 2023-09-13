@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "445d0f90_742ff243",
+        "filename": "pom.xml",
+        "patchSetId": 21
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1149185
+      },
+      "writtenOn": "2023-09-13T14:06:01Z",
+      "side": 1,
+      "message": "Your comments are fair. Lets wait the other to tell us.",
+      "parentUuid": "499f9f16_f089d7c9",
+      "range": {
+        "startLine": 7,
+        "startChar": 13,
+        "endLine": 7,
+        "endChar": 20
+      },
+      "revId": "7a06d20474d3271ecd30733709e1b6e0102f9e5b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "980dc18c_f8bf14f3",
         "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/ExtendedBrokerApi.java",
         "patchSetId": 21
@@ -127,6 +151,24 @@
       "side": 1,
       "message": "How about adding a default implementation:\n\n```java\ndefault Set\u003cTopicSubscriberWithGroupId\u003e topicSubscribersWithGroupId() {\n  return ImmutableSet.of\u003cTopicSubscriberWithGroupId\u003e()\n}\n```",
       "parentUuid": "980dc18c_f8bf14f3",
+      "revId": "7a06d20474d3271ecd30733709e1b6e0102f9e5b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d3c438a_81d0bf7e",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/ExtendedBrokerApi.java",
+        "patchSetId": 21
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1149185
+      },
+      "writtenOn": "2023-09-13T14:06:01Z",
+      "side": 1,
+      "message": "I like it and it is accurate with all your comments. I will do it",
+      "parentUuid": "620f3a8f_a00467a1",
       "revId": "7a06d20474d3271ecd30733709e1b6e0102f9e5b",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
