@@ -16,6 +16,24 @@
       "message": "@luca.milanesio@gmail.com please, pay special attention to `ExtendedBrokerApiTest`, that would be a template for it test where no mocks are used and all relies in the contract. Once you have modified your Issue 385861 then I will extend from BasicApiTest and will polish the code.",
       "revId": "917fa83ffbfd7ef84f1a375efe18e956540f668d",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5305db6_458380f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149185
+      },
+      "writtenOn": "2023-09-13T14:06:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72a0bbc7_eec61f4e",
+      "revId": "917fa83ffbfd7ef84f1a375efe18e956540f668d",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
