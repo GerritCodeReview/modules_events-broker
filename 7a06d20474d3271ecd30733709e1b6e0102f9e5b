@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "499f9f16_f089d7c9",
+        "filename": "pom.xml",
+        "patchSetId": 21
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1010134
+      },
+      "writtenOn": "2023-09-13T12:31:22Z",
+      "side": 1,
+      "message": "OK, I understand the reasoning and agree that keeping the major and minor versions in sync makes things easier.\n\nThe thing that bothers me is that in case of libModules, that are exposing API for other plugins, changing that contract is a breaking change. This may confuse anyone who has adopted that API.\n\nSure the `ExtendedBrokerApi` interface was recently introduced, and probably no one has adopted it yet. But it is still a public API that was officially released.\n\nIt\u0027s just a semantics ;)\n\nAnyway, I\u0027d rather go with `3.4.9` and optionally add default implementation to `topicSubscribersWithGroupId()`.",
+      "parentUuid": "9aef43d5_28f5f0c9",
+      "range": {
+        "startLine": 7,
+        "startChar": 13,
+        "endLine": 7,
+        "endChar": 20
+      },
+      "revId": "7a06d20474d3271ecd30733709e1b6e0102f9e5b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "980dc18c_f8bf14f3",
         "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/ExtendedBrokerApi.java",
         "patchSetId": 21
@@ -85,6 +109,24 @@
       "writtenOn": "2023-09-13T09:09:23Z",
       "side": 1,
       "message": "Adding a method to the interface is a breaking change. We should either bump the major version or provide a default implementation for it in this interface.",
+      "revId": "7a06d20474d3271ecd30733709e1b6e0102f9e5b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "620f3a8f_a00467a1",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/ExtendedBrokerApi.java",
+        "patchSetId": 21
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1010134
+      },
+      "writtenOn": "2023-09-13T12:31:22Z",
+      "side": 1,
+      "message": "How about adding a default implementation:\n\n```java\ndefault Set\u003cTopicSubscriberWithGroupId\u003e topicSubscribersWithGroupId() {\n  return ImmutableSet.of\u003cTopicSubscriberWithGroupId\u003e()\n}\n```",
+      "parentUuid": "980dc18c_f8bf14f3",
       "revId": "7a06d20474d3271ecd30733709e1b6e0102f9e5b",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
