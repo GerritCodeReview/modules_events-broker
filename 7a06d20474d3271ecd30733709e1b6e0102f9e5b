@@ -189,6 +189,24 @@
       "parentUuid": "620f3a8f_a00467a1",
       "revId": "7a06d20474d3271ecd30733709e1b6e0102f9e5b",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1ec131a_be7d96a9",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/ExtendedBrokerApi.java",
+        "patchSetId": 21
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1149185
+      },
+      "writtenOn": "2023-09-13T14:44:17Z",
+      "side": 1,
+      "message": "By the book: the `default` makes sense to me because if there are customers already  that have implemented ExtendedBrokerApi in the version 3.4.8 and the upgrade to 3.4.8.1, that will break the code.",
+      "parentUuid": "562a8ad5_32cd9c74",
+      "revId": "7a06d20474d3271ecd30733709e1b6e0102f9e5b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
