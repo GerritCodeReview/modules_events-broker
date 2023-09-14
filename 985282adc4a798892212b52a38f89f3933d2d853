@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53e53194_5ff1492f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149185
+      },
+      "writtenOn": "2023-09-14T08:22:47Z",
+      "side": 1,
+      "message": "This is a mark to remember to remove ExtendedBrokerApiTest from this change and BrokerApiTest from the change in the chain",
+      "revId": "985282adc4a798892212b52a38f89f3933d2d853",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
