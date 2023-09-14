@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dacc3a59_4ebca53e",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/ExtendedBrokerApi.java",
+        "patchSetId": 23
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2023-09-14T16:46:52Z",
+      "side": 1,
+      "message": "I don\u0027t believe we want a default implementation of this: I\u0027d prefer whoever is implementing this interface to take onboard the task of implementing it as well, otherwise he may assume that the default implementation is fine.",
+      "range": {
+        "startLine": 40,
+        "startChar": 71,
+        "endLine": 42,
+        "endChar": 3
+      },
+      "revId": "af999b4d170d1c08f909e8bd6608bd966a660323",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
