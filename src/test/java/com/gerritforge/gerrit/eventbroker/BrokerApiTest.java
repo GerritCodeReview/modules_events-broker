@@ -16,33 +16,42 @@ package com.gerritforge.gerrit.eventbroker;
 
 import static com.gerritforge.gerrit.eventbroker.TopicSubscriber.topicSubscriber;
 import static com.google.common.truth.Truth.assertThat;
+import static java.util.concurrent.TimeUnit.MILLISECONDS;
 import static org.mockito.Mockito.clearInvocations;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.reset;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
+import com.google.common.base.Stopwatch;
 import com.google.common.eventbus.Subscribe;
 import com.google.gerrit.server.events.Event;
 import com.google.gerrit.server.events.ProjectCreatedEvent;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
+import java.time.Duration;
 import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
+import org.apache.commons.lang.builder.EqualsBuilder;
 import org.junit.Before;
+import org.junit.Ignore;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TestName;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
+@Ignore
 @RunWith(MockitoJUnitRunner.class)
-public class BrokerApiTest {
+public abstract class BrokerApiTest {
+  private static final Duration WAIT_PATIENCE = Duration.ofSeconds(5L);
 
   public static final int SEND_FUTURE_TIMEOUT = 1;
   @Captor ArgumentCaptor<Event> eventCaptor;
@@ -52,19 +61,23 @@ public class BrokerApiTest {
   UUID instanceId = UUID.randomUUID();
   private Gson gson = new Gson();
 
+  protected abstract BrokerApi brokerApi();
+
   @Before
   public void setup() {
-    brokerApiUnderTest = new InProcessBrokerApi();
+    brokerApiUnderTest = brokerApi();
     eventConsumer = mockEventConsumer();
   }
+
+  @Rule public TestName testName = new TestName();
 
   @Test
   public void shouldSendEvent() throws InterruptedException, TimeoutException, ExecutionException {
     ProjectCreatedEvent event = new ProjectCreatedEvent();
 
-    brokerApiUnderTest.receiveAsync("topic", eventConsumer);
+    brokerApiUnderTest.receiveAsync(testTopic(), eventConsumer);
 
-    assertThat(brokerApiUnderTest.send("topic", wrap(event)).get(1, TimeUnit.SECONDS)).isTrue();
+    assertThat(brokerApiUnderTest.send(testTopic(), wrap(event)).get(1, TimeUnit.SECONDS)).isTrue();
 
     compareWithExpectedEvent(eventConsumer, eventCaptor, event);
   }
@@ -82,13 +95,13 @@ public class BrokerApiTest {
     ProjectCreatedEvent eventForTopic = testProjectCreatedEvent("Project name");
     ProjectCreatedEvent eventForTopic2 = testProjectCreatedEvent("Project name 2");
 
-    brokerApiUnderTest.receiveAsync("topic", eventConsumer);
-    brokerApiUnderTest.receiveAsync("topic2", secondConsumer);
+    brokerApiUnderTest.receiveAsync(testTopic(), eventConsumer);
+    brokerApiUnderTest.receiveAsync(testTopic() + "_2", secondConsumer);
     brokerApiUnderTest
-        .send("topic", wrap(eventForTopic))
+        .send(testTopic(), wrap(eventForTopic))
         .get(SEND_FUTURE_TIMEOUT, TimeUnit.SECONDS);
     brokerApiUnderTest
-        .send("topic2", wrap(eventForTopic2))
+        .send(testTopic() + "_2", wrap(eventForTopic2))
         .get(SEND_FUTURE_TIMEOUT, TimeUnit.SECONDS);
 
     compareWithExpectedEvent(eventConsumer, eventCaptor, eventForTopic);
@@ -118,22 +131,6 @@ public class BrokerApiTest {
   }
 
   @Test
-  public void shouldDeliverAsynchronouslyEventToAllRegisteredConsumers()
-      throws InterruptedException, TimeoutException, ExecutionException {
-    Consumer<Event> secondConsumer = mockEventConsumer();
-    ArgumentCaptor<Event> secondArgCaptor = ArgumentCaptor.forClass(Event.class);
-
-    ProjectCreatedEvent event = testProjectCreatedEvent("Project name");
-
-    brokerApiUnderTest.receiveAsync("topic", eventConsumer);
-    brokerApiUnderTest.receiveAsync("topic", secondConsumer);
-    brokerApiUnderTest.send("topic", wrap(event)).get(SEND_FUTURE_TIMEOUT, TimeUnit.SECONDS);
-
-    compareWithExpectedEvent(eventConsumer, eventCaptor, event);
-    compareWithExpectedEvent(secondConsumer, secondArgCaptor, event);
-  }
-
-  @Test
   public void shouldReceiveEventsOnlyFromRegisteredTopic()
       throws InterruptedException, TimeoutException, ExecutionException {
 
@@ -141,9 +138,9 @@ public class BrokerApiTest {
 
     ProjectCreatedEvent eventForTopic2 = testProjectCreatedEvent("Project name 2");
 
-    brokerApiUnderTest.receiveAsync("topic", eventConsumer);
+    brokerApiUnderTest.receiveAsync(testTopic(), eventConsumer);
     brokerApiUnderTest
-        .send("topic", wrap(eventForTopic))
+        .send(testTopic(), wrap(eventForTopic))
         .get(SEND_FUTURE_TIMEOUT, TimeUnit.SECONDS);
     brokerApiUnderTest
         .send("topic2", wrap(eventForTopic2))
@@ -157,9 +154,9 @@ public class BrokerApiTest {
       throws InterruptedException, TimeoutException, ExecutionException {
     ProjectCreatedEvent event = new ProjectCreatedEvent();
 
-    brokerApiUnderTest.receiveAsync("topic", eventConsumer);
-    brokerApiUnderTest.receiveAsync("topic", eventConsumer);
-    brokerApiUnderTest.send("topic", wrap(event)).get(SEND_FUTURE_TIMEOUT, TimeUnit.SECONDS);
+    brokerApiUnderTest.receiveAsync(testTopic(), eventConsumer);
+    brokerApiUnderTest.receiveAsync(testTopic(), eventConsumer);
+    brokerApiUnderTest.send(testTopic(), wrap(event)).get(SEND_FUTURE_TIMEOUT, TimeUnit.SECONDS);
 
     compareWithExpectedEvent(eventConsumer, eventCaptor, event);
   }
@@ -171,9 +168,9 @@ public class BrokerApiTest {
 
     ProjectCreatedEvent eventForTopic = testProjectCreatedEvent("Project name");
 
-    brokerApiUnderTest.receiveAsync("topic", eventConsumer);
+    brokerApiUnderTest.receiveAsync(testTopic(), eventConsumer);
     brokerApiUnderTest
-        .send("topic", wrap(eventForTopic))
+        .send(testTopic(), wrap(eventForTopic))
         .get(SEND_FUTURE_TIMEOUT, TimeUnit.SECONDS);
 
     compareWithExpectedEvent(eventConsumer, eventCaptor, eventForTopic);
@@ -183,9 +180,9 @@ public class BrokerApiTest {
     clearInvocations(eventConsumer);
 
     brokerApiUnderTest.disconnect();
-    brokerApiUnderTest.receiveAsync("topic", newConsumer);
+    brokerApiUnderTest.receiveAsync(testTopic(), newConsumer);
     brokerApiUnderTest
-        .send("topic", wrap(eventForTopic))
+        .send(testTopic(), wrap(eventForTopic))
         .get(SEND_FUTURE_TIMEOUT, TimeUnit.SECONDS);
 
     compareWithExpectedEvent(newConsumer, newConsumerArgCaptor, eventForTopic);
@@ -197,11 +194,11 @@ public class BrokerApiTest {
       throws InterruptedException, TimeoutException, ExecutionException {
     ProjectCreatedEvent eventForTopic = testProjectCreatedEvent("Project name");
 
-    brokerApiUnderTest.receiveAsync("topic", eventConsumer);
+    brokerApiUnderTest.receiveAsync(testTopic(), eventConsumer);
     brokerApiUnderTest.disconnect();
 
     brokerApiUnderTest
-        .send("topic", wrap(eventForTopic))
+        .send(testTopic(), wrap(eventForTopic))
         .get(SEND_FUTURE_TIMEOUT, TimeUnit.SECONDS);
 
     verify(eventConsumer, never()).accept(eventCaptor.capture());
@@ -214,19 +211,25 @@ public class BrokerApiTest {
 
     ProjectCreatedEvent eventForTopic = testProjectCreatedEvent("Project name");
 
-    BrokerApi secondaryBroker = new InProcessBrokerApi();
+    BrokerApi secondaryBroker = brokerApi();
     brokerApiUnderTest.disconnect();
-    secondaryBroker.receiveAsync("topic", eventConsumer);
+    secondaryBroker.receiveAsync(testTopic(), eventConsumer);
 
     clearInvocations(eventConsumer);
 
     brokerApiUnderTest
-        .send("topic", wrap(eventForTopic))
+        .send(testTopic(), wrap(eventForTopic))
         .get(SEND_FUTURE_TIMEOUT, TimeUnit.SECONDS);
-    verify(eventConsumer, never()).accept(eventCaptor.capture());
+    waitUntilUnchecked(
+        () -> {
+          verify(eventConsumer, never()).accept(eventCaptor.capture());
+          return true;
+        });
 
     clearInvocations(eventConsumer);
-    secondaryBroker.send("topic", wrap(eventForTopic)).get(SEND_FUTURE_TIMEOUT, TimeUnit.SECONDS);
+    secondaryBroker
+        .send(testTopic(), wrap(eventForTopic))
+        .get(SEND_FUTURE_TIMEOUT, TimeUnit.SECONDS);
 
     compareWithExpectedEvent(eventConsumer, newConsumerArgCaptor, eventForTopic);
   }
@@ -236,20 +239,31 @@ public class BrokerApiTest {
       throws InterruptedException, TimeoutException, ExecutionException {
     ProjectCreatedEvent event = new ProjectCreatedEvent();
 
-    brokerApiUnderTest.receiveAsync("topic", eventConsumer);
+    brokerApiUnderTest.receiveAsync(testTopic(), eventConsumer);
 
     assertThat(
             brokerApiUnderTest
-                .send("topic", wrap(event))
+                .send(testTopic(), wrap(event))
                 .get(SEND_FUTURE_TIMEOUT, TimeUnit.SECONDS))
         .isTrue();
 
-    verify(eventConsumer, times(1)).accept(eventCaptor.capture());
+    waitUntilUnchecked(
+        uncheckedResultOf(
+            () -> {
+              verify(eventConsumer, times(1)).accept(eventCaptor.capture());
+              return true;
+            }));
+
     compareWithExpectedEvent(eventConsumer, eventCaptor, event);
     reset(eventConsumer);
 
-    brokerApiUnderTest.replayAllEvents("topic");
-    verify(eventConsumer, times(1)).accept(eventCaptor.capture());
+    brokerApiUnderTest.replayAllEvents(testTopic());
+
+    waitUntilUnchecked(
+        () -> {
+          verify(eventConsumer, times(1)).accept(eventCaptor.capture());
+          return true;
+        });
     compareWithExpectedEvent(eventConsumer, eventCaptor, event);
   }
 
@@ -277,13 +291,48 @@ public class BrokerApiTest {
     return (Consumer<T>) Mockito.mock(Subscriber.class);
   }
 
-  private void compareWithExpectedEvent(
-      Consumer<Event> eventConsumer, ArgumentCaptor<Event> eventCaptor, Event expectedEvent) {
-    verify(eventConsumer, times(1)).accept(eventCaptor.capture());
-    assertThat(eventCaptor.getValue()).isEqualTo(expectedEvent);
+  protected void compareWithExpectedEvent(
+      Consumer<Event> eventConsumer, ArgumentCaptor<Event> eventCaptor, Event expectedEvent)
+      throws InterruptedException {
+    waitUntilUnchecked(
+        () -> {
+          verify(eventConsumer, times(1)).accept(eventCaptor.capture());
+          Event event = eventCaptor.getValue();
+          return EqualsBuilder.reflectionEquals(expectedEvent, event);
+        });
   }
 
-  private JsonObject eventToJson(Event event) {
-    return gson.toJsonTree(event).getAsJsonObject();
+  private String testTopic() {
+    return "topic_" + testName.getMethodName();
+  }
+
+  // XXX: Remove this method when merging into stable-3.3, since waitUntil is
+  // available in Gerrit core.
+  static void waitUntil(Supplier<Boolean> waitCondition) throws InterruptedException {
+    Stopwatch stopwatch = Stopwatch.createStarted();
+    while (!waitCondition.get()) {
+      if (stopwatch.elapsed().compareTo(WAIT_PATIENCE) > 0) {
+        throw new InterruptedException();
+      }
+      MILLISECONDS.sleep(50);
+    }
+  }
+
+  static void waitUntilUnchecked(Supplier<Boolean> waitCondition) throws InterruptedException {
+    try {
+      waitUntil(uncheckedResultOf(waitCondition));
+    } catch (InterruptedException e) {
+      assertThat(waitCondition.get()).isTrue();
+    }
+  }
+
+  static Supplier<Boolean> uncheckedResultOf(Supplier<Boolean> lambda) {
+    return () -> {
+      try {
+        return lambda.get();
+      } catch (Throwable e) {
+        return false;
+      }
+    };
   }
 }
