@@ -34,6 +34,24 @@
       "parentUuid": "5a612af2_0077932f",
       "revId": "e4975bd1199632ab67bcdb9ad2e9bcf413767d44",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4654769_f2ce7ff2",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/ExtendedBrokerApiTest.java",
+        "patchSetId": 19
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1149185
+      },
+      "writtenOn": "2023-09-14T17:40:48Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "7ee0001b_a3821b53",
+      "revId": "e4975bd1199632ab67bcdb9ad2e9bcf413767d44",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
