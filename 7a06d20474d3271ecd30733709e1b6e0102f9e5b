@@ -122,6 +122,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cd417f4f_e205d6dd",
+        "filename": "pom.xml",
+        "patchSetId": 21
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1010134
+      },
+      "writtenOn": "2023-09-14T16:34:12Z",
+      "side": 1,
+      "message": "I have a better overview new. Even though there are 27 commits on top of `v3.4.8` tag in the `stable-3.4` branch, it won\u0027t be released anyway, as it\u0027s already EOL\u0027d. So changing the version here to `3.4.9` would only complicate things.\n\nIt\u0027s a bit sad that we can\u0027t use \"in-tree version\", but need to go over maven repository in the `events-kafka` plugin.\n\nIn that context, having `3.4.8.1` makes more sense to me... It still doesn\u0027t _feel right_ ;) but at least has more sense 😄\n\nOn this note, here\u0027s a snippet from [maven docs](https://docs.oracle.com/middleware/1212/core/MAVEN/maven_version.htm#MAVEN400):\n```\nFor example, Maven arranges the version list in the following manner:\n\n\n1.0.1.0\n1.0.10.1\n1.0.10.2\n1.0.9.3\nVersion 1.0.9.3 should come before 1.0.10.1 and 1.0.10.2, but the unexpected fourth field (.3) forced Maven to evaluate the version as a string.\n```\n\nHaving a fouth number will force maven to evaluate it as a string, which will result in unexpected ordering. IMO we should use the _build_ number instead, so this should be `3.4.8-1`",
+      "parentUuid": "445d0f90_742ff243",
+      "range": {
+        "startLine": 7,
+        "startChar": 13,
+        "endLine": 7,
+        "endChar": 20
+      },
+      "revId": "7a06d20474d3271ecd30733709e1b6e0102f9e5b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "980dc18c_f8bf14f3",
         "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/ExtendedBrokerApi.java",
         "patchSetId": 21
@@ -205,6 +229,24 @@
       "side": 1,
       "message": "By the book: the `default` makes sense to me because if there are customers already  that have implemented ExtendedBrokerApi in the version 3.4.8 and the upgrade to 3.4.8.1, that will break the code.",
       "parentUuid": "562a8ad5_32cd9c74",
+      "revId": "7a06d20474d3271ecd30733709e1b6e0102f9e5b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "283b6b80_cf0435a8",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/ExtendedBrokerApi.java",
+        "patchSetId": 21
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1010134
+      },
+      "writtenOn": "2023-09-14T16:34:12Z",
+      "side": 1,
+      "message": "👌",
+      "parentUuid": "a1ec131a_be7d96a9",
       "revId": "7a06d20474d3271ecd30733709e1b6e0102f9e5b",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
