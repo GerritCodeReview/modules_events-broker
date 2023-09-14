@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05fbd79f_662c0ec8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2023-09-14T16:33:36Z",
+      "side": 1,
+      "message": "@maczech@gmail.com @alvaro.vilaplana@gmail.com can you recheck?",
+      "revId": "80d5fcc7f0ef39d4b634922cf7c06b75ce3f2f06",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
