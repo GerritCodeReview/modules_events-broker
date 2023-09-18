@@ -11,6 +11,7 @@ load(
 gerrit_plugin(
     name = "events-broker",
     srcs = glob(["src/main/java/**/*.java"]),
+    deps = [],
 )
 
 junit_tests(
