@@ -7,12 +7,13 @@ load(
     "PLUGIN_DEPS",
     "PLUGIN_DEPS_NEVERLINK",
     "PLUGIN_TEST_DEPS",
+    "gerrit_plugin",
 )
 
-java_library(
+gerrit_plugin(
     name = "events-broker",
     srcs = glob(["src/main/java/**/*.java"]),
-    deps = PLUGIN_DEPS_NEVERLINK,
+    deps = [],
 )
 
 junit_tests(
