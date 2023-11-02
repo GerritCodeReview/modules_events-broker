@@ -20,6 +20,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import com.gerritforge.gerrit.eventbroker.log.MessageLogger;
 import com.gerritforge.gerrit.eventbroker.metrics.BrokerMetrics;
 import com.gerritforge.gerrit.eventbroker.publisher.StreamEventPublisher;
 import com.gerritforge.gerrit.eventbroker.publisher.StreamEventPublisherConfig;
@@ -43,6 +44,7 @@ public class StreamEventPublisherTest {
   @Mock private DynamicItem<BrokerMetrics> brokerMetricsDynamicItem;
   @Mock private BrokerApi brokerApi;
   @Mock private BrokerMetrics brokerMetrics;
+  @Mock private MessageLogger msgLog;
 
   private static final String STREAM_EVENTS_TOPIC = "stream-test-topic";
   private static final long PUBLISHING_TIMEOUT = 1000L;
@@ -60,7 +62,7 @@ public class StreamEventPublisherTest {
     when(brokerApi.send(any(), any())).thenReturn(Futures.immediateFuture(true));
     objectUnderTest =
         new StreamEventPublisher(
-            brokerApiDynamicItem, config, EXECUTOR, INSTANCE_ID, brokerMetricsDynamicItem);
+            brokerApiDynamicItem, config, EXECUTOR, INSTANCE_ID, brokerMetricsDynamicItem, msgLog);
   }
 
   @Test
@@ -79,7 +81,7 @@ public class StreamEventPublisherTest {
 
     objectUnderTest =
         new StreamEventPublisher(
-            brokerApiDynamicItem, config, EXECUTOR, null, brokerMetricsDynamicItem);
+            brokerApiDynamicItem, config, EXECUTOR, null, brokerMetricsDynamicItem, msgLog);
     objectUnderTest.onEvent(event);
     verify(brokerApi, times(1)).send(STREAM_EVENTS_TOPIC, event);
   }
@@ -91,7 +93,7 @@ public class StreamEventPublisherTest {
 
     objectUnderTest =
         new StreamEventPublisher(
-            brokerApiDynamicItem, config, EXECUTOR, null, brokerMetricsDynamicItem);
+            brokerApiDynamicItem, config, EXECUTOR, null, brokerMetricsDynamicItem, msgLog);
     objectUnderTest.onEvent(event);
     verify(brokerApi, never()).send(STREAM_EVENTS_TOPIC, event);
   }
@@ -146,5 +148,14 @@ public class StreamEventPublisherTest {
 
     objectUnderTest.onEvent(event);
     verify(brokerMetrics, times(1)).incrementBrokerFailedToPublishMessage();
+  }
+
+  @Test
+  public void shouldUpdateMessageLogWhenMessageIsSuccessfullyPublished() {
+    Event event = new ProjectCreatedEvent();
+    event.instanceId = INSTANCE_ID;
+
+    objectUnderTest.onEvent(event);
+    verify(msgLog).log(MessageLogger.Direction.PUBLISH, STREAM_EVENTS_TOPIC, event);
   }
 }
