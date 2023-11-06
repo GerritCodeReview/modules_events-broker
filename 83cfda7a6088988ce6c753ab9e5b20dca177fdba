@@ -33,6 +33,24 @@
       "message": "Why are you moving to `LifecycleModule`?",
       "revId": "83cfda7a6088988ce6c753ab9e5b20dca177fdba",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05436e13_1a428190",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiModule.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1157810
+      },
+      "writtenOn": "2023-11-06T12:37:18Z",
+      "side": 1,
+      "message": "so I can utilise the `listener()` method in L48 (pretty much what multi-site plugin does), do you think this might cause problems?",
+      "parentUuid": "f50fa593_03073f6c",
+      "revId": "83cfda7a6088988ce6c753ab9e5b20dca177fdba",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
