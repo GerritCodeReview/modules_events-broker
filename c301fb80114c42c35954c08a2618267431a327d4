@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6adfa339_17ddfa8c",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/log/Log4jMessageLogger.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2023-11-07T16:19:53Z",
+      "side": 1,
+      "message": "Is this actually used anywhere?",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 55
+      },
+      "revId": "c301fb80114c42c35954c08a2618267431a327d4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
