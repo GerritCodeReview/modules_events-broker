@@ -68,6 +68,24 @@
       "parentUuid": "f50fa593_03073f6c",
       "revId": "83cfda7a6088988ce6c753ab9e5b20dca177fdba",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e63ce0fa_6feee595",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiModule.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1149185
+      },
+      "writtenOn": "2023-11-07T18:44:51Z",
+      "side": 1,
+      "message": "I think we are fine. The hierarchy is \n```\nLifecycleModule -\u003e FactoryModule -\u003e AbstractModule\n```",
+      "parentUuid": "05436e13_1a428190",
+      "revId": "83cfda7a6088988ce6c753ab9e5b20dca177fdba",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
