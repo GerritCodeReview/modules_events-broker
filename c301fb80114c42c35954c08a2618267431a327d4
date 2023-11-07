@@ -48,6 +48,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73ede4f7_726196ae",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/log/Log4jMessageLogger.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1157810
+      },
+      "writtenOn": "2023-11-07T17:58:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d66fce6_422ba36a",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 55
+      },
+      "revId": "c301fb80114c42c35954c08a2618267431a327d4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "002a8274_e5600ae5",
@@ -61,6 +85,24 @@
       "writtenOn": "2023-11-07T16:22:03Z",
       "side": 1,
       "message": "this is not needed and should be removed.",
+      "revId": "c301fb80114c42c35954c08a2618267431a327d4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16569026_856a8249",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/log/MessageLogger.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1157810
+      },
+      "writtenOn": "2023-11-07T17:58:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "002a8274_e5600ae5",
       "revId": "c301fb80114c42c35954c08a2618267431a327d4",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
