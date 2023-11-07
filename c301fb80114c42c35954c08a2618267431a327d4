@@ -22,6 +22,47 @@
       },
       "revId": "c301fb80114c42c35954c08a2618267431a327d4",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d66fce6_422ba36a",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/log/Log4jMessageLogger.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1157810
+      },
+      "writtenOn": "2023-11-07T16:22:03Z",
+      "side": 1,
+      "message": "see my other comment in the interface, its not used and I will remove it.",
+      "parentUuid": "6adfa339_17ddfa8c",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 55
+      },
+      "revId": "c301fb80114c42c35954c08a2618267431a327d4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "002a8274_e5600ae5",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/log/MessageLogger.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1157810
+      },
+      "writtenOn": "2023-11-07T16:22:03Z",
+      "side": 1,
+      "message": "this is not needed and should be removed.",
+      "revId": "c301fb80114c42c35954c08a2618267431a327d4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
