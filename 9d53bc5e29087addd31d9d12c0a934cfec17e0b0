@@ -106,6 +106,24 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "852377e0_b98f00a2",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/publisher/StreamEventPublisher.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1010134
+      },
+      "writtenOn": "2023-11-08T13:07:16Z",
+      "side": 1,
+      "message": "That depends on the long message, is you say _sending_ instead of _sent_ it clearly shows that the event is about to be provessed, so no confusion here. ai still prefer to always log before so that when analyzing the problem there\u0027s more context.\n\nAnyway, let\u0027s see what other people think.",
+      "parentUuid": "80e77fd9_e2998efc",
+      "revId": "9d53bc5e29087addd31d9d12c0a934cfec17e0b0",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4cae886_4a5a1ac0",
