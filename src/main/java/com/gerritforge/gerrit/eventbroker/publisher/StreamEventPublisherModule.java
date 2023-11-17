@@ -14,19 +14,13 @@
 
 package com.gerritforge.gerrit.eventbroker.publisher;
 
-import com.gerritforge.gerrit.eventbroker.publisher.executor.StreamEventPublisherExecutor;
-import com.gerritforge.gerrit.eventbroker.publisher.executor.StreamEventPublisherExecutorProvider;
 import com.google.gerrit.extensions.registration.DynamicSet;
 import com.google.gerrit.server.events.EventListener;
 import com.google.inject.AbstractModule;
-import java.util.concurrent.Executor;
 
 public class StreamEventPublisherModule extends AbstractModule {
   protected void configure() {
 
-    bind(Executor.class)
-        .annotatedWith(StreamEventPublisherExecutor.class)
-        .toProvider(StreamEventPublisherExecutorProvider.class);
     DynamicSet.bind(binder(), EventListener.class).to(StreamEventPublisher.class);
   }
 }
