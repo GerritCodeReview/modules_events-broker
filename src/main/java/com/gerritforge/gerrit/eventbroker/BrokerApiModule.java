@@ -22,6 +22,7 @@ import com.google.gerrit.extensions.registration.DynamicItem;
 import com.google.gerrit.lifecycle.LifecycleModule;
 import com.google.inject.Inject;
 import com.google.inject.Scopes;
+import java.util.concurrent.Executor;
 
 public class BrokerApiModule extends LifecycleModule {
   DynamicItem<BrokerApi> currentBrokerApi;
@@ -42,6 +43,12 @@ public class BrokerApiModule extends LifecycleModule {
     DynamicItem.bind(binder(), BrokerMetrics.class)
         .to(BrokerMetricsNoOp.class)
         .in(Scopes.SINGLETON);
+
+    bind(Executor.class)
+        .annotatedWith(EventsBrokerExecutor.class)
+        .toProvider(EventsBrokerExecutorProvider.class);
+
+    bind(EventsBrokerApiWrapper.class).in(Scopes.SINGLETON);
 
     bind(EventDeserializer.class).in(Scopes.SINGLETON);
 
