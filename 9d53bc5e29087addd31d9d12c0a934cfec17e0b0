@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c689c52_f785edb4",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/publisher/StreamEventPublisher.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1157810
+      },
+      "writtenOn": "2023-11-17T16:02:03Z",
+      "side": 0,
+      "message": "Note that the old implementation treated a TimeoutException as something that justifies incrementing the broker-failed-to-publish-metric. To me this is debatable as the future might still succeed in publishing the message and we have just incremented the wrong metric. But while I don\u0027t necessarily agree with the semantics and the implementation here, I kept the old behaviour as I assume it was reviewed back at the time and agreed this is what we want to do.",
+      "revId": "9d53bc5e29087addd31d9d12c0a934cfec17e0b0",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c168776_5d011908",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/publisher/StreamEventPublisher.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1157810
+      },
+      "writtenOn": "2023-11-17T16:02:03Z",
+      "side": 0,
+      "message": "as mentioned in the description, note that the logic on whether to publish a stream event is slightly different between this class and multi-site\u0027s `BrokerApiWrapper`: in the former, the event is published if both the node instance id and the event\u0027s instance id are null. For the latter though, a null instance id is treated as a signal to skip the message. I flagged this during the kick off and the suggestion was to keep the logic from multi-site.",
+      "revId": "9d53bc5e29087addd31d9d12c0a934cfec17e0b0",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
