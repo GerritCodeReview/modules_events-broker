@@ -15,18 +15,18 @@ a generic stream events publisher which will perform the relevant operations.
 
 In order to listen and stream gerrit events, consumers of this API need to
 provide a binding for the `StreamEventPublisherConfig` configuration and
-`java.util.concurrent.Executor` binding annotated with `StreamEventPublisherExecutor`
-annotation. A default single threaded implementation (`StreamEventPublisherExecutor`)
+`java.util.concurrent.Executor` binding annotated with `EventsBrokerExecutor`
+annotation. A default single threaded implementation (`EventsBrokerExecutor`)
 is provided by the library. The last step is to explicitly bind the Stream Events
 Publisher, as such:
 
 ```java
 import java.util.concurrent.Executor;
 
+import com.gerritforge.gerrit.eventbroker.EventsBrokerExecutor;
+import com.gerritforge.gerrit.eventbroker.EventsBrokerExecutorProvider;
 import com.gerritforge.gerrit.eventbroker.publisher.StreamEventPublisher;
 import com.gerritforge.gerrit.eventbroker.publisher.StreamEventPublisherConfig;
-import com.gerritforge.gerrit.eventbroker.publisher.executor.StreamEventPublisherExecutor;
-import com.gerritforge.gerrit.eventbroker.publisher.executor.StreamEventPublisherExecutorProvider;
 import com.google.gerrit.extensions.registration.DynamicSet;
 import com.google.gerrit.server.events.EventListener;
 import com.google.inject.AbstractModule;
@@ -41,7 +41,7 @@ public class SomeModule extends AbstractModule {
                     "name_of_the_stream_events_topic",
                     messagePublishingTimeout));
 
-        bind(Executor.class).annotatedWith(StreamEventPublisherExecutor.class).toProvider(StreamEventPublisherExecutorProvider.class);
+        bind(Executor.class).annotatedWith(EventsBrokerExecutor.class).toProvider(EventsBrokerExecutorProvider.class);
         DynamicSet.bind(binder(), EventListener.class).to(StreamEventPublisher.class);
     }
 }
