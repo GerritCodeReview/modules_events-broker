@@ -14,95 +14,43 @@
 
 package com.gerritforge.gerrit.eventbroker.publisher;
 
-import com.gerritforge.gerrit.eventbroker.BrokerApi;
-import com.gerritforge.gerrit.eventbroker.log.MessageLogger;
+import com.gerritforge.gerrit.eventbroker.EventsBrokerApiWrapper;
 import com.gerritforge.gerrit.eventbroker.metrics.BrokerMetrics;
-import com.gerritforge.gerrit.eventbroker.publisher.executor.StreamEventPublisherExecutor;
-import com.google.common.flogger.FluentLogger;
-import com.google.gerrit.common.Nullable;
 import com.google.gerrit.extensions.registration.DynamicItem;
-import com.google.gerrit.server.config.GerritInstanceId;
 import com.google.gerrit.server.events.Event;
 import com.google.gerrit.server.events.EventListener;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import java.util.concurrent.Executor;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 
 @Singleton
 public class StreamEventPublisher implements EventListener {
-  private static final FluentLogger log = FluentLogger.forEnclosingClass();
-
-  private final DynamicItem<BrokerApi> brokerApiDynamicItem;
   private final StreamEventPublisherConfig config;
-  private final Executor executor;
-  private final String instanceId;
   private final DynamicItem<BrokerMetrics> brokerMetrics;
-  private final MessageLogger msgLog;
+  private final EventsBrokerApiWrapper eventsBrokerApiWrapper;
 
   @Inject
   public StreamEventPublisher(
-      DynamicItem<BrokerApi> brokerApi,
       StreamEventPublisherConfig config,
-      @StreamEventPublisherExecutor Executor executor,
-      @Nullable @GerritInstanceId String instanceId,
       DynamicItem<BrokerMetrics> brokerMetrics,
-      MessageLogger msgLog) {
-    this.brokerApiDynamicItem = brokerApi;
+      EventsBrokerApiWrapper eventsBrokerApiWrapper) {
     this.config = config;
-    this.executor = executor;
-    this.instanceId = instanceId;
     this.brokerMetrics = brokerMetrics;
-    this.msgLog = msgLog;
+    this.eventsBrokerApiWrapper = eventsBrokerApiWrapper;
   }
 
   @Override
   public void onEvent(Event event) {
-    executor.execute(new EventTask(event, brokerApiDynamicItem.get(), instanceId));
-  }
-
-  class EventTask implements Runnable {
-    private final Event event;
-    private final BrokerApi brokerApi;
-    private final String instanceId;
-
-    EventTask(Event event, BrokerApi brokerApi, String instanceId) {
-      this.event = event;
-      this.brokerApi = brokerApi;
-      this.instanceId = instanceId;
-    }
-
-    @Override
-    public void run() {
-      if (brokerApi != null && shouldSend(event)) {
-        String streamEventTopic = config.getStreamEventsTopic();
-        try {
-          brokerApi
-              .send(streamEventTopic, event)
-              .get(config.getPublishingTimeoutInMillis(), TimeUnit.MILLISECONDS);
-          msgLog.log(MessageLogger.Direction.PUBLISH, streamEventTopic, event);
-          brokerMetrics.get().incrementBrokerPublishedMessage();
-        } catch (TimeoutException e) {
-          log.atSevere().withCause(e).log(
-              "Timeout when publishing event '%s' to topic '%s'", event, streamEventTopic);
-          brokerMetrics.get().incrementBrokerFailedToPublishMessage();
-        } catch (Throwable e) {
-          log.atSevere().withCause(e).log(
-              "Failed to publish event '%s' to topic '%s'", event, streamEventTopic);
-          brokerMetrics.get().incrementBrokerFailedToPublishMessage();
-        }
-      }
-    }
-
-    private boolean shouldSend(Event event) {
-      return (instanceId == null && event.instanceId == null)
-          || (instanceId != null && instanceId.equals(event.instanceId));
-    }
-
-    @Override
-    public String toString() {
-      return String.format("Send event '%s' to target instance", event.type);
+    boolean successfulResult =
+        eventsBrokerApiWrapper.sendSyncWithTimeout(
+            config.getStreamEventsTopic(),
+            event,
+            config.getPublishingTimeoutInMillis(),
+            TimeUnit.MILLISECONDS);
+    if (successfulResult) {
+      brokerMetrics.get().incrementBrokerPublishedMessage();
+    } else {
+      brokerMetrics.get().incrementBrokerFailedToPublishMessage();
     }
   }
 }
