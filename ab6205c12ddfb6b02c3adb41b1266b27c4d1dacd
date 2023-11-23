@@ -1,0 +1,268 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61f20527_a4ca17e2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2023-11-23T00:57:52Z",
+      "side": 1,
+      "message": "Where was the StreamEventsBrokerExecutor defined? I could not find it in multi-site.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 26
+      },
+      "revId": "ab6205c12ddfb6b02c3adb41b1266b27c4d1dacd",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc433aba_63b947da",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2023-11-23T00:57:52Z",
+      "side": 1,
+      "message": "Why do we need also this refactoring as part of this change? Can you elaborate?",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 69
+      },
+      "revId": "ab6205c12ddfb6b02c3adb41b1266b27c4d1dacd",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "220ea87a_db3b7729",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2023-11-23T00:57:52Z",
+      "side": 1,
+      "message": "Yes, that was the use-case of sending the events to a broker from a non-multi-site setup. That must be kept.",
+      "range": {
+        "startLine": 29,
+        "startChar": 3,
+        "endLine": 30,
+        "endChar": 22
+      },
+      "revId": "ab6205c12ddfb6b02c3adb41b1266b27c4d1dacd",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27e64e7c_3e980017",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2023-11-23T00:57:52Z",
+      "side": 1,
+      "message": "Yes, because in multi-site the instance-id is mandatory.",
+      "range": {
+        "startLine": 31,
+        "startChar": 32,
+        "endLine": 32,
+        "endChar": 51
+      },
+      "revId": "ab6205c12ddfb6b02c3adb41b1266b27c4d1dacd",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a39813f5_0542d309",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2023-11-23T00:57:52Z",
+      "side": 1,
+      "message": "For the multi-site use-case, yes. However, you could use the events-broker outside multi-site (e.g. just for notification to the CI/CD pipeline, without having more than one site) and therefore the instance-id could be null.",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 66
+      },
+      "revId": "ab6205c12ddfb6b02c3adb41b1266b27c4d1dacd",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0904fa7c_ebf5a614",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2023-11-23T00:57:52Z",
+      "side": 1,
+      "message": "I believe we need an alignment: I was under the impression that the moving parts were a lot less, but it looks like you had to refactor also the way the publishing is done altogether, which was unexpected.",
+      "revId": "ab6205c12ddfb6b02c3adb41b1266b27c4d1dacd",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49fda0ae_b7ed7e81",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventsBrokerApiWrapper.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2023-11-23T00:57:52Z",
+      "side": 1,
+      "message": "Are you sure this is the copy of the version in multi-site? Here you are swallowing any Throwable (quite dangerous) whilst in multi-site it was at least logged.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 5
+      },
+      "revId": "ab6205c12ddfb6b02c3adb41b1266b27c4d1dacd",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d52c1611_52ac0abd",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventsBrokerApiWrapper.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2023-11-23T00:57:52Z",
+      "side": 1,
+      "message": "This method did not exist in multi-site",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 3
+      },
+      "revId": "ab6205c12ddfb6b02c3adb41b1266b27c4d1dacd",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2c4bc5f_531f55c2",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventsBrokerApiWrapper.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2023-11-23T00:57:52Z",
+      "side": 1,
+      "message": "Missing the case when the event is sent from a non-multi-site setup.\nAlso, what if nodeInstanceId is null? This would generate an NPE.",
+      "range": {
+        "startLine": 76,
+        "startChar": 8,
+        "endLine": 76,
+        "endChar": 50
+      },
+      "revId": "ab6205c12ddfb6b02c3adb41b1266b27c4d1dacd",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2e068ef_b68042bd",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/EventsBrokerApiWrapperTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2023-11-23T00:57:52Z",
+      "side": 1,
+      "message": "Was this test in multi-site? I could not find it anywhere.",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 3
+      },
+      "revId": "ab6205c12ddfb6b02c3adb41b1266b27c4d1dacd",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ce00d50_390a070a",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/EventsBrokerApiWrapperTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2023-11-23T00:57:52Z",
+      "side": 1,
+      "message": "Google Truth and Gerrit has a construct to assert expected exceptions.\n\nExample:\n```\nassertThrows(AuthException.class, () -\u003e gApi.accounts().id(foo.id().get()).getEmails());\n```",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 5
+      },
+      "revId": "ab6205c12ddfb6b02c3adb41b1266b27c4d1dacd",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87a21eef_c6753141",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/StreamEventPublisherTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2023-11-23T00:57:52Z",
+      "side": 1,
+      "message": "It is quite dangerous to change tests and refactor the code in the same change.\nWe are at high risk of regressions.",
+      "revId": "ab6205c12ddfb6b02c3adb41b1266b27c4d1dacd",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
