@@ -71,6 +71,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40154122_54bdf247",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1157810
+      },
+      "writtenOn": "2023-11-24T11:19:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc433aba_63b947da",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 69
+      },
+      "revId": "ab6205c12ddfb6b02c3adb41b1266b27c4d1dacd",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "220ea87a_db3b7729",
@@ -84,6 +108,30 @@
       "writtenOn": "2023-11-23T00:57:52Z",
       "side": 1,
       "message": "Yes, that was the use-case of sending the events to a broker from a non-multi-site setup. That must be kept.",
+      "range": {
+        "startLine": 29,
+        "startChar": 3,
+        "endLine": 30,
+        "endChar": 22
+      },
+      "revId": "ab6205c12ddfb6b02c3adb41b1266b27c4d1dacd",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "492c8a45_613a6bff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1157810
+      },
+      "writtenOn": "2023-11-24T11:19:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "220ea87a_db3b7729",
       "range": {
         "startLine": 29,
         "startChar": 3,
@@ -117,6 +165,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dabbfa21_b49274a9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1157810
+      },
+      "writtenOn": "2023-11-24T11:19:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27e64e7c_3e980017",
+      "range": {
+        "startLine": 31,
+        "startChar": 32,
+        "endLine": 32,
+        "endChar": 51
+      },
+      "revId": "ab6205c12ddfb6b02c3adb41b1266b27c4d1dacd",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a39813f5_0542d309",
@@ -130,6 +202,30 @@
       "writtenOn": "2023-11-23T00:57:52Z",
       "side": 1,
       "message": "For the multi-site use-case, yes. However, you could use the events-broker outside multi-site (e.g. just for notification to the CI/CD pipeline, without having more than one site) and therefore the instance-id could be null.",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 66
+      },
+      "revId": "ab6205c12ddfb6b02c3adb41b1266b27c4d1dacd",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ddc4f41_253ad716",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1157810
+      },
+      "writtenOn": "2023-11-24T11:19:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a39813f5_0542d309",
       "range": {
         "startLine": 34,
         "startChar": 4,
@@ -182,6 +278,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c43d2f9a_e32a5fe2",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventsBrokerApiWrapper.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1157810
+      },
+      "writtenOn": "2023-11-24T11:19:07Z",
+      "side": 1,
+      "message": "My understanding is that the exception should be logged by the Future\u0027s callback `onFailure` method.",
+      "parentUuid": "49fda0ae_b7ed7e81",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 5
+      },
+      "revId": "ab6205c12ddfb6b02c3adb41b1266b27c4d1dacd",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d52c1611_52ac0abd",
         "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventsBrokerApiWrapper.java",
         "patchSetId": 3
@@ -193,6 +313,30 @@
       "writtenOn": "2023-11-23T00:57:52Z",
       "side": 1,
       "message": "This method did not exist in multi-site",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 3
+      },
+      "revId": "ab6205c12ddfb6b02c3adb41b1266b27c4d1dacd",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "070170e1_09dcaeaf",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventsBrokerApiWrapper.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1157810
+      },
+      "writtenOn": "2023-11-24T11:19:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d52c1611_52ac0abd",
       "range": {
         "startLine": 62,
         "startChar": 0,
@@ -226,6 +370,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80aac32b_c240d115",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventsBrokerApiWrapper.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1157810
+      },
+      "writtenOn": "2023-11-24T11:19:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2c4bc5f_531f55c2",
+      "range": {
+        "startLine": 76,
+        "startChar": 8,
+        "endLine": 76,
+        "endChar": 50
+      },
+      "revId": "ab6205c12ddfb6b02c3adb41b1266b27c4d1dacd",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2e068ef_b68042bd",
@@ -249,6 +417,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f93e8bf_3d9e795d",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/EventsBrokerApiWrapperTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1157810
+      },
+      "writtenOn": "2023-11-24T11:19:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2e068ef_b68042bd",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 3
+      },
+      "revId": "ab6205c12ddfb6b02c3adb41b1266b27c4d1dacd",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ce00d50_390a070a",
@@ -262,6 +454,30 @@
       "writtenOn": "2023-11-23T00:57:52Z",
       "side": 1,
       "message": "Google Truth and Gerrit has a construct to assert expected exceptions.\n\nExample:\n```\nassertThrows(AuthException.class, () -\u003e gApi.accounts().id(foo.id().get()).getEmails());\n```",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 5
+      },
+      "revId": "ab6205c12ddfb6b02c3adb41b1266b27c4d1dacd",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "390647e0_cf472138",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/EventsBrokerApiWrapperTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1157810
+      },
+      "writtenOn": "2023-11-24T11:19:07Z",
+      "side": 1,
+      "message": "I actually copied what was already there, but actually, this test is pointless, I have adapted it to something meaningful.",
+      "parentUuid": "9ce00d50_390a070a",
       "range": {
         "startLine": 120,
         "startChar": 0,
