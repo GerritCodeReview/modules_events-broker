@@ -503,6 +503,24 @@
       "message": "It is quite dangerous to change tests and refactor the code in the same change.\nWe are at high risk of regressions.",
       "revId": "ab6205c12ddfb6b02c3adb41b1266b27c4d1dacd",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0691a6be_8c515cd2",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/StreamEventPublisherTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1157810
+      },
+      "writtenOn": "2023-11-24T11:21:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87a21eef_c6753141",
+      "revId": "ab6205c12ddfb6b02c3adb41b1266b27c4d1dacd",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
