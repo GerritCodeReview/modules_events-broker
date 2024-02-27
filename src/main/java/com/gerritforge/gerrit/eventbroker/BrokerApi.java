@@ -15,6 +15,7 @@
 package com.gerritforge.gerrit.eventbroker;
 
 import com.google.common.util.concurrent.ListenableFuture;
+import com.google.gerrit.common.Nullable;
 import com.google.gerrit.server.events.Event;
 import java.util.Set;
 import java.util.function.Consumer;
@@ -48,6 +49,14 @@ public interface BrokerApi {
 
   /** Disconnect from broker and cancel all active consumers */
   void disconnect();
+
+  /** Disconnect from broker and cancel all active consumers on the specified
+   * topic.
+   *
+   * @param topic topic name of the consumers to cancel
+   * @param groupId when not null, filter the consumers to cancel by groupId
+   */
+  void disconnect(String topic, @Nullable String groupId);
 
   /**
    * Redeliver all stored messages for specified topic
