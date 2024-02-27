@@ -20,10 +20,12 @@ import static com.gerritforge.gerrit.eventbroker.TopicSubscriberWithGroupId.topi
 import com.google.common.collect.ImmutableSet;
 import com.google.common.flogger.FluentLogger;
 import com.google.common.util.concurrent.ListenableFuture;
+import com.google.gerrit.common.Nullable;
 import com.google.gerrit.server.events.Event;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 public class InProcessBrokerApi implements BrokerApi {
   private static final FluentLogger log = FluentLogger.forEnclosingClass();
@@ -65,6 +67,24 @@ public class InProcessBrokerApi implements BrokerApi {
   public void disconnect() {
     this.topicSubscribers.clear();
     this.topicSubscribersWithGroupId.clear();
+  }
+
+  @Override
+  public void disconnect(String topic, @Nullable String groupId) {
+    Set<TopicSubscriber> topicsToRemove =
+        topicSubscribers.stream()
+            .filter(ts -> topic.equals(ts.topic()))
+            .collect(Collectors.toSet());
+    topicSubscribers.removeAll(topicsToRemove);
+
+    Set<TopicSubscriberWithGroupId> topicsWithGroupIdToRemove =
+        topicSubscribersWithGroupId.stream()
+            .filter(
+                tsg ->
+                    topic.equals(tsg.topicSubscriber().topic())
+                        && (groupId == null || groupId.equals(tsg.groupId())))
+            .collect(Collectors.toSet());
+    topicSubscribersWithGroupId.removeAll(topicsWithGroupIdToRemove);
   }
 
   @Override
