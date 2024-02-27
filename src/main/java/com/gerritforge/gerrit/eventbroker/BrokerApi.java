@@ -55,4 +55,22 @@ public interface BrokerApi {
    * @param topic topic name
    */
   void replayAllEvents(String topic);
+
+  /**
+   * Receive asynchronously a message from a topic using a consumer's group id.
+   *
+   * @param topic topic name
+   * @param groupId the group identifier that consumer belongs to for that topic
+   * @param consumer an operation that accepts and process a single message
+   * @since 3.10
+   */
+  void receiveAsync(String topic, String groupId, Consumer<Event> consumer);
+
+  /**
+   * Get the active subscribers with their consumer's group id.
+   *
+   * @return {@link Set} of the topics subscribers using a consumer's group id.
+   * @since 3.10
+   */
+  Set<TopicSubscriberWithGroupId> topicSubscribersWithGroupId();
 }
