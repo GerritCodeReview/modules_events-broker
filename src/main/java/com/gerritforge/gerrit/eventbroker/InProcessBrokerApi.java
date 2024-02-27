@@ -25,7 +25,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Consumer;
 
-public class InProcessBrokerApi implements ExtendedBrokerApi {
+public class InProcessBrokerApi implements BrokerApi {
   private static final FluentLogger log = FluentLogger.forEnclosingClass();
   private final Set<TopicSubscriber> topicSubscribers;
   private final Set<TopicSubscriberWithGroupId> topicSubscribersWithGroupId;
