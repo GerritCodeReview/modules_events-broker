@@ -18,7 +18,6 @@ import com.google.common.util.concurrent.ListenableFuture;
 import com.google.gerrit.common.Nullable;
 import com.google.gerrit.server.events.Event;
 import java.util.Set;
-import java.util.function.Consumer;
 
 /** API for sending/receiving events through a message Broker. */
 public interface BrokerApi {
@@ -33,12 +32,13 @@ public interface BrokerApi {
   ListenableFuture<Boolean> send(String topic, Event message);
 
   /**
-   * Receive asynchronously a message from a topic.
+   * Receive asynchronously a message from a topic, using a context-aware consumer.
    *
    * @param topic topic name
-   * @param consumer an operation that accepts and process a single message
+   * @param consumer an operation that accepts and processes a single message with context that
+   *     support explicit acknowledgement
    */
-  void receiveAsync(String topic, Consumer<Event> consumer);
+  void receiveAsync(String topic, ContextAwareConsumer<Event> consumer);
 
   /**
    * Get the active subscribers
@@ -66,14 +66,15 @@ public interface BrokerApi {
   void replayAllEvents(String topic);
 
   /**
-   * Receive asynchronously a message from a topic using a consumer's group id.
+   * Receive asynchronously a message from a topic using a consumer's group id, using a
+   * context-aware consumer
    *
    * @param topic topic name
    * @param groupId the group identifier that consumer belongs to for that topic
-   * @param consumer an operation that accepts and process a single message
-   * @since 3.10
+   * @param consumer an operation that accepts and process a single message with its context
+   * @since 3.15
    */
-  void receiveAsync(String topic, String groupId, Consumer<Event> consumer);
+  void receiveAsync(String topic, String groupId, ContextAwareConsumer<Event> consumer);
 
   /**
    * Get the active subscribers with their consumer's group id.
