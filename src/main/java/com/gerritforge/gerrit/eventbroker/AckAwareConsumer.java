@@ -14,16 +14,19 @@
 
 package com.gerritforge.gerrit.eventbroker;
 
-import com.google.auto.value.AutoValue;
-import com.google.gerrit.server.events.Event;
-
-@AutoValue
-public abstract class TopicSubscriber {
-  public static TopicSubscriber topicSubscriber(String topic, AckAwareConsumer<Event> consumer) {
-    return new AutoValue_TopicSubscriber(topic, consumer);
-  }
-
-  public abstract String topic();
-
-  public abstract AckAwareConsumer<Event> consumer();
+/**
+ * A consumer that accepts a message and its acknowledgement handle, allowing for explicit
+ * acknowledgement.
+ *
+ * @param <T> the type of the event input to the operation
+ */
+@FunctionalInterface
+public interface AckAwareConsumer<T> {
+  /**
+   * Performs this operation on the given argument.
+   *
+   * @param t the input argument
+   * @param acknowledgement the message acknowledgement handle
+   */
+  void accept(T t, MessageAcknowledgement acknowledgement);
 }

@@ -14,16 +14,13 @@
 
 package com.gerritforge.gerrit.eventbroker;
 
-import com.google.auto.value.AutoValue;
-import com.google.gerrit.server.events.Event;
-
-@AutoValue
-public abstract class TopicSubscriber {
-  public static TopicSubscriber topicSubscriber(String topic, AckAwareConsumer<Event> consumer) {
-    return new AutoValue_TopicSubscriber(topic, consumer);
+/** Unchecked exception thrown when a broker acknowledgement attempt fails. */
+public class MessageAcknowledgementException extends RuntimeException {
+  public MessageAcknowledgementException(String message) {
+    super(message);
   }
 
-  public abstract String topic();
-
-  public abstract AckAwareConsumer<Event> consumer();
+  public MessageAcknowledgementException(String message, Throwable cause) {
+    super(message, cause);
+  }
 }
