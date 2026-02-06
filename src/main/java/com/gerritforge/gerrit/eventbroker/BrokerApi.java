@@ -18,7 +18,6 @@ import com.google.common.util.concurrent.ListenableFuture;
 import com.google.gerrit.common.Nullable;
 import com.google.gerrit.server.events.Event;
 import java.util.Set;
-import java.util.function.Consumer;
 
 /** API for sending/receiving events through a message Broker. */
 public interface BrokerApi {
@@ -33,17 +32,19 @@ public interface BrokerApi {
   ListenableFuture<Boolean> send(String topic, Event message);
 
   /**
-   * Receive asynchronously a message from a topic.
+   * Receive messages asynchronously using a context-aware consumer.
    *
    * @param topic topic name
-   * @param consumer an operation that accepts and process a single message
+   * @param consumer an operation that accepts and processes a single message with context that
+   *     support explicit acknowledgement
    */
-  void receiveAsync(String topic, Consumer<Event> consumer);
+  void receiveAsync(String topic, ContextAwareConsumer<Event> consumer);
 
   /**
-   * Get the active subscribers
+   * Get the active subscribers that registered a context-aware consumer.
    *
-   * @return {@link Set} of the topics subscribers
+   * @return {@link Set} of the topics subscribers using a consumer with context
+   * @since 3.15
    */
   Set<TopicSubscriber> topicSubscribers();
 
@@ -66,20 +67,19 @@ public interface BrokerApi {
   void replayAllEvents(String topic);
 
   /**
-   * Receive asynchronously a message from a topic using a consumer's group id.
+   * Receive messages asynchronously using a context-aware consumer and a consumer group id.
    *
    * @param topic topic name
-   * @param groupId the group identifier that consumer belongs to for that topic
-   * @param consumer an operation that accepts and process a single message
-   * @since 3.10
+   * @param groupId the group identifier that the consumer belongs to for that topic
+   * @param consumer an operation that accepts and processes a single message with context
    */
-  void receiveAsync(String topic, String groupId, Consumer<Event> consumer);
+  void receiveAsync(String topic, String groupId, ContextAwareConsumer<Event> consumer);
 
   /**
-   * Get the active subscribers with their consumer's group id.
+   * Get active context-aware subscribers along with group id.
    *
-   * @return {@link Set} of the topics subscribers using a consumer's group id.
-   * @since 3.10
+   * @return {@link Set} of the topics subscribers using a consumer's group id with context.
+   * @since 3.15
    */
   Set<TopicSubscriberWithGroupId> topicSubscribersWithGroupId();
 }
