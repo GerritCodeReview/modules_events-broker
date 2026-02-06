@@ -23,6 +23,8 @@ import java.util.function.Consumer;
 /** API for sending/receiving events through a message Broker. */
 public interface BrokerApi {
 
+  MessageContext DO_NOTHING_MESSAGE_CONTEXT = () -> {};
+
   /**
    * Send a message to a topic.
    *
@@ -82,4 +84,26 @@ public interface BrokerApi {
    * @since 3.10
    */
   Set<TopicSubscriberWithGroupId> topicSubscribersWithGroupId();
+
+  /**
+   * Receive asynchronously a message from a topic with context.
+   *
+   * @param topic topic name
+   * @param consumer an operation that accepts and process a single message with context
+   */
+  default void receiveAsyncWithContext(String topic, ContextAwareConsumer<Event> consumer) {
+    receiveAsync(topic, event -> consumer.accept(event, DO_NOTHING_MESSAGE_CONTEXT));
+  }
+
+  /**
+   * Receive asynchronously a message from a topic using a consumer's group id with context.
+   *
+   * @param topic topic name
+   * @param groupId the group identifier that consumer belongs to for that topic
+   * @param consumer an operation that accepts and process a single message with context
+   */
+  default void receiveAsyncWithContext(
+      String topic, String groupId, ContextAwareConsumer<Event> consumer) {
+    receiveAsync(topic, groupId, event -> consumer.accept(event, DO_NOTHING_MESSAGE_CONTEXT));
+  }
 }

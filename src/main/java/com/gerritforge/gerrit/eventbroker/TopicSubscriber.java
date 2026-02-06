@@ -15,16 +15,25 @@
 package com.gerritforge.gerrit.eventbroker;
 
 import com.google.auto.value.AutoValue;
+import com.google.gerrit.common.Nullable;
 import com.google.gerrit.server.events.Event;
 import java.util.function.Consumer;
 
 @AutoValue
 public abstract class TopicSubscriber {
+  public static TopicSubscriber topicSubscriber(String topic, Consumer<Event> consumer, @Nullable ContextAwareConsumer<Event> contextAwareConsumer) {
+    return new AutoValue_TopicSubscriber(topic, consumer, contextAwareConsumer);
+  }
+
   public static TopicSubscriber topicSubscriber(String topic, Consumer<Event> consumer) {
-    return new AutoValue_TopicSubscriber(topic, consumer);
+    return new AutoValue_TopicSubscriber(topic, consumer, null);
   }
 
   public abstract String topic();
 
+  @Deprecated
   public abstract Consumer<Event> consumer();
+
+  @Nullable
+  public abstract ContextAwareConsumer<Event> contextAwareConsumer();
 }
