@@ -1,11 +1,12 @@
 {
   "checks": {
     "gerritforge:events-broker-build": {
-      "state": "RUNNING",
+      "state": "SUCCESSFUL",
       "url": "https://gerrit-ci.gerritforge.com/job/module-events-broker-verifier/job/41%252F549941%252F2/1/console",
       "started": "2026-02-06T16:58:48Z",
+      "finished": "2026-02-06T17:00:55Z",
       "created": "2026-02-06T16:58:48Z",
-      "updated": "2026-02-06T16:58:48Z"
+      "updated": "2026-02-06T17:00:55Z"
     },
     "gerritforge:events-broker-format": {
       "state": "SUCCESSFUL",
