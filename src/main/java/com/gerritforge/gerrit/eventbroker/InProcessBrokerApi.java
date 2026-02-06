@@ -24,7 +24,6 @@ import com.google.gerrit.common.Nullable;
 import com.google.gerrit.server.events.Event;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 public class InProcessBrokerApi implements BrokerApi {
@@ -43,12 +42,13 @@ public class InProcessBrokerApi implements BrokerApi {
   }
 
   @Override
-  public void receiveAsync(String topic, Consumer<Event> eventConsumer) {
+  public void receiveAsync(String topic, ContextAwareConsumer<Event> eventConsumer) {
     topicSubscribers.add(topicSubscriber(topic, eventConsumer));
   }
 
   @Override
-  public void receiveAsync(String topic, String groupId, Consumer<Event> eventConsumer) {
+  public void receiveAsync(
+      String topic, String groupId, ContextAwareConsumer<Event> eventConsumer) {
     topicSubscribersWithGroupId.add(
         topicSubscriberWithGroupId(groupId, topicSubscriber(topic, eventConsumer)));
   }
