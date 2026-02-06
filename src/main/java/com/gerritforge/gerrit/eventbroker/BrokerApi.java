@@ -76,6 +76,18 @@ public interface BrokerApi {
   void receiveAsync(String topic, String groupId, Consumer<Event> consumer);
 
   /**
+   * Receive asynchronously a message from a topic using a context-aware consumer.
+   *
+   * @param topic topic name
+   * @param groupId the group identifier that consumer belongs to for that topic
+   * @param consumer an operation that accepts and process a single message with its context
+   * @since 3.12
+   */
+  default void receiveAsync(String topic, String groupId, ContextAwareConsumer consumer) {
+    receiveAsync(topic, groupId, (Consumer<Event>) consumer);
+  }
+
+  /**
    * Get the active subscribers with their consumer's group id.
    *
    * @return {@link Set} of the topics subscribers using a consumer's group id.
