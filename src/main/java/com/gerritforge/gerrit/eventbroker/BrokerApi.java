@@ -14,6 +14,7 @@
 
 package com.gerritforge.gerrit.eventbroker;
 
+import com.google.common.collect.ImmutableSet;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.gerrit.common.Nullable;
 import com.google.gerrit.server.events.Event;
@@ -22,6 +23,8 @@ import java.util.function.Consumer;
 
 /** API for sending/receiving events through a message Broker. */
 public interface BrokerApi {
+
+  MessageContext NOOP_MESSAGE_CONTEXT = () -> {};
 
   /**
    * Send a message to a topic.
@@ -82,4 +85,46 @@ public interface BrokerApi {
    * @since 3.10
    */
   Set<TopicSubscriberWithGroupId> topicSubscribersWithGroupId();
+
+  /**
+   * Receive asynchronously a message from a topic with context.
+   *
+   * @param topic topic name
+   * @param consumer an operation that accepts and process a single message with context
+   */
+  default void receiveAsyncWithContext(String topic, ContextAwareConsumer<Event> consumer) {
+    receiveAsync(topic, event -> consumer.accept(event, NOOP_MESSAGE_CONTEXT));
+  }
+
+  /**
+   * Get the active subscribers that registered a context-aware consumer.
+   *
+   * @return {@link Set} of the topics subscribers using a consumer with context
+   * @since 3.14
+   */
+  default Set<TopicSubscriberWithContext> topicSubscribersWithContext() {
+    return ImmutableSet.of();
+  }
+
+  /**
+   * Get active context-aware subscribers along with group id.
+   *
+   * @return {@link Set} of the topics subscribers using a consumer's group id with context.
+   * @since 3.14
+   */
+  default Set<TopicSubscriberWithContextWithGroupId> topicSubscribersWithContextWithGroupId() {
+    return ImmutableSet.of();
+  }
+
+  /**
+   * Receive asynchronously a message from a topic using a consumer's group id with context.
+   *
+   * @param topic topic name
+   * @param groupId the group identifier that consumer belongs to for that topic
+   * @param consumer an operation that accepts and process a single message with context
+   */
+  default void receiveAsyncWithContext(
+      String topic, String groupId, ContextAwareConsumer<Event> consumer) {
+    receiveAsync(topic, groupId, event -> consumer.accept(event, NOOP_MESSAGE_CONTEXT));
+  }
 }
