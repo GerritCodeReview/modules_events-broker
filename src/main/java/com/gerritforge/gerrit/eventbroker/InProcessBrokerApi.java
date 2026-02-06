@@ -31,10 +31,14 @@ public class InProcessBrokerApi implements BrokerApi {
   private static final FluentLogger log = FluentLogger.forEnclosingClass();
   private final Set<TopicSubscriber> topicSubscribers;
   private final Set<TopicSubscriberWithGroupId> topicSubscribersWithGroupId;
+  private final Set<TopicSubscriberWithContext> topicSubscribersWithContext;
+  private final Set<TopicSubscriberWithContextWithGroupId> topicSubscribersWithContextWithGroupId;
 
   public InProcessBrokerApi() {
     this.topicSubscribers = new HashSet<>();
     this.topicSubscribersWithGroupId = new HashSet<>();
+    this.topicSubscribersWithContext = new HashSet<>();
+    this.topicSubscribersWithContextWithGroupId = new HashSet<>();
   }
 
   @Override
@@ -54,6 +58,19 @@ public class InProcessBrokerApi implements BrokerApi {
   }
 
   @Override
+  public void receiveAsyncWithContext(String topic, ContextAwareConsumer<Event> consumer) {
+    topicSubscribersWithContext.add(TopicSubscriberWithContext.topicSubscriber(topic, consumer));
+  }
+
+  @Override
+  public void receiveAsyncWithContext(
+      String topic, String groupId, ContextAwareConsumer<Event> consumer) {
+    TopicSubscriberWithContext sub = TopicSubscriberWithContext.topicSubscriber(topic, consumer);
+    topicSubscribersWithContextWithGroupId.add(
+        TopicSubscriberWithContextWithGroupId.topicSubscriberWithGroupId(groupId, sub));
+  }
+
+  @Override
   public Set<TopicSubscriber> topicSubscribers() {
     return ImmutableSet.copyOf(topicSubscribers);
   }
@@ -64,9 +81,21 @@ public class InProcessBrokerApi implements BrokerApi {
   }
 
   @Override
+  public Set<TopicSubscriberWithContext> topicSubscribersWithContext() {
+    return ImmutableSet.copyOf(topicSubscribersWithContext);
+  }
+
+  @Override
+  public Set<TopicSubscriberWithContextWithGroupId> topicSubscribersWithContextAndGroupId() {
+    return ImmutableSet.copyOf(topicSubscribersWithContextWithGroupId);
+  }
+
+  @Override
   public void disconnect() {
     this.topicSubscribers.clear();
     this.topicSubscribersWithGroupId.clear();
+    this.topicSubscribersWithContext.clear();
+    this.topicSubscribersWithContextWithGroupId.clear();
   }
 
   @Override
@@ -85,6 +114,12 @@ public class InProcessBrokerApi implements BrokerApi {
                         && (groupId == null || groupId.equals(tsg.groupId())))
             .collect(Collectors.toSet());
     topicSubscribersWithGroupId.removeAll(topicsWithGroupIdToRemove);
+
+    topicSubscribersWithContext.removeIf(ts -> topic.equals(ts.topic()));
+    topicSubscribersWithContextWithGroupId.removeIf(
+        tsg ->
+            topic.equals(tsg.topicSubscriberWithContext().topic())
+                && (groupId == null || groupId.equals(tsg.groupId())));
   }
 
   @Override

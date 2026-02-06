@@ -17,6 +17,7 @@ package com.gerritforge.gerrit.eventbroker;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.gerrit.common.Nullable;
 import com.google.gerrit.server.events.Event;
+import java.util.Collections;
 import java.util.Set;
 import java.util.function.Consumer;
 
@@ -82,4 +83,75 @@ public interface BrokerApi {
    * @since 3.10
    */
   Set<TopicSubscriberWithGroupId> topicSubscribersWithGroupId();
+
+  /**
+   * Receive messages asynchronously using a context-aware consumer.
+   *
+   * <p><b>Backwards compatibility:</b> The default implementation delegates to the legacy {@link
+   * #receiveAsync(String, Consumer)} by wrapping the provided {@link ContextAwareConsumer} and
+   * passing a {@link MessageContext#noop()}. As a consequence, registrations done through this
+   * default method are tracked as legacy {@link TopicSubscriber}s and will <b>not</b> appear in
+   * {@link #topicSubscribersWithContext()} (or {@link #topicSubscribersWithContextAndGroupId()}).
+   *
+   * <p>Broker implementations that support explicit acknowledgements/commits should override this
+   * method to:
+   *
+   * <ul>
+   *   <li>provide a real {@link MessageContext} instance, and
+   *   <li>track the subscription via {@link #topicSubscribersWithContext()} (and group-id variant).
+   * </ul>
+   *
+   * @param topic topic name
+   * @param consumer an operation that accepts and processes a single message with context
+   */
+  default void receiveAsyncWithContext(String topic, ContextAwareConsumer<Event> consumer) {
+    receiveAsync(topic, event -> consumer.accept(event, MessageContext.noop()));
+  }
+
+  /**
+   * Get the active subscribers that registered a context-aware consumer.
+   *
+   * @return {@link Set} of the topics subscribers using a consumer with context
+   * @since 3.14
+   */
+  default Set<TopicSubscriberWithContext> topicSubscribersWithContext() {
+    return Collections.emptySet();
+  }
+
+  /**
+   * Get active context-aware subscribers along with group id.
+   *
+   * @return {@link Set} of the topics subscribers using a consumer's group id with context.
+   * @since 3.14
+   */
+  default Set<TopicSubscriberWithContextWithGroupId> topicSubscribersWithContextAndGroupId() {
+    return Collections.emptySet();
+  }
+
+  /**
+   * Receive messages asynchronously using a context-aware consumer and a consumer group id.
+   *
+   * <p><b>Backwards compatibility:</b> The default implementation delegates to the legacy {@link
+   * #receiveAsync(String, String, Consumer)} by wrapping the provided {@link ContextAwareConsumer}
+   * and passing a {@link MessageContext#noop()}. As a result, subscriptions registered through this
+   * default method are tracked as legacy {@link TopicSubscriberWithGroupId} entries and will
+   * <b>not</b> appear in {@link #topicSubscribersWithContextAndGroupId()} (or {@link
+   * #topicSubscribersWithContext()}).
+   *
+   * <p>Broker implementations that support explicit acknowledgements/commits should override this
+   * method to:
+   *
+   * <ul>
+   *   <li>provide a real {@link MessageContext} instance, and
+   *   <li>register the subscription via {@link #topicSubscribersWithContextAndGroupId()}.
+   * </ul>
+   *
+   * @param topic topic name
+   * @param groupId the group identifier that the consumer belongs to for that topic
+   * @param consumer an operation that accepts and processes a single message with context
+   */
+  default void receiveAsyncWithContext(
+      String topic, String groupId, ContextAwareConsumer<Event> consumer) {
+    receiveAsync(topic, groupId, event -> consumer.accept(event, MessageContext.noop()));
+  }
 }

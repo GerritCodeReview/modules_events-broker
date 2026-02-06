@@ -107,8 +107,12 @@ public class InProcessBrokerApiTest {
   @Test
   public void shouldDisconnectSubscribers() {
     brokerApiUnderTest.receiveAsync("topic", eventConsumer);
+    brokerApiUnderTest.receiveAsyncWithContext("topic2", dummyContextAwareConsumer());
+    brokerApiUnderTest.receiveAsyncWithContext("topic3", "group-id", dummyContextAwareConsumer());
     brokerApiUnderTest.disconnect();
     assertThat(brokerApiUnderTest.topicSubscribers()).isEmpty();
+    assertThat(brokerApiUnderTest.topicSubscribersWithContext()).isEmpty();
+    assertThat(brokerApiUnderTest.topicSubscribersWithContextAndGroupId()).isEmpty();
   }
 
   @Test
@@ -117,13 +121,55 @@ public class InProcessBrokerApiTest {
         UnsupportedOperationException.class, () -> brokerApiUnderTest.replayAllEvents("topic"));
   }
 
+  @Test
+  public void shouldRegisterContextAwareConsumerPerTopic() {
+    brokerApiUnderTest.receiveAsyncWithContext("topic", dummyContextAwareConsumer());
+    brokerApiUnderTest.receiveAsyncWithContext("topic2", dummyContextAwareConsumer());
+    assertThat(brokerApiUnderTest.topicSubscribersWithContext().size()).isEqualTo(2);
+  }
+
+  @Test
+  public void shouldNotRegisterTheSameContextConsumerTwicePerTopic() {
+    ContextAwareSubscriber<Event> contextAwareConsumer = dummyContextAwareConsumer();
+    brokerApiUnderTest.receiveAsyncWithContext("topic", contextAwareConsumer);
+    brokerApiUnderTest.receiveAsyncWithContext("topic", contextAwareConsumer);
+
+    assertThat(brokerApiUnderTest.topicSubscribersWithContext().size()).isEqualTo(1);
+  }
+
+  @Test
+  public void shouldAllowSameContextConsumerForSameTopicButDifferentGroupId() {
+    brokerApiUnderTest.receiveAsyncWithContext("topic", "group1", dummyContextAwareConsumer());
+    brokerApiUnderTest.receiveAsyncWithContext("topic2", "group2", dummyContextAwareConsumer());
+    assertThat(brokerApiUnderTest.topicSubscribersWithContextAndGroupId().size()).isEqualTo(2);
+  }
+
+  @Test
+  public void shouldNotRegisterTheSameContextConsumerTwicePerTopicWithGroupId() {
+    ContextAwareSubscriber<Event> contextAwareConsumer = dummyContextAwareConsumer();
+    brokerApiUnderTest.receiveAsyncWithContext("topic", "group1", contextAwareConsumer);
+    brokerApiUnderTest.receiveAsyncWithContext("topic", "group1", contextAwareConsumer);
+
+    assertThat(brokerApiUnderTest.topicSubscribersWithContextAndGroupId()).hasSize(1);
+  }
+
   private static class Subscriber<T> implements Consumer<T> {
 
     @Override
     public void accept(T eventMessage) {}
   }
 
+  private static class ContextAwareSubscriber<T> implements ContextAwareConsumer<T> {
+
+    @Override
+    public void accept(T t, MessageContext ctx) {}
+  }
+
   private <T> Consumer<T> mockEventConsumer() {
     return new Subscriber<>();
+  }
+
+  private <T> ContextAwareSubscriber<T> dummyContextAwareConsumer() {
+    return new ContextAwareSubscriber<>();
   }
 }
