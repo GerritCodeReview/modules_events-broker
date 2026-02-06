@@ -58,7 +58,8 @@ public class EventDeserializerTest {
   @Test
   public void eventDeserializerShouldParseEventWithHeaderAndBodyProjectName() {
     final String eventJson =
-        "{\"projectName\":\"header_body_parser_project\",\"type\":\"project-created\", \"instanceId\":\"instance-id\"}";
+        "{\"projectName\":\"header_body_parser_project\",\"type\":\"project-created\","
+            + " \"instanceId\":\"instance-id\"}";
     final Event event = deserializer.deserialize(eventJson);
 
     assertThat(event.instanceId).isEqualTo("instance-id");
