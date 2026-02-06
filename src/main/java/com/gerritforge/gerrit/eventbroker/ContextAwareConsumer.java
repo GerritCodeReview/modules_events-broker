@@ -14,16 +14,18 @@
 
 package com.gerritforge.gerrit.eventbroker;
 
-import com.google.auto.value.AutoValue;
-
-@AutoValue
-public abstract class TopicSubscriberWithGroupId {
-  public static TopicSubscriberWithGroupId topicSubscriberWithGroupId(
-      String groupId, TopicSubscriber topicSubscriberWithContext) {
-    return new AutoValue_TopicSubscriberWithGroupId(groupId, topicSubscriberWithContext);
-  }
-
-  public abstract String groupId();
-
-  public abstract TopicSubscriber topicSubscriber();
+/**
+ * A consumer that accepts a message and its context, allowing for explicit commit.
+ *
+ * @param <T> the type of the event input to the operation
+ */
+@FunctionalInterface
+public interface ContextAwareConsumer<T> {
+  /**
+   * Performs this operation on the given argument.
+   *
+   * @param t the input argument
+   * @param ctx the message context
+   */
+  void accept(T t, MessageContext ctx);
 }
