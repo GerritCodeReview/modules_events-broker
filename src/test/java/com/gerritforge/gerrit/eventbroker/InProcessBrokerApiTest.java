@@ -21,14 +21,13 @@ import static com.google.gerrit.testing.GerritJUnit.assertThrows;
 import com.google.gerrit.server.events.Event;
 import java.util.Set;
 import java.util.UUID;
-import java.util.function.Consumer;
 import org.junit.Before;
 import org.junit.Test;
 
 public class InProcessBrokerApiTest {
 
   public static final int SEND_FUTURE_TIMEOUT = 1;
-  Consumer<Event> eventConsumer;
+  AcknowledgementAwareConsumer<Event> eventConsumer;
 
   BrokerApi brokerApiUnderTest;
   UUID instanceId = UUID.randomUUID();
@@ -46,7 +45,7 @@ public class InProcessBrokerApiTest {
 
   @Test
   public void shouldRegisterConsumerPerTopic() {
-    Consumer<Event> secondConsumer = mockEventConsumer();
+    AcknowledgementAwareConsumer<Event> secondConsumer = mockEventConsumer();
     brokerApiUnderTest.receiveAsync("topic", eventConsumer);
     brokerApiUnderTest.receiveAsync("topic2", secondConsumer);
     assertThat(brokerApiUnderTest.topicSubscribers().size()).isEqualTo(2);
@@ -54,10 +53,10 @@ public class InProcessBrokerApiTest {
 
   @Test
   public void shouldReturnMapOfConsumersPerTopic() {
-    Consumer<Event> firstConsumerTopicA = mockEventConsumer();
+    AcknowledgementAwareConsumer<Event> firstConsumerTopicA = mockEventConsumer();
 
-    Consumer<Event> secondConsumerTopicA = mockEventConsumer();
-    Consumer<Event> thirdConsumerTopicB = mockEventConsumer();
+    AcknowledgementAwareConsumer<Event> secondConsumerTopicA = mockEventConsumer();
+    AcknowledgementAwareConsumer<Event> thirdConsumerTopicB = mockEventConsumer();
 
     brokerApiUnderTest.receiveAsync("TopicA", firstConsumerTopicA);
     brokerApiUnderTest.receiveAsync("TopicA", secondConsumerTopicA);
@@ -76,7 +75,7 @@ public class InProcessBrokerApiTest {
 
   @Test
   public void shouldDeliverAsynchronouslyEventToAllRegisteredConsumers() {
-    Consumer<Event> secondConsumer = mockEventConsumer();
+    AcknowledgementAwareConsumer<Event> secondConsumer = mockEventConsumer();
     brokerApiUnderTest.receiveAsync("topic", eventConsumer);
     brokerApiUnderTest.receiveAsync("topic", secondConsumer);
     assertThat(brokerApiUnderTest.topicSubscribers().size()).isEqualTo(2);
@@ -95,7 +94,7 @@ public class InProcessBrokerApiTest {
     brokerApiUnderTest.receiveAsync("topic", eventConsumer);
     assertThat(brokerApiUnderTest.topicSubscribers()).isNotEmpty();
 
-    Consumer<Event> newConsumer = mockEventConsumer();
+    AcknowledgementAwareConsumer<Event> newConsumer = mockEventConsumer();
 
     brokerApiUnderTest.disconnect();
     assertThat(brokerApiUnderTest.topicSubscribers()).isEmpty();
@@ -117,13 +116,13 @@ public class InProcessBrokerApiTest {
         UnsupportedOperationException.class, () -> brokerApiUnderTest.replayAllEvents("topic"));
   }
 
-  private static class Subscriber<T> implements Consumer<T> {
+  private static class Subscriber<T> implements AcknowledgementAwareConsumer<T> {
 
     @Override
-    public void accept(T eventMessage) {}
+    public void accept(T t, MessageAcknowledgement acknowledgement) {}
   }
 
-  private <T> Consumer<T> mockEventConsumer() {
+  private <T> AcknowledgementAwareConsumer<T> mockEventConsumer() {
     return new Subscriber<>();
   }
 }
