@@ -117,6 +117,22 @@ public class InProcessBrokerApiTest {
         UnsupportedOperationException.class, () -> brokerApiUnderTest.replayAllEvents("topic"));
   }
 
+  @Test
+  public void shouldRegisterContextAwareConsumer() {
+    ContextAwareConsumer<Event> secondConsumer = (event, ctx) -> {};
+    brokerApiUnderTest.receiveAsync("topic", eventConsumer);
+    brokerApiUnderTest.receiveAsyncWithContext("topic2", secondConsumer);
+    assertThat(brokerApiUnderTest.topicSubscribers().size()).isEqualTo(2);
+  }
+
+  @Test
+  public void shouldRegisterContextAwareConsumerWithGroupId() {
+    ContextAwareConsumer<Event> secondConsumer = (event, ctx) -> {};
+    brokerApiUnderTest.receiveAsync("topic", "group1", eventConsumer);
+    brokerApiUnderTest.receiveAsyncWithContext("topic2", "group2", secondConsumer);
+    assertThat(brokerApiUnderTest.topicSubscribersWithGroupId().size()).isEqualTo(2);
+  }
+
   private static class Subscriber<T> implements Consumer<T> {
 
     @Override

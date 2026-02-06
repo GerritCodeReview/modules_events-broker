@@ -31,10 +31,14 @@ public class InProcessBrokerApi implements BrokerApi {
   private static final FluentLogger log = FluentLogger.forEnclosingClass();
   private final Set<TopicSubscriber> topicSubscribers;
   private final Set<TopicSubscriberWithGroupId> topicSubscribersWithGroupId;
+  private final Set<TopicSubscriberWithContext> topicSubscribersWithContext;
+  private final Set<TopicSubscriberWithContextWithGroupId> topicSubscriberWithContextWithGroupId;
 
   public InProcessBrokerApi() {
     this.topicSubscribers = new HashSet<>();
     this.topicSubscribersWithGroupId = new HashSet<>();
+    this.topicSubscribersWithContext = new HashSet<>();
+    this.topicSubscriberWithContextWithGroupId = new HashSet<>();
   }
 
   @Override
@@ -64,9 +68,21 @@ public class InProcessBrokerApi implements BrokerApi {
   }
 
   @Override
+  public Set<TopicSubscriberWithContext> topicSubscribersWithContext() {
+    return ImmutableSet.copyOf(topicSubscribersWithContext);
+  }
+
+  @Override
+  public Set<TopicSubscriberWithContextWithGroupId> topicSubscribersWithContextWithGroupId() {
+    return ImmutableSet.copyOf(topicSubscriberWithContextWithGroupId);
+  }
+
+  @Override
   public void disconnect() {
     this.topicSubscribers.clear();
     this.topicSubscribersWithGroupId.clear();
+    this.topicSubscribersWithContext.clear();
+    this.topicSubscriberWithContextWithGroupId.clear();
   }
 
   @Override
@@ -77,6 +93,12 @@ public class InProcessBrokerApi implements BrokerApi {
             .collect(Collectors.toSet());
     topicSubscribers.removeAll(topicsToRemove);
 
+    Set<TopicSubscriberWithContext> topicsWithContextToRemove =
+        topicSubscribersWithContext.stream()
+            .filter(ts -> topic.equals(ts.topic()))
+            .collect(Collectors.toSet());
+    topicSubscribersWithContext.removeAll(topicsWithContextToRemove);
+
     Set<TopicSubscriberWithGroupId> topicsWithGroupIdToRemove =
         topicSubscribersWithGroupId.stream()
             .filter(
@@ -85,6 +107,15 @@ public class InProcessBrokerApi implements BrokerApi {
                         && (groupId == null || groupId.equals(tsg.groupId())))
             .collect(Collectors.toSet());
     topicSubscribersWithGroupId.removeAll(topicsWithGroupIdToRemove);
+
+    Set<TopicSubscriberWithContextWithGroupId> topicSubscriberWithContextWithGroupIdToRemove =
+        topicSubscribersWithContextWithGroupId().stream()
+            .filter(
+                tsg ->
+                    topic.equals(tsg.topicSubscriberWithContext().topic())
+                        && (groupId == null || groupId.equals(tsg.groupId())))
+            .collect(Collectors.toSet());
+    topicSubscriberWithContextWithGroupId.removeAll(topicSubscriberWithContextWithGroupIdToRemove);
   }
 
   @Override
