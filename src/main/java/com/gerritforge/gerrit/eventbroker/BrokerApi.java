@@ -82,4 +82,25 @@ public interface BrokerApi {
    * @since 3.10
    */
   Set<TopicSubscriberWithGroupId> topicSubscribersWithGroupId();
+
+  /**
+   * Receive asynchronously a message from a topic with context.
+   *
+   * @param topic topic name
+   * @param consumer an operation that accepts and process a single message with context
+   */
+  default void receiveAsync(String topic, ContextAwareConsumer<Event> consumer) {
+    receiveAsync(topic, event -> consumer.accept(event, () -> {}));
+  }
+
+  /**
+   * Receive asynchronously a message from a topic using a consumer's group id with context.
+   *
+   * @param topic topic name
+   * @param groupId the group identifier that consumer belongs to for that topic
+   * @param consumer an operation that accepts and process a single message with context
+   */
+  default void receiveAsync(String topic, String groupId, ContextAwareConsumer<Event> consumer) {
+    receiveAsync(topic, groupId, event -> consumer.accept(event, () -> {}));
+  }
 }
