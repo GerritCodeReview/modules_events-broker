@@ -18,6 +18,7 @@ import com.google.common.util.concurrent.ListenableFuture;
 import com.google.gerrit.common.Nullable;
 import com.google.gerrit.server.events.Event;
 import java.util.Set;
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 /** API for sending/receiving events through a message Broker. */
@@ -39,6 +40,19 @@ public interface BrokerApi {
    * @param consumer an operation that accepts and process a single message
    */
   void receiveAsync(String topic, Consumer<Event> consumer);
+
+  /**
+   * Receive asynchronously a message from a topic with message context (e.g. commit support).
+   *
+   * <p>Default implementation preserves existing behavior and provides a no-op context.
+   *
+   * @param topic topic name
+   * @param consumer an operation that accepts and process a single message and its context
+   * @since 3.10
+   */
+  default void receiveAsync(String topic, BiConsumer<Event, MessageContext> consumer) {
+    receiveAsync(topic, event -> consumer.accept(event, MessageContext.noop()));
+  }
 
   /**
    * Get the active subscribers
@@ -74,6 +88,21 @@ public interface BrokerApi {
    * @since 3.10
    */
   void receiveAsync(String topic, String groupId, Consumer<Event> consumer);
+
+  /**
+   * Receive asynchronously a message from a topic using a consumer's group id with message context.
+   *
+   * <p>Default implementation preserves existing behavior and provides a no-op context.
+   *
+   * @param topic topic name
+   * @param groupId the group identifier that consumer belongs to for that topic
+   * @param consumer an operation that accepts and process a single message and its context
+   * @since 3.10
+   */
+  default void receiveAsync(
+      String topic, String groupId, BiConsumer<Event, MessageContext> consumer) {
+    receiveAsync(topic, groupId, event -> consumer.accept(event, MessageContext.noop()));
+  }
 
   /**
    * Get the active subscribers with their consumer's group id.
