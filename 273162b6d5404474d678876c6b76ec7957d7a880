@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33a21d64_179a1fb3",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApi.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-02-24T15:25:46Z",
+      "side": 1,
+      "message": "This default implementation is creating a brand-new consumer for every existing consumer.\nIf I call this method twice with the same consumer, I\u0027ll get two different consumer instances.\n\nIs there any value in having this default implementation?\n\nIf not, why not just throw an `UnsupportedMethodException` instead?",
+      "range": {
+        "startLine": 107,
+        "startChar": 24,
+        "endLine": 107,
+        "endChar": 78
+      },
+      "revId": "273162b6d5404474d678876c6b76ec7957d7a880",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4daaba7c_ad87353a",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApi.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-02-24T15:25:46Z",
+      "side": 1,
+      "message": "Same as above.",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 37
+      },
+      "revId": "273162b6d5404474d678876c6b76ec7957d7a880",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a52c6de5_671ec16e",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApi.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-02-24T15:25:46Z",
+      "side": 1,
+      "message": "Same as above.",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 37
+      },
+      "revId": "273162b6d5404474d678876c6b76ec7957d7a880",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "661a7944_313ca387",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApi.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-02-24T15:25:46Z",
+      "side": 1,
+      "message": "Same as above.",
+      "revId": "273162b6d5404474d678876c6b76ec7957d7a880",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40ae1ddd_1d56f849",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/MessageContext.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-02-24T15:25:46Z",
+      "side": 1,
+      "message": "This is quite big actually: if anyone is using this interface (e.g. multi-site) how does he know *IF* the runtime implementation of this interface will be thread-safe or not?\n\nI believe we should be stricter if we have evidence that common brokers have this limitation.\n\nI see two options:\n\n1. Just documenting it in a stricter way\n2. Documenting *and* checking it",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 78
+      },
+      "revId": "273162b6d5404474d678876c6b76ec7957d7a880",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91eb3e55_208d0154",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/MessageContext.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-02-24T15:25:46Z",
+      "side": 1,
+      "message": "Why is this needed?\n\nIf you remove the default implementation, which is broken from what I see in the code and not useful either, then this class becomes unreferenced.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 5
+      },
+      "revId": "273162b6d5404474d678876c6b76ec7957d7a880",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
