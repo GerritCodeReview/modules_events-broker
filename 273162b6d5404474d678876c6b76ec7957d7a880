@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "93cfb654_d1589810",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApi.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-02-24T17:54:22Z",
+      "side": 1,
+      "message": "The reason for adding these default implementations is to avoid forcing all existing brokers to adopt the new API in a big-bang change,  preserving the current behaviour for brokers that don\u0027t yet support message context.\n\nIf we were to throw an `UnsupportedOperationException` instead, existing broker implementations would still compile and deploy without issues, but would then fail at runtime as soon as someone uses the new methods (i.e. multi-site, websession-broker, pull-replication, and so forth).\n\nI think we should either require all brokers to implement the new API (and fail fast at compile time) or allow existing brokers to continue working unchanged, via the default implementations.\n\nI chose the latter, but we can discuss furhter.",
+      "parentUuid": "33a21d64_179a1fb3",
+      "range": {
+        "startLine": 107,
+        "startChar": 24,
+        "endLine": 107,
+        "endChar": 78
+      },
+      "revId": "273162b6d5404474d678876c6b76ec7957d7a880",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4daaba7c_ad87353a",
         "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApi.java",
         "patchSetId": 11
@@ -112,6 +136,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6349c298_d3e64d6b",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/MessageContext.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-02-24T17:54:22Z",
+      "side": 1,
+      "message": "I was mainly focusing on kafka, which is documented [1] to be NOT thread-safe.\n\nBy looking at Gcloud-pubsub docs [2] I read:\n\n```\n // This {@code MessageReceiver} passes all messages to a BlockingQueue. This method can\n // be called concurrently from multiple threads, so it is important that the queue be\n // thread-safe.\n ```\n \nSo it looks to be thread-safety has to be guaranteed explicitly by us.\n\nFor Kinesis, we have committing the offset` \u003d\u003d calling checkpoint using the checkpointer (we already do this at [3], from the same thread).\n\nThey do not (in the public docs) guarantee that the checkpointer itself is thread-safe to call from arbitrary threads. I can check the source code.\n\nI haven\u0027t checked eiffel, rabbitmq and nats implementation.\n\nBottom line is that thread-safety depends on the implementation (and the most common one do not guarantee it).\n\nI think documenting that implementations should take care of thread-safety is enough for the events-broker API, WDYT?\n\n[1] https://kafka.apache.org/25/javadoc/org/apache/kafka/clients/consumer/KafkaConsumer.html\n\n[2] https://docs.cloud.google.com/java/docs/reference/google-cloud-pubsub/latest/com.google.cloud.pubsub.v1.MessageReceiver\n\n[3] https://github.com/GerritForge/events-aws-kinesis/blob/refs/heads/master/src/main/java/com/gerritforge/gerrit/plugins/kinesis/KinesisRecordProcessor.java#L90",
+      "parentUuid": "40ae1ddd_1d56f849",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 78
+      },
+      "revId": "273162b6d5404474d678876c6b76ec7957d7a880",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "91eb3e55_208d0154",
         "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/MessageContext.java",
         "patchSetId": 11
@@ -123,6 +171,30 @@
       "writtenOn": "2026-02-24T15:25:46Z",
       "side": 1,
       "message": "Why is this needed?\n\nIf you remove the default implementation, which is broken from what I see in the code and not useful either, then this class becomes unreferenced.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 5
+      },
+      "revId": "273162b6d5404474d678876c6b76ec7957d7a880",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f19d7992_771bcd9c",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/MessageContext.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-02-24T17:54:22Z",
+      "side": 1,
+      "message": "I think this will still be useful to be publicly available to consumers.\n\nThe ability to say \"ignore the context\" will be the same across every broker implementation.\n\nFor example, if auto-acknowledging is enabled, one might say:\n\n```\nif (autoCommitEnabled) {\n                    contextAwareMessageProcessor.accept(event, MessageContext.noop());\n```",
+      "parentUuid": "91eb3e55_208d0154",
       "range": {
         "startLine": 53,
         "startChar": 0,
