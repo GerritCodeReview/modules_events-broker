@@ -24,6 +24,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc063d33_0632feee",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApi.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-02-27T15:36:09Z",
+      "side": 1,
+      "message": "After a f2f conversation, we agreed that since this is a master, it is acceptable to implement a change that is not backwards compatible.\n\nBroker Api implementations that want to consume this events-broker library will need to adapt to this new interface.\n\nResolving this.",
+      "parentUuid": "3a16ef2f_cba49cde",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 5
+      },
+      "revId": "273162b6d5404474d678876c6b76ec7957d7a880",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33a21d64_179a1fb3",
@@ -95,6 +119,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9a5850a_8bf890cf",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApi.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-02-27T15:36:09Z",
+      "side": 1,
+      "message": "After a f2f conversation, we agreed that since this is a master, it is acceptable to implement a change that is not backwards compatible.\n\nBroker Api implementations that want to consume this events-broker library will need to adapt to this new interface.\n\nResolving this.",
+      "parentUuid": "1f5ab588_63e6d61c",
+      "range": {
+        "startLine": 107,
+        "startChar": 24,
+        "endLine": 107,
+        "endChar": 78
+      },
+      "revId": "273162b6d5404474d678876c6b76ec7957d7a880",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c4b03a0_c0909769",
@@ -108,6 +156,30 @@
       "writtenOn": "2026-02-24T22:54:12Z",
       "side": 1,
       "message": "```suggestion\n  void receiveAsyncWithContext(String topic, ContextAwareConsumer\u003cEvent\u003e consumer);\n```",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 0
+      },
+      "revId": "273162b6d5404474d678876c6b76ec7957d7a880",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c75746ec_629dd972",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApi.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-02-27T15:36:09Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "3c4b03a0_c0909769",
       "range": {
         "startLine": 106,
         "startChar": 1,
@@ -141,6 +213,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ee67158_89466ccf",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApi.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-02-27T15:36:09Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "4daaba7c_ad87353a",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 37
+      },
+      "revId": "273162b6d5404474d678876c6b76ec7957d7a880",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3cbc25da_ee7f39a1",
@@ -154,6 +250,30 @@
       "writtenOn": "2026-02-24T22:54:12Z",
       "side": 1,
       "message": "```suggestion\n  Set\u003cTopicSubscriberWithContext\u003e topicSubscribersWithContext();\n```",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 3
+      },
+      "revId": "273162b6d5404474d678876c6b76ec7957d7a880",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "612ca44b_ba2a4b91",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApi.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-02-27T15:36:09Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "3cbc25da_ee7f39a1",
       "range": {
         "startLine": 119,
         "startChar": 0,
@@ -187,6 +307,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cf3fa3d_0b88516f",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApi.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-02-27T15:36:09Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "a52c6de5_671ec16e",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 37
+      },
+      "revId": "273162b6d5404474d678876c6b76ec7957d7a880",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff9c4a25_62b4e034",
@@ -200,6 +344,30 @@
       "writtenOn": "2026-02-24T22:54:12Z",
       "side": 1,
       "message": "```suggestion\n  Set\u003cTopicSubscriberWithContextWithGroupId\u003e topicSubscribersWithContextAndGroupId();\n```",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 3
+      },
+      "revId": "273162b6d5404474d678876c6b76ec7957d7a880",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e494fe1_2a74d9a6",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApi.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-02-27T15:36:09Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "ff9c4a25_62b4e034",
       "range": {
         "startLine": 143,
         "startChar": 0,
@@ -227,6 +395,24 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9cbc06b_f3d569c2",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApi.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-02-27T15:36:09Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "661a7944_313ca387",
+      "revId": "273162b6d5404474d678876c6b76ec7957d7a880",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a35d4152_05451499",
@@ -240,6 +426,30 @@
       "writtenOn": "2026-02-24T22:54:12Z",
       "side": 1,
       "message": "```suggestion\n  void receiveAsyncWithContext(\n      String topic, String groupId, ContextAwareConsumer\u003cEvent\u003e consumer);\n```",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 3
+      },
+      "revId": "273162b6d5404474d678876c6b76ec7957d7a880",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91fafd06_e48a4f68",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApi.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-02-27T15:36:09Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "a35d4152_05451499",
       "range": {
         "startLine": 179,
         "startChar": 0,
