@@ -477,6 +477,24 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d9c964b_f9456e06",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/InProcessBrokerApi.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-02-27T15:39:59Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "142d5df2_19fac463",
+      "revId": "273162b6d5404474d678876c6b76ec7957d7a880",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40ae1ddd_1d56f849",
@@ -584,6 +602,24 @@
       "writtenOn": "2026-02-24T22:54:12Z",
       "side": 1,
       "message": "```suggestion\n  ExtendedBrokerApi brokerApiUnderTest;\n```",
+      "revId": "273162b6d5404474d678876c6b76ec7957d7a880",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef213772_6c699043",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/InProcessBrokerApiTest.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-02-27T15:39:59Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b8fe4b85_c55bb7e0",
       "revId": "273162b6d5404474d678876c6b76ec7957d7a880",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
