@@ -542,6 +542,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb2dcab6_6207ee1d",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/MessageContext.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-02-27T15:44:08Z",
+      "side": 1,
+      "message": "I have removed the remark on the expected thread-safety consideration, since they are implementation-specific and depend on whether the client is running or not from a different thread.\n\nThe discussion on whether thread-safety is required will be held for the relevant code-reviews.",
+      "parentUuid": "6349c298_d3e64d6b",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 78
+      },
+      "revId": "273162b6d5404474d678876c6b76ec7957d7a880",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91eb3e55_208d0154",
