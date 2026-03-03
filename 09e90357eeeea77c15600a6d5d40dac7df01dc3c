@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0205b47_4d6bc19b",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/MessageContext.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-03-03T00:57:10Z",
+      "side": 1,
+      "message": "I believe we also need to allow the caller to understand if the message has been autoAcked or not.\n\n```suggestion\n  void ack();\n\n  /**\n   * Returns true if received messages are acked automatically or not.\n   */\n  boolean isAutoAck();\n```",
+      "revId": "09e90357eeeea77c15600a6d5d40dac7df01dc3c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fed6cf7d_79e9afce",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/MessageContext.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-03-03T00:57:10Z",
+      "side": 1,
+      "message": "I believe the `ack()` may also fail; how should this be reported?\n\nWe have three options:\n1. Checked exception\n2. Unchecked exception\n3. `boolean` return value\n\nWhat do you think?",
+      "range": {
+        "startLine": 47,
+        "startChar": 7,
+        "endLine": 47,
+        "endChar": 13
+      },
+      "revId": "09e90357eeeea77c15600a6d5d40dac7df01dc3c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
