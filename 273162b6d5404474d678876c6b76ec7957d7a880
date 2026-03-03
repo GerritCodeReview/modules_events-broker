@@ -592,6 +592,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8223eee2_a1bd5ac5",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/MessageContext.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-03-03T08:36:00Z",
+      "side": 1,
+      "message": "\u003e Can we just say something like _\"the implementation is not required to be thread-safe\"_ ? So that the caller knows that when using this method, it needs to ensure that isn\u0027t called by different threads?\n\nSure, I can add this comment, but thinking about our use-cases, I believe we will need to be able to call this from different threads (multi-site, for example).\nThis is why I think directing users to the relevant implementation docs might be the best approach.",
+      "parentUuid": "2f9e1029_72ae357c",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 78
+      },
+      "revId": "273162b6d5404474d678876c6b76ec7957d7a880",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "91eb3e55_208d0154",
         "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/MessageContext.java",
         "patchSetId": 11
@@ -651,6 +675,30 @@
       "side": 1,
       "message": "\u003e I think this will still be useful to be publicly available to consumers.\n\u003e \n\u003e The ability to say \"ignore the context\" will be the same across every broker implementation.\n\nWell, if you use the context, you\u0027d expect the events broker to *use it* and never ignore it. The caller of the API doesn\u0027t know the details of the implementation; however, it expects that any implementation would respect the contract.\n\nGiving this empty NoOp class and encouraging the concrete implementations of events-broker to use it would be detrimental.\n\n\u003e For example, if auto-acknowledging is enabled, one might say:\n\u003e \n\u003e ```\n\u003e if (autoCommitEnabled) {\n\u003e                     contextAwareMessageProcessor.accept(event, MessageContext.noop());\n\u003e ```\n\nI would expect the implementation to fail rather than doing nothing if the explicit commit isn\u0027t supported.",
       "parentUuid": "f19d7992_771bcd9c",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 5
+      },
+      "revId": "273162b6d5404474d678876c6b76ec7957d7a880",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25c0e9be_82c249c0",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/MessageContext.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-03-03T08:36:00Z",
+      "side": 1,
+      "message": "\u003e \u003e I think this will still be useful to be publicly available to consumers.\n\u003e \u003e \n\u003e \u003e The ability to say \"ignore the context\" will be the same across every broker implementation.\n\u003e \n\u003e Well, if you use the context, you\u0027d expect the events broker to *use it* and never ignore it.\n\nImagine you are the `pull-replication` plugin.\nYou don\u0027t know how Kafka or Kinesis acking has been configured or implemented. You will process (for example, by consuming ref-update-events from the broker), then call `ack()`.\n\nNow, the relevant implementation will honour the acking strategy depending on the configuration/implementation. If auto-commit is enabled, for example, then the acking strategy will be: `do nothing`.\n\nThe caller of the API doesn\u0027t know the details of the implementation; however, it expects that any implementation would respect the contract.\n\n+1 \n\n\u003e \n\u003e Giving this empty NoOp class and encouraging the concrete implementations of events-broker to use it would be detrimental.\n\u003e \n\u003e \u003e For example, if auto-acknowledging is enabled, one might say:\n\u003e \u003e \n\u003e \u003e ```\n\u003e \u003e if (autoCommitEnabled) {\n\u003e \u003e                     contextAwareMessageProcessor.accept(event, MessageContext.noop());\n\u003e \u003e ```\n\u003e \n\u003e I would expect the implementation to fail rather than doing nothing if the explicit commit isn\u0027t supported.\n\nWhat do you mean by \"explicit commit isn\u0027t supported\"? As in, it has not been enabled? In this case, I think acking should just be a noop when the caller calls it. Let\u0027s discuss.",
+      "parentUuid": "f140f714_210d1086",
       "range": {
         "startLine": 53,
         "startChar": 0,

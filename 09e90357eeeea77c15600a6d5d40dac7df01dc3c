@@ -39,6 +39,48 @@
       },
       "revId": "09e90357eeeea77c15600a6d5d40dac7df01dc3c",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "572be47d_1bf0ae57",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/MessageContext.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-03-03T08:36:00Z",
+      "side": 1,
+      "message": "This is documented as:\n\n```\n *   \u003cli\u003eFailures during acknowledgement may surface as runtime exceptions.\n```\n\nI think forcing a checked exception tends to push clients into boilerplate try/catch that either logs-and-swallows or wraps into runtime anyway.\nProcessing will happen in `accept()`, which does not expose a checked exception in its signature (also, the `acking` might happen in separate threads and lambdas), so I think unchecked exceptions are a better fit here.",
+      "parentUuid": "fed6cf7d_79e9afce",
+      "range": {
+        "startLine": 47,
+        "startChar": 7,
+        "endLine": 47,
+        "endChar": 13
+      },
+      "revId": "09e90357eeeea77c15600a6d5d40dac7df01dc3c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31721c61_4e696ef4",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/MessageContext.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-03-03T08:36:00Z",
+      "side": 1,
+      "message": "\u003e received messages are acked automatically or not.\n\nI think you are suggesting this as a way to understand whether auto-committing is enabled, as an alternative to the `noop()` strategy? I am not sure this would be the right approach: `ack()` is an operation that you **might** perform on a message, so I think its rightful place is the `MessageContext`.\n`isAutoAck()` would expose a committing strategy, which is at a higher-level and is not a property of a `message`.",
+      "parentUuid": "a0205b47_4d6bc19b",
+      "revId": "09e90357eeeea77c15600a6d5d40dac7df01dc3c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
