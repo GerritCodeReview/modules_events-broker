@@ -711,6 +711,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b9de350a_8fdb0d27",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/MessageContext.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-04-22T14:36:31Z",
+      "side": 1,
+      "message": "Just to iterate over my point, this is an [example](https://github.com/GerritForge/events-kafka/commit/c210c2d0e6be37b6fd095b37660770e7109163af/src/main/java/com/gerritforge/gerrit/plugins/kafka/subscribe/KafkaEventNativeSubscriber.java#diff-4976feb65fa8071a26aa3950a6a2eb7f74a96c381a42455e4e4ab06d24c14c27R190) of how the kafka implementation (note, not the caller of the API such as multi-site or pull-replication) might decide to use it.\n\nI think it is useful for an API implementation to say \"I have been configured in such a way that I don\u0027t need to commit explicitly, so I will just call a no-op implementation\" (which is provider agnostic).",
+      "parentUuid": "25c0e9be_82c249c0",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 5
+      },
+      "revId": "273162b6d5404474d678876c6b76ec7957d7a880",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b8fe4b85_c55bb7e0",
         "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/InProcessBrokerApiTest.java",
         "patchSetId": 11
