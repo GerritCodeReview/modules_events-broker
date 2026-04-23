@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba3f4030_13f2b024",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-04-23T21:06:45Z",
+      "side": 1,
+      "message": "I have serious concerns about the design of this API: let\u0027s discuss before implementing it.",
+      "revId": "70180f120d7fd170e8a35d193ea5f0da48dce35c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}

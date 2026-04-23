@@ -616,6 +616,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ae6e6905_121e3980",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/MessageContext.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-04-23T21:06:45Z",
+      "side": 1,
+      "message": "\u003e \u003e Can we just say something like _\"the implementation is not required to be thread-safe\"_ ? So that the caller knows that when using this method, it needs to ensure that isn\u0027t called by different threads?\n\u003e \n\u003e Sure, I can add this comment, but thinking about our use-cases, I believe we will need to be able to call this from different threads (multi-site, for example).\n\u003e This is why I think directing users to the relevant implementation docs might be the best approach.\n\nThat\u0027s dangerous, because you link the consumer of the broker-api to look at the documentation of the actual implementation and make assumptions on being thread-safe or not.\n\nThat\u0027s an implicit indirect dependency, the hardest one to spot and most likely to create unexpected issues.\n\nI would prefer for the interface to say _\"I am not thread-safe by default\"_ rather than the caller having to make assumptions on the underlying implementation details.",
+      "parentUuid": "8223eee2_a1bd5ac5",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 78
+      },
+      "revId": "273162b6d5404474d678876c6b76ec7957d7a880",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "91eb3e55_208d0154",
         "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/MessageContext.java",
         "patchSetId": 11
@@ -723,6 +747,30 @@
       "side": 1,
       "message": "Just to iterate over my point, this is an [example](https://github.com/GerritForge/events-kafka/commit/c210c2d0e6be37b6fd095b37660770e7109163af/src/main/java/com/gerritforge/gerrit/plugins/kafka/subscribe/KafkaEventNativeSubscriber.java#diff-4976feb65fa8071a26aa3950a6a2eb7f74a96c381a42455e4e4ab06d24c14c27R190) of how the kafka implementation (note, not the caller of the API such as multi-site or pull-replication) might decide to use it.\n\nI think it is useful for an API implementation to say \"I have been configured in such a way that I don\u0027t need to commit explicitly, so I will just call a no-op implementation\" (which is provider agnostic).",
       "parentUuid": "25c0e9be_82c249c0",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 5
+      },
+      "revId": "273162b6d5404474d678876c6b76ec7957d7a880",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0caad67e_0fb25342",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/MessageContext.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-04-23T21:06:45Z",
+      "side": 1,
+      "message": "If this is useful for Kafka, it should be part of the `events-kafka` plugin, not as part of the API IMHO.",
+      "parentUuid": "b9de350a_8fdb0d27",
       "range": {
         "startLine": 53,
         "startChar": 0,
