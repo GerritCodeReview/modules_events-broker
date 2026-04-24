@@ -41,6 +41,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8164d2d1_093f6b89",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/AcknowledgementAwareConsumer.java",
+        "patchSetId": 20
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-04-24T16:00:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33b632d1_0e464d6a",
+      "range": {
+        "startLine": 24,
+        "startChar": 17,
+        "endLine": 24,
+        "endChar": 45
+      },
+      "revId": "1ce1dd27040256f785af617f2dbc2adf09eab8d4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d5d07cd_c884878b",
@@ -64,6 +88,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93ba2463_35eb73ce",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/MessageAcknowledgement.java",
+        "patchSetId": 20
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-04-24T16:00:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d5d07cd_c884878b",
+      "range": {
+        "startLine": 33,
+        "startChar": 87,
+        "endLine": 34,
+        "endChar": 12
+      },
+      "revId": "1ce1dd27040256f785af617f2dbc2adf09eab8d4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29a9cded_a2a90b3d",
@@ -77,6 +125,30 @@
       "writtenOn": "2026-04-24T14:16:50Z",
       "side": 1,
       "message": "```suggestion\n   * \u003cp\u003eCalling {@code ack()} when {@link #isAutoAck()} is {@code true} will fail with {@link\n```",
+      "range": {
+        "startLine": 36,
+        "startChar": 72,
+        "endLine": 36,
+        "endChar": 83
+      },
+      "revId": "1ce1dd27040256f785af617f2dbc2adf09eab8d4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "949380b2_9a1da521",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/MessageAcknowledgement.java",
+        "patchSetId": 20
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-04-24T16:00:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29a9cded_a2a90b3d",
       "range": {
         "startLine": 36,
         "startChar": 72,
