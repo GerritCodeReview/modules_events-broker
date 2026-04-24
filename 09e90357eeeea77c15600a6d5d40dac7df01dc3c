@@ -24,6 +24,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d4129d6_5f6ba422",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/MessageContext.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-04-24T10:18:35Z",
+      "side": 1,
+      "message": "Fair point, this is now clearer, as discussed.\n`ack()` is now documented as an immediate acknowledgement attempt for the current message.",
+      "parentUuid": "88206b89_f7aeddfe",
+      "range": {
+        "startLine": 44,
+        "startChar": 8,
+        "endLine": 44,
+        "endChar": 48
+      },
+      "revId": "09e90357eeeea77c15600a6d5d40dac7df01dc3c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0205b47_4d6bc19b",
@@ -120,6 +144,48 @@
       "side": 1,
       "message": "The higher-level *needs to know* if the implementation is acking automatically or not, because it may have different behaviours and service level based on that.",
       "parentUuid": "31721c61_4e696ef4",
+      "revId": "09e90357eeeea77c15600a6d5d40dac7df01dc3c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9baf090_03813d3c",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/MessageContext.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-04-24T10:18:35Z",
+      "side": 1,
+      "message": "I have introduced a `MessageAcknowledgeException`.\n\nI kept the failure model as unchecked, to make the API usable from callbacks/lambdas without forcing checked-exception boilerplate.",
+      "parentUuid": "572be47d_1bf0ae57",
+      "range": {
+        "startLine": 47,
+        "startChar": 7,
+        "endLine": 47,
+        "endChar": 13
+      },
+      "revId": "09e90357eeeea77c15600a6d5d40dac7df01dc3c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb98f21f_dbb5b335",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/MessageContext.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-04-24T10:18:35Z",
+      "side": 1,
+      "message": "I added `isAutoAck()` to `MessageContext`, so the caller can use it as a decision point.\n\nOne note, I think calling `ack()` when `isAutoAck()` is enabled should not be allowed. I documented that implementations should fail with `IllegalStateException` in this case.",
+      "parentUuid": "1b503ecc_6a1082d0",
       "revId": "09e90357eeeea77c15600a6d5d40dac7df01dc3c",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }

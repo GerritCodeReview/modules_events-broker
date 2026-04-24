@@ -638,6 +638,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8452b3a9_9d1c9a1d",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/MessageContext.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-04-24T10:18:35Z",
+      "side": 1,
+      "message": "Agreed, as discussed.\n\nI tightened the contract in MessageContext to state that implementations are not required to be thread-safe.\n\nI think concrete implementations can still document stronger guarantees if they *are* thread-safe, but we can take care of this when we implement those, for now the generic API now has a safe default.",
+      "parentUuid": "ae6e6905_121e3980",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 78
+      },
+      "revId": "273162b6d5404474d678876c6b76ec7957d7a880",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91eb3e55_208d0154",
@@ -771,6 +795,30 @@
       "side": 1,
       "message": "If this is useful for Kafka, it should be part of the `events-kafka` plugin, not as part of the API IMHO.",
       "parentUuid": "b9de350a_8fdb0d27",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 5
+      },
+      "revId": "273162b6d5404474d678876c6b76ec7957d7a880",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b0afd5f_62c1ebdb",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/MessageContext.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-04-24T10:18:35Z",
+      "side": 1,
+      "message": "I removed `noop()` from the public API, as it was making an explicit ack() look ignorable. If a concrete broker implementation wants an internal no-op strategy, it should remain in that implementation, not here in the shared API.",
+      "parentUuid": "0caad67e_0fb25342",
       "range": {
         "startLine": 53,
         "startChar": 0,
