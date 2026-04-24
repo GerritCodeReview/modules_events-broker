@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86a5ace0_86384b64",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-04-24T14:16:50Z",
+      "side": 1,
+      "message": "LGTM, just a small nit on the long interface name.",
+      "revId": "1ce1dd27040256f785af617f2dbc2adf09eab8d4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33b632d1_0e464d6a",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/AcknowledgementAwareConsumer.java",
+        "patchSetId": 20
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-04-24T14:16:50Z",
+      "side": 1,
+      "message": "Looks good, would also a shorter name work?\n\n\n\n```suggestion\npublic interface AckAwareConsumer\u003cT\u003e {\n```",
+      "range": {
+        "startLine": 24,
+        "startChar": 17,
+        "endLine": 24,
+        "endChar": 45
+      },
+      "revId": "1ce1dd27040256f785af617f2dbc2adf09eab8d4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d5d07cd_c884878b",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/MessageAcknowledgement.java",
+        "patchSetId": 20
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-04-24T14:16:50Z",
+      "side": 1,
+      "message": "```suggestion\n   * concrete broker implementation, callers should invoke {@code ack()} from the same thread that received the message and must not call it concurrently.\n```",
+      "range": {
+        "startLine": 33,
+        "startChar": 87,
+        "endLine": 34,
+        "endChar": 12
+      },
+      "revId": "1ce1dd27040256f785af617f2dbc2adf09eab8d4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29a9cded_a2a90b3d",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/MessageAcknowledgement.java",
+        "patchSetId": 20
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-04-24T14:16:50Z",
+      "side": 1,
+      "message": "```suggestion\n   * \u003cp\u003eCalling {@code ack()} when {@link #isAutoAck()} is {@code true} will fail with {@link\n```",
+      "range": {
+        "startLine": 36,
+        "startChar": 72,
+        "endLine": 36,
+        "endChar": 83
+      },
+      "revId": "1ce1dd27040256f785af617f2dbc2adf09eab8d4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
