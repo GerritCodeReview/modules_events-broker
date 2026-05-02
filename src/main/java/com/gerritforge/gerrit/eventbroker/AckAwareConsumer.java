@@ -29,4 +29,13 @@ public interface AckAwareConsumer<T> {
    * @param acknowledgement the message acknowledgement handle
    */
   void accept(T t, MessageAcknowledgement acknowledgement);
+
+  /**
+   * Returns whether the current message is acknowledged automatically by the implementation.
+   *
+   * <p>When this method returns {@code true}, callers should not invoke {@link
+   * MessageAcknowledgement#ack()} because the implementation is already handling acknowledgement
+   * automatically.
+   */
+  boolean isAutoAck();
 }
