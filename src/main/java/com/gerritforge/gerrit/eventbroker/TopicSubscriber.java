@@ -19,11 +19,11 @@ import com.google.gerrit.server.events.Event;
 
 @AutoValue
 public abstract class TopicSubscriber {
-  public static TopicSubscriber topicSubscriber(String topic, AckAwareConsumer<Event> consumer) {
+  public static TopicSubscriber topicSubscriber(String topic, Consumer<Event> consumer) {
     return new AutoValue_TopicSubscriber(topic, consumer);
   }
 
   public abstract String topic();
 
-  public abstract AckAwareConsumer<Event> consumer();
+  public abstract Consumer<Event> consumer();
 }
