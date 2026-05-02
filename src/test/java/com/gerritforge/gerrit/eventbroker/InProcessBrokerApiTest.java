@@ -27,7 +27,7 @@ import org.junit.Test;
 public class InProcessBrokerApiTest {
 
   public static final int SEND_FUTURE_TIMEOUT = 1;
-  AckAwareConsumer<Event> eventConsumer;
+  Consumer<Event> eventConsumer;
 
   BrokerApi brokerApiUnderTest;
   UUID instanceId = UUID.randomUUID();
@@ -45,7 +45,7 @@ public class InProcessBrokerApiTest {
 
   @Test
   public void shouldRegisterConsumerPerTopic() {
-    AckAwareConsumer<Event> secondConsumer = mockEventConsumer();
+    Consumer<Event> secondConsumer = mockEventConsumer();
     brokerApiUnderTest.receiveAsync("topic", eventConsumer);
     brokerApiUnderTest.receiveAsync("topic2", secondConsumer);
     assertThat(brokerApiUnderTest.topicSubscribers().size()).isEqualTo(2);
@@ -53,10 +53,10 @@ public class InProcessBrokerApiTest {
 
   @Test
   public void shouldReturnMapOfConsumersPerTopic() {
-    AckAwareConsumer<Event> firstConsumerTopicA = mockEventConsumer();
+    Consumer<Event> firstConsumerTopicA = mockEventConsumer();
 
-    AckAwareConsumer<Event> secondConsumerTopicA = mockEventConsumer();
-    AckAwareConsumer<Event> thirdConsumerTopicB = mockEventConsumer();
+    Consumer<Event> secondConsumerTopicA = mockEventConsumer();
+    Consumer<Event> thirdConsumerTopicB = mockEventConsumer();
 
     brokerApiUnderTest.receiveAsync("TopicA", firstConsumerTopicA);
     brokerApiUnderTest.receiveAsync("TopicA", secondConsumerTopicA);
@@ -75,7 +75,7 @@ public class InProcessBrokerApiTest {
 
   @Test
   public void shouldDeliverAsynchronouslyEventToAllRegisteredConsumers() {
-    AckAwareConsumer<Event> secondConsumer = mockEventConsumer();
+    Consumer<Event> secondConsumer = mockEventConsumer();
     brokerApiUnderTest.receiveAsync("topic", eventConsumer);
     brokerApiUnderTest.receiveAsync("topic", secondConsumer);
     assertThat(brokerApiUnderTest.topicSubscribers().size()).isEqualTo(2);
@@ -94,7 +94,7 @@ public class InProcessBrokerApiTest {
     brokerApiUnderTest.receiveAsync("topic", eventConsumer);
     assertThat(brokerApiUnderTest.topicSubscribers()).isNotEmpty();
 
-    AckAwareConsumer<Event> newConsumer = mockEventConsumer();
+    Consumer<Event> newConsumer = mockEventConsumer();
 
     brokerApiUnderTest.disconnect();
     assertThat(brokerApiUnderTest.topicSubscribers()).isEmpty();
@@ -116,13 +116,13 @@ public class InProcessBrokerApiTest {
         UnsupportedOperationException.class, () -> brokerApiUnderTest.replayAllEvents("topic"));
   }
 
-  private static class Subscriber<T> implements AckAwareConsumer<T> {
+  private static class Subscriber<T> implements Consumer<T> {
 
     @Override
     public void accept(T t, MessageAcknowledgement acknowledgement) {}
   }
 
-  private <T> AckAwareConsumer<T> mockEventConsumer() {
+  private <T> Consumer<T> mockEventConsumer() {
     return new Subscriber<>();
   }
 }

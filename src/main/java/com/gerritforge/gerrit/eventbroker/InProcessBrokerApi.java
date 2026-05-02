@@ -42,12 +42,12 @@ public class InProcessBrokerApi implements BrokerApi {
   }
 
   @Override
-  public void receiveAsync(String topic, AckAwareConsumer<Event> eventConsumer) {
+  public void receiveAsync(String topic, Consumer<Event> eventConsumer) {
     topicSubscribers.add(topicSubscriber(topic, eventConsumer));
   }
 
   @Override
-  public void receiveAsync(String topic, String groupId, AckAwareConsumer<Event> eventConsumer) {
+  public void receiveAsync(String topic, String groupId, Consumer<Event> eventConsumer) {
     topicSubscribersWithGroupId.add(
         topicSubscriberWithGroupId(groupId, topicSubscriber(topic, eventConsumer)));
   }
@@ -60,6 +60,11 @@ public class InProcessBrokerApi implements BrokerApi {
   @Override
   public Set<TopicSubscriberWithGroupId> topicSubscribersWithGroupId() {
     return ImmutableSet.copyOf(topicSubscribersWithGroupId);
+  }
+
+  @Override
+  public boolean isAutoAck() {
+    return true;
   }
 
   @Override
