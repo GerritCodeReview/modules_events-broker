@@ -32,14 +32,14 @@ public interface BrokerApi {
   ListenableFuture<Boolean> send(String topic, Event message);
 
   /**
-   * Receive asynchronously a message from a topic, using an acknowledgement-aware consumer.
+   * Receive asynchronously a message from a topic, using an acknowledgement-aware Consumer.
    *
    * @param topic topic name
-   * @param consumer an operation that accepts and processes a single message with acknowledgement
+   * @param AckAwareConsumer an operation that accepts and processes a single message with acknowledgement
    *     support
    * @since 3.15
    */
-  void receiveAsync(String topic, AckAwareConsumer<Event> consumer);
+  void receiveAsync(String topic, AckAwareConsumer<Event> AckAwareConsumer);
 
   /**
    * Get the active subscribers
@@ -48,14 +48,14 @@ public interface BrokerApi {
    */
   Set<TopicSubscriber> topicSubscribers();
 
-  /** Disconnect from broker and cancel all active consumers */
+  /** Disconnect from broker and cancel all active AckAwareConsumers */
   void disconnect();
 
   /**
-   * Disconnect from broker and cancel all active consumers on the specified topic.
+   * Disconnect from broker and cancel all active AckAwareConsumers on the specified topic.
    *
-   * @param topic topic name of the consumers to cancel
-   * @param groupId when not null, filter the consumers to cancel by groupId
+   * @param topic topic name of the AckAwareConsumers to cancel
+   * @param groupId when not null, filter the AckAwareConsumers to cancel by groupId
    */
   void disconnect(String topic, @Nullable String groupId);
 
@@ -67,22 +67,31 @@ public interface BrokerApi {
   void replayAllEvents(String topic);
 
   /**
-   * Receive asynchronously a message from a topic using a consumer's group id, using an
-   * acknowledgement-aware consumer.
+   * Receive asynchronously a message from a topic using a AckAwareConsumer's group id, using an
+   * acknowledgement-aware AckAwareConsumer.
    *
    * @param topic topic name
-   * @param groupId the group identifier that consumer belongs to for that topic
-   * @param consumer an operation that accepts and processes a single message with acknowledgement
+   * @param groupId the group identifier that AckAwareConsumer belongs to for that topic
+   * @param AckAwareConsumer an operation that accepts and processes a single message with acknowledgement
    *     support
    * @since 3.15
    */
-  void receiveAsync(String topic, String groupId, AckAwareConsumer<Event> consumer);
+  void receiveAsync(String topic, String groupId, AckAwareConsumer<Event> AckAwareConsumer);
 
   /**
-   * Get the active subscribers with their consumer's group id.
+   * Get the active subscribers with their AckAwareConsumer's group id.
    *
-   * @return {@link Set} of the topics subscribers using a consumer's group id.
+   * @return {@link Set} of the topics subscribers using a AckAwareConsumer's group id.
    * @since 3.10
    */
   Set<TopicSubscriberWithGroupId> topicSubscribersWithGroupId();
+
+  /**
+   * Returns whether the broker acknowledged messages automatically.
+   *
+   * <p>When this method returns {@code true}, callers should not invoke {@link
+   * MessageAcknowledgement#ack()} because the implementation is already handling acknowledgement
+   * automatically.
+   */
+  boolean isAutoAck();
 }
