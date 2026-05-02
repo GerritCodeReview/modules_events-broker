@@ -63,6 +63,11 @@ public class InProcessBrokerApi implements BrokerApi {
   }
 
   @Override
+  public boolean isAutoAck() {
+    return true;
+  }
+
+  @Override
   public void disconnect() {
     this.topicSubscribers.clear();
     this.topicSubscribersWithGroupId.clear();

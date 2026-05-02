@@ -85,4 +85,13 @@ public interface BrokerApi {
    * @since 3.10
    */
   Set<TopicSubscriberWithGroupId> topicSubscribersWithGroupId();
+
+  /**
+   * Returns whether the broker acknowledged messages automatically.
+   *
+   * <p>When this method returns {@code true}, callers should not invoke {@link
+   * MessageAcknowledgement#ack()} because the implementation is already handling acknowledgement
+   * automatically.
+   */
+  boolean isAutoAck();
 }
