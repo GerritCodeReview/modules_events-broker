@@ -33,17 +33,9 @@ public interface MessageAcknowledgement {
    * concrete broker implementation, callers should invoke {@code ack()} from the same thread that
    * received the message and must not call it concurrently.
    *
-   * <p>Calling {@code ack()} when {@link #isAutoAck()} is {@code true} will fail with {@link
-   * IllegalStateException}. Failures during acknowledgement should surface as {@link
+   * <p>Calling {@code ack()} when {@link AckAwareConsumer#isAutoAck()} is {@code true} will fail
+   * with {@link IllegalStateException}. Failures during acknowledgement should surface as {@link
    * MessageAcknowledgementException}.
    */
   void ack();
-
-  /**
-   * Returns whether the current message is acknowledged automatically by the implementation.
-   *
-   * <p>When this method returns {@code true}, callers should not invoke {@link #ack()} because the
-   * implementation is already handling acknowledgement automatically.
-   */
-  boolean isAutoAck();
 }
