@@ -18,6 +18,7 @@ import com.google.common.util.concurrent.ListenableFuture;
 import com.google.gerrit.common.Nullable;
 import com.google.gerrit.server.events.Event;
 import java.util.Set;
+import java.util.function.Consumer;
 
 /** API for sending/receiving events through a message Broker. */
 public interface BrokerApi {
@@ -39,7 +40,7 @@ public interface BrokerApi {
    *     support
    * @since 3.15
    */
-  void receiveAsync(String topic, AckAwareConsumer<Event> consumer);
+  void receiveAsync(String topic, Consumer<Event> consumer);
 
   /**
    * Get the active subscribers
@@ -76,7 +77,7 @@ public interface BrokerApi {
    *     support
    * @since 3.15
    */
-  void receiveAsync(String topic, String groupId, AckAwareConsumer<Event> consumer);
+  void receiveAsync(String topic, String groupId, Consumer<Event> consumer);
 
   /**
    * Get the active subscribers with their consumer's group id.
@@ -85,4 +86,13 @@ public interface BrokerApi {
    * @since 3.10
    */
   Set<TopicSubscriberWithGroupId> topicSubscribersWithGroupId();
+
+  /**
+   * Returns whether the broker acknowledged messages automatically.
+   *
+   * <p>When this method returns {@code true}, callers should not invoke {@link
+   * MessageAcknowledgement#ack()} because the implementation is already handling acknowledgement
+   * automatically.
+   */
+  boolean isAutoAck();
 }
