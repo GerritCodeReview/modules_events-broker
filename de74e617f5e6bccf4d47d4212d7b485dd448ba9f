@@ -16,6 +16,24 @@
       "message": "This can now be a `@FunctionalInterface`",
       "revId": "de74e617f5e6bccf4d47d4212d7b485dd448ba9f",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0392f8d1_b483b1f9",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/MessageAcknowledgement.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-05-02T20:07:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5dad3972_8cd1f627",
+      "revId": "de74e617f5e6bccf4d47d4212d7b485dd448ba9f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
