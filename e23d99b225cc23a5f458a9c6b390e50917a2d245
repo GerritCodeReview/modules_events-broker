@@ -34,6 +34,24 @@
       "parentUuid": "1f8ddae8_ac0976e0",
       "revId": "e23d99b225cc23a5f458a9c6b390e50917a2d245",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "281e989d_1bd72501",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-05-04T14:04:20Z",
+      "side": 1,
+      "message": "Makes sense luca, I have also checked other consumers (pull-replication, websession-broker) and they can also be adjusted in a similar way.\n\nLet\u0027s go with this solution.",
+      "parentUuid": "92209731_9bfd3d6b",
+      "revId": "e23d99b225cc23a5f458a9c6b390e50917a2d245",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
