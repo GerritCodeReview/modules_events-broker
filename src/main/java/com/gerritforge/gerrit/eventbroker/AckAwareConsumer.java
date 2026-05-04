@@ -28,5 +28,5 @@ public interface AckAwareConsumer<T> {
    * @param t the input argument
    * @param acknowledgement the message acknowledgement handle
    */
-  void accept(T t, MessageAcknowledgement acknowledgement);
+  void accept(T t, MessageAcknowledgement<T> acknowledgement);
 }

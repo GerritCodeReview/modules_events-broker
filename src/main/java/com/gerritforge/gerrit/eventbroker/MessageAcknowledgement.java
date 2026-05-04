@@ -21,7 +21,7 @@ package com.gerritforge.gerrit.eventbroker;
  * currently processed message has been handled successfully.
  */
 @FunctionalInterface
-public interface MessageAcknowledgement {
+public interface MessageAcknowledgement<T> {
 
   /**
    * Explicitly acknowledges successful processing progress for the current message.
@@ -37,6 +37,8 @@ public interface MessageAcknowledgement {
    * <p>Calling {@code ack()} when {@link BrokerApi#isAutoAck()} is {@code true} will fail with
    * {@link IllegalStateException}. Failures during acknowledgement should surface as {@link
    * MessageAcknowledgementException}.
+   *
+   * @param event the event to acknowledge
    */
-  void ack();
+  void ack(T event);
 }

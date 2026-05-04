@@ -90,8 +90,8 @@ public interface BrokerApi {
    * Returns whether the broker acknowledged messages automatically.
    *
    * <p>When this method returns {@code true}, callers should not invoke {@link
-   * MessageAcknowledgement#ack()} because the implementation is already handling acknowledgement
-   * automatically.
+   * MessageAcknowledgement#ack(Object)} because the implementation is already handling
+   * acknowledgement automatically.
    */
   boolean isAutoAck();
 }
