@@ -16,6 +16,24 @@
       "message": "Yes, I understand the idea behind this: auto-ack is a broker/subscriber configuration, not something that changes message by message.\n\nThat said, I think moving `isAutoAck()` from `MessageAcknowledgement` to `BrokerApi` makes the consumer API harder to use.\n\nThe decision of whether to call ack() is needed by the client while it is processing a message. At that point, the consumer callback only has two things: the event and the acknowledgement handle. It does not have the `BrokerApi`.\n\nSo consumers (like multi-site) would no longer be able to decide locally whether to call `ack()` unless we also inject/pass the broker API, or pass the auto-ack flag separately.\n\nLet\u0027s discuss this",
       "revId": "e23d99b225cc23a5f458a9c6b390e50917a2d245",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92209731_9bfd3d6b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-05-04T13:24:42Z",
+      "side": 1,
+      "message": "\u003e Yes, I understand the idea behind this: auto-ack is a broker/subscriber configuration, not something that changes message by message.\n\n👍\n\n\u003e That said, I think moving `isAutoAck()` from `MessageAcknowledgement` to `BrokerApi` makes the consumer API harder to use.\n\nPoint taken, but the additional complexity is negligible, whilst the incorrect semantics (per-event auto-ack) would prevent higher level decisions at the right point.\n\nFor example, the existing change https://review.gerrithub.io/c/GerritForge/multi-site/+/1231716 would remain mainly unchanged and the only difference will be:\n\n```\n   protected abstract Boolean shouldConsumeEvent(Event event);\n \n-  public AckAwareConsumer\u003cEvent\u003e getConsumer() {\n-    return this::processRecord;\n+  public AckAwareConsumer\u003cEvent\u003e getConsumer(boolean autoAck) {\n+    return (e, m) -\u003e processRecord(e, m, autoAck);\n   }\n\n```\n\n\u003e The decision of whether to call ack() is needed by the client while it is processing a message. At that point, the consumer callback only has two things: the event and the acknowledgement handle. It does not have the `BrokerApi`.\n\nTrue, but also bear in mind that eventually the client will need to have different business logic for acking the messages and the same consumer code may not be able to manage both.\n\nSo, the client eventually will have to use different business logic anyway.\nThe decision point of which consumer to pass to the method is in a piece of code that holds the `BrokerApi` instance and has access to ack enablement flag.\n\nSee above the limited extra complexity needed, which is totally worth it IMHO.",
+      "parentUuid": "1f8ddae8_ac0976e0",
+      "revId": "e23d99b225cc23a5f458a9c6b390e50917a2d245",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
