@@ -119,7 +119,7 @@ public class InProcessBrokerApiTest {
   private static class Subscriber<T> implements AckAwareConsumer<T> {
 
     @Override
-    public void accept(T t, MessageAcknowledgement acknowledgement) {}
+    public void accept(T t, MessageAcknowledgement<T> acknowledgement) {}
   }
 
   private <T> AckAwareConsumer<T> mockEventConsumer() {
