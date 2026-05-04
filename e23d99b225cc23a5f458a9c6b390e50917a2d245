@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f8ddae8_ac0976e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-05-04T07:42:21Z",
+      "side": 1,
+      "message": "Yes, I understand the idea behind this: auto-ack is a broker/subscriber configuration, not something that changes message by message.\n\nThat said, I think moving `isAutoAck()` from `MessageAcknowledgement` to `BrokerApi` makes the consumer API harder to use.\n\nThe decision of whether to call ack() is needed by the client while it is processing a message. At that point, the consumer callback only has two things: the event and the acknowledgement handle. It does not have the `BrokerApi`.\n\nSo consumers (like multi-site) would no longer be able to decide locally whether to call `ack()` unless we also inject/pass the broker API, or pass the auto-ack flag separately.\n\nLet\u0027s discuss this",
+      "revId": "e23d99b225cc23a5f458a9c6b390e50917a2d245",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
