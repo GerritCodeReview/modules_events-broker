@@ -63,6 +63,24 @@
       "message": "Not sure this approach will work.\nPlease see my comments [here](https://review.gerrithub.io/c/GerritForge/events-kafka/+/1230792/comment/77f76c2a_d3213fa7/)",
       "revId": "8f4da132221215298b43a95b1dfbc052beec9836",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef27e0ab_92cdeea4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-05-06T12:19:07Z",
+      "side": 1,
+      "message": "The comments are on the Kafka implementation, which doesn\u0027t explain why the interface doesn\u0027t make sense.\n\nI\u0027m sure we can find better implementations, but the interface looks correct to me.\nLet\u0027s continue the conversation on the events-kafka plugin review.",
+      "parentUuid": "636e9709_ff9c2de8",
+      "revId": "8f4da132221215298b43a95b1dfbc052beec9836",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
