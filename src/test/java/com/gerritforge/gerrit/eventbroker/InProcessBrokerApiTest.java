@@ -20,17 +20,12 @@ import static com.google.gerrit.testing.GerritJUnit.assertThrows;
 
 import com.google.gerrit.server.events.Event;
 import java.util.Set;
-import java.util.UUID;
 import org.junit.Before;
 import org.junit.Test;
 
 public class InProcessBrokerApiTest {
-
-  public static final int SEND_FUTURE_TIMEOUT = 1;
-  AckAwareConsumer<Event> eventConsumer;
-
-  BrokerApi brokerApiUnderTest;
-  UUID instanceId = UUID.randomUUID();
+  private AckAwareConsumer<Event> eventConsumer;
+  private BrokerApi brokerApiUnderTest;
 
   @Before
   public void setup() {
