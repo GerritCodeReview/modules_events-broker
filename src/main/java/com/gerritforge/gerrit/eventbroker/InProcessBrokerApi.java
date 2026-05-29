@@ -23,6 +23,7 @@ import com.google.common.util.concurrent.ListenableFuture;
 import com.google.gerrit.common.Nullable;
 import com.google.gerrit.server.events.Event;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -50,6 +51,14 @@ public class InProcessBrokerApi implements BrokerApi {
   public void receiveAsync(String topic, String groupId, AckAwareConsumer<Event> eventConsumer) {
     topicSubscribersWithGroupId.add(
         topicSubscriberWithGroupId(groupId, topicSubscriber(topic, eventConsumer)));
+  }
+
+  @Override
+  public void receiveAsyncWithPartition(
+      String topic, String partition, String groupId, AckAwareConsumer<Event> consumer) {
+    topicSubscribersWithGroupId.add(
+        topicSubscriberWithGroupId(
+            groupId, topicSubscriber(topic, consumer), Optional.of(partition)));
   }
 
   @Override

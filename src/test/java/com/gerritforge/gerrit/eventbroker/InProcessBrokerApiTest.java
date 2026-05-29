@@ -15,10 +15,12 @@
 package com.gerritforge.gerrit.eventbroker;
 
 import static com.gerritforge.gerrit.eventbroker.TopicSubscriber.topicSubscriber;
+import static com.gerritforge.gerrit.eventbroker.TopicSubscriberWithGroupId.topicSubscriberWithGroupId;
 import static com.google.common.truth.Truth.assertThat;
 import static com.google.gerrit.testing.GerritJUnit.assertThrows;
 
 import com.google.gerrit.server.events.Event;
+import java.util.Optional;
 import java.util.Set;
 import org.junit.Before;
 import org.junit.Test;
@@ -82,6 +84,16 @@ public class InProcessBrokerApiTest {
     brokerApiUnderTest.receiveAsync("topic", eventConsumer);
 
     assertThat(brokerApiUnderTest.topicSubscribers().size()).isEqualTo(1);
+  }
+
+  @Test
+  public void shouldRegisterPartitionConsumerWithGroupId() {
+    brokerApiUnderTest.receiveAsyncWithPartition("topic", "partition", "group", eventConsumer);
+
+    assertThat(brokerApiUnderTest.topicSubscribersWithGroupId())
+        .containsExactly(
+            topicSubscriberWithGroupId(
+                "group", topicSubscriber("topic", eventConsumer), Optional.of("partition")));
   }
 
   @Test

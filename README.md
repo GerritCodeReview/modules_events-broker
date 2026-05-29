@@ -73,6 +73,47 @@ public class SomeModule extends AbstractModule {
 Note: To avoid message duplication Stream Events Publisher uses [gerrit.instanceId](https://gerrit-review.googlesource.com/Documentation/config-gerrit.html)
 and Event.instanceId to filter out forwarded events.
 
+### Partition-aware Topics
+
+Broker clients can use partition-aware subscriptions through
+`BrokerApi.receiveAsyncWithPartition(...)`, passing one of the configured
+logical partition values for the topic.
+
+The partitions available for a topic, and the event property used to choose a
+partition, are read from the plugin configuration file, for example
+`$site_path/etc/events-broker.config`:
+
+```ini
+[topic "stream-events"]
+  partitionValue = change-index
+  partitionValue = account-index
+  partitionEventProperty = eventType
+```
+
+The supported settings are:
+
+* `topic.<topic-name>.partitionValue`: zero or more partition values for the
+  topic. Repeat the setting to configure multiple partitions.
+* `topic.<topic-name>.partitionEventProperty`: optional event property used by
+  the broker implementation to select the partition. When omitted, it defaults
+  to `type`.
+
+The order of `partitionValue` entries matters. Broker implementations may use
+each value's position when mapping logical partitions to backend-specific
+routing, so changing the order can change where events are published or
+consumed.
+
+The target broker topic is expected to have at least the partitions configured
+through `partitionValue`, so events can be published to the matching partition
+accordingly.
+
+Topics without a matching `[topic "<topic-name>"]` subsection have no configured
+partition metadata. Topics with a subsection but no `partitionValue` configured
+have an empty partition list.
+In both cases, implementations should treat the topic as non-partition-aware:
+publishing should fall back to the normal broker behavior, while partition-specific subscription
+cannot resolve a logical partition and fails if requested.
+
 ### Broker Metrics
 
 When `StreamEventPublisher` is used user can optionally bind an implementation of
