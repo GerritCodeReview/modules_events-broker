@@ -25,6 +25,9 @@ public interface BrokerApi {
   /**
    * Send a message to a topic.
    *
+   * <p>When publishing to a partition-aware topic, implementations are expected to resolve the
+   * partition for {@code message} and honor that partition when sending the event to the broker.
+   *
    * @param topic topic name
    * @param message to be send to the topic
    * @return a future that returns when the message has been sent.
@@ -77,6 +80,22 @@ public interface BrokerApi {
    * @since 3.15
    */
   void receiveAsync(String topic, String groupId, AckAwareConsumer<Event> consumer);
+
+  /**
+   * Receive asynchronously messages from a specific partition of a topic using a consumer's group
+   * id, using an acknowledgement-aware consumer.
+   *
+   * <p>The supplied {@code partition} is a logical partition value from the topic's configured
+   * partition values. Broker implementations map it to the broker-native partition identifier.
+   *
+   * @param topic topic name
+   * @param partition logical partition value to consume from
+   * @param groupId the group identifier that consumer belongs to for that topic
+   * @param consumer an operation that accepts and processes a single message with acknowledgement
+   *     support
+   */
+  void receiveAsyncWithPartition(
+      String topic, String partition, String groupId, AckAwareConsumer<Event> consumer);
 
   /**
    * Get the active subscribers with their consumer's group id.

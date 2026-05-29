@@ -15,15 +15,24 @@
 package com.gerritforge.gerrit.eventbroker;
 
 import com.google.auto.value.AutoValue;
+import java.util.Optional;
 
 @AutoValue
 public abstract class TopicSubscriberWithGroupId {
   public static TopicSubscriberWithGroupId topicSubscriberWithGroupId(
       String groupId, TopicSubscriber topicSubscriber) {
-    return new AutoValue_TopicSubscriberWithGroupId(groupId, topicSubscriber);
+    return topicSubscriberWithGroupId(groupId, topicSubscriber, Optional.empty());
+  }
+
+  public static TopicSubscriberWithGroupId topicSubscriberWithGroupId(
+      String groupId, TopicSubscriber topicSubscriber, Optional<String> partition) {
+    return new AutoValue_TopicSubscriberWithGroupId(groupId, topicSubscriber, partition);
   }
 
   public abstract String groupId();
 
   public abstract TopicSubscriber topicSubscriber();
+
+  /** Returns the logical partition value when this is a partition-aware subscription. */
+  public abstract Optional<String> partition();
 }
