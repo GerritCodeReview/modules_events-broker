@@ -53,6 +53,10 @@ public class InProcessBrokerApi implements BrokerApi {
   }
 
   @Override
+  public void receiveAsyncWithPartition(
+      String topic, String partition, String groupId, AckAwareConsumer<Event> consumer) {}
+
+  @Override
   public Set<TopicSubscriber> topicSubscribers() {
     return ImmutableSet.copyOf(topicSubscribers);
   }

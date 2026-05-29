@@ -73,6 +73,39 @@ public class SomeModule extends AbstractModule {
 Note: To avoid message duplication Stream Events Publisher uses [gerrit.instanceId](https://gerrit-review.googlesource.com/Documentation/config-gerrit.html)
 and Event.instanceId to filter out forwarded events.
 
+### Partition-aware Topics
+
+Broker clients can use partition-aware subscriptions through
+`BrokerApi.receiveAsyncWithPartition(...)`, passing one of the configured
+logical partition values for the topic.
+
+The partitions available for a topic, and the event property used to choose a
+partition, are read from the plugin configuration file, for example
+`$site_path/etc/events-broker.config`:
+
+```ini
+[topic "stream-events"]
+  partitionValues = change-index
+  partitionValues = account-index
+  partitionEventProperty = eventType
+```
+
+The supported settings are:
+
+* `topic.<topic-name>.partitionValues`: zero or more partition values for the
+  topic. Repeat the setting to configure multiple partitions.
+* `topic.<topic-name>.partitionEventProperty`: optional event property used by
+  the broker implementation to select the partition. When omitted, it defaults
+  to `type`.
+
+The target broker topic is expected to have at least the partitions configured
+through `partitionValues`, so events can be published to the matching partition
+accordingly.
+
+Topics without a matching `[topic "<topic-name>"]` subsection have no configured
+partition metadata. Topics with a subsection but no `partitionValues` configured
+have an empty partition list.
+
 ### Broker Metrics
 
 When `StreamEventPublisher` is used user can optionally bind an implementation of
