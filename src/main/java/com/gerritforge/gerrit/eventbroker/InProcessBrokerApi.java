@@ -53,6 +53,14 @@ public class InProcessBrokerApi implements BrokerApi {
   }
 
   @Override
+  public void receiveAsyncWithPartition(
+      String topic, String partition, String groupId, AckAwareConsumer<Event> consumer) {}
+
+  @Override
+  public void receiveAsyncWithPartition(
+      String topic, String partition, AckAwareConsumer<Event> consumer) {}
+
+  @Override
   public Set<TopicSubscriber> topicSubscribers() {
     return ImmutableSet.copyOf(topicSubscribers);
   }
@@ -65,6 +73,11 @@ public class InProcessBrokerApi implements BrokerApi {
   @Override
   public boolean isAutoAck() {
     return true;
+  }
+
+  @Override
+  public <T extends Event> String getPartitionFromEvent(T event, String topic) {
+    return "";
   }
 
   @Override
