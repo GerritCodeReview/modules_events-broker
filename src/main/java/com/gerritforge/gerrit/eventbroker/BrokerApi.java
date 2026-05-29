@@ -78,6 +78,9 @@ public interface BrokerApi {
    */
   void receiveAsync(String topic, String groupId, AckAwareConsumer<Event> consumer);
 
+  void receiveAsyncWithPartition(String topic, String partition, String groupId, AckAwareConsumer<Event> consumer);
+
+  void receiveAsyncWithPartition(String topic, String partition, AckAwareConsumer<Event> consumer);
   /**
    * Get the active subscribers with their consumer's group id.
    *
@@ -94,4 +97,6 @@ public interface BrokerApi {
    * acknowledgement automatically.
    */
   boolean isAutoAck();
+
+  <T extends Event> String getPartitionFromEvent(T event, String topic);
 }
