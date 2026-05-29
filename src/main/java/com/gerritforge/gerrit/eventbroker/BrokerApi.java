@@ -25,6 +25,9 @@ public interface BrokerApi {
   /**
    * Send a message to a topic.
    *
+   * <p>When publishing to a partition-aware topic, implementations are expected to resolve the
+   * partition for {@code message} and honor that partition when sending the event to the broker.
+   *
    * @param topic topic name
    * @param message to be send to the topic
    * @return a future that returns when the message has been sent.
@@ -79,6 +82,36 @@ public interface BrokerApi {
   void receiveAsync(String topic, String groupId, AckAwareConsumer<Event> consumer);
 
   /**
+   * Receive asynchronously messages from a specific partition of a topic using a consumer's group
+   * id, using an acknowledgement-aware consumer.
+   *
+   * <p>The supplied {@code partition} is expected to identify a partition available on the target
+   * broker topic.
+   *
+   * @param topic topic name
+   * @param partition topic partition to consume from
+   * @param groupId the group identifier that consumer belongs to for that topic
+   * @param consumer an operation that accepts and processes a single message with acknowledgement
+   *     support
+   */
+  void receiveAsyncWithPartition(
+      String topic, String partition, String groupId, AckAwareConsumer<Event> consumer);
+
+  /**
+   * Receive asynchronously messages from a specific partition of a topic, using an
+   * acknowledgement-aware consumer.
+   *
+   * <p>The supplied {@code partition} is expected to identify a partition available on the target
+   * broker topic.
+   *
+   * @param topic topic name
+   * @param partition topic partition to consume from
+   * @param consumer an operation that accepts and processes a single message with acknowledgement
+   *     support
+   */
+  void receiveAsyncWithPartition(String topic, String partition, AckAwareConsumer<Event> consumer);
+
+  /**
    * Get the active subscribers with their consumer's group id.
    *
    * @return {@link Set} of the topics subscribers using a consumer's group id.
@@ -94,4 +127,17 @@ public interface BrokerApi {
    * acknowledgement automatically.
    */
   boolean isAutoAck();
+
+  /**
+   * Resolve the broker partition for an event published to a topic.
+   *
+   * <p>Implementations are expected to resolve the partition from the event property configured for
+   * {@code topic}. When the event cannot be resolved to a configured partition, implementations are
+   * expected to throw an {@link IllegalArgumentException}.
+   *
+   * @param event event to publish
+   * @param topic topic name
+   * @return partition where the event should be published
+   */
+  <T extends Event> String getPartitionFromEvent(T event, String topic);
 }
