@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd3273db_04adc1cd",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApi.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-06-01T15:00:09Z",
+      "side": 1,
+      "message": "I have read the conversation in the [issue](https://issues.gerritcodereview.com/issues/514246373), but I struggle to follow.\n\n- To connect at partition-level we will call:\n\n```\n  void receiveAsyncWithPartition(String topic, String partition, AckAwareConsumer\u003cEvent\u003e consumer);\n```\n\n- To do that, we\u0027d need the partition.\n- We look up partitions by calling:\n\n```\n  \u003cT extends Event\u003e String getPartitionFromEvent(T event, String topic);\n``` \n\n- That means, that to get the partition, we need an **event**.\n\n\n\nThis is where I struggle, because we are **not** going to have an event _before_ we connect to the topic.\n\nSee for example multi-site [here](https://gerrit.googlesource.com/plugins/multi-site/+/refs/heads/master/src/main/java/com/googlesource/gerrit/plugins/multisite/consumer/MultiSiteConsumerRunner.java#49), we do:\n\n```\npublic void start() {\n    logger.atInfo().log(\"starting consumers\");\n    consumers.forEach(\n        consumer -\u003e\n            brokerApi.get().receiveAsync(consumer.getTopic().topic(cfg), consumer.getConsumer()));\n  }\n```\n\nI understand `getPartitionFromEvent(...)` in the context of a _producer_, but the consumer startup (i.e. calling `receiveAsyncWithPatition()`) should not depend on an `Event` (that we don\u0027t have), imho.\n\nShould the consumer use something along the lines of:\n\n```\n  String topic \u003d consumer.getTopic().topic(cfg);\n  for (String partition : eventsBrokerConfiguration.getPartitionsForTopic(topic)) {\n    brokerApi.get().receiveAsyncWithPartition(topic, partition, consumer.getConsumer());\n  }\n```",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 72
+      },
+      "revId": "3bf4e2391bcd4c7c65d72ac708a77944f983838c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
