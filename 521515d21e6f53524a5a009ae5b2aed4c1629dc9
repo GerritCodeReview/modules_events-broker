@@ -16,6 +16,236 @@
       "message": "If it helps review, a WIP of the kafka implementation can be found at [1]\n\n\n[1] https://review.gerrithub.io/c/GerritForge/events-kafka/+/1238583",
       "revId": "521515d21e6f53524a5a009ae5b2aed4c1629dc9",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13f2b288_a33f539d",
+        "filename": "README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1054778
+      },
+      "writtenOn": "2026-06-08T17:05:05Z",
+      "side": 1,
+      "message": "This should be singular `partitionValue`",
+      "range": {
+        "startLine": 88,
+        "startChar": 2,
+        "endLine": 88,
+        "endChar": 17
+      },
+      "revId": "521515d21e6f53524a5a009ae5b2aed4c1629dc9",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c775a2b_e5a9f8ae",
+        "filename": "README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1054778
+      },
+      "writtenOn": "2026-06-08T17:05:05Z",
+      "side": 1,
+      "message": "What happens in this case?",
+      "range": {
+        "startLine": 106,
+        "startChar": 20,
+        "endLine": 107,
+        "endChar": 29
+      },
+      "revId": "521515d21e6f53524a5a009ae5b2aed4c1629dc9",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dee63b9a_39f48e8b",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApi.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1054778
+      },
+      "writtenOn": "2026-06-08T17:05:05Z",
+      "side": 1,
+      "message": "We are not creating a corresponding `receiveAsyncWithPartition` for this method. I suspect we are not using this implementation. Should we remove or at least deprecate this interface in a separate change?",
+      "range": {
+        "startLine": 45,
+        "startChar": 7,
+        "endLine": 45,
+        "endChar": 19
+      },
+      "revId": "521515d21e6f53524a5a009ae5b2aed4c1629dc9",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bb38cf8_c4ecac0a",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApi.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1054778
+      },
+      "writtenOn": "2026-06-08T17:05:05Z",
+      "side": 1,
+      "message": "I don\u0027t believe we need an equivalent method for a single partition. I just wanted to raise it to make sure we are on the same page.",
+      "range": {
+        "startLine": 70,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 37
+      },
+      "revId": "521515d21e6f53524a5a009ae5b2aed4c1629dc9",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92ca4e29_c62f4fb3",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventsBrokerConfiguration.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1054778
+      },
+      "writtenOn": "2026-06-08T17:05:05Z",
+      "side": 1,
+      "message": "2026",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "521515d21e6f53524a5a009ae5b2aed4c1629dc9",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6443e31_256f049e",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventsBrokerConfiguration.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1054778
+      },
+      "writtenOn": "2026-06-08T17:05:05Z",
+      "side": 1,
+      "message": "ImmutableList",
+      "range": {
+        "startLine": 49,
+        "startChar": 6,
+        "endLine": 49,
+        "endChar": 10
+      },
+      "revId": "521515d21e6f53524a5a009ae5b2aed4c1629dc9",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef5e9e5f_b584ba53",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventsBrokerConfiguration.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1054778
+      },
+      "writtenOn": "2026-06-08T17:05:05Z",
+      "side": 1,
+      "message": "I wonder if it makes sense to order this list. This will help in case of accidental changes in the ordering of the partition values, but it won\u0027t help in case of addition of new partitions.\n\nMaybe I am just overthinking and we can just add a note in the documentation.",
+      "range": {
+        "startLine": 49,
+        "startChar": 19,
+        "endLine": 49,
+        "endChar": 34
+      },
+      "revId": "521515d21e6f53524a5a009ae5b2aed4c1629dc9",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c413cdb_2d4966ec",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventsBrokerConfiguration.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1054778
+      },
+      "writtenOn": "2026-06-08T17:05:05Z",
+      "side": 1,
+      "message": "Missing JavaDoc",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 3
+      },
+      "revId": "521515d21e6f53524a5a009ae5b2aed4c1629dc9",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c87f859_8a32bf5b",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/InProcessBrokerApi.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1054778
+      },
+      "writtenOn": "2026-06-08T17:05:05Z",
+      "side": 1,
+      "message": "I think we should add some logic here",
+      "range": {
+        "startLine": 57,
+        "startChar": 88,
+        "endLine": 57,
+        "endChar": 90
+      },
+      "revId": "521515d21e6f53524a5a009ae5b2aed4c1629dc9",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fd6aca8_42e13089",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/EventsBrokerConfigurationTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1054778
+      },
+      "writtenOn": "2026-06-08T17:05:05Z",
+      "side": 1,
+      "message": "nit: extract in a constant and reuse in the assertion",
+      "range": {
+        "startLine": 57,
+        "startChar": 8,
+        "endLine": 57,
+        "endChar": 19
+      },
+      "revId": "521515d21e6f53524a5a009ae5b2aed4c1629dc9",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
