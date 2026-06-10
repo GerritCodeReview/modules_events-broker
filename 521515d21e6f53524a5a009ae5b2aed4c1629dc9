@@ -41,6 +41,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "317966c9_719635ba",
+        "filename": "README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-06-10T14:57:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13f2b288_a33f539d",
+      "range": {
+        "startLine": 88,
+        "startChar": 2,
+        "endLine": 88,
+        "endChar": 17
+      },
+      "revId": "521515d21e6f53524a5a009ae5b2aed4c1629dc9",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c775a2b_e5a9f8ae",
@@ -54,6 +78,30 @@
       "writtenOn": "2026-06-08T17:05:05Z",
       "side": 1,
       "message": "What happens in this case?",
+      "range": {
+        "startLine": 106,
+        "startChar": 20,
+        "endLine": 107,
+        "endChar": 29
+      },
+      "revId": "521515d21e6f53524a5a009ae5b2aed4c1629dc9",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3ea1665_ba0df24b",
+        "filename": "README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-06-10T14:57:21Z",
+      "side": 1,
+      "message": "I explained what the contract _should be_:\n\n```\nIn both cases, implementations should treat the topic as non-partition-aware:\npublishing should fall back to the normal broker behavior, while partition-specific subscription\ncannot resolve a logical partition and fails if requested.\n```",
+      "parentUuid": "6c775a2b_e5a9f8ae",
       "range": {
         "startLine": 106,
         "startChar": 20,
@@ -89,6 +137,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ac5a701e_170c2638",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApi.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-06-10T14:57:21Z",
+      "side": 1,
+      "message": "I am not sure tbh, we are still using this implementation.\n\nmulti-site currently calls this `receiveAsync` method (see [here](https://github.com/GerritForge/multi-site/blob/master/src/main/java/com/gerritforge/gerrit/plugins/multisite/consumer/MultiSiteConsumerRunner.java#L48)).\n\npull-replication already calls the new interface when possible (see [here](https://github.com/GerritForge/pull-replication/blob/master/src/main/java/com/gerritforge/gerrit/plugins/replication/pull/event/EventsBrokerMessageConsumer.java#L77)).\n\nwebsession-broker doesn\u0027t (see [here](https://github.com/GerritForge/websession-broker/blob/master/src/main/java/com/gerritforge/gerrit/plugins/websession/broker/BrokerBasedWebSessionCache.java#L249)).\n\n\nLet\u0027s discuss and address it separately.",
+      "parentUuid": "dee63b9a_39f48e8b",
+      "range": {
+        "startLine": 45,
+        "startChar": 7,
+        "endLine": 45,
+        "endChar": 19
+      },
+      "revId": "521515d21e6f53524a5a009ae5b2aed4c1629dc9",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4bb38cf8_c4ecac0a",
         "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApi.java",
         "patchSetId": 4
@@ -100,6 +172,30 @@
       "writtenOn": "2026-06-08T17:05:05Z",
       "side": 1,
       "message": "I don\u0027t believe we need an equivalent method for a single partition. I just wanted to raise it to make sure we are on the same page.",
+      "range": {
+        "startLine": 70,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 37
+      },
+      "revId": "521515d21e6f53524a5a009ae5b2aed4c1629dc9",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78af4811_839972d8",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApi.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-06-10T14:57:21Z",
+      "side": 1,
+      "message": "Good point, and I agree, I think we do not need a partition-specific replay method.\n\nFor example, in Kafka, `replayAllEvents(topic)` does not compute partitions itself. \n\nIt finds the active subscribers for that topic and calls `resetOffset()` on each one. Then each subscriber rewinds to the beginning of its current Kafka `assignment()`.\n\nThis is already existing code [here](https://github.com/GerritForge/events-kafka/blob/master/src/main/java/com/gerritforge/gerrit/plugins/kafka/subscribe/KafkaEventNativeSubscriber.java#L193).",
+      "parentUuid": "4bb38cf8_c4ecac0a",
       "range": {
         "startLine": 70,
         "startChar": 2,
@@ -123,6 +219,30 @@
       "writtenOn": "2026-06-08T17:05:05Z",
       "side": 1,
       "message": "2026",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "521515d21e6f53524a5a009ae5b2aed4c1629dc9",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64e972a4_9e2988f0",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventsBrokerConfiguration.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-06-10T14:57:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92ca4e29_c62f4fb3",
       "range": {
         "startLine": 1,
         "startChar": 17,
@@ -179,6 +299,54 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fec7298_cfa0b509",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventsBrokerConfiguration.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-06-10T14:57:21Z",
+      "side": 1,
+      "message": "I think we should keep the configured order: the list order is intentional because it defines the mapping from logical partition value to native partitions.\n\nI agree that the risk is worth documenting: changing the order of existing values changes the native partition mapping.\n\nI have documented that.",
+      "parentUuid": "ef5e9e5f_b584ba53",
+      "range": {
+        "startLine": 49,
+        "startChar": 19,
+        "endLine": 49,
+        "endChar": 34
+      },
+      "revId": "521515d21e6f53524a5a009ae5b2aed4c1629dc9",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e16f5e9d_f92a8206",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventsBrokerConfiguration.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-06-10T14:57:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6443e31_256f049e",
+      "range": {
+        "startLine": 49,
+        "startChar": 6,
+        "endLine": 49,
+        "endChar": 10
+      },
+      "revId": "521515d21e6f53524a5a009ae5b2aed4c1629dc9",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c413cdb_2d4966ec",
@@ -192,6 +360,30 @@
       "writtenOn": "2026-06-08T17:05:05Z",
       "side": 1,
       "message": "Missing JavaDoc",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 3
+      },
+      "revId": "521515d21e6f53524a5a009ae5b2aed4c1629dc9",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "566090d6_30cf3649",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventsBrokerConfiguration.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-06-10T14:57:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c413cdb_2d4966ec",
       "range": {
         "startLine": 60,
         "startChar": 0,
@@ -225,6 +417,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a2ab832_8329c8d7",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/InProcessBrokerApi.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-06-10T14:57:21Z",
+      "side": 1,
+      "message": "Done.\n\nI have added extended `TopicSubscriberWithGroupId` with an optional Partition value and tested that this is set correctly when the new `receiveAsync` method is called.\n\nThis is important because implementations would need to `re-connect` to the right partition upon start (see [events-kafka](https://github.com/GerritForge/events-kafka/blob/be5ac56f78d045707b461e068ea166861d5996b6/src/main/java/com/gerritforge/gerrit/plugins/kafka/Manager.java#L55) for example)",
+      "parentUuid": "2c87f859_8a32bf5b",
+      "range": {
+        "startLine": 57,
+        "startChar": 88,
+        "endLine": 57,
+        "endChar": 90
+      },
+      "revId": "521515d21e6f53524a5a009ae5b2aed4c1629dc9",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1fd6aca8_42e13089",
@@ -238,6 +454,30 @@
       "writtenOn": "2026-06-08T17:05:05Z",
       "side": 1,
       "message": "nit: extract in a constant and reuse in the assertion",
+      "range": {
+        "startLine": 57,
+        "startChar": 8,
+        "endLine": 57,
+        "endChar": 19
+      },
+      "revId": "521515d21e6f53524a5a009ae5b2aed4c1629dc9",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "533506af_11cd107a",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/EventsBrokerConfigurationTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-06-10T14:57:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fd6aca8_42e13089",
       "range": {
         "startLine": 57,
         "startChar": 8,
