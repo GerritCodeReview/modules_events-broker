@@ -16,6 +16,23 @@
       "message": "I have tested and profiled this locally.\nThis is good to go",
       "revId": "f5538a40e56163ccd8d2dee7efeebe63795dce95",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7826008d_503c1a18",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4874680
+      },
+      "writtenOn": "2026-06-12T01:51:32Z",
+      "side": 1,
+      "message": "Block",
+      "revId": "f5538a40e56163ccd8d2dee7efeebe63795dce95",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ],
   "submitRequirementResults": [
