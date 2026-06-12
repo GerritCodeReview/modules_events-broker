@@ -345,6 +345,24 @@
       "message": "We only have tests for a single topic. Might be worth having at leat one for multiple topics.",
       "revId": "6e288096d9cdce7b7fa3ecb496d4d5da4856cd9b",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c1235d2_07a502fd",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/EventsBrokerConfigurationTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-06-12T11:21:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d607b47_539533af",
+      "revId": "6e288096d9cdce7b7fa3ecb496d4d5da4856cd9b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
