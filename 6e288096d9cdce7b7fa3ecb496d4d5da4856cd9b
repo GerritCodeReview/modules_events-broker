@@ -24,6 +24,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4aba5b2a_5d494f3f",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventsBrokerConfiguration.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-06-12T11:21:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "491dce14_24a40e64",
+      "range": {
+        "startLine": 30,
+        "startChar": 36,
+        "endLine": 30,
+        "endChar": 42
+      },
+      "revId": "6e288096d9cdce7b7fa3ecb496d4d5da4856cd9b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ddb825a9_56fcbbd7",
@@ -70,6 +94,54 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "140fa497_e9e69db3",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventsBrokerConfiguration.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-06-12T11:21:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddb825a9_56fcbbd7",
+      "range": {
+        "startLine": 39,
+        "startChar": 28,
+        "endLine": 39,
+        "endChar": 32
+      },
+      "revId": "6e288096d9cdce7b7fa3ecb496d4d5da4856cd9b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b5d0cd5_c6e3000e",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventsBrokerConfiguration.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-06-12T11:21:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14e41957_0bf35894",
+      "range": {
+        "startLine": 39,
+        "startChar": 16,
+        "endLine": 39,
+        "endChar": 19
+      },
+      "revId": "6e288096d9cdce7b7fa3ecb496d4d5da4856cd9b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db692f79_19363228",
@@ -83,6 +155,30 @@
       "writtenOn": "2026-06-10T17:17:33Z",
       "side": 1,
       "message": "ImmutableMap",
+      "range": {
+        "startLine": 40,
+        "startChar": 16,
+        "endLine": 40,
+        "endChar": 19
+      },
+      "revId": "6e288096d9cdce7b7fa3ecb496d4d5da4856cd9b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c0fba7b_9ce71bf6",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventsBrokerConfiguration.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-06-12T11:21:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db692f79_19363228",
       "range": {
         "startLine": 40,
         "startChar": 16,
@@ -116,6 +212,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c84f2d8_83866514",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventsBrokerConfiguration.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-06-12T11:21:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae53e090_5eec861e",
+      "range": {
+        "startLine": 50,
+        "startChar": 10,
+        "endLine": 51,
+        "endChar": 86
+      },
+      "revId": "6e288096d9cdce7b7fa3ecb496d4d5da4856cd9b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06de9887_2fbd3757",
@@ -139,6 +259,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "128011c7_14f1c374",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventsBrokerConfiguration.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-06-12T11:21:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06de9887_2fbd3757",
+      "range": {
+        "startLine": 65,
+        "startChar": 23,
+        "endLine": 65,
+        "endChar": 27
+      },
+      "revId": "6e288096d9cdce7b7fa3ecb496d4d5da4856cd9b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61a30a10_d331af22",
@@ -152,6 +296,30 @@
       "writtenOn": "2026-06-10T17:17:33Z",
       "side": 1,
       "message": "Why not returning an Optional? It would protect against NPE in the client",
+      "range": {
+        "startLine": 75,
+        "startChar": 23,
+        "endLine": 75,
+        "endChar": 27
+      },
+      "revId": "6e288096d9cdce7b7fa3ecb496d4d5da4856cd9b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ac75251_6b69a48e",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventsBrokerConfiguration.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-06-12T11:21:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61a30a10_d331af22",
       "range": {
         "startLine": 75,
         "startChar": 23,
