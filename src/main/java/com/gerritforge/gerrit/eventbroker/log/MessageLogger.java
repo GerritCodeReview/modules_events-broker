@@ -19,7 +19,8 @@ import com.google.gerrit.server.events.Event;
 public interface MessageLogger {
   public enum Direction {
     PUBLISH,
-    CONSUME;
+    CONSUME,
+    REQUEUE;
   }
 
   public void log(Direction direction, String topic, Event event);
