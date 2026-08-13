@@ -47,6 +47,54 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7630509_17d0ffe7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-08-13T11:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17b643b5_ba8401ab",
+      "range": {
+        "startLine": 10,
+        "startChar": 22,
+        "endLine": 10,
+        "endChar": 26
+      },
+      "revId": "7f79e59b2f2f99d3054ca63114bcf2e29bca9562",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0407ff8_f4c06f5e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-08-13T11:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "054727a3_beb9a769",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 10
+      },
+      "revId": "7f79e59b2f2f99d3054ca63114bcf2e29bca9562",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac2c4dd4_7846e198",
@@ -60,6 +108,30 @@
       "writtenOn": "2026-08-13T04:51:28Z",
       "side": 1,
       "message": "Are you suggesting that the user of the broker API is expected to cast what is bound?\nThat would break the promise to support _any_ brokers if the consumer becomes implementation-aware.",
+      "range": {
+        "startLine": 12,
+        "startChar": 10,
+        "endLine": 12,
+        "endChar": 61
+      },
+      "revId": "7f79e59b2f2f99d3054ca63114bcf2e29bca9562",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e06883b5_033fd58d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-08-13T11:07:33Z",
+      "side": 1,
+      "message": "Apologies for the confusion, that wasn\u0027t what I was suggesting, but can see how I wasn\u0027t clear. The intention here is not to give the consumer an option to subscribe to a, for example, events-kafka but not gcloud-pubsub, but merely to let them know if a real broker is bound or not yet. I\u0027ve rephrased, hopefully it\u0027s clearer now.",
+      "parentUuid": "ac2c4dd4_7846e198",
       "range": {
         "startLine": 12,
         "startChar": 10,
