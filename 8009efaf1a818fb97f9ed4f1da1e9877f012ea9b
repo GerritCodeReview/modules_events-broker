@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b5bcac1c_1a4171eb",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiBoundNotifier.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-08-19T16:14:35Z",
+      "side": 1,
+      "message": "I believe `Listener` is the correct term. Actually, this can simply be an interface that extends `StartPluginListener` and simply filters out the plugins to notify.\n\nNo need to notify to a dynamic set at all, just the broker-api users need to implement this interface and perform the subscribe when the broker-api implementations are bound.",
+      "parentUuid": "d7b28679_78af86c4",
+      "range": {
+        "startLine": 28,
+        "startChar": 13,
+        "endLine": 28,
+        "endChar": 35
+      },
+      "revId": "8009efaf1a818fb97f9ed4f1da1e9877f012ea9b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "19c87250_552f4df4",
         "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiBoundNotifier.java",
         "patchSetId": 12
