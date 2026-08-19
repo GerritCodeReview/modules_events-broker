@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ef733ae2_2f2351c4",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiBoundNotifier.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-08-19T09:14:59Z",
+      "side": 1,
+      "message": "I see what you\u0027re saying in the listener, to merge the listener and notifier. In that case then sure, this would be the listener and the name change would make sense.",
+      "parentUuid": "e59f4dde_995638c0",
+      "range": {
+        "startLine": 28,
+        "startChar": 13,
+        "endLine": 28,
+        "endChar": 35
+      },
+      "revId": "8009efaf1a818fb97f9ed4f1da1e9877f012ea9b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "19c87250_552f4df4",
         "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiBoundNotifier.java",
         "patchSetId": 12
