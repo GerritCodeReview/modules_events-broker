@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e59f4dde_995638c0",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiBoundNotifier.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-08-19T09:14:02Z",
+      "side": 1,
+      "message": "No, here we fire the events and notify the listeners, we don\u0027t to any actual listening. The listening is done in the listener `BrokerApiBoundPluginListener.java`, which I think is correct, as we\u0027re waiting for the BrokerApi to be bound before doing anything. \n\nI can see an argument for changing `BrokerApiBoundPluginListener` to `BrokerApiPluginLoadedListener `, happy to do that.",
+      "parentUuid": "84038b4e_e6751d1a",
+      "range": {
+        "startLine": 28,
+        "startChar": 13,
+        "endLine": 28,
+        "endChar": 35
+      },
+      "revId": "8009efaf1a818fb97f9ed4f1da1e9877f012ea9b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "19c87250_552f4df4",
         "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiBoundNotifier.java",
         "patchSetId": 12
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "01b5f02c_bbe7ac39",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiBoundNotifier.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-08-19T09:14:02Z",
+      "side": 1,
+      "message": "You\u0027re probably right, Guice still has many mysteries for me, let me look at that.",
+      "parentUuid": "19c87250_552f4df4",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 3
+      },
+      "revId": "8009efaf1a818fb97f9ed4f1da1e9877f012ea9b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a7675330_7454e384",
         "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiBoundNotifier.java",
         "patchSetId": 12
@@ -60,6 +108,30 @@
       "writtenOn": "2026-08-19T09:02:07Z",
       "side": 1,
       "message": "Why is this needed?",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 3
+      },
+      "revId": "8009efaf1a818fb97f9ed4f1da1e9877f012ea9b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91063229_c4ed5d4f",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiBoundNotifier.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-08-19T09:14:02Z",
+      "side": 1,
+      "message": "If whoever registered the listeners is unloaded, then it should have the opportunity to unregister them, otherwise we\u0027d be notifying somewhere where nobody is listening.",
+      "parentUuid": "a7675330_7454e384",
       "range": {
         "startLine": 65,
         "startChar": 0,

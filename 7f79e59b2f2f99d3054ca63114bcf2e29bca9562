@@ -228,6 +228,30 @@
       },
       "revId": "7f79e59b2f2f99d3054ca63114bcf2e29bca9562",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a421a72_65d94a48",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiBoundNotifier.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-08-19T09:14:02Z",
+      "side": 1,
+      "message": "Agreed, but then that changes the whole thing and maybe we don\u0027t need this change at all? Let\u0027s discuss this separately as this seems like a much wider redesign.",
+      "parentUuid": "62efa85e_1ba16529",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 3
+      },
+      "revId": "7f79e59b2f2f99d3054ca63114bcf2e29bca9562",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
