@@ -15,91 +15,70 @@
 package com.gerritforge.gerrit.eventbroker;
 
 import static com.google.common.truth.Truth.assertThat;
-import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.google.gerrit.extensions.registration.DynamicItem;
-import com.google.gerrit.extensions.registration.DynamicSet;
 import com.google.gerrit.server.plugins.Plugin;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
 public class BrokerApiPluginLoadedNotifierTest {
   private static final String BROKER_PLUGIN = "a-broker-plugin";
-  private static final String LISTENER_PLUGIN = "a-listener-plugin";
 
   private DynamicItem<BrokerApi> brokerApiItem;
-  private DynamicSet<BrokerApiLoadedListener> listeners;
-  private BrokerApiPluginLoadedNotifier notifierUnderTest;
+  private RecordingNotifier notifierUnderTest;
+
+  private static class RecordingNotifier implements BrokerApiPluginLoadedNotifier {
+    private final DynamicItem<BrokerApi> brokerApi;
+    private final List<BrokerApi> notified = new ArrayList<>();
+
+    RecordingNotifier(DynamicItem<BrokerApi> brokerApi) {
+      this.brokerApi = brokerApi;
+    }
+
+    @Override
+    public DynamicItem<BrokerApi> boundBrokerApi() {
+      return brokerApi;
+    }
+
+    @Override
+    public void onBrokerApiStartPlugin(BrokerApi api) {
+      notified.add(api);
+    }
+  }
 
   @Before
   public void setup() {
     brokerApiItem = DynamicItem.itemOf(BrokerApi.class, new InProcessBrokerApi());
-    listeners = DynamicSet.emptySet();
-    notifierUnderTest = new BrokerApiPluginLoadedNotifier(brokerApiItem, listeners);
+    notifierUnderTest = new RecordingNotifier(brokerApiItem);
   }
 
   @Test
-  public void shouldNotReportABoundBrokerWhenOnlyThePlaceholderIsAvailable() {
-    assertThat(notifierUnderTest.boundBrokerApi()).isEmpty();
-  }
-
-  @Test
-  public void shouldReportTheBrokerBoundByAPlugin() {
+  public void shouldNotifyWhenTheBrokerPluginStarts() {
     BrokerApi pluginBroker = bindBroker(BROKER_PLUGIN);
-
-    assertThat(notifierUnderTest.boundBrokerApi()).hasValue(pluginBroker);
-  }
-
-  @Test
-  public void shouldNotifyRegisteredListenersWhenTheBrokerPluginStarts() {
-    BrokerApiLoadedListener listener = register();
-    bindBroker(BROKER_PLUGIN);
 
     notifierUnderTest.onStartPlugin(pluginNamed(BROKER_PLUGIN));
 
-    verify(listener).brokerApiLoaded();
+    assertThat(notifierUnderTest.notified).containsExactly(pluginBroker);
   }
 
   @Test
-  public void shouldNotNotifyListenersWhenAPluginBindingNoBrokerStarts() {
-    BrokerApiLoadedListener listener = register();
+  public void shouldNotNotifyWhenAPluginBindingNoBrokerStarts() {
     bindBroker(BROKER_PLUGIN);
 
     notifierUnderTest.onStartPlugin(pluginNamed("another-plugin"));
 
-    verify(listener, never()).brokerApiLoaded();
+    assertThat(notifierUnderTest.notified).isEmpty();
   }
 
   @Test
-  public void shouldNotNotifyListenersWhenOnlyThePlaceholderIsAvailable() {
-    BrokerApiLoadedListener listener = register();
-
+  public void shouldNotNotifyWhenOnlyThePlaceholderIsAvailable() {
     notifierUnderTest.onStartPlugin(pluginNamed(BROKER_PLUGIN));
 
-    verify(listener, never()).brokerApiLoaded();
-  }
-
-  @Test
-  public void shouldNotPropagateListenerFailures() {
-    BrokerApiLoadedListener failingListener = register();
-    doThrow(new IllegalStateException("listener failed")).when(failingListener).brokerApiLoaded();
-    BrokerApiLoadedListener listener = register();
-    bindBroker(BROKER_PLUGIN);
-
-    notifierUnderTest.onStartPlugin(pluginNamed(BROKER_PLUGIN));
-
-    verify(listener).brokerApiLoaded();
-  }
-
-  private BrokerApiLoadedListener register() {
-    BrokerApiLoadedListener listener = mock(BrokerApiLoadedListener.class);
-    @SuppressWarnings("unused")
-    var unused = listeners.add(LISTENER_PLUGIN, listener);
-    return listener;
+    assertThat(notifierUnderTest.notified).isEmpty();
   }
 
   private BrokerApi bindBroker(String pluginName) {
