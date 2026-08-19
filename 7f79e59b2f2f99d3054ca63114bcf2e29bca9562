@@ -252,6 +252,30 @@
       },
       "revId": "7f79e59b2f2f99d3054ca63114bcf2e29bca9562",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc25bd9e_441734a7",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiBoundNotifier.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-08-19T10:03:09Z",
+      "side": 1,
+      "message": "As discussed, this will be easy as a follow-up change, so will address this later on.",
+      "parentUuid": "5a421a72_65d94a48",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 3
+      },
+      "revId": "7f79e59b2f2f99d3054ca63114bcf2e29bca9562",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
