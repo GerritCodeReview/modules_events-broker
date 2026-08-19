@@ -261,6 +261,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f01e0be_161a80e0",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiBoundNotifier.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-08-19T11:18:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53df7b54_508cc53f",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 3
+      },
+      "revId": "8009efaf1a818fb97f9ed4f1da1e9877f012ea9b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3d657ab_9df2cf0e",
