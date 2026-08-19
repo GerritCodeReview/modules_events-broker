@@ -1,0 +1,274 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84038b4e_e6751d1a",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiBoundNotifier.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-08-19T09:02:07Z",
+      "side": 1,
+      "message": "The name looks odd to me.\n\nThis is a class that listens to the event-broker plugins loaded and notifies of that event.\n\nThe name should tell that story: what about `BrokerApiPluginLoadedListener`?",
+      "range": {
+        "startLine": 28,
+        "startChar": 13,
+        "endLine": 28,
+        "endChar": 35
+      },
+      "revId": "8009efaf1a818fb97f9ed4f1da1e9877f012ea9b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19c87250_552f4df4",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiBoundNotifier.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-08-19T09:02:07Z",
+      "side": 1,
+      "message": "Looks like you\u0027re just reinventing the concept of a DynamicSet\u003cBrokerApiSubscriber\u003e. Just inject it and use it: Gerrit\u0027s Guice injector does all the rest for you.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 3
+      },
+      "revId": "8009efaf1a818fb97f9ed4f1da1e9877f012ea9b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7675330_7454e384",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiBoundNotifier.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-08-19T09:02:07Z",
+      "side": 1,
+      "message": "Why is this needed?",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 3
+      },
+      "revId": "8009efaf1a818fb97f9ed4f1da1e9877f012ea9b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53df7b54_508cc53f",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiBoundNotifier.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-08-19T09:02:07Z",
+      "side": 1,
+      "message": "This is only used internally; make it private.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 3
+      },
+      "revId": "8009efaf1a818fb97f9ed4f1da1e9877f012ea9b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3d657ab_9df2cf0e",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiBoundPluginListener.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-08-19T09:02:07Z",
+      "side": 1,
+      "message": "There is no point in having yet another listener to just delegate to the notifier here.\n\nJust add the `implements StartPluginListener` to the `BrokerApiBoundNotifier` and then move this method there.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 3
+      },
+      "revId": "8009efaf1a818fb97f9ed4f1da1e9877f012ea9b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15e33885_ec7cc65b",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiSubscriber.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-08-19T09:02:07Z",
+      "side": 1,
+      "message": "The name is too generic here: what type of event is this subscribing to?\n\nWhat about `BrokerApiPluginLoadedSubscriber`?",
+      "range": {
+        "startLine": 23,
+        "startChar": 17,
+        "endLine": 23,
+        "endChar": 36
+      },
+      "revId": "8009efaf1a818fb97f9ed4f1da1e9877f012ea9b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06a23dbe_4f364596",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiSubscriber.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-08-19T09:02:07Z",
+      "side": 1,
+      "message": "This isn\u0027t the subscription to the event of the plugin being loaded, but rather the event of when the broker-api plugin is loaded.\n\nWhat about `void brokerApiLoaded(BrokerApi api)`?",
+      "range": {
+        "startLine": 26,
+        "startChar": 7,
+        "endLine": 26,
+        "endChar": 16
+      },
+      "revId": "8009efaf1a818fb97f9ed4f1da1e9877f012ea9b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0753edeb_f54e20bf",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/BrokerApiBoundNotifierTest.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-08-19T09:02:07Z",
+      "side": 1,
+      "message": "This is internal implementation details: we should not test it as it may change.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 3
+      },
+      "revId": "8009efaf1a818fb97f9ed4f1da1e9877f012ea9b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a50f8087_4fb5a512",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/BrokerApiBoundNotifierTest.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-08-19T09:02:07Z",
+      "side": 1,
+      "message": "This is internal implementation details: we should not test it as it may change.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 3
+      },
+      "revId": "8009efaf1a818fb97f9ed4f1da1e9877f012ea9b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba1a2726_b3d9b9b6",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/BrokerApiBoundNotifierTest.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-08-19T09:02:07Z",
+      "side": 1,
+      "message": "This is calling directly the methods that should be private: just simulate the loading of a plugin instead and verify that it gets notified.",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 3
+      },
+      "revId": "8009efaf1a818fb97f9ed4f1da1e9877f012ea9b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "850cb8c1_1437da62",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/BrokerApiBoundNotifierTest.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-08-19T09:02:07Z",
+      "side": 1,
+      "message": "You should not explicitly add or remote listeners: just use Gerrit\u0027s Guice mechanism for it and it doesn\u0027t need testing either.",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 3
+      },
+      "revId": "8009efaf1a818fb97f9ed4f1da1e9877f012ea9b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cda85a6_f60b021f",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/BrokerApiBoundNotifierTest.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-08-19T09:02:07Z",
+      "side": 1,
+      "message": "Do not call fire() directly but rather simulate the loading of a plugin.",
+      "revId": "8009efaf1a818fb97f9ed4f1da1e9877f012ea9b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}

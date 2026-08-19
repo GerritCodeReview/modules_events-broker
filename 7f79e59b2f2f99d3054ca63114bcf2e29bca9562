@@ -204,6 +204,30 @@
       },
       "revId": "7f79e59b2f2f99d3054ca63114bcf2e29bca9562",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62efa85e_1ba16529",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiBoundNotifier.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-08-19T09:02:07Z",
+      "side": 1,
+      "message": "Here and everywhere: if we don\u0027t really use it, why bothering in implementing the code for then discarding it here?",
+      "parentUuid": "c3ebf9f8_62c74867",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 3
+      },
+      "revId": "7f79e59b2f2f99d3054ca63114bcf2e29bca9562",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
