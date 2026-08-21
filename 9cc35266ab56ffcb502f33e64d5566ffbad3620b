@@ -18,6 +18,24 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4064f61_73c04505",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-08-21T10:19:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af55431a_7a7d2d71",
+      "revId": "9cc35266ab56ffcb502f33e64d5566ffbad3620b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67d57f20_d413757d",
@@ -31,6 +49,30 @@
       "writtenOn": "2026-08-19T16:14:35Z",
       "side": 1,
       "message": "This isn\u0027t even needed: just the broker-api clients can simply listen to the loading of the broker-api plugin and call their subscribe methods.",
+      "range": {
+        "startLine": 37,
+        "startChar": 40,
+        "endLine": 37,
+        "endChar": 85
+      },
+      "revId": "9cc35266ab56ffcb502f33e64d5566ffbad3620b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fa01165_31623d00",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiPluginLoadedNotifier.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-08-21T10:19:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67d57f20_d413757d",
       "range": {
         "startLine": 37,
         "startChar": 40,
@@ -64,6 +106,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2119aa6a_78670457",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiPluginLoadedNotifier.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-08-21T10:19:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1646c4c4_19376a3f",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 3
+      },
+      "revId": "9cc35266ab56ffcb502f33e64d5566ffbad3620b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "978418d2_57861f29",
@@ -77,6 +143,24 @@
       "writtenOn": "2026-08-19T16:14:35Z",
       "side": 1,
       "message": "```suggestion\n      onBrokerApiStartPlugin(brokerApi.get());\n```",
+      "revId": "9cc35266ab56ffcb502f33e64d5566ffbad3620b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da7f4c35_17c2923d",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiPluginLoadedNotifier.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-08-21T10:19:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "978418d2_57861f29",
       "revId": "9cc35266ab56ffcb502f33e64d5566ffbad3620b",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
