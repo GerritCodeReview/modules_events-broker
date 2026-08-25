@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4aa8b29a_5f971688",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiPluginListener.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-08-25T08:57:24Z",
+      "side": 1,
+      "message": "Well, they can be reloaded but the plugin needs to set `restart` as ReloadMode, as discussed in [1]. Pure reload mode for event-broker implementations leads to undefined behaviour.\n\nhttps://gerrithub.io/c/GerritForge/events-kafka/+/1245369",
+      "parentUuid": "12245016_cfe88b0c",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 78
+      },
+      "revId": "49fa7e04059922f49b6ac392af305e57f55d147e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1ac78067_8321483f",
         "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiPluginListener.java",
         "patchSetId": 16
@@ -37,6 +61,30 @@
       "writtenOn": "2026-08-25T07:59:28Z",
       "side": 1,
       "message": "What if another plugin is loaded after an existing DynamicItem\u003cBrokerApi\u003e has been bound?",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 91
+      },
+      "revId": "49fa7e04059922f49b6ac392af305e57f55d147e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1dea8cb_2ff746d9",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiPluginListener.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-08-25T08:57:24Z",
+      "side": 1,
+      "message": "That\u0027s what I\u0027m covering here, it needs to call isBrokerApiBound to check if something is already bound.",
+      "parentUuid": "1ac78067_8321483f",
       "range": {
         "startLine": 36,
         "startChar": 0,
@@ -100,6 +148,30 @@
       "writtenOn": "2026-08-25T07:59:28Z",
       "side": 1,
       "message": "This is always true, so it can be removed.",
+      "range": {
+        "startLine": 54,
+        "startChar": 11,
+        "endLine": 54,
+        "endChar": 58
+      },
+      "revId": "49fa7e04059922f49b6ac392af305e57f55d147e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f3f43f5_eec9a5f0",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiPluginListener.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-08-25T08:57:24Z",
+      "side": 1,
+      "message": "No its not, for inProcessBrokerApi will this be true.\n\nWe discussed removing inProcessBrokerApi as a follow-up change, so I\u0027ll remove this then.",
+      "parentUuid": "eef31468_70b1c4c5",
       "range": {
         "startLine": 54,
         "startChar": 11,
