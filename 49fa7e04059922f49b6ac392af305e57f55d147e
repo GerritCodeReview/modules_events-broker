@@ -118,6 +118,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0ef6dec_97136e51",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiPluginListener.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-08-25T08:57:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "780d4948_861c2de7",
+      "range": {
+        "startLine": 48,
+        "startChar": 2,
+        "endLine": 48,
+        "endChar": 26
+      },
+      "revId": "49fa7e04059922f49b6ac392af305e57f55d147e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ce21358_5df2af86",
@@ -131,6 +155,24 @@
       "writtenOn": "2026-08-25T07:59:28Z",
       "side": 1,
       "message": "This is not when the binding is lost, but when the plugin is unloaded.",
+      "revId": "49fa7e04059922f49b6ac392af305e57f55d147e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8eef4e67_ca4ddd7b",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiPluginListener.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-08-25T08:57:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ce21358_5df2af86",
       "revId": "49fa7e04059922f49b6ac392af305e57f55d147e",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
