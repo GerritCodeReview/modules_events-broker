@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "881f4910_14ae8065",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/BrokerApiLoggingWrapperTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-08-26T10:24:19Z",
+      "side": 1,
+      "message": "I\u0027m a bit unsure if the test is a bit OTT tbh.\n\nThe logic is really simple, don\u0027t think we need this much testing?",
+      "range": {
+        "startLine": 34,
+        "startChar": 13,
+        "endLine": 34,
+        "endChar": 40
+      },
+      "revId": "6f8ce7c4d4646d3fed0eaf028943b3b2bf2cbae2",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
