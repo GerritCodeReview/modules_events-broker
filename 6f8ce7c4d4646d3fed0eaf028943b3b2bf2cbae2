@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "31f44777_e20a8fd7",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiLoggingWrapper.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-08-27T07:58:47Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we also log the received message executions?",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 3
+      },
+      "revId": "6f8ce7c4d4646d3fed0eaf028943b3b2bf2cbae2",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ed0fe7e7_fda3e1be",
