@@ -74,6 +74,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "31f091a5_553e01ff",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiLoggingWrapper.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-08-28T09:58:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1aa69f56_af910ede",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 3
+      },
+      "revId": "6f8ce7c4d4646d3fed0eaf028943b3b2bf2cbae2",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ed0fe7e7_fda3e1be",
         "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/BrokerApiLoggingWrapperTest.java",
         "patchSetId": 1
@@ -127,6 +151,30 @@
       "side": 1,
       "message": "I believe this test is more complex than the code it is testing, but if this gave you confidence in writing the code, I\u0027m happy to keep it.",
       "parentUuid": "881f4910_14ae8065",
+      "range": {
+        "startLine": 34,
+        "startChar": 13,
+        "endLine": 34,
+        "endChar": 40
+      },
+      "revId": "6f8ce7c4d4646d3fed0eaf028943b3b2bf2cbae2",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bb78a57_c1c7bc0e",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/BrokerApiLoggingWrapperTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-08-28T09:58:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a958d81b_d9721ea8",
       "range": {
         "startLine": 34,
         "startChar": 13,
