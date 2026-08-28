@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e7c2f702_38c7f708",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiPluginListener.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-08-28T07:59:10Z",
+      "side": 1,
+      "message": "Having a `restart` mode it means that they are not reloaded. Fine with me, let\u0027s make it explicit.",
+      "parentUuid": "4aa8b29a_5f971688",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 78
+      },
+      "revId": "49fa7e04059922f49b6ac392af305e57f55d147e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1ac78067_8321483f",
         "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiPluginListener.java",
         "patchSetId": 16
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "That\u0027s what I\u0027m covering here, it needs to call isBrokerApiBound to check if something is already bound.",
       "parentUuid": "1ac78067_8321483f",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 91
+      },
+      "revId": "49fa7e04059922f49b6ac392af305e57f55d147e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3899f0fa_5964e0f2",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiPluginListener.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-08-28T07:59:10Z",
+      "side": 1,
+      "message": "That\u0027s a problem here: if we just bind at loading time, we may be missing the subscription step.",
+      "parentUuid": "c1dea8cb_2ff746d9",
       "range": {
         "startLine": 36,
         "startChar": 0,
@@ -214,6 +262,30 @@
       "side": 1,
       "message": "No its not, for inProcessBrokerApi will this be true.\n\nWe discussed removing inProcessBrokerApi as a follow-up change, so I\u0027ll remove this then.",
       "parentUuid": "eef31468_70b1c4c5",
+      "range": {
+        "startLine": 54,
+        "startChar": 11,
+        "endLine": 54,
+        "endChar": 58
+      },
+      "revId": "49fa7e04059922f49b6ac392af305e57f55d147e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bafa40f_7c9476f7",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiPluginListener.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-08-28T07:59:10Z",
+      "side": 1,
+      "message": "The no-op broker is never loaded dynamically, this is always true.",
+      "parentUuid": "4f3f43f5_eec9a5f0",
       "range": {
         "startLine": 54,
         "startChar": 11,
