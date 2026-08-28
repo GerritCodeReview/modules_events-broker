@@ -72,6 +72,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ce79306_ac644a4c",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiPluginListener.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-08-28T10:19:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7c2f702_38c7f708",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 78
+      },
+      "revId": "49fa7e04059922f49b6ac392af305e57f55d147e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ac78067_8321483f",
@@ -133,6 +157,30 @@
       "side": 1,
       "message": "That\u0027s a problem here: if we just bind at loading time, we may be missing the subscription step.",
       "parentUuid": "c1dea8cb_2ff746d9",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 91
+      },
+      "revId": "49fa7e04059922f49b6ac392af305e57f55d147e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f12d4580_909d9470",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiPluginListener.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-08-28T10:19:22Z",
+      "side": 1,
+      "message": "As per conversation, that\u0027s why the plugins, when they start, need to both subscribe and check if something is already binded. This is what allows them to figure out if something is already bounded or not.",
+      "parentUuid": "3899f0fa_5964e0f2",
       "range": {
         "startLine": 36,
         "startChar": 0,
@@ -286,6 +334,30 @@
       "side": 1,
       "message": "The no-op broker is never loaded dynamically, this is always true.",
       "parentUuid": "4f3f43f5_eec9a5f0",
+      "range": {
+        "startLine": 54,
+        "startChar": 11,
+        "endLine": 54,
+        "endChar": 58
+      },
+      "revId": "49fa7e04059922f49b6ac392af305e57f55d147e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae02359c_d3de3f61",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiPluginListener.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-08-28T10:19:22Z",
+      "side": 1,
+      "message": "If a broker is never loaded (because the plugin failed to start of something) and then a consumer connects and asks if something has already been bound or not, it will find the inProcessBroker, and this will return false.\n\nThis is a guard against plugins subscribing to the inProcessBroker.\n\nDoes this answer your question?",
+      "parentUuid": "8bafa40f_7c9476f7",
       "range": {
         "startLine": 54,
         "startChar": 11,
