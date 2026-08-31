@@ -33,11 +33,7 @@ public class BrokerApiModule extends LifecycleModule {
 
   @Override
   protected void configure() {
-    if (currentBrokerApi == null) {
-      DynamicItem.itemOf(binder(), BrokerApi.class);
-      DynamicItem.bind(binder(), BrokerApi.class).to(InProcessBrokerApi.class).in(Scopes.SINGLETON);
-    }
-
+    DynamicItem.itemOf(binder(), BrokerApi.class);
     DynamicItem.itemOf(binder(), BrokerMetrics.class);
     DynamicItem.bind(binder(), BrokerMetrics.class)
         .to(BrokerMetricsNoOp.class)
