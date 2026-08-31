@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f51e2ea_c4d9f1ad",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiPluginListener.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-08-31T07:43:55Z",
+      "side": 1,
+      "message": "This can be obtained by calling `getPluginName()` on the `DynamicItem`, see below:\n\n```\nsubscribedBrokerApiPlugin().map(DynamicItem::getPluginName)\n```",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 47
+      },
+      "revId": "5b5dbd749f143b284943491c8f8d5d7107c03471",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c46fcbac_05c083ca",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiPluginListener.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-08-31T07:43:55Z",
+      "side": 1,
+      "message": "What does this mean? The sentence, as is, tells me that the listener did not react (failed to react).",
+      "range": {
+        "startLine": 72,
+        "startChar": 22,
+        "endLine": 72,
+        "endChar": 37
+      },
+      "revId": "5b5dbd749f143b284943491c8f8d5d7107c03471",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
