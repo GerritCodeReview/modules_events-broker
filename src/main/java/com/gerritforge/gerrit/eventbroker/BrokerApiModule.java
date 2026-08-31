@@ -17,7 +17,6 @@ package com.gerritforge.gerrit.eventbroker;
 import com.gerritforge.gerrit.eventbroker.log.Log4jMessageLogger;
 import com.gerritforge.gerrit.eventbroker.log.MessageLogger;
 import com.gerritforge.gerrit.eventbroker.metrics.BrokerMetrics;
-import com.gerritforge.gerrit.eventbroker.metrics.BrokerMetricsNoOp;
 import com.google.gerrit.extensions.registration.DynamicItem;
 import com.google.gerrit.lifecycle.LifecycleModule;
 import com.google.inject.Inject;
@@ -33,11 +32,7 @@ public class BrokerApiModule extends LifecycleModule {
 
   @Override
   protected void configure() {
-    if (currentBrokerApi == null) {
-      DynamicItem.itemOf(binder(), BrokerApi.class);
-      DynamicItem.bind(binder(), BrokerApi.class).to(InProcessBrokerApi.class).in(Scopes.SINGLETON);
-    }
-
+    DynamicItem.itemOf(binder(), BrokerApi.class);
     DynamicItem.itemOf(binder(), BrokerMetrics.class);
     DynamicItem.bind(binder(), BrokerMetrics.class)
         .to(BrokerMetricsNoOp.class)
