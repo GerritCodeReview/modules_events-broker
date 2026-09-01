@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27519110_4fadf265",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiPluginListener.java",
+        "patchSetId": 20
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-09-01T20:18:31Z",
+      "side": 1,
+      "message": "This is going to be totally redundant in Ic34877c809. Also, `item` could be null so without checking it here would cause an NPE.\n\n\n\n```suggestion\n    return item !\u003d null \u0026\u0026 item.get() !\u003d null;\n```",
+      "range": {
+        "startLine": 43,
+        "startChar": 11,
+        "endLine": 43,
+        "endChar": 61
+      },
+      "revId": "1a21e47a0c9ec9d5c4d9b450e904cc5e05ef8682",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
