@@ -130,6 +130,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3192d1b5_ef621359",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiPluginListener.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-09-01T09:33:22Z",
+      "side": 1,
+      "message": "The point of this was that on unbounding of the plugin the dynamic item was no longer there and so no, you couldn\u0027t get it from the dynamic item.\n\nBut as we don\u0027t handle the stop anymore, then we can remove it.",
+      "parentUuid": "1f51e2ea_c4d9f1ad",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 47
+      },
+      "revId": "5b5dbd749f143b284943491c8f8d5d7107c03471",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c46fcbac_05c083ca",
