@@ -215,6 +215,24 @@
       "message": "Do we really need this long test for an API interface?",
       "revId": "5b5dbd749f143b284943491c8f8d5d7107c03471",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3de1dc94_da81f875",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/BrokerApiPluginListenerTest.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-09-01T09:29:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf8aed7a_8e536ba5",
+      "revId": "5b5dbd749f143b284943491c8f8d5d7107c03471",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
