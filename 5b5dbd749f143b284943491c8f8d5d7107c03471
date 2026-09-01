@@ -48,6 +48,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb110d74_6f119d33",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiPluginListener.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-09-01T09:29:43Z",
+      "side": 1,
+      "message": "Yeah, fair enough, it must have been a left over from a previous iteration of this change as I\u0027m sure this was needed.",
+      "parentUuid": "e3d887c7_3947f64d",
+      "range": {
+        "startLine": 40,
+        "startChar": 68,
+        "endLine": 40,
+        "endChar": 88
+      },
+      "revId": "5b5dbd749f143b284943491c8f8d5d7107c03471",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9dd36c34_3b2c9915",
@@ -61,6 +85,24 @@
       "writtenOn": "2026-08-31T20:22:23Z",
       "side": 1,
       "message": "It looks weird to have an interface that includes a logger.",
+      "revId": "5b5dbd749f143b284943491c8f8d5d7107c03471",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5a8f44f_f57b15c8",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiPluginListener.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-09-01T09:29:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9dd36c34_3b2c9915",
       "revId": "5b5dbd749f143b284943491c8f8d5d7107c03471",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
