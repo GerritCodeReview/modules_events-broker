@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e3d887c7_3947f64d",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiPluginListener.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-09-01T07:54:05Z",
+      "side": 1,
+      "message": "Why do you say that we don\u0027t need it?",
+      "parentUuid": "0cfe531a_bfad684d",
+      "range": {
+        "startLine": 40,
+        "startChar": 68,
+        "endLine": 40,
+        "endChar": 88
+      },
+      "revId": "5b5dbd749f143b284943491c8f8d5d7107c03471",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9dd36c34_3b2c9915",
         "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiPluginListener.java",
         "patchSetId": 18
@@ -77,6 +101,53 @@
       "writtenOn": "2026-08-31T07:43:55Z",
       "side": 1,
       "message": "What does this mean? The sentence, as is, tells me that the listener did not react (failed to react).",
+      "range": {
+        "startLine": 72,
+        "startChar": 22,
+        "endLine": 72,
+        "endChar": 37
+      },
+      "revId": "5b5dbd749f143b284943491c8f8d5d7107c03471",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b45a9fd9_3b011de7",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiPluginListener.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-09-01T07:54:05Z",
+      "side": 1,
+      "message": "```suggestion\n            \"Listener failed to unsubscribe when Broker plugin %s stopped.\",\n```",
+      "range": {
+        "startLine": 72,
+        "startChar": 13,
+        "endLine": 72,
+        "endChar": 37
+      },
+      "revId": "5b5dbd749f143b284943491c8f8d5d7107c03471",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d8f8475_09d9691a",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiPluginListener.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-09-01T07:54:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c46fcbac_05c083ca",
       "range": {
         "startLine": 72,
         "startChar": 22,
