@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c0b4712_241940e9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-09-01T09:40:51Z",
+      "side": 1,
+      "message": "```suggestion\nThe InProcessBrokerApi was introduced to allow the\nconsumers to register their listeners at plugin startup time.\n```",
+      "range": {
+        "startLine": 9,
+        "startChar": 27,
+        "endLine": 10,
+        "endChar": 61
+      },
+      "revId": "76dd2325ee6de7bd5027e376707fac1ae35ced54",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81821b93_5277967f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-09-01T09:40:51Z",
+      "side": 1,
+      "message": "```suggestion\nand allow them to register their listeners only when a concrete implementation is bound.\n```",
+      "range": {
+        "startLine": 14,
+        "startChar": 43,
+        "endLine": 14,
+        "endChar": 52
+      },
+      "revId": "76dd2325ee6de7bd5027e376707fac1ae35ced54",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
