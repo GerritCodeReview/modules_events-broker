@@ -46,6 +46,30 @@
       },
       "revId": "1a21e47a0c9ec9d5c4d9b450e904cc5e05ef8682",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "374ede07_cfd18074",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiPluginListener.java",
+        "patchSetId": 20
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-09-01T21:55:59Z",
+      "side": 1,
+      "message": "There is no point in adding code that is never going to be used because it is removed in the follow-up change. Let\u0027s put all these three changes in the same topic, so that they are submitted at the same time.",
+      "parentUuid": "ee7a7342_e9eebc67",
+      "range": {
+        "startLine": 43,
+        "startChar": 11,
+        "endLine": 43,
+        "endChar": 61
+      },
+      "revId": "1a21e47a0c9ec9d5c4d9b450e904cc5e05ef8682",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
