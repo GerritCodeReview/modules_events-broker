@@ -15,7 +15,6 @@
 package com.gerritforge.gerrit.eventbroker;
 
 import com.google.gerrit.extensions.registration.DynamicItem;
-import com.google.gerrit.extensions.registration.PluginName;
 import com.google.gerrit.server.plugins.Plugin;
 import com.google.gerrit.server.plugins.StartPluginListener;
 
@@ -39,8 +38,7 @@ public interface BrokerApiPluginListener extends StartPluginListener {
   void onBrokerApiStarted();
 
   default boolean isBrokerApiStarted() {
-    DynamicItem<BrokerApi> item = brokerApiDynamicItem();
-    return !PluginName.GERRIT.equals(item.getPluginName()) && item.get() != null;
+    return brokerApiDynamicItem().get() != null;
   }
 
   @Override
