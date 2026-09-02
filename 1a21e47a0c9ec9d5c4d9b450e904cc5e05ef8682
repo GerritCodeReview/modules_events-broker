@@ -70,6 +70,30 @@
       },
       "revId": "1a21e47a0c9ec9d5c4d9b450e904cc5e05ef8682",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2026d1b_2b8768aa",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiPluginListener.java",
+        "patchSetId": 20
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-09-02T07:27:12Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "374ede07_cfd18074",
+      "range": {
+        "startLine": 43,
+        "startChar": 11,
+        "endLine": 43,
+        "endChar": 61
+      },
+      "revId": "1a21e47a0c9ec9d5c4d9b450e904cc5e05ef8682",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
