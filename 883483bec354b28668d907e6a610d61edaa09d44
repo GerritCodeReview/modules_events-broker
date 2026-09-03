@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "789215c6_70d5b6d2",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiLoggingWrapper.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-09-03T07:28:54Z",
+      "side": 1,
+      "message": "This code instantiates a new object (the `new FutureCallback\u003cBoolean\u003e()`) for every new message sent, which is a very significant increase in GC activity just for logging.\n\nCan we think about some static lambdas instead?",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 3
+      },
+      "revId": "883483bec354b28668d907e6a610d61edaa09d44",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
