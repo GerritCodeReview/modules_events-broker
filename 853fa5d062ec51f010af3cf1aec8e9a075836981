@@ -16,6 +16,24 @@
       "message": "We could add a default implementation that manages requeueing as a simple send, which approximates the behaviour to allow a smooth transition.",
       "revId": "853fa5d062ec51f010af3cf1aec8e9a075836981",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "924f6af8_797ed68a",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApi.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-09-09T19:45:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1cac302_075b7c7c",
+      "revId": "853fa5d062ec51f010af3cf1aec8e9a075836981",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
