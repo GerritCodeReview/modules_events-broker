@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44142758_15def7bb",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApi.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-09-09T19:36:31Z",
+      "side": 1,
+      "message": "```suggestion\n  default ListenableFuture\u003cBoolean\u003e reQueue(String topic, Event message) {\n```",
+      "range": {
+        "startLine": 47,
+        "startChar": 36,
+        "endLine": 47,
+        "endChar": 43
+      },
+      "revId": "24955a6b7d19663be92771799bd4af06afa8d464",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
