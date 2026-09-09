@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8d69b99_7cc1ce67",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiMessageListener.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-09-09T20:37:15Z",
+      "side": 1,
+      "message": "This could be any type of exception; it should be `Throwable` instead.\n\n\n\n```suggestion\n  void messageFailed(MessageLogger.Direction direction, String topic, Object message, Throwable e);\n```",
+      "range": {
+        "startLine": 38,
+        "startChar": 86,
+        "endLine": 38,
+        "endChar": 95
+      },
+      "revId": "6b96f5e8898dbf918034134e0875dfdebc0b6188",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
