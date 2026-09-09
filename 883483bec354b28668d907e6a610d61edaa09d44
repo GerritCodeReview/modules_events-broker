@@ -94,6 +94,30 @@
       },
       "revId": "883483bec354b28668d907e6a610d61edaa09d44",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8c4f47e_da96278d",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiLoggingWrapper.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-09-09T19:02:49Z",
+      "side": 1,
+      "message": "sorry, didn\u0027t mean to resolve this comment, I must have gotten confused.\n\nThanks for spotting it, still working on this.",
+      "parentUuid": "eaf9f7e0_915a584d",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 3
+      },
+      "revId": "883483bec354b28668d907e6a610d61edaa09d44",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
