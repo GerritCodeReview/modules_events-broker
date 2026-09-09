@@ -113,4 +113,16 @@ public interface BrokerApi {
    * acknowledgement automatically.
    */
   boolean isAutoAck();
+
+  /**
+   * Set the message listener to the broker.
+   *
+   * @param messageListener the message listener called for every operation succeeded/failed on a
+   *     message
+   * @return the previous messageListener or null if no listeners were registered.
+   */
+  @Nullable
+  default BrokerApiMessageListener setMessageListener(BrokerApiMessageListener messageListener) {
+    throw new UnsupportedOperationException();
+  }
 }
