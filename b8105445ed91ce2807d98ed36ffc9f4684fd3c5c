@@ -1,5 +1,46 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3eebbf0_5f7903bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-09-09T19:21:15Z",
+      "side": 1,
+      "message": "I believe we need a follow-up to this change.",
+      "revId": "b8105445ed91ce2807d98ed36ffc9f4684fd3c5c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "855cd695_2f241dab",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/log/MessageLogger.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-09-09T19:21:15Z",
+      "side": 1,
+      "message": "Rather than just use the `REQUEUE` as a logging facility, I believe that should be exposed at `BrokerApi` level, with a dedicated `requeue()` alongside the `send()` method. @syntonyze@gmail.com WDYT?",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 12
+      },
+      "revId": "b8105445ed91ce2807d98ed36ffc9f4684fd3c5c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
