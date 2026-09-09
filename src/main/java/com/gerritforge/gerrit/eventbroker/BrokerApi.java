@@ -35,6 +35,18 @@ public interface BrokerApi {
   ListenableFuture<Boolean> send(String topic, Event message);
 
   /**
+   * Requeue a message into the topic.
+   *
+   * Requeue an existing message to the topic as it was not processed yet or failed to be
+   * processed.
+   *
+   * @param topic topic name
+   * @param message to be requeued to the topic
+   * @return a future that returns when the message has been sent.
+   */
+  ListenableFuture<Boolean> requeue(String topic, Event message);
+
+  /**
    * Receive asynchronously a message from a topic, using an acknowledgement-aware consumer.
    *
    * @param topic topic name
