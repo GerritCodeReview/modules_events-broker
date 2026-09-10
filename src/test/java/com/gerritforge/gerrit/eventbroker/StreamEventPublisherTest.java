@@ -62,7 +62,7 @@ public class StreamEventPublisherTest {
     when(brokerApi.send(any(), any())).thenReturn(Futures.immediateFuture(true));
     objectUnderTest =
         new StreamEventPublisher(
-            brokerApiDynamicItem, config, EXECUTOR, INSTANCE_ID, brokerMetricsDynamicItem, msgLog);
+            brokerApiDynamicItem, config, EXECUTOR, INSTANCE_ID, brokerMetricsDynamicItem);
   }
 
   @Test
@@ -81,7 +81,7 @@ public class StreamEventPublisherTest {
 
     objectUnderTest =
         new StreamEventPublisher(
-            brokerApiDynamicItem, config, EXECUTOR, null, brokerMetricsDynamicItem, msgLog);
+            brokerApiDynamicItem, config, EXECUTOR, null, brokerMetricsDynamicItem);
     objectUnderTest.onEvent(event);
     verify(brokerApi, times(1)).send(STREAM_EVENTS_TOPIC, event);
   }
@@ -93,7 +93,7 @@ public class StreamEventPublisherTest {
 
     objectUnderTest =
         new StreamEventPublisher(
-            brokerApiDynamicItem, config, EXECUTOR, null, brokerMetricsDynamicItem, msgLog);
+            brokerApiDynamicItem, config, EXECUTOR, null, brokerMetricsDynamicItem);
     objectUnderTest.onEvent(event);
     verify(brokerApi, never()).send(STREAM_EVENTS_TOPIC, event);
   }
@@ -148,14 +148,5 @@ public class StreamEventPublisherTest {
 
     objectUnderTest.onEvent(event);
     verify(brokerMetrics, times(1)).incrementBrokerFailedToPublishMessage();
-  }
-
-  @Test
-  public void shouldUpdateMessageLogWhenMessageIsSuccessfullyPublished() {
-    Event event = new ProjectCreatedEvent();
-    event.instanceId = INSTANCE_ID;
-
-    objectUnderTest.onEvent(event);
-    verify(msgLog).log(MessageLogger.Direction.PUBLISH, STREAM_EVENTS_TOPIC, event);
   }
 }
