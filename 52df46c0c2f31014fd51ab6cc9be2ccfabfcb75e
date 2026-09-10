@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa28d268_8839a3f6",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/publisher/StreamEventPublisher.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-09-10T11:37:39Z",
+      "side": 1,
+      "message": "My understanding here is that the brokerApi.send should be responsible for the logging of the message, not the StreamEventPublisher directly.\n\nIs that correct?",
+      "range": {
+        "startLine": 77,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 0
+      },
+      "revId": "52df46c0c2f31014fd51ab6cc9be2ccfabfcb75e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
