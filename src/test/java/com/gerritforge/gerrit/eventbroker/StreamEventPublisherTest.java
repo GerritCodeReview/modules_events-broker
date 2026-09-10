@@ -28,7 +28,9 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.MoreExecutors;
 import com.google.gerrit.extensions.registration.DynamicItem;
 import com.google.gerrit.server.events.Event;
+import com.google.gerrit.server.events.EventGsonProvider;
 import com.google.gerrit.server.events.ProjectCreatedEvent;
+import com.google.gson.Gson;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;
 import java.util.concurrent.TimeoutException;
@@ -155,6 +157,7 @@ public class StreamEventPublisherTest {
     Event event = new ProjectCreatedEvent();
     event.instanceId = INSTANCE_ID;
 
+    Gson gson = new EventGsonProvider().get();
     BrokerApiMessageListener loggingListener = new BrokerApiLoggingListener(msgLog);
     when(brokerApi.send(any(), any()))
         .thenAnswer(
@@ -162,11 +165,11 @@ public class StreamEventPublisherTest {
               loggingListener.messageProcessed(
                   MessageLogger.Direction.PUBLISH,
                   invocation.getArgument(0),
-                  invocation.getArgument(1));
+                  gson.toJson(invocation.<Event>getArgument(1)));
               return Futures.immediateFuture(true);
             });
 
     objectUnderTest.onEvent(event);
-    verify(msgLog).log(MessageLogger.Direction.PUBLISH, STREAM_EVENTS_TOPIC, event);
+    verify(msgLog).log(MessageLogger.Direction.PUBLISH, STREAM_EVENTS_TOPIC, gson.toJson(event));
   }
 }
