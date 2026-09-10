@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5f104e0c_7aade490",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-09-10T07:50:29Z",
+      "side": 1,
+      "message": "\u003e I see why this is useful for making `REQUEUE` explicit in the logs, but I\u0027m not sure it belongs in BrokerApi.\n\nWell, you added it to this repository :-) So I guess it is important.\n\n\u003e From the transport side, `send()` and `requeue()` do the same thing: publish an Event to a topic.\n\nI\u0027m not sure about being *exactly* the same thing:\n\n- It needs to increment a requeue count\n- It needs to potentially manage a maximum backout count\n- It needs to manage a DQL\n- It needs to add extra metadata\n\nIt doesn\u0027t look like a simple `send()` to me.\n\n\u003e What makes it a requeue is the client\u0027s intention: for example, `multi-site` decided to retry a failed event. From a transport-layer perspective, though, I don\u0027t see a real difference between the two operations.\n\nAt the moment, yes, it\u0027s just `multi-site`. However, the redelivery of a message is something that should belong to a messaging layer rather than a user.\n\n\u003e To me, `BrokerApi` should expose the broker operations, such as sending and receiving messages. Requeuing is not something this API can actually do; it is how a client chooses to use `send()` after handling a failed event.\n\nI respectfully disagree; see my arguments below.\nHappy to discuss with an open-minded perspective.",
+      "parentUuid": "131fbc13_1d94b317",
+      "revId": "8031371954ee02a271a52a5fdbdd1cd6f7c8b4a7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "af77548b_a5505256",
         "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApi.java",
         "patchSetId": 5
