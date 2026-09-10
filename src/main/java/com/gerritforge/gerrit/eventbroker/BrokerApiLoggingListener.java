@@ -16,7 +16,6 @@ package com.gerritforge.gerrit.eventbroker;
 
 import com.gerritforge.gerrit.eventbroker.log.MessageLogger;
 import com.google.common.flogger.FluentLogger;
-import com.google.gerrit.server.events.Event;
 import com.google.inject.Inject;
 
 /** {@link BrokerApi} delegate that logs to the message log the events sent to the broker. */
@@ -31,13 +30,13 @@ public class BrokerApiLoggingListener implements BrokerApiMessageListener {
   }
 
   @Override
-  public void messageProcessed(MessageLogger.Direction direction, String topic, Event message) {
+  public void messageProcessed(MessageLogger.Direction direction, String topic, String message) {
     msgLog.log(direction, topic, message);
   }
 
   @Override
   public void messageFailed(
-      MessageLogger.Direction direction, String topic, Event message, Throwable e) {
+      MessageLogger.Direction direction, String topic, String message, Throwable e) {
     log.atSevere().withCause(e).log(
         "Failed to %s message '%s' to topic '%s'", direction, message, topic);
   }
