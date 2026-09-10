@@ -14,8 +14,6 @@
 
 package com.gerritforge.gerrit.eventbroker.log;
 
-import com.google.gerrit.server.events.Event;
-
 public interface MessageLogger {
   public enum Direction {
     PUBLISH,
@@ -23,5 +21,5 @@ public interface MessageLogger {
     REQUEUE;
   }
 
-  public void log(Direction direction, String topic, Event event);
+  public void log(Direction direction, String topic, Object event);
 }
