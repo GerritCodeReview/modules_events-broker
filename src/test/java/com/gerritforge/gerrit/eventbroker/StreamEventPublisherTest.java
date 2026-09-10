@@ -62,7 +62,7 @@ public class StreamEventPublisherTest {
     when(brokerApi.send(any(), any())).thenReturn(Futures.immediateFuture(true));
     objectUnderTest =
         new StreamEventPublisher(
-            brokerApiDynamicItem, config, EXECUTOR, INSTANCE_ID, brokerMetricsDynamicItem, msgLog);
+            brokerApiDynamicItem, config, EXECUTOR, INSTANCE_ID, brokerMetricsDynamicItem);
   }
 
   @Test
@@ -81,7 +81,7 @@ public class StreamEventPublisherTest {
 
     objectUnderTest =
         new StreamEventPublisher(
-            brokerApiDynamicItem, config, EXECUTOR, null, brokerMetricsDynamicItem, msgLog);
+            brokerApiDynamicItem, config, EXECUTOR, null, brokerMetricsDynamicItem);
     objectUnderTest.onEvent(event);
     verify(brokerApi, times(1)).send(STREAM_EVENTS_TOPIC, event);
   }
@@ -93,7 +93,7 @@ public class StreamEventPublisherTest {
 
     objectUnderTest =
         new StreamEventPublisher(
-            brokerApiDynamicItem, config, EXECUTOR, null, brokerMetricsDynamicItem, msgLog);
+            brokerApiDynamicItem, config, EXECUTOR, null, brokerMetricsDynamicItem);
     objectUnderTest.onEvent(event);
     verify(brokerApi, never()).send(STREAM_EVENTS_TOPIC, event);
   }
@@ -154,6 +154,17 @@ public class StreamEventPublisherTest {
   public void shouldUpdateMessageLogWhenMessageIsSuccessfullyPublished() {
     Event event = new ProjectCreatedEvent();
     event.instanceId = INSTANCE_ID;
+
+    BrokerApiMessageListener loggingListener = new BrokerApiLoggingListener(msgLog);
+    when(brokerApi.send(any(), any()))
+        .thenAnswer(
+            invocation -> {
+              loggingListener.messageProcessed(
+                  MessageLogger.Direction.PUBLISH,
+                  invocation.getArgument(0),
+                  invocation.getArgument(1));
+              return Futures.immediateFuture(true);
+            });
 
     objectUnderTest.onEvent(event);
     verify(msgLog).log(MessageLogger.Direction.PUBLISH, STREAM_EVENTS_TOPIC, event);
