@@ -22,6 +22,30 @@
       },
       "revId": "7943d38247d22f85cd9678f39dd96fb96c9f50b6",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d89893d_8883cb4f",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiMessageListener.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-09-10T14:27:43Z",
+      "side": 1,
+      "message": "Well, we\u0027re only looking at the signatures here and its not uncommon to have similar methods with only one parameter difference.\n\nI think there\u0027s still value in keeping them separate actually, as the implementations are vastly different and it would require passing a load of empty optionals around.\n\nIt also more clearly states the intention of the method.\nI\u0027d leave it as is for now.",
+      "parentUuid": "32db4fd8_0eb9c598",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 99
+      },
+      "revId": "7943d38247d22f85cd9678f39dd96fb96c9f50b6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
