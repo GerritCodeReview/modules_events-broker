@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "131fbc13_1d94b317",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-09-10T07:42:51Z",
+      "side": 1,
+      "message": "I see why this is useful for making `REQUEUE` explicit in the logs, but I\u0027m not sure it belongs in BrokerApi.\n\nFrom the transport side, `send()` and `requeue()` do the same thing: publish an Event to a topic.\n\nWhat makes it a requeue is the client\u0027s intention: for example, `multi-site` decided to retry a failed event. From a transport-layer perspective, though, I don\u0027t see a real difference between the two operations.\n\nTo me, `BrokerApi` should expose the broker operations, such as sending and receiving messages. Requeuing is not something this API can actually do; it is how a client chooses to use `send()` after handling a failed event.\n\nWDYT?",
+      "revId": "8031371954ee02a271a52a5fdbdd1cd6f7c8b4a7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af77548b_a5505256",
