@@ -23,11 +23,11 @@ public interface BrokerApiMessageListener {
       new BrokerApiMessageListener() {
         @Override
         public void messageProcessed(
-            MessageLogger.Direction direction, String topic, Event message) {}
+            MessageLogger.Direction direction, String topic, String message) {}
 
         @Override
         public void messageFailed(
-            MessageLogger.Direction direction, String topic, Event message, Throwable e) {}
+            MessageLogger.Direction direction, String topic, String message, Throwable e) {}
       };
 
   /**
@@ -35,17 +35,17 @@ public interface BrokerApiMessageListener {
    *
    * @param direction whether the message was published, requeued or consumed
    * @param topic topic name
-   * @param message event sent/requeued/received to/from the topic
+   * @param message serialized payload sent/requeued/received to/from the topic
    */
-  void messageProcessed(MessageLogger.Direction direction, String topic, Object message);
+  void messageProcessed(MessageLogger.Direction direction, String topic, String message);
 
   /**
    * Message failed to be processed to/from a topic.
    *
    * @param direction whether the message was published, requeued or consumed
    * @param topic topic name
-   * @param message event that failed to be sent/requeued/received to/from the topic
+   * @param message serialized payload that failed to be sent/requeued/received to/from the topic
    * @param e exception that was raised when the message failed
    */
-  void messageFailed(MessageLogger.Direction direction, String topic, Object message, Throwable e);
+  void messageFailed(MessageLogger.Direction direction, String topic, String message, Throwable e);
 }
