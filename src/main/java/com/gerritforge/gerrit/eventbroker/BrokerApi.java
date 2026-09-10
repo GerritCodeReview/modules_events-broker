@@ -14,6 +14,7 @@
 
 package com.gerritforge.gerrit.eventbroker;
 
+import com.gerritforge.gerrit.eventbroker.log.MessageLogger;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.gerrit.common.Nullable;
 import com.google.gerrit.server.events.Event;
@@ -33,6 +34,20 @@ public interface BrokerApi {
    * @return a future that returns when the message has been sent.
    */
   ListenableFuture<Boolean> send(String topic, Event message);
+
+  /**
+   * Send a message to a topic, reporting it to the {@link BrokerApiMessageListener} with the
+   * supplied direction.
+   *
+   * @param topic topic name
+   * @param message to be sent to the topic
+   * @param direction whether the message is published for the first time or requeued
+   * @return a future that returns when the message has been sent.
+   */
+  default ListenableFuture<Boolean> send(
+      String topic, Event message, MessageLogger.Direction direction) {
+    throw new UnsupportedOperationException();
+  }
 
   /**
    * Receive asynchronously a message from a topic, using an acknowledgement-aware consumer.

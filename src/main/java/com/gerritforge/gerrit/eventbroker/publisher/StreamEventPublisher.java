@@ -15,7 +15,6 @@
 package com.gerritforge.gerrit.eventbroker.publisher;
 
 import com.gerritforge.gerrit.eventbroker.BrokerApi;
-import com.gerritforge.gerrit.eventbroker.log.MessageLogger;
 import com.gerritforge.gerrit.eventbroker.metrics.BrokerMetrics;
 import com.gerritforge.gerrit.eventbroker.publisher.executor.StreamEventPublisherExecutor;
 import com.google.common.flogger.FluentLogger;
@@ -39,7 +38,6 @@ public class StreamEventPublisher implements EventListener {
   private final Executor executor;
   private final String instanceId;
   private final DynamicItem<BrokerMetrics> brokerMetrics;
-  private final MessageLogger msgLog;
 
   @Inject
   public StreamEventPublisher(
@@ -47,14 +45,12 @@ public class StreamEventPublisher implements EventListener {
       StreamEventPublisherConfig config,
       @StreamEventPublisherExecutor Executor executor,
       @Nullable @GerritInstanceId String instanceId,
-      DynamicItem<BrokerMetrics> brokerMetrics,
-      MessageLogger msgLog) {
+      DynamicItem<BrokerMetrics> brokerMetrics) {
     this.brokerApiDynamicItem = brokerApi;
     this.config = config;
     this.executor = executor;
     this.instanceId = instanceId;
     this.brokerMetrics = brokerMetrics;
-    this.msgLog = msgLog;
   }
 
   @Override
@@ -81,7 +77,6 @@ public class StreamEventPublisher implements EventListener {
           brokerApi
               .send(streamEventTopic, event)
               .get(config.getPublishingTimeoutInMillis(), TimeUnit.MILLISECONDS);
-          msgLog.log(MessageLogger.Direction.PUBLISH, streamEventTopic, event);
           brokerMetrics.get().incrementBrokerPublishedMessage();
         } catch (TimeoutException e) {
           log.atSevere().withCause(e).log(
