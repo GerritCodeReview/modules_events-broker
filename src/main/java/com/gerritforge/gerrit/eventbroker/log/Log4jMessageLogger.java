@@ -15,11 +15,8 @@
 package com.gerritforge.gerrit.eventbroker.log;
 
 import com.google.gerrit.extensions.systemstatus.ServerInformation;
-import com.google.gerrit.server.events.Event;
-import com.google.gerrit.server.events.EventGsonProvider;
 import com.google.gerrit.server.util.PluginLogFile;
 import com.google.gerrit.server.util.SystemLog;
-import com.google.gson.Gson;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import org.apache.log4j.PatternLayout;
@@ -30,18 +27,15 @@ import org.slf4j.LoggerFactory;
 public class Log4jMessageLogger extends PluginLogFile implements MessageLogger {
   private static final String LOG_NAME = "message_log";
   private final Logger msgLog;
-  private final Gson gson;
 
   @Inject
-  public Log4jMessageLogger(
-      SystemLog systemLog, ServerInformation serverInfo, EventGsonProvider gsonProvider) {
+  public Log4jMessageLogger(SystemLog systemLog, ServerInformation serverInfo) {
     super(systemLog, serverInfo, LOG_NAME, new PatternLayout("[%d{ISO8601}] [%t] %-5p : %m%n"));
     this.msgLog = LoggerFactory.getLogger(LOG_NAME);
-    this.gson = gsonProvider.get();
   }
 
   @Override
-  public void log(Direction direction, String topic, Event event) {
-    msgLog.info("{} {} {}", direction, topic, gson.toJson(event));
+  public void log(Direction direction, String topic, String event) {
+    msgLog.info("{} {} {}", direction, topic, event);
   }
 }
