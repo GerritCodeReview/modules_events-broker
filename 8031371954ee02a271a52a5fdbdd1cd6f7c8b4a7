@@ -39,6 +39,54 @@
       },
       "revId": "8031371954ee02a271a52a5fdbdd1cd6f7c8b4a7",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bca7a6ee_48b069a1",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApi.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-09-10T07:47:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af77548b_a5505256",
+      "range": {
+        "startLine": 47,
+        "startChar": 36,
+        "endLine": 47,
+        "endChar": 43
+      },
+      "revId": "8031371954ee02a271a52a5fdbdd1cd6f7c8b4a7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbba3349_ad66485a",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApi.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-09-10T07:47:12Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "af77548b_a5505256",
+      "range": {
+        "startLine": 47,
+        "startChar": 36,
+        "endLine": 47,
+        "endChar": 43
+      },
+      "revId": "8031371954ee02a271a52a5fdbdd1cd6f7c8b4a7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
