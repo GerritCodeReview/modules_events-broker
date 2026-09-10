@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "745e0822_d229fdc7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-09-10T07:54:43Z",
+      "side": 1,
+      "message": "\u003e \u003e I see why this is useful for making `REQUEUE` explicit in the logs, but I\u0027m not sure it belongs in BrokerApi.\n\u003e \n\u003e Well, you added it to this repository :-) So I guess it is important.\n\nYes, I have added the _log direction type_ to events-broker, maybe that was a mistake 😊\n\n\u003e \n\u003e \u003e From the transport side, `send()` and `requeue()` do the same thing: publish an Event to a topic.\n\u003e \n\u003e I\u0027m not sure about being *exactly* the same thing:\n\u003e \n\u003e - It needs to increment a requeue count\n\u003e - It needs to potentially manage a maximum backout count\n\u003e - It needs to manage a DQL\n\u003e - It needs to add extra metadata\n\n\nTrue.\nHowever 100% of this will need to be managed by the client, not by events-broker.\nThe broker just _receives_ whatever has been crafted by the client.\nSee @ponch78@gmail.com\u0027s proposal [here](https://review.gerrithub.io/c/GerritForge/multi-site/+/1248657).\n\nOf course we can change course of direction, if that\u0027s not what we want.\n\u003e \n\u003e It doesn\u0027t look like a simple `send()` to me.\n\u003e \n\u003e \u003e What makes it a requeue is the client\u0027s intention: for example, `multi-site` decided to retry a failed event. From a transport-layer perspective, though, I don\u0027t see a real difference between the two operations.\n\u003e \n\u003e At the moment, yes, it\u0027s just `multi-site`. However, the redelivery of a message is something that should belong to a messaging layer rather than a user.\n\u003e \n\u003e \u003e To me, `BrokerApi` should expose the broker operations, such as sending and receiving messages. Requeuing is not something this API can actually do; it is how a client chooses to use `send()` after handling a failed event.\n\u003e \n\u003e I respectfully disagree; see my arguments below.\n\u003e Happy to discuss with an open-minded perspective.\n\n+1",
+      "parentUuid": "5f104e0c_7aade490",
+      "revId": "8031371954ee02a271a52a5fdbdd1cd6f7c8b4a7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "af77548b_a5505256",
         "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApi.java",
         "patchSetId": 5
