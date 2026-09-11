@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e776f63_d2f39aaf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-09-11T13:02:05Z",
+      "side": 1,
+      "message": "I believe Id20cec60467 is more consistent with the current interface.",
+      "revId": "7c690aa62fccad32c7401888a6a2dac927e6c3e5",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e3374db_b3fd06d3",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiPluginListener.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-09-11T13:02:05Z",
+      "side": 1,
+      "message": "Although this could be useful, it isn\u0027t a good idea to have an interface that becomes an abstract class because it imposes a specific hierarchy.",
+      "range": {
+        "startLine": 34,
+        "startChar": 7,
+        "endLine": 34,
+        "endChar": 21
+      },
+      "revId": "7c690aa62fccad32c7401888a6a2dac927e6c3e5",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eaa051ff_6d630d2a",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiPluginListener.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-09-11T13:02:05Z",
+      "side": 1,
+      "message": "The state shouldn\u0027t be stored inside an interface. See above the reason why it should remain an interface.",
+      "revId": "7c690aa62fccad32c7401888a6a2dac927e6c3e5",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
