@@ -17,6 +17,7 @@ package com.gerritforge.gerrit.eventbroker;
 import com.google.gerrit.extensions.registration.DynamicItem;
 import com.google.gerrit.server.plugins.Plugin;
 import com.google.gerrit.server.plugins.StartPluginListener;
+import com.google.gerrit.server.plugins.StopPluginListener;
 
 /**
  * Reacts to the {@link BrokerApi} bound into a {@link DynamicItem} being provided by a plugin.
@@ -30,22 +31,32 @@ import com.google.gerrit.server.plugins.StartPluginListener;
  * <p>No callback is fired for a broker plugin that was already loaded when the implementation was
  * registered, so implementations must also consult {@link #isBrokerApiStarted()} on startup.
  */
-public interface BrokerApiPluginListener extends StartPluginListener {
+public abstract class BrokerApiPluginListener implements StartPluginListener, StopPluginListener {
+
+  boolean started;
 
   /** Returns the item a broker plugin binds its {@link BrokerApi} into. */
-  DynamicItem<BrokerApi> brokerApiDynamicItem();
+  protected abstract DynamicItem<BrokerApi> brokerApiDynamicItem();
 
-  void onBrokerApiStarted();
+  protected abstract void onBrokerApiStarted();
 
-  default boolean isBrokerApiStarted() {
+  public boolean isBrokerApiStarted() {
     DynamicItem<BrokerApi> item = brokerApiDynamicItem();
     return item != null && item.get() != null;
   }
 
   @Override
-  default void onStartPlugin(Plugin plugin) {
+  public void onStartPlugin(Plugin plugin) {
     if (bindsBrokerApi(plugin)) {
       onBrokerApiStarted();
+      started = true;
+    }
+  }
+
+  @Override
+  public void onStopPlugin(Plugin plugin) {
+    if (bindsBrokerApi(plugin)) {
+      started = false;
     }
   }
 
