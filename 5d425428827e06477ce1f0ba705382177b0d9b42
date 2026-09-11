@@ -24,6 +24,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3ce565a_3306231a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-09-11T13:32:41Z",
+      "side": 1,
+      "message": "Yes: stop could be part of a *restart*, but unload is just removing the plugin altogether.",
+      "parentUuid": "76a145be_2f4c9c77",
+      "range": {
+        "startLine": 10,
+        "startChar": 45,
+        "endLine": 11,
+        "endChar": 9
+      },
+      "revId": "5d425428827e06477ce1f0ba705382177b0d9b42",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8706cff_85deaf19",
@@ -37,6 +61,30 @@
       "writtenOn": "2026-09-11T13:20:06Z",
       "side": 1,
       "message": "```suggestion\nNOTE: The additional listener won\u0027t fire for plugin reloads.\n```",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 19
+      },
+      "revId": "5d425428827e06477ce1f0ba705382177b0d9b42",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "487cb660_ca8406c8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-09-11T13:32:41Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "f8706cff_85deaf19",
       "range": {
         "startLine": 13,
         "startChar": 0,
