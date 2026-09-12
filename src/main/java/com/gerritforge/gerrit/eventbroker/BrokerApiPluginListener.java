@@ -23,10 +23,8 @@ import com.google.gerrit.server.plugins.StopPluginListener;
  * Reacts to the {@link BrokerApi} bound into a {@link DynamicItem} being provided by a plugin.
  *
  * <p>Implementations bind themselves as {@link StartPluginListener} and are called back through
- * {@link #onBrokerApiStarted()} only for the plugin that provides the {@link BrokerApi}.
- *
- * <p>Broker plugins shut their own subscriptions down when they stop, so no withdrawal callback is
- * offered.
+ * {@link #onBrokerApiStarted()} and {@link #beforeBrokerApiStopped} for the plugin that provides
+ * the {@link BrokerApi}.
  *
  * <p>No callback is fired for a broker plugin that was already loaded when the implementation was
  * registered, so implementations must also consult {@link #isBrokerApiStarted()} on startup.
@@ -38,7 +36,7 @@ public interface BrokerApiPluginListener extends StartPluginListener, StopPlugin
 
   void onBrokerApiStarted();
 
-  void onBrokerApiStopped();
+  void beforeBrokerApiStopped();
 
   default boolean isBrokerApiStarted() {
     DynamicItem<BrokerApi> item = brokerApiDynamicItem();
@@ -53,9 +51,9 @@ public interface BrokerApiPluginListener extends StartPluginListener, StopPlugin
   }
 
   @Override
-  default void onStopPlugin(Plugin plugin) {
+  default void beforeStopPlugin(Plugin plugin) {
     if (bindsBrokerApi(plugin)) {
-      onBrokerApiStopped();
+      beforeBrokerApiStopped();
     }
   }
 
