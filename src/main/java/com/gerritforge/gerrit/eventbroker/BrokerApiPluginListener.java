@@ -38,7 +38,7 @@ public interface BrokerApiPluginListener extends StartPluginListener, StopPlugin
 
   void onBrokerApiStarted();
 
-  void onBrokerApiStopped();
+  void beforeBrokerApiStopped();
 
   default boolean isBrokerApiStarted() {
     DynamicItem<BrokerApi> item = brokerApiDynamicItem();
@@ -53,9 +53,12 @@ public interface BrokerApiPluginListener extends StartPluginListener, StopPlugin
   }
 
   @Override
-  default void onStopPlugin(Plugin plugin) {
+  default void onStopPlugin(Plugin plugin) {}
+
+  @Override
+  default void beforeStopPlugin(Plugin plugin) {
     if (bindsBrokerApi(plugin)) {
-      onBrokerApiStopped();
+      beforeBrokerApiStopped();
     }
   }
 
