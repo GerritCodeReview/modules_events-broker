@@ -19,6 +19,17 @@ import com.gerritforge.gerrit.eventbroker.log.MessageLogger;
 /** API for sending/receiving events through a message Broker. */
 public interface BrokerApiMessageListener {
 
+  BrokerApiMessageListener NOOP_LISTENER =
+      new BrokerApiMessageListener() {
+        @Override
+        public void messageProcessed(
+            MessageLogger.Direction direction, String topic, Event message) {}
+
+        @Override
+        public void messageFailed(
+            MessageLogger.Direction direction, String topic, Event message, Throwable e) {}
+      };
+
   /**
    * Message has been processed to/from a topic successfully.
    *
