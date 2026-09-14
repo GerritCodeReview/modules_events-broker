@@ -94,6 +94,30 @@
       },
       "revId": "7943d38247d22f85cd9678f39dd96fb96c9f50b6",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72478b39_ef13d92c",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiMessageListener.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-09-14T21:24:05Z",
+      "side": 1,
+      "message": "There are still two methods and, also, the message is back to an `Event` type (was `Object` before)",
+      "parentUuid": "1d372108_eb209f4b",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 99
+      },
+      "revId": "7943d38247d22f85cd9678f39dd96fb96c9f50b6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
