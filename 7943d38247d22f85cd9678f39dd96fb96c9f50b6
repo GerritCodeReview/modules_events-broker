@@ -118,6 +118,30 @@
       },
       "revId": "7943d38247d22f85cd9678f39dd96fb96c9f50b6",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f21e836_947f73e4",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiMessageListener.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-09-15T05:08:18Z",
+      "side": 1,
+      "message": "I commented \"I\u0027ll leave it as it is for now\" and you said \"sure\", I took that to mean you where happy with how it was, which is 2 methods.",
+      "parentUuid": "72478b39_ef13d92c",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 99
+      },
+      "revId": "7943d38247d22f85cd9678f39dd96fb96c9f50b6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
