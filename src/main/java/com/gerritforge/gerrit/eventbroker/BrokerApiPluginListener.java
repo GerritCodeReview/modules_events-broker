@@ -27,7 +27,7 @@ import com.google.gerrit.server.plugins.StopPluginListener;
  * the {@link BrokerApi}.
  *
  * <p>No callback is fired for a broker plugin that was already loaded when the implementation was
- * registered, so implementations must also consult {@link #isBrokerApiStarted()} on startup.
+ * registered, so implementations must also consult {@link #isBrokerApiBound()} on startup.
  */
 public interface BrokerApiPluginListener extends StartPluginListener, StopPluginListener {
 
@@ -38,26 +38,26 @@ public interface BrokerApiPluginListener extends StartPluginListener, StopPlugin
 
   void beforeBrokerApiStopped();
 
-  default boolean isBrokerApiStarted() {
+  default boolean isBrokerApiBound() {
     DynamicItem<BrokerApi> item = brokerApiDynamicItem();
     return item != null && item.get() != null;
   }
 
   @Override
   default void onStartPlugin(Plugin plugin) {
-    if (bindsBrokerApi(plugin)) {
+    if (isBrokerApiImplementation(plugin)) {
       onBrokerApiStarted();
     }
   }
 
   @Override
   default void beforeStopPlugin(Plugin plugin) {
-    if (bindsBrokerApi(plugin)) {
+    if (isBrokerApiImplementation(plugin)) {
       beforeBrokerApiStopped();
     }
   }
 
-  private boolean bindsBrokerApi(Plugin plugin) {
+  private boolean isBrokerApiImplementation(Plugin plugin) {
     return plugin.getName().equals(brokerApiDynamicItem().getPluginName());
   }
 }
