@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53ce8f47_d80477cd",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiLoggingListener.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-09-16T05:37:11Z",
+      "side": 1,
+      "message": "```suggestion\n  public void messageProcessed(MessageLogger.Direction direction, String topic, Object message) {\n```",
+      "range": {
+        "startLine": 34,
+        "startChar": 80,
+        "endLine": 34,
+        "endChar": 85
+      },
+      "revId": "017cbcca2a571664dd3dd8cb1fb36f2e0ebb8705",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3611cca0_dccfce2c",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiLoggingListener.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-09-16T05:37:11Z",
+      "side": 1,
+      "message": "```suggestion\n      MessageLogger.Direction direction, String topic, Object message, Throwable e) {\n```",
+      "range": {
+        "startLine": 40,
+        "startChar": 55,
+        "endLine": 40,
+        "endChar": 60
+      },
+      "revId": "017cbcca2a571664dd3dd8cb1fb36f2e0ebb8705",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
