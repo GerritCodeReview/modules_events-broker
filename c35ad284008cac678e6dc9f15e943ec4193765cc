@@ -24,6 +24,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5db51dee_94aa139d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-09-16T07:49:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eec6b496_c2db23f9",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 29
+      },
+      "revId": "c35ad284008cac678e6dc9f15e943ec4193765cc",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4aa1490a_c34a165c",
@@ -47,6 +71,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcdfb0e7_1e5b7403",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-09-16T07:49:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4aa1490a_c34a165c",
+      "range": {
+        "startLine": 14,
+        "startChar": 4,
+        "endLine": 14,
+        "endChar": 7
+      },
+      "revId": "c35ad284008cac678e6dc9f15e943ec4193765cc",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4d2355f_534ff114",
@@ -60,6 +108,30 @@
       "writtenOn": "2026-09-16T07:10:15Z",
       "side": 1,
       "message": "This is not true anymore. The callback now fires before the broker plugin is stopped.",
+      "range": {
+        "startLine": 28,
+        "startChar": 6,
+        "endLine": 29,
+        "endChar": 11
+      },
+      "revId": "c35ad284008cac678e6dc9f15e943ec4193765cc",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3816ef60_cad55e59",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiPluginListener.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-09-16T07:49:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4d2355f_534ff114",
       "range": {
         "startLine": 28,
         "startChar": 6,
