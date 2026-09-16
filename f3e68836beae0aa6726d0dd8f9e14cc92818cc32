@@ -24,6 +24,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aef5078d_d90ed3b4",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiLoggingListener.java",
+        "patchSetId": 15
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-09-16T14:20:50Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "59c71a53_21aa5119",
+      "range": {
+        "startLine": 21,
+        "startChar": 22,
+        "endLine": 21,
+        "endChar": 30
+      },
+      "revId": "f3e68836beae0aa6726d0dd8f9e14cc92818cc32",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53e8a2f9_4c5899d8",
