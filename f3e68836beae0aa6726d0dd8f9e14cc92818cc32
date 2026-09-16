@@ -67,6 +67,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2281c32b_d6bbf39c",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiLoggingListener.java",
+        "patchSetId": 15
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-09-16T14:22:01Z",
+      "side": 1,
+      "message": "The methods are the interface\u0027s implementation. I can copy and paste the ones from the interface.",
+      "parentUuid": "53e8a2f9_4c5899d8",
+      "revId": "f3e68836beae0aa6726d0dd8f9e14cc92818cc32",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "88451dcd_1b16a042",
         "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiLoggingListener.java",
         "patchSetId": 15
