@@ -163,6 +163,24 @@
       "message": "Should we add a test for it?",
       "revId": "f3e68836beae0aa6726d0dd8f9e14cc92818cc32",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "436ff7c7_d12e9b0e",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/StreamEventPublisherTest.java",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-09-16T14:59:41Z",
+      "side": 1,
+      "message": "Not in this class: the stream event publisher isn\u0027t responsible anymore for logging, therefore it should not include any testing.\n\nHappy to create a new standalone test for the message listener logger.",
+      "parentUuid": "352711d0_927a2c89",
+      "revId": "f3e68836beae0aa6726d0dd8f9e14cc92818cc32",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
