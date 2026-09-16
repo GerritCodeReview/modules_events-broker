@@ -69,6 +69,30 @@
       },
       "revId": "1357e3cb8ca1264bd47fe1e21c52b30c78c130cb",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b47d0e61_331ed1db",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/StreamEventPublisherTest.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-09-16T14:52:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "916b3dc6_10a52d6e",
+      "range": {
+        "startLine": 47,
+        "startChar": 2,
+        "endLine": 47,
+        "endChar": 37
+      },
+      "revId": "1357e3cb8ca1264bd47fe1e21c52b30c78c130cb",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
