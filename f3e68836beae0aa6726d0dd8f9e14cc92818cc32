@@ -83,6 +83,24 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "baa64c71_54b7fc90",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiLoggingListener.java",
+        "patchSetId": 15
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-09-16T14:45:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2281c32b_d6bbf39c",
+      "revId": "f3e68836beae0aa6726d0dd8f9e14cc92818cc32",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88451dcd_1b16a042",
@@ -96,6 +114,30 @@
       "writtenOn": "2026-09-16T09:29:31Z",
       "side": 1,
       "message": "Does processed refer to the message being sent, received, acked. I assume not failed since there is a dedicated method for it.",
+      "range": {
+        "startLine": 33,
+        "startChar": 14,
+        "endLine": 33,
+        "endChar": 30
+      },
+      "revId": "f3e68836beae0aa6726d0dd8f9e14cc92818cc32",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f6d19b0_d33caaea",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiLoggingListener.java",
+        "patchSetId": 15
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-09-16T14:45:17Z",
+      "side": 1,
+      "message": "Yep.",
+      "parentUuid": "88451dcd_1b16a042",
       "range": {
         "startLine": 33,
         "startChar": 14,

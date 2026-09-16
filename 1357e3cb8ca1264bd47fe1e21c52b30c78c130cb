@@ -24,6 +24,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b6545c1_5cd1610b",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiLoggingListener.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2026-09-16T14:45:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ed85672_e5f1658a",
+      "range": {
+        "startLine": 40,
+        "startChar": 4,
+        "endLine": 41,
+        "endChar": 78
+      },
+      "revId": "1357e3cb8ca1264bd47fe1e21c52b30c78c130cb",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "916b3dc6_10a52d6e",
