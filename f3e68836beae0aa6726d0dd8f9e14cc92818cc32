@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59c71a53_21aa5119",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiLoggingListener.java",
+        "patchSetId": 15
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1054778
+      },
+      "writtenOn": "2026-09-16T09:29:31Z",
+      "side": 1,
+      "message": "```suggestion\n/** {@link BrokerApi} delegates that logs to the message logs the events sent to the broker. */\n```",
+      "range": {
+        "startLine": 21,
+        "startChar": 22,
+        "endLine": 21,
+        "endChar": 30
+      },
+      "revId": "f3e68836beae0aa6726d0dd8f9e14cc92818cc32",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53e8a2f9_4c5899d8",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiLoggingListener.java",
+        "patchSetId": 15
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1054778
+      },
+      "writtenOn": "2026-09-16T09:29:31Z",
+      "side": 1,
+      "message": "Missing methods JavaDocs.",
+      "revId": "f3e68836beae0aa6726d0dd8f9e14cc92818cc32",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88451dcd_1b16a042",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiLoggingListener.java",
+        "patchSetId": 15
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1054778
+      },
+      "writtenOn": "2026-09-16T09:29:31Z",
+      "side": 1,
+      "message": "Does processed refer to the message being sent, received, acked. I assume not failed since there is a dedicated method for it.",
+      "range": {
+        "startLine": 33,
+        "startChar": 14,
+        "endLine": 33,
+        "endChar": 30
+      },
+      "revId": "f3e68836beae0aa6726d0dd8f9e14cc92818cc32",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "352711d0_927a2c89",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/StreamEventPublisherTest.java",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1054778
+      },
+      "writtenOn": "2026-09-16T09:29:31Z",
+      "side": 1,
+      "message": "Should we add a test for it?",
+      "revId": "f3e68836beae0aa6726d0dd8f9e14cc92818cc32",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}

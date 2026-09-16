@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ed85672_e5f1658a",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApiLoggingListener.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1054778
+      },
+      "writtenOn": "2026-09-16T09:29:31Z",
+      "side": 1,
+      "message": "This is not logging to the `MessageLogger`. I think we should make it clear in the documentation that the message log is not an audit trail and failures are just logged in the `error_logs`.",
+      "range": {
+        "startLine": 40,
+        "startChar": 4,
+        "endLine": 41,
+        "endChar": 78
+      },
+      "revId": "1357e3cb8ca1264bd47fe1e21c52b30c78c130cb",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "916b3dc6_10a52d6e",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/StreamEventPublisherTest.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1054778
+      },
+      "writtenOn": "2026-09-16T09:29:31Z",
+      "side": 1,
+      "message": "not used anymore",
+      "range": {
+        "startLine": 47,
+        "startChar": 2,
+        "endLine": 47,
+        "endChar": 37
+      },
+      "revId": "1357e3cb8ca1264bd47fe1e21c52b30c78c130cb",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
