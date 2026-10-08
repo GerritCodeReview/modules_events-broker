@@ -52,6 +52,38 @@ public class EventsBrokerConfigurationTest {
   }
 
   @Test
+  public void shouldReturnAllEventsPartition() {
+    Config config = new Config();
+    config.setString(
+        EventsBrokerConfiguration.TOPIC_SECTION,
+        TOPIC,
+        EventsBrokerConfiguration.PARTITION_VALUE_FIELD,
+        EventsBrokerConfiguration.ALL_EVENTS_PARTITION);
+
+    EventsBrokerConfiguration configuration = configuration(config);
+
+    assertThat(configuration.getPartitionsForTopic(TOPIC))
+        .containsExactly(EventsBrokerConfiguration.ALL_EVENTS_PARTITION);
+  }
+
+  @Test
+  public void shouldRejectAllEventsPartitionWithOtherPartitions() {
+    Config config = new Config();
+    config.setStringList(
+        EventsBrokerConfiguration.TOPIC_SECTION,
+        TOPIC,
+        EventsBrokerConfiguration.PARTITION_VALUE_FIELD,
+        List.of(EventsBrokerConfiguration.ALL_EVENTS_PARTITION, "change-index"));
+
+    IllegalArgumentException thrown =
+        assertThrows(IllegalArgumentException.class, () -> configuration(config));
+
+    assertThat(thrown)
+        .hasMessageThat()
+        .isEqualTo("partitionValue '*' must be the only partition for topic " + TOPIC);
+  }
+
+  @Test
   public void shouldReturnConfiguredEventPropertyForTopic() {
     Config config = new Config();
     config.setString(

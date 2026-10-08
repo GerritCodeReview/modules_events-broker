@@ -98,6 +98,19 @@ The supported settings are:
   the broker implementation to select the partition. When omitted, it defaults
   to `type`.
 
+To route all events on a topic to one partition, use `*` as the only partition
+value:
+
+```ini
+[topic "stream-events"]
+  partitionValue = *
+```
+
+Broker implementations supporting this value route every event to the first
+partition, without checking `partitionEventProperty`. Consumers subscribe using
+the logical value `*`. Clients and broker implementations can use
+`EventsBrokerConfiguration.ALL_EVENTS_PARTITION` as a logical partition value.
+
 The order of `partitionValue` entries matters. Broker implementations may use
 each value's position when mapping logical partitions to backend-specific
 routing, so changing the order can change where events are published or
