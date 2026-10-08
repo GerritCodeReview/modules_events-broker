@@ -26,6 +26,9 @@ import org.eclipse.jgit.lib.Config;
 
 @Singleton
 public class EventsBrokerConfiguration {
+  /** Logical partition value for routing all events on a topic to one partition. */
+  public static final String ALL_EVENTS_PARTITION = "*";
+
   static final String EVENTS_BROKER_FILE_NAME = "events-broker";
   static final String PARTITION_EVENT_PROPERTY_FIELD = "partitionEventProperty";
   static final String PARTITION_VALUE_FIELD = "partitionValue";
@@ -52,6 +55,11 @@ public class EventsBrokerConfiguration {
         throw new IllegalArgumentException(
             String.format("Duplicate partitionValue entries configured for topic %s", subsection));
       }
+      if (partitionValue.contains(ALL_EVENTS_PARTITION) && partitionValue.size() > 1) {
+        throw new IllegalArgumentException(
+            String.format(
+                "partitionValue '*' must be the only partition for topic %s", subsection));
+      }
 
       partitionsByTopic.put(subsection, partitionValue);
       eventPropertyByTopic.put(
@@ -71,6 +79,11 @@ public class EventsBrokerConfiguration {
    */
   public List<String> getPartitionsForTopic(String topic) {
     return topicToPartitions.getOrDefault(topic, ImmutableList.of());
+  }
+
+  /** Returns whether all events for the topic are routed to one partition. */
+  public boolean isAllEventsInSinglePartition(String topic) {
+    return getPartitionsForTopic(topic).contains(ALL_EVENTS_PARTITION);
   }
 
   /**

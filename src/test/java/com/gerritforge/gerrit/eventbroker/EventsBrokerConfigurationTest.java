@@ -49,6 +49,40 @@ public class EventsBrokerConfigurationTest {
     assertThat(configuration.getPartitionsForTopic(TOPIC))
         .containsExactly("change-index", "account-index")
         .inOrder();
+    assertThat(configuration.isAllEventsInSinglePartition(TOPIC)).isFalse();
+  }
+
+  @Test
+  public void shouldReturnAllEventsPartition() {
+    Config config = new Config();
+    config.setString(
+        EventsBrokerConfiguration.TOPIC_SECTION,
+        TOPIC,
+        EventsBrokerConfiguration.PARTITION_VALUE_FIELD,
+        EventsBrokerConfiguration.ALL_EVENTS_PARTITION);
+
+    EventsBrokerConfiguration configuration = configuration(config);
+
+    assertThat(configuration.getPartitionsForTopic(TOPIC))
+        .containsExactly(EventsBrokerConfiguration.ALL_EVENTS_PARTITION);
+    assertThat(configuration.isAllEventsInSinglePartition(TOPIC)).isTrue();
+  }
+
+  @Test
+  public void shouldRejectAllEventsPartitionWithOtherPartitions() {
+    Config config = new Config();
+    config.setStringList(
+        EventsBrokerConfiguration.TOPIC_SECTION,
+        TOPIC,
+        EventsBrokerConfiguration.PARTITION_VALUE_FIELD,
+        List.of(EventsBrokerConfiguration.ALL_EVENTS_PARTITION, "change-index"));
+
+    IllegalArgumentException thrown =
+        assertThrows(IllegalArgumentException.class, () -> configuration(config));
+
+    assertThat(thrown)
+        .hasMessageThat()
+        .isEqualTo("partitionValue '*' must be the only partition for topic " + TOPIC);
   }
 
   @Test
