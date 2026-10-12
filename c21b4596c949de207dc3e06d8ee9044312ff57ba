@@ -34,6 +34,24 @@
       "parentUuid": "4fd098df_62b048a0",
       "revId": "c21b4596c949de207dc3e06d8ee9044312ff57ba",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3c4eb99_59155a61",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventsBrokerConfiguration.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-10-12T13:52:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc209d08_63dd3e6f",
+      "revId": "c21b4596c949de207dc3e06d8ee9044312ff57ba",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
