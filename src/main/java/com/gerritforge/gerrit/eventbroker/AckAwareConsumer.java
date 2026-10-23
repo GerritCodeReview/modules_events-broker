@@ -27,6 +27,7 @@ public interface AckAwareConsumer<T> {
    *
    * @param t the input argument
    * @param acknowledgement the message acknowledgement handle
+   * @throws InterruptedException when the thread accepting the message is interrupted
    */
-  void accept(T t, MessageAcknowledgement<T> acknowledgement);
+  void accept(T t, MessageAcknowledgement<T> acknowledgement) throws InterruptedException;
 }
