@@ -32,6 +32,28 @@ public class EventDeserializerTest {
   }
 
   @Test
+  public void deserializeMessageShouldReturnEmptyMetadataWhenAbsent() {
+    final String eventJson = "{ \"type\": \"project-created\", \"instanceId\":\"instance-id\" }";
+    final EventDeserializer.Message message = deserializer.deserializeMessage(eventJson);
+
+    assertThat(message.event().instanceId).isEqualTo("instance-id");
+    assertThat(message.metadata()).isEqualTo(EventMetadata.EMPTY);
+  }
+
+  @Test
+  public void nextRetryShouldIncrementRetryCount() {
+    EventMetadata metadata = EventMetadata.EMPTY.nextRetry("first-instance");
+
+    assertThat(metadata.retry().retryCount()).isEqualTo(1);
+    assertThat(metadata.retry().retryingInstanceId()).isEqualTo("first-instance");
+
+    EventMetadata secondMetadata = metadata.nextRetry("second-instance");
+
+    assertThat(secondMetadata.retry().retryCount()).isEqualTo(2);
+    assertThat(secondMetadata.retry().retryingInstanceId()).isEqualTo("second-instance");
+  }
+
+  @Test
   public void eventDeserializerShouldParseEvent() {
     final String eventJson = "{ \"type\": \"project-created\", \"instanceId\":\"instance-id\" }";
     final Event event = deserializer.deserialize(eventJson);

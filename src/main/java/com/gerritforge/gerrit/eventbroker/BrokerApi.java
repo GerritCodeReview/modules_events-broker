@@ -38,15 +38,16 @@ public interface BrokerApi {
    * Requeue a message into the topic.
    *
    * <p>Requeue an existing message to the topic as it was not processed yet or failed to be
-   * processed.
+   * processed. Implementations store {@code metadata} in the requeued message and pass it back to
+   * the consumer through {@link AckAwareConsumer#accept(Object, EventMetadata,
+   * MessageAcknowledgement)}.
    *
    * @param topic topic name
    * @param message to be re-queued to the topic
+   * @param metadata to be stored in the re-queued message
    * @return a future that returns when the message has been sent.
    */
-  default ListenableFuture<Boolean> requeue(String topic, Event message) {
-    return send(topic, message);
-  }
+  ListenableFuture<Boolean> requeue(String topic, Event message, EventMetadata metadata);
 
   /**
    * Receive asynchronously a message from a topic, using an acknowledgement-aware consumer.
