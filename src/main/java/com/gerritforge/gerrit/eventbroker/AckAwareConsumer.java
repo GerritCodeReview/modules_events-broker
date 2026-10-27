@@ -15,8 +15,8 @@
 package com.gerritforge.gerrit.eventbroker;
 
 /**
- * A consumer that accepts a message and its acknowledgement handle, allowing for explicit
- * acknowledgement.
+ * A consumer that accepts a message, its metadata and its acknowledgement handle, allowing for
+ * explicit acknowledgement.
  *
  * @param <T> the type of the event input to the operation
  */
@@ -26,8 +26,11 @@ public interface AckAwareConsumer<T> {
    * Performs this operation on the given argument.
    *
    * @param t the input argument
+   * @param metadata the metadata travelling with the message, {@link EventMetadata#EMPTY} when
+   *     the message carries none
    * @param acknowledgement the message acknowledgement handle
    * @throws InterruptedException when the thread accepting the message is interrupted
    */
-  void accept(T t, MessageAcknowledgement<T> acknowledgement) throws InterruptedException;
+  void accept(T t, EventMetadata metadata, MessageAcknowledgement<T> acknowledgement)
+      throws InterruptedException;
 }
