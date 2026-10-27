@@ -127,6 +127,27 @@ In both cases, implementations should treat the topic as non-partition-aware:
 publishing should fall back to the normal broker behavior, while partition-specific subscription
 cannot resolve a logical partition and fails if requested.
 
+### Message Metadata
+
+Every message is delivered to `AckAwareConsumer.accept(event, metadata, ack)`
+together with its `MessageMetadata`, which is `MessageMetadata.EMPTY` for
+messages published with `BrokerApi.send()`.
+
+Consumers that fail to process a message can put it back on the topic with
+`BrokerApi.requeue(topic, event, metadata)`, recording the failed attempt with
+`metadata.nextRetry(instanceId)`. The `Retry` metadata holds the number of
+failed attempts (`retryCount`), the epoch milliseconds of the last one
+(`lastAttemptOn`) and the Gerrit instance id in charge of retrying the message
+(`retryingInstanceId`). Every requeue publishes a new message carrying exactly
+the metadata passed to `requeue()`: the retry state only changes when the
+consumer calls `nextRetry()`.
+
+Broker implementations must persist the metadata passed to
+`BrokerApi.requeue()` in the message: they serialize messages with
+`EventSerializer` and read them back with
+`EventDeserializer.deserializeMessage()`, which store the metadata in the `meta`
+field of the event JSON.
+
 ### Broker Metrics
 
 When `StreamEventPublisher` is used user can optionally bind an implementation of

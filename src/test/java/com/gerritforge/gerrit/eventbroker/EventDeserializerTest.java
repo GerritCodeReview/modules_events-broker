@@ -18,17 +18,51 @@ import static com.google.common.truth.Truth.assertThat;
 
 import com.google.gerrit.server.events.Event;
 import com.google.gerrit.server.events.EventGsonProvider;
+import com.google.gerrit.server.events.ProjectCreatedEvent;
 import com.google.gson.Gson;
 import org.junit.Before;
 import org.junit.Test;
 
 public class EventDeserializerTest {
   private EventDeserializer deserializer;
+  private EventSerializer serializer;
 
   @Before
   public void setUp() {
     final Gson gson = new EventGsonProvider().get();
     deserializer = new EventDeserializer(gson);
+    serializer = new EventSerializer(gson);
+  }
+
+  @Test
+  public void deserializeMessageShouldReturnEmptyMetadataWhenAbsent() {
+    final String eventJson = "{ \"type\": \"project-created\", \"instanceId\":\"instance-id\" }";
+    final EventDeserializer.Message message = deserializer.deserializeMessage(eventJson);
+
+    assertThat(message.event().instanceId).isEqualTo("instance-id");
+    assertThat(message.metadata()).isEqualTo(MessageMetadata.EMPTY);
+  }
+
+  @Test
+  public void deserializeMessageShouldReadMetadataWrittenBySerializer() {
+    ProjectCreatedEvent event = new ProjectCreatedEvent();
+    event.instanceId = "instance-id";
+    MessageMetadata metadata = MessageMetadata.EMPTY.nextRetry("retrying-instance-id");
+
+    EventDeserializer.Message message =
+        deserializer.deserializeMessage(serializer.serialize(event, metadata));
+
+    assertThat(message.event().instanceId).isEqualTo("instance-id");
+    assertThat(message.metadata()).isEqualTo(metadata);
+  }
+
+  @Test
+  public void nextRetryShouldIncrementRetryCount() {
+    MessageMetadata metadata =
+        MessageMetadata.EMPTY.nextRetry("first-instance").nextRetry("second-instance");
+
+    assertThat(metadata.retry().retryCount()).isEqualTo(2);
+    assertThat(metadata.retry().retryingInstanceId()).isEqualTo("second-instance");
   }
 
   @Test
