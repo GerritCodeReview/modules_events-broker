@@ -24,6 +24,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d6a3fd8_7015d602",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-10-28T15:35:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b0fa133_3d975ba6",
+      "range": {
+        "startLine": 20,
+        "startChar": 52,
+        "endLine": 21,
+        "endChar": 67
+      },
+      "revId": "8d7d3eaa5e12876e3f6a7272935ae7b7ee0e715a",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "717d79d3_3e14064d",
@@ -37,6 +61,30 @@
       "writtenOn": "2026-10-28T11:46:24Z",
       "side": 1,
       "message": "If null, it will trow a NPE.",
+      "range": {
+        "startLine": 45,
+        "startChar": 8,
+        "endLine": 45,
+        "endChar": 16
+      },
+      "revId": "8d7d3eaa5e12876e3f6a7272935ae7b7ee0e715a",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "930935d1_59b73006",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventSerializer.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-10-28T15:35:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "717d79d3_3e14064d",
       "range": {
         "startLine": 45,
         "startChar": 8,
@@ -70,6 +118,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4378b2c1_e6f7503a",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/MessageMetadata.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-10-28T15:35:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d561110d_af9ed26e",
+      "range": {
+        "startLine": 30,
+        "startChar": 14,
+        "endLine": 30,
+        "endChar": 29
+      },
+      "revId": "8d7d3eaa5e12876e3f6a7272935ae7b7ee0e715a",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9e60bf7_bcfe1111",
@@ -83,6 +155,30 @@
       "writtenOn": "2026-10-28T11:46:24Z",
       "side": 1,
       "message": "Shall we call it `brokerMeta` or `eventsBrokerMeta` ? `meta` is generic and might be used by other plugins to hydrate the message.",
+      "range": {
+        "startLine": 32,
+        "startChar": 36,
+        "endLine": 32,
+        "endChar": 40
+      },
+      "revId": "8d7d3eaa5e12876e3f6a7272935ae7b7ee0e715a",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd101699_a53d3ad0",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/MessageMetadata.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-10-28T15:35:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9e60bf7_bcfe1111",
       "range": {
         "startLine": 32,
         "startChar": 36,
@@ -116,6 +212,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34ecc9ee_9885e845",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/EventDeserializerTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-10-28T15:35:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "139d902f_08bdd16b",
+      "range": {
+        "startLine": 61,
+        "startChar": 3,
+        "endLine": 65,
+        "endChar": 83
+      },
+      "revId": "8d7d3eaa5e12876e3f6a7272935ae7b7ee0e715a",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9bdce6bb_40a2ace5",
@@ -129,6 +249,24 @@
       "writtenOn": "2026-10-28T11:46:24Z",
       "side": 1,
       "message": "I would add tests to check:\n* Empty metadata preserves the legacy format\n* Empty metadata omits the `meta` field\n* A roundtrip of serialization and deserialization",
+      "revId": "8d7d3eaa5e12876e3f6a7272935ae7b7ee0e715a",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fae8c1fd_475335e6",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/EventDeserializerTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-10-28T15:35:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bdce6bb_40a2ace5",
       "revId": "8d7d3eaa5e12876e3f6a7272935ae7b7ee0e715a",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
