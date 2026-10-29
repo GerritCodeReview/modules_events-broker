@@ -24,6 +24,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77329ae6_e6fae855",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventSerializer.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-10-29T10:26:30Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "12862bf3_40aeb8d1",
+      "range": {
+        "startLine": 38,
+        "startChar": 51,
+        "endLine": 38,
+        "endChar": 55
+      },
+      "revId": "f539ea1bdd3bbe5f34dd230b01f4c252ad5b07fe",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df994600_39f69683",
@@ -37,6 +61,30 @@
       "writtenOn": "2026-10-29T09:08:58Z",
       "side": 1,
       "message": "Could we not just serialise the event only, also when metadata is `null`?\n\n```\nif (metadata \u003d\u003d null || metadata.equals(EventMetadata.EMPTY)) {\n  return gson.toJson(event);\n}\n```",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 5
+      },
+      "revId": "f539ea1bdd3bbe5f34dd230b01f4c252ad5b07fe",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21f02fc7_877672b9",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventSerializer.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-10-29T10:26:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df994600_39f69683",
       "range": {
         "startLine": 45,
         "startChar": 0,
@@ -64,6 +112,24 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6e0524e_fc8626ae",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/EventDeserializerTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-10-29T10:26:30Z",
+      "side": 1,
+      "message": "Good point, I\u0027ve actually modified this test to use the legacy deserializer.",
+      "parentUuid": "0a5a5bcc_bf2d8bad",
+      "revId": "f539ea1bdd3bbe5f34dd230b01f4c252ad5b07fe",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44d427c4_06daf979",
@@ -77,6 +143,24 @@
       "writtenOn": "2026-10-29T09:08:58Z",
       "side": 1,
       "message": "Consider checking the content has been deserialized correctly too:\n\n```\nProjectCreatedEvent deserialized \u003d (ProjectCreatedEvent) message.event();\n\nassertThat(deserialized.projectName).isEqualTo(event.projectName);\nassertThat(deserialized.headName).isEqualTo(event.headName);\nassertThat(deserialized.instanceId).isEqualTo(event.instanceId);\n```",
+      "revId": "f539ea1bdd3bbe5f34dd230b01f4c252ad5b07fe",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "deabd272_82ad62bd",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/EventSerializerTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-10-29T10:26:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44d427c4_06daf979",
       "revId": "f539ea1bdd3bbe5f34dd230b01f4c252ad5b07fe",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
