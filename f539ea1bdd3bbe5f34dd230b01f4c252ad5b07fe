@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12862bf3_40aeb8d1",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventSerializer.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-10-29T09:08:58Z",
+      "side": 1,
+      "message": "```suggestion\n   * \u003cp\u003eNon-empty metadata is stored in the {@code brokerMeta} field of the event JSON object.\n```",
+      "range": {
+        "startLine": 38,
+        "startChar": 51,
+        "endLine": 38,
+        "endChar": 55
+      },
+      "revId": "f539ea1bdd3bbe5f34dd230b01f4c252ad5b07fe",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df994600_39f69683",
+        "filename": "src/main/java/com/gerritforge/gerrit/eventbroker/EventSerializer.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-10-29T09:08:58Z",
+      "side": 1,
+      "message": "Could we not just serialise the event only, also when metadata is `null`?\n\n```\nif (metadata \u003d\u003d null || metadata.equals(EventMetadata.EMPTY)) {\n  return gson.toJson(event);\n}\n```",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 5
+      },
+      "revId": "f539ea1bdd3bbe5f34dd230b01f4c252ad5b07fe",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a5a5bcc_bf2d8bad",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/EventDeserializerTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-10-29T09:08:58Z",
+      "side": 1,
+      "message": "Should we add a test verifying that an event containing `brokerMeta` can still be deserialized using the existing `EventDeserializer.deserialize()` method?\n\nThis would ensure that older readers can ignore the extra brokerMeta field safely.",
+      "revId": "f539ea1bdd3bbe5f34dd230b01f4c252ad5b07fe",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44d427c4_06daf979",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/EventSerializerTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2026-10-29T09:08:58Z",
+      "side": 1,
+      "message": "Consider checking the content has been deserialized correctly too:\n\n```\nProjectCreatedEvent deserialized \u003d (ProjectCreatedEvent) message.event();\n\nassertThat(deserialized.projectName).isEqualTo(event.projectName);\nassertThat(deserialized.headName).isEqualTo(event.headName);\nassertThat(deserialized.instanceId).isEqualTo(event.instanceId);\n```",
+      "revId": "f539ea1bdd3bbe5f34dd230b01f4c252ad5b07fe",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
