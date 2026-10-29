@@ -24,6 +24,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97486446_ea31ae8a",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/EventSerializerTest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-10-29T10:49:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c23daa49_e16544c2",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 73
+      },
+      "revId": "65c5dd11b9adb862843086bddf7c3c1bfef78714",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74e65c6e_c26b679e",
@@ -37,6 +61,30 @@
       "writtenOn": "2026-10-29T10:44:01Z",
       "side": 1,
       "message": "We are assigning values to the deserialised event instead of checking them. Did you mean to have assertions here?",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 48
+      },
+      "revId": "65c5dd11b9adb862843086bddf7c3c1bfef78714",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d44f12a7_b3b1e672",
+        "filename": "src/test/java/com/gerritforge/gerrit/eventbroker/EventSerializerTest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2026-10-29T10:49:59Z",
+      "side": 1,
+      "message": "Not enough coffee this morning!",
+      "parentUuid": "74e65c6e_c26b679e",
       "range": {
         "startLine": 52,
         "startChar": 0,
